@@ -55,7 +55,6 @@
 - [Roadmap](#roadmap)
 - [License](#license)
 - [Authors](#authors)
-- [Acknowledgments](#acknowledgments)
 
 <!-- ABOUT THE PROJECT -->
 
@@ -312,19 +311,6 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/Henestrosa
 ## Authors
 
 - HenestrosaConH <henestrosaconh@gmail.com> (José Carlos López Henestrosa)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
-
-## Acknowledgments
-
-I have made use of the following resources to make this project:
-
-- [Best-README-Template](https://github.com/othneildrew/Best-README-Template/)
-- [Img Shields](https://shields.io)
-- [How to create a Python package](https://mathspp.com/blog/how-to-create-a-python-package-in-2022#how-to-create-a-python-package)
-- [Icon created by Midjourney](https://www.midjourney.com/app/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
