@@ -39,7 +39,7 @@
 
 ## README Translations
 
-- ![es](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Spain.png) [Español](docs/README-es.md)
+- 🇪🇸 [Español](docs/README-es.md)
 
 <!-- TABLE OF CONTENTS -->
 
@@ -73,8 +73,8 @@ The site also has a user administrator role that can upload new content and modi
   <summary>ASCII folder structure</summary>
 
 ```
-│	.editorconfig
-│	.env.example
+│   .editorconfig
+│   .env.example
 │   .gitattributes
 │   .gitignore
 │   artisan
@@ -126,7 +126,7 @@ The site also has a user administrator role that can upload new content and modi
 │   │   app.php
 │   │   
 │   └───cache
-│       	.gitignore
+│           .gitignore
 │
 ├───config
 │       app.php
@@ -149,16 +149,16 @@ The site also has a user administrator role that can upload new content and modi
 │   │   .gitignore
 │   │   
 │   ├───factories
-│   │   	UserFactory.php
+│   │       UserFactory.php
 │   │
 │   ├───migrations
-│   │   	2014_10_12_000000_create_users_table.php
-│   │		2014_10_12_100000_create_password_reset_tokens_table.php
-│   │		2019_08_19_000000_create_failed_jobs_table.php
-│   │		2019_12_14_000001_create_personal_access_tokens_table.php
+│   │       2014_10_12_000000_create_users_table.php
+│   │       2014_10_12_100000_create_password_reset_tokens_table.php
+│   │       2019_08_19_000000_create_failed_jobs_table.php
+│   │       2019_12_14_000001_create_personal_access_tokens_table.php
 │   │
 │   └───seeders
-│       	DatabaseSeeder.php
+│           DatabaseSeeder.php
 │
 ├───public
 │       .htaccess
@@ -168,14 +168,14 @@ The site also has a user administrator role that can upload new content and modi
 │
 ├───resources
 │   ├───css
-│   │   	app.css
+│   │       app.css
 │   │
 │   ├───js
-│   │   	app.css
-│   │   	bootstrap.css
+│   │       app.css
+│   │       bootstrap.css
 │   │
 │   └───views
-│       	welcome.blade.php
+│           welcome.blade.php
 │
 ├───routes
 │       api.php
@@ -188,38 +188,38 @@ The site also has a user administrator role that can upload new content and modi
 │   │   │   .gitignore
 │   │   │
 │   │   └───public
-│   │   		.gitignore
+│   │       .gitignore
 │   │
 │   ├───framework
 │   │   │   .gitignore
 │   │   │
-│   │	├───cache
-│   │	│	│	.gitignore
-│   │	│	│
+│   │   ├───cache
+│   │   │   │   .gitignore
+│   │   │   │
 |   │   │   └───data
-|   │   │			.gitignore
+|   │   │           .gitignore
 │   │   │
-│   │	├───sessions
-|   │   │		.gitignore
+│   │   ├───sessions
+|   │   │       .gitignore
 │   │   │
-│   │	├───testing
-|   │   │		.gitignore
+│   │   ├───testing
+|   │   │       .gitignore
 │   │   │
 │   │   └───views
-│   │   		.gitignore
+│   │           .gitignore
 │   │
 │   └───logs
-│       	welcome.blade.php
+│           welcome.blade.php
 │
 └───tests
-	│	CreatesApplication.php
-	│	TestCase.php
+    │   CreatesApplication.php
+    │   TestCase.php
     │
     ├───Feature
-	│		ExampleTest.php
-	│
-	└───Unit
-			ExampleTest.php
+    │       ExampleTest.php
+    │
+    └───Unit
+            ExampleTest.php
 ```
 </details>
 
