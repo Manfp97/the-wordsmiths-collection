@@ -99,7 +99,6 @@ The site also has a user administrator role that can upload new content and modi
 │   │   │
 │   │   ├───Controllers
 │   │   │       Controller.php
-│   │   │       strings.xml
 │   │   │
 │   │   └───Middleware
 │   │           Authenticate.php
@@ -188,7 +187,7 @@ The site also has a user administrator role that can upload new content and modi
 │   │   │   .gitignore
 │   │   │
 │   │   └───public
-│   │       .gitignore
+│   │           .gitignore
 │   │
 │   ├───framework
 │   │   │   .gitignore
