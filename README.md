@@ -1,66 +1,331 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div id="top"></div>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<!-- PROJECT SHIELDS -->
+<!--
+*** I am using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
 
-## About Laravel
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+    <img src="public/favicon.svg" alt="Logo" width="156" height="156">
+    <h1 align="center">The Wordsmith's Collection</h1>
+    <p align="center">A website featuring a curated selection of the most important literary works in history.</p>
+    <p>
+        <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/stargazers">
+          <img alt="GitHub Contributors" src="https://img.shields.io/github/stars/HenestrosaConH/the-wordsmiths-collection" />
+        </a>
+        <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/graphs/contributors">
+          <img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/HenestrosaConH/the-wordsmiths-collection" />
+        </a>
+        <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/issues">
+          <img alt="Issues" src="https://img.shields.io/github/issues/HenestrosaConH/the-wordsmiths-collection" />
+        </a>
+        <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/pulls">
+          <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/HenestrosaConH/the-wordsmiths-collection" />
+        </a>
+        <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/blob/main/LICENSE">
+          <img alt="GitHub pull requests" src="https://img.shields.io/github/license/HenestrosaConH/the-wordsmiths-collection" />
+        </a>
+    </p>
+	<p>
+        <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/issues/new/choose">Report Issue</a> · <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/issues/new/choose">Request Feature</a> · <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/discussions">Ask Question</a>
+    </p>
+</div>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## README Translations
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- ![es](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Spain.png) [Español](docs/README-es.md)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<!-- TABLE OF CONTENTS -->
 
-## Learning Laravel
+## Table of Contents
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- [About the Project](#about-the-project)
+  - [Project Structure](#project-structure)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites) 
+  - [Steps](#steps)
+- [Usage](#usage)
+- [Roadmap](#roadmap)
+- [License](#license)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgments)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+<!-- ABOUT THE PROJECT -->
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## About the Project
 
-## Laravel Sponsors
+**The Wordsmith's Collection** is my final [DAW](https://github.com/HenestrosaConH/2-daw) project, which consists of a website with a subscription system that allows users to access a curated library of the most important literary works in history. They will be able to read the books on the site, as well as search and filter by category and author. Each book and author will have a description to get more insight into their bibliography and synopsis, respectively.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+The site also has a user administrator role that can upload new content and modify existing content.
 
-### Premium Partners
+<!-- PROJECT STRUCTURE -->
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### Project Structure
 
-## Contributing
+<details>
+  <summary>ASCII folder structure</summary>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+│	.editorconfig
+│	.env.example
+│   .gitattributes
+│   .gitignore
+│   artisan
+│   composer.json
+│   composer.lock
+│   LICENSE
+│   package-lock.json
+│   package.json
+│   phpunit.xml
+│   README.md
+│   vite.config.js
+│
+├───app
+│   ├───Console
+│   │       Kernel.php
+│   │
+│   ├───Exceptions
+│   │       Handler.php
+│   │
+│   ├───Http
+│   │   │   Kernel.php
+│   │   │
+│   │   ├───Controllers
+│   │   │       Controller.php
+│   │   │       strings.xml
+│   │   │
+│   │   └───Middleware
+│   │           Authenticate.php
+│   │           EncryptCookies.php
+│   │           PreventRequestsDuringMaintenance.php
+│   │           RedirectlfAuthenticated.php
+│   │           TrimStrings.php
+│   │           TrustHosts.php
+│   │           TrustProxies.php
+│   │           ValidateSignature.php
+│   │           VerifyCsrfToken.php
+│   │
+│   ├───Models
+│   │       User.php
+│   │
+│   └───Providers
+│           AppServiceProvider.php
+│           AuthServiceProvider.php
+│           BroadcastServiceProvider.php
+│           EventServiceProvider.php
+│           RouteServiceProvider.php
+│
+├───bootstrap
+│   │   app.php
+│   │   
+│   └───cache
+│       	.gitignore
+│
+├───config
+│       app.php
+│       auth.php
+│       broadcasting.php
+│       cache.php
+│       cors.php
+│       database.php
+│       filesystems.php
+│       hashing.php
+│       logging.php
+│       mail.php
+│       queue.php
+│       sanctum.php
+│       services.php
+│       sessions.php
+│       view.php
+│   
+├───databases
+│   │   .gitignore
+│   │   
+│   ├───factories
+│   │   	UserFactory.php
+│   │
+│   ├───migrations
+│   │   	2014_10_12_000000_create_users_table.php
+│   │		2014_10_12_100000_create_password_reset_tokens_table.php
+│   │		2019_08_19_000000_create_failed_jobs_table.php
+│   │		2019_12_14_000001_create_personal_access_tokens_table.php
+│   │
+│   └───seeders
+│       	DatabaseSeeder.php
+│
+├───public
+│       .htaccess
+│       favicon.svg
+│       index.php
+│       robots.php
+│
+├───resources
+│   ├───css
+│   │   	app.css
+│   │
+│   ├───js
+│   │   	app.css
+│   │   	bootstrap.css
+│   │
+│   └───views
+│       	welcome.blade.php
+│
+├───routes
+│       api.php
+│       channels.php
+│       console.php
+│       web.php
+│
+├───storage
+│   ├───app
+│   │   │   .gitignore
+│   │   │
+│   │   └───public
+│   │   		.gitignore
+│   │
+│   ├───framework
+│   │   │   .gitignore
+│   │   │
+│   │	├───cache
+│   │	│	│	.gitignore
+│   │	│	│
+|   │   │   └───data
+|   │   │			.gitignore
+│   │   │
+│   │	├───sessions
+|   │   │		.gitignore
+│   │   │
+│   │	├───testing
+|   │   │		.gitignore
+│   │   │
+│   │   └───views
+│   │   		.gitignore
+│   │
+│   └───logs
+│       	welcome.blade.php
+│
+└───tests
+	│	CreatesApplication.php
+	│	TestCase.php
+    │
+    ├───Feature
+	│		ExampleTest.php
+	│
+	└───Unit
+			ExampleTest.php
+```
+</details>
 
-## Code of Conduct
+<!-- BUILT WITH -->
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Built With
 
-## Security Vulnerabilities
+- [Laravel](https://github.com/laravel/laravel): PHP framework.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<!-- GETTING STARTED -->
+
+## Getting Started
+
+### Prerequisites
+
+Ensure you have PHP, Git, Composer, npm, and Laravel installed on your local machine. If not, you can download and install them from the official websites:
+- [PHP](https://www.php.net/downloads.php)
+- [Git](https://git-scm.com/downloads)
+- [Composer](https://getcomposer.org/download/)
+- [npm](https://www.npmjs.com/package/download)
+- [Laravel](https://laravel.com/docs/9.x/installation) (installed globally using Composer)
+
+### Steps
+
+1. Use git to clone the Laravel project repository to your local machine. Open your terminal or command prompt and run:
+	```shell
+	git clone https://github.com/HenestrosaConH/the-wordsmiths-collection.git
+	```
+2. Navigate to the project directory using the `cd` command. For example: 
+	```shell
+	cd /path/to/the-wordsmiths-collection`
+	```
+3. Install Composer dependencies running the following command:
+	```shell
+	composer install
+	```
+3. Install npm dependencies running the following command:
+	```shell
+	npm install
+	```
+4. Create a `.env` file, as Laravel uses environment variables stored in a `.env` file for configuration. Duplicate the `.env.example` file provided with the project and rename it to `.env`:
+	```shell
+	cp .env.example .env
+	```
+	Configure it if needed by setting the right configuration for the database.
+5. Generate an application key, required for security. Generate it using Artisan:
+	```shell
+	php artisan key:generate
+	```
+6. Run database migrations to set up the database tables:
+	```shell
+	php artisan migrate
+	```
+7. Start the development server by running this command:
+	```shell
+	php artisan serve
+	```
+
+You can enable hot refresh with Vite by running the command `npm run dev`. Note that you'll need to open the URL provided by Artisan to enjoy this feature, not the one provided by Vite.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- USAGE -->
+
+## Usage
+
+To do
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- ROADMAP -->
+
+## Roadmap
+
+- [ ] To do
+
+You can propose a new feature creating an [issue](https://github.com/HenestrosaConH/the-wordsmiths-collection/new/choose).
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- LICENSE -->
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Distributed under the MIT License. See [`LICENSE`](https://github.com/HenestrosaConH/the-wordsmiths-collection/blob/main/.github/LICENSE) for more information.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- AUTHORS -->
+
+## Authors
+
+- HenestrosaConH <henestrosaconh@gmail.com> (José Carlos López Henestrosa)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGMENTS -->
+
+## Acknowledgments
+
+I have made use of the following resources to make this project:
+
+- [Best-README-Template](https://github.com/othneildrew/Best-README-Template/)
+- [Img Shields](https://shields.io)
+- [How to create a Python package](https://mathspp.com/blog/how-to-create-a-python-package-in-2022#how-to-create-a-python-package)
+- [Icon created by Midjourney](https://www.midjourney.com/app/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
