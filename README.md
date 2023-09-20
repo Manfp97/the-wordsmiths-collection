@@ -60,7 +60,9 @@
 
 ## About the Project
 
-**The Wordsmith's Collection** is my final [DAW](https://github.com/HenestrosaConH/2-daw) project, which consists of a website with a subscription system that allows users to access a curated library of the most important literary works in history. They will be able to read the books on the site, as well as search and filter by category and author. Each book and author will have a description to get more insight into their bibliography and synopsis, respectively.
+**The Wordsmith's Collection** is my final [DAW](https://github.com/HenestrosaConH/2-daw) project, consisting of a website with a subscription business model that allows users to access a curated library of the most important literary works in history. They will be able to read the books on the site, as well as search and filter by category and author. Each book and author will have a description to get more insight into their bibliography and synopsis, respectively.
+
+To access the service, users must log in and enter a credit card to make the payment. Note that no payments are actually made, as the site only verifies that the credit card is valid. To actually use this feature, you should implement a payment gateway provider such as Redsys or Stripe.
 
 The site also has a user administrator role that can upload new content and modify existing content.
 
