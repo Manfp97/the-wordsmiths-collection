@@ -86,6 +86,7 @@ The site also has a user administrator role that can upload new content and modi
 │   package.json
 │   phpunit.xml
 │   README.md
+│   tailwind.config.js
 │   vite.config.js
 │
 ├───app
@@ -227,7 +228,8 @@ The site also has a user administrator role that can upload new content and modi
 
 ### Built With
 
-- [Laravel](https://github.com/laravel/laravel): PHP framework.
+- [Laravel](https://github.com/laravel/laravel): PHP framework
+- [Tailwind](https://tailwindcss.com/docs/guides/laravel): CSS framework
 
 <!-- GETTING STARTED -->
 
