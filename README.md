@@ -246,7 +246,7 @@ Ensure you have PHP, Git, Composer, npm, and Laravel installed on your local mac
 
 ### Steps
 
-1. Use git to clone the Laravel project repository to your local machine. Open your terminal or command prompt and run:
+1. Use `git` to clone the Laravel project repository to your local machine. Open your terminal or command prompt and run:
 	```shell
 	git clone https://github.com/HenestrosaConH/the-wordsmiths-collection.git
 	```
@@ -266,7 +266,8 @@ Ensure you have PHP, Git, Composer, npm, and Laravel installed on your local mac
 	```shell
 	cp .env.example .env
 	```
-	Configure it if needed by setting the right configuration for the database.
+	If necessary, you can configure it by setting the correct configuration for the database.<br>
+	<br>
 5. Generate an application key, required for security. Generate it using Artisan:
 	```shell
 	php artisan key:generate
