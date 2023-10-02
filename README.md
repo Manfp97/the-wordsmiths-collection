@@ -60,11 +60,15 @@
 
 ## About the Project
 
-**The Wordsmith's Collection** is my final [DAW](https://github.com/HenestrosaConH/2-daw) project, consisting of a website with a subscription business model that allows users to access a curated library of the most important literary works in history. They will be able to read the books on the site, as well as search and filter by category and author. Each book and author will have a description to get more insight into their bibliography and synopsis, respectively.
+**The Wordsmith's Collection** is my final [DAW](https://github.com/HenestrosaConH/2-daw) project, consisting of a website with a subscription model that allows users to access a curated library of the most important literary works in history. They will be able to read the books on the site, as well as search and filter by category and author. Each book and author will have a description to get more insight into their bibliography and synopsis, respectively.
 
-To access the service, users must log in and enter a credit card to make the payment. Note that no payments are actually made, as the site only verifies that the credit card is valid. To actually use this feature, you should implement a payment gateway provider such as Redsys or Stripe.
+To access the service, users must sign up and enter a credit card to make the payment. Note that no payments are actually made, as the site only verifies that the credit card is valid. To actually use this feature, you should implement a payment gateway provider such as Redsys or Stripe.
 
-The site also has a user administrator role that can upload new content and modify existing content.
+The site will have two type of users:
+
+- Client: User who registers and pays the fee to access the service.
+- Administrator: User already created who can, in addition to performing the same operations as a client, add, edit and delete books as he wishes.
+
 
 <!-- PROJECT STRUCTURE -->
 
@@ -230,6 +234,7 @@ The site also has a user administrator role that can upload new content and modi
 
 - [Laravel](https://github.com/laravel/laravel): PHP framework
 - [Tailwind](https://tailwindcss.com/docs/guides/laravel): CSS framework
+- [Wikipedia API](https://en.wikipedia.org/api/rest_v1/#): Used to retrieve descriptions of authors and books.
 
 <!-- GETTING STARTED -->
 
@@ -290,6 +295,12 @@ You can enable hot refresh with Vite by running the command `npm run dev`. Note 
 ## Usage
 
 To do
+
+https://www.creditcardvalidator.org/generator
+
+https://addplaybuttontoimage.way4info.net/add-play-button-on-youtube-thumbnail-video-images
+
+[![YouTube thumbnail](https://img.youtube.com/vi/StTqXEQ2l-Y/0.jpg)](https://www.youtube.com/watch?v=StTqXEQ2l-Y "YouTube video")
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
