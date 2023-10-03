@@ -250,7 +250,7 @@ Ensure you have PHP, Git, Composer, npm, and Laravel installed on your local mac
 - [Git](https://git-scm.com/downloads)
 - [Composer](https://getcomposer.org/download/)
 - [npm](https://www.npmjs.com/package/download)
-- [Laravel](https://laravel.com/docs/9.x/installation) (installed globally using Composer)
+- [Laravel](https://laravel.com/docs/9.x/installation) (install globally using Composer)
 
 ### Steps
 
