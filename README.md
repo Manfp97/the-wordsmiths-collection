@@ -39,7 +39,7 @@
 
 ## README Translations
 
-- 🇪🇸 [Español](docs/README-es.md)
+- 🇪🇸 [Español](README.es.md)
 
 <!-- TABLE OF CONTENTS -->
 
