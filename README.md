@@ -297,13 +297,7 @@ You can enable hot refresh with Vite by running the command `npm run dev`. Note 
 
 ## Usage
 
-To do
-
-https://www.creditcardvalidator.org/generator
-
-https://addplaybuttontoimage.way4info.net/add-play-button-on-youtube-thumbnail-video-images
-
-[![YouTube thumbnail](https://img.youtube.com/vi/StTqXEQ2l-Y/0.jpg)](https://www.youtube.com/watch?v=StTqXEQ2l-Y "YouTube video")
+[Credit card generator](https://www.creditcardvalidator.org/generator)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
