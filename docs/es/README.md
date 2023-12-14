@@ -46,7 +46,7 @@
 
 - [Sobre el Proyecto](#sobre-el-proyecto)
   - [Estructura del Proyecto](#estructura-del-proyecto)
-	- [Modelo Entidad Relación](#modelo-entidad-relación)
+  - [Modelo Entidad Relación](#modelo-entidad-relación)
   - [Modelo Relacional](#modelo-relacional)
   - [Casos de Uso](#casos-de-uso)
   - [Hecho Con](#hecho-con)
