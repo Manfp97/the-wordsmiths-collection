@@ -12,7 +12,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="https://github.com/HenestrosaDev/the-wordsmiths-collection/tree/main/public/favicon.svg" alt="Logo" width="156" height="156">
+    <img src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/public/favicon.svg" alt="Logo" width="156" height="156">
     <h1 align="center">The Wordsmith's Collection</h1>
     <p align="center">A website featuring a curated selection of the most important literary works in history.</p>
     <p>
@@ -36,7 +36,7 @@
         <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/issues/new/choose">Report Issue</a> · <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/issues/new/choose">Request Feature</a> · <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/discussions">Ask Question</a>
     </p>
     <p>
-        English | <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/tree/main/docs/es/README.md/">Español</a>
+        English | <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/README.md/">Español</a>
     </p>
 
 </div>
