@@ -12,31 +12,32 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="public/favicon.svg" alt="Logo" width="156" height="156">
+    <img src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/public/favicon.svg" alt="Logo" width="156" height="156">
     <h1 align="center">The Wordsmith's Collection</h1>
-    <p align="center">Un sitio web con una selección de las obras literarias más importantes de la historia.</p>
+    <p align="center">Sitio web con una selección de las obras literarias más importantes de la historia.</p>
     <p>
-        <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/stargazers">
-          <img alt="GitHub Contributors" src="https://img.shields.io/github/stars/HenestrosaConH/the-wordsmiths-collection" />
-        </a>
-        <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/graphs/contributors">
-          <img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/HenestrosaConH/the-wordsmiths-collection" />
-        </a>
-        <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/issues">
-          <img alt="Issues" src="https://img.shields.io/github/issues/HenestrosaConH/the-wordsmiths-collection" />
-        </a>
-        <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/pulls">
-          <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/HenestrosaConH/the-wordsmiths-collection" />
-        </a>
-        <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/blob/main/LICENSE">
-          <img alt="GitHub pull requests" src="https://img.shields.io/github/license/HenestrosaConH/the-wordsmiths-collection" />
-        </a>
+			<a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/stargazers">
+				<img alt="GitHub Contributors" src="https://img.shields.io/github/stars/HenestrosaConH/the-wordsmiths-collection" />
+			</a>
+			<a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/graphs/contributors">
+				<img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/HenestrosaConH/the-wordsmiths-collection" />
+			</a>
+			<a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/issues">
+				<img alt="Issues" src="https://img.shields.io/github/issues/HenestrosaConH/the-wordsmiths-collection" />
+			</a>
+			<a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/pulls">
+				<img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/HenestrosaConH/the-wordsmiths-collection" />
+			</a>
+			<a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/blob/main/LICENSE">
+				<img alt="GitHub pull requests" src="https://img.shields.io/github/license/HenestrosaConH/the-wordsmiths-collection" />
+			</a>
     </p>
 	<p>
-        <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/issues/new/choose">Report Issue</a> · <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/issues/new/choose">Request Feature</a> · <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/discussions">Ask Question</a>
-    </p>
-	
-	[English](./README.md) | Español
+		<a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/issues/new/choose">Reportar Incidencia</a> · <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/issues/new/choose">Proponer Funcionalidad</a> · <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/discussions">¿Duda?</a>
+	</p>
+  <p>
+    <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/README.md/">English</a> | Español
+  </p>
 </div>
 
 <!-- TABLA DE CONTENIDOS -->
@@ -45,6 +46,9 @@
 
 - [Sobre el Proyecto](#sobre-el-proyecto)
   - [Estructura del Proyecto](#estructura-del-proyecto)
+	- [Modelo Entidad Relación](#modelo-entidad-relación)
+  - [Modelo Relacional](#modelo-relacional)
+  - [Casos de Uso](#casos-de-uso)
   - [Hecho Con](#hecho-con)
 - [Primeros Pasos](#primeros-pasos)
   - [Requisitos Previos](#requisitos-previos) 
@@ -58,8 +62,7 @@
 
 ## Sobre el Proyecto
 
-**The Wordsmith's Collection** es mi proyecto final de [DAW](https://github.com/HenestrosaConH/2-daw), el cual consiste en un sitio web con un modelo de negocio por suscripción que permite a los usuarios acceder a una biblioteca selecta con las obras literarias más importantes de la historia. Podrán leer los libros en el
-sitio, así como buscar y filtrar por categoría y autor. Cada libro y autor tendrán una descripción para conocer mejor su bibliografía y sinopsis, respectivamente.
+**The Wordsmith's Collection** consiste en un sitio web con un modelo de negocio por suscripción (SaaS) que permite a los usuarios acceder a una biblioteca selecta con las obras literarias más importantes de la historia. Podrán leer los libros en el sitio, así como buscar y filtrar por categoría y autor. Cada libro y autor tendrán una descripción para conocer mejor su bibliografía y sinopsis, respectivamente.
 
 Para acceder al servicio, los usuarios deben crear una cuenta e introducir una tarjeta de crédito para efectuar el pago. Hay que tener en cuenta que, en realidad, no se realiza ningún pago, ya que solo se verifica que la tarjeta de crédito sea válida. Para utilizar realmente esta función, se debería implementar una pasarela de pago como Redsys o Stripe.
 
@@ -67,9 +70,10 @@ Hay dos modalidades de suscripción:
 - Básica: El usuario no podrá acceder a libros con la etiqueta "PREMIUM".
 - Premium: El usuario podrá acceder a toda la biblioteca disponible.
 
-Y dos tipos de usuario:
-- Cliente: Usuario que se registra y realiza el abono de la cuota para acceder al servicio.
-- Administrador: Usuario ya creado que podrá, además de realizar las mismas operaciones que un cliente, añadir, editar y eliminar libros a su antojo.
+Y tres tipos de usuarios:
+- **Visitante**: Un usuario que visita la página. No puede leer libros, pero puede ver el catálogo de libros disponible y las reviews.
+- **Suscriptor**: Usuario que paga la cuota mensual/anual para leer libros. Puede ser **Básico** o **Premium**.
+- **Administrador**: Usuario ya creado que podrá, además de realizar las mismas operaciones que un cliente, añadir, editar y eliminar libros a su antojo.
 
 <!-- ESTRUCTURA DEL PROYECTO -->
 
@@ -233,9 +237,70 @@ Y dos tipos de usuario:
 
 ### Hecho Con
 
-- [Laravel](https://github.com/laravel/laravel): PHP framework
-- [Tailwind](https://tailwindcss.com/docs/guides/laravel): CSS framework
+- [Laravel](https://github.com/laravel/laravel): PHP framework.
+- [TailwindCSS](https://tailwindcss.com/docs/guides/laravel): CSS framework.
+- [Vue.js 3](https://vuejs.org/): JavaScript framework.
+- [Inertia.js](https://inertiajs.com/): Permite crear aplicaciones de una sola página totalmente renderizadas del lado del cliente sin la complejidad de las SPA modernas.
 - [Wikipedia API](https://en.wikipedia.org/api/rest_v1/#): Para obtener las descripciones de los autores y las sinopsis de los libros.
+
+<!-- MODELO ENTIDAD RELACIÓN -->
+
+### Modelo Entidad Relación
+
+<picture>
+	<source 
+		srcset="docs/en/light/entity-relationship-diagram.png"
+		media="(prefers-color-scheme: light)"
+	/>
+	<source 
+		srcset="docs/en/dark/entity-relationship-diagram.png"
+		media="(prefers-color-scheme: dark)"
+	/>
+	<img 
+		src="docs/en/light/entity-relationship-diagram.png"
+		alt="Entity Relationship Model"
+	>
+</picture>
+
+<!-- MODELO RELACIONAL -->
+
+### Modelo Relacional
+
+<picture>
+	<source 
+		srcset="docs/common/light/relational-model.png"
+		media="(prefers-color-scheme: light)"
+	/>
+	<source 
+		srcset="docs/common/dark/relational-model.png"
+		media="(prefers-color-scheme: dark)"
+	/>
+	<img 
+		src="docs/common/light/relational-model.png"
+		alt="Relational Model"
+	>
+</picture>
+
+<!-- CASOS DE USO -->
+
+### Casos de Uso
+
+<picture>
+	<source 
+		srcset="docs/en/light/use-cases.png"
+		media="(prefers-color-scheme: light)"
+	/>
+	<source 
+		srcset="docs/en/dark/use-cases.png"
+		media="(prefers-color-scheme: dark)"
+	/>
+	<img 
+		src="docs/en/light/use-cases.png"
+		alt="Use Cases"
+	>
+</picture>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- PRIMEROS PASOS -->
 
@@ -282,7 +347,7 @@ Asegúrate de que tienes PHP, Git, Composer, npm y Laravel instalados en tu máq
 	```shell
 	php artisan migrate
 	```
-7. Inicie el servidor de desarrollo ejecutando este comando:
+7. Inicia el servidor de desarrollo ejecutando este comando:
 	```shell
 	php artisan serve
 	```
@@ -305,23 +370,19 @@ Puedes habilitar hot refresh con Vite ejecutando el comando `npm run dev`. Ten e
 
 - [ ] To do
 
-Puedes proponer una nueva función creando una [incidencia](https://github.com/HenestrosaConH/the-wordsmiths-collection/new/choose).
+Puedes proponer una nueva funcionalidad creando una [incidencia](https://github.com/HenestrosaConH/the-wordsmiths-collection/new/choose).
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<!-- AUTORES -->
+
+## Autores
+
+- José Carlos López Henestrosa ([HenestrosaDev](https://github.com/HenestrosaDev))
 
 <!-- LICENCIA -->
 
 ## Licencia
 
 Distribuido bajo la licencia MIT. Revisa [`LICENSE`](https://github.com/HenestrosaConH/the-wordsmiths-collection/blob/main/.github/LICENSE) para más información.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- AUTORES -->
-
-## Autores
-
-- HenestrosaConH <henestrosaconh@gmail.com> (José Carlos López Henestrosa)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
