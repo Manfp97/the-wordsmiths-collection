@@ -249,15 +249,15 @@ The website has three types of users:
 
 <picture>
 	<source 
-		srcset="docs/en/dark/entity-relationship-diagram.png"
+		srcset="docs/en/light/entity-relationship-diagram.png"
 		media="(prefers-color-scheme: light)"
 	/>
 	<source 
-		srcset="docs/en/light/entity-relationship-diagram.png"
+		srcset="docs/en/dark/entity-relationship-diagram.png"
 		media="(prefers-color-scheme: dark)"
 	/>
 	<img 
-		src="docs/en/dark/entity-relationship-diagram.png"
+		src="docs/en/light/entity-relationship-diagram.png"
 		alt="Entity Relationship Model"
 	>
 </picture>
@@ -268,11 +268,11 @@ The website has three types of users:
 
 <picture>
 	<source 
-		srcset="docs/common/dark/relational-model.png"
+		srcset="docs/common/light/relational-model.png"
 		media="(prefers-color-scheme: light)"
 	/>
 	<source 
-		srcset="docs/common/light/relational-model.png"
+		srcset="docs/common/dark/relational-model.png"
 		media="(prefers-color-scheme: dark)"
 	/>
 	<img 
@@ -287,15 +287,15 @@ The website has three types of users:
 
 <picture>
 	<source 
-		srcset="docs/en/dark/use-cases.png"
+		srcset="docs/en/light/use-cases.png"
 		media="(prefers-color-scheme: light)"
 	/>
 	<source 
-		srcset="docs/en/light/use-cases.png"
+		srcset="docs/en/dark/use-cases.png"
 		media="(prefers-color-scheme: dark)"
 	/>
 	<img 
-		src="docs/en/dark/use-cases.png"
+		src="docs/en/light/use-cases.png"
 		alt="Use Cases"
 	>
 </picture>
