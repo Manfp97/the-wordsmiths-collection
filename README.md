@@ -300,6 +300,8 @@ The website has three types of users:
 	>
 </picture>
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 <!-- GETTING STARTED -->
 
 ## Getting Started
@@ -381,3 +383,5 @@ You can propose a new feature creating an [issue](https://github.com/HenestrosaD
 ## License
 
 Distributed under the MIT License. See [`LICENSE`](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/.github/LICENSE) for more information.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
