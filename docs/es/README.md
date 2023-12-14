@@ -35,11 +35,9 @@
 	<p>
         <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/issues/new/choose">Report Issue</a> · <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/issues/new/choose">Request Feature</a> · <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/discussions">Ask Question</a>
     </p>
+	
+	[English](./README.md) | Español
 </div>
-
-## README Translations
-
-- 🇬🇧 [English](README.md)
 
 <!-- TABLA DE CONTENIDOS -->
 
