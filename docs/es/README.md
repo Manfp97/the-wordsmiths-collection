@@ -250,15 +250,15 @@ Y tres tipos de usuarios:
 <div align="center">
 	<picture>
 		<source 
-			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/light/entity-relationship-diagram.png"
+			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/light/entity-relationship-diagram.svg"
 			media="(prefers-color-scheme: light)"
 		/>
 		<source 
-			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/dark/entity-relationship-diagram.png"
+			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/dark/entity-relationship-diagram.svg"
 			media="(prefers-color-scheme: dark)"
 		/>
 		<img 
-			src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/light/entity-relationship-diagram.png"
+			src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/light/entity-relationship-diagram.svg"
 			alt="Entity Relationship Model"
 		>
 	</picture>
