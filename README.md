@@ -51,7 +51,7 @@
   - [Use Cases](#use-cases)
   - [Built With](#built-with)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites) 
+  - [Prerequisites](#prerequisites)
   - [Steps](#steps)
 - [Usage](#usage)
 - [Roadmap](#roadmap)
@@ -67,10 +67,12 @@
 In order to access the service, users must register and enter a credit card for payment. Note that no payments are actually made, as the site only verifies that the credit card is valid. To actually use this feature, you should implement a payment gateway provider such as Redsys or Stripe.
 
 There are two types of subscription:
+
 - **Basic**: The subscriber can read all books except those marked **PREMIUM**.
 - **Premium**: The subscriber can read the entire available library, including **PREMIUM** books.
 
 The website has three types of users:
+
 - **Visitor**: A user who visits the site. Cannot read books, but can see the available library and reviews.
 - **Subscriber**: Registered user who pays a monthly/annual fee to read books. Can be **Basic** or **Premium**.
 - **Administrator**: An existing user who, in addition to performing the same operations as a subscriber, can add, edit, and delete books at will.
@@ -134,7 +136,7 @@ The website has three types of users:
 │
 ├───bootstrap
 │   │   app.php
-│   │   
+│   │
 │   └───cache
 │           .gitignore
 │
@@ -154,10 +156,10 @@ The website has three types of users:
 │       services.php
 │       sessions.php
 │       view.php
-│   
+│
 ├───databases
 │   │   .gitignore
-│   │   
+│   │
 │   ├───factories
 │   │       UserFactory.php
 │   │
@@ -231,6 +233,7 @@ The website has three types of users:
     └───Unit
             ExampleTest.php
 ```
+
 </details>
 
 <!-- BUILT WITH -->
@@ -314,6 +317,7 @@ The website has three types of users:
 ### Prerequisites
 
 Ensure you have PHP, Git, Composer, npm, and Laravel installed on your local machine. If not, you can download and install them from the official websites:
+
 - [PHP](https://www.php.net/downloads.php)
 - [Git](https://git-scm.com/downloads)
 - [Composer](https://getcomposer.org/download/)
@@ -323,39 +327,39 @@ Ensure you have PHP, Git, Composer, npm, and Laravel installed on your local mac
 ### Steps
 
 1. Use `git` to clone the Laravel project repository to your local machine. Open your terminal or command prompt and run:
-	```shell
-	git clone https://github.com/HenestrosaDev/the-wordsmiths-collection.git
-	```
-2. Navigate to the project directory using the `cd` command. For example: 
-	```shell
-	cd /path/to/the-wordsmiths-collection`
-	```
+   ```shell
+   git clone https://github.com/HenestrosaDev/the-wordsmiths-collection.git
+   ```
+2. Navigate to the project directory using the `cd` command. For example:
+   ```shell
+   cd /path/to/the-wordsmiths-collection`
+   ```
 3. Install Composer dependencies running the following command:
-	```shell
-	composer install
-	```
-3. Install npm dependencies running the following command:
-	```shell
-	npm install
-	```
-4. Create a `.env` file, as Laravel uses environment variables stored in a `.env` file for configuration. Duplicate the `.env.example` file provided with the project and rename it to `.env`:
-	```shell
-	cp .env.example .env
-	```
-	If necessary, you can configure it by setting the correct configuration for the database.<br>
-	<br>
-5. Generate an application key, required for security. Generate it using Artisan:
-	```shell
-	php artisan key:generate
-	```
-6. Run database migrations to set up the database tables:
-	```shell
-	php artisan migrate
-	```
-7. Start the development server by running this command:
-	```shell
-	php artisan serve
-	```
+   ```shell
+   composer install
+   ```
+4. Install npm dependencies running the following command:
+   ```shell
+   npm install
+   ```
+5. Create a `.env` file, as Laravel uses environment variables stored in a `.env` file for configuration. Duplicate the `.env.example` file provided with the project and rename it to `.env`:
+   ```shell
+   cp .env.example .env
+   ```
+   If necessary, you can configure it by setting the correct configuration for the database.<br>
+   <br>
+6. Generate an application key, required for security. Generate it using Artisan:
+   ```shell
+   php artisan key:generate
+   ```
+7. Run database migrations to set up the database tables:
+   ```shell
+   php artisan migrate
+   ```
+8. Start the development server by running this command:
+   ```shell
+   php artisan serve
+   ```
 
 You can enable hot refresh with Vite by running the command `npm run dev`. Note that you'll need to open the URL provided by Artisan to enjoy this feature, not the one provided by Vite.
 
