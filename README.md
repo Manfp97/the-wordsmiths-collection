@@ -250,15 +250,15 @@ The website has three types of users:
 <div align="center">
   <picture>
     <source 
-      srcset="docs/en/light/entity-relationship-diagram.png"
+      srcset="docs/en/light/entity-relationship-diagram.svg"
       media="(prefers-color-scheme: light)"
     />
     <source 
-      srcset="docs/en/dark/entity-relationship-diagram.png"
+      srcset="docs/en/dark/entity-relationship-diagram.svg"
       media="(prefers-color-scheme: dark)"
     />
     <img 
-      src="docs/en/light/entity-relationship-diagram.png"
+      src="docs/en/light/entity-relationship-diagram.svg"
       alt="Entity Relationship Model"
     >
   </picture>
