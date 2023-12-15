@@ -12,32 +12,32 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/public/favicon.svg" alt="Logo" width="156" height="156">
-    <h1 align="center">The Wordsmith's Collection</h1>
-    <p align="center">Sitio web con una selección de las obras literarias más importantes de la historia.</p>
-    <p>
-			<a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/stargazers">
-				<img alt="GitHub Contributors" src="https://img.shields.io/github/stars/HenestrosaConH/the-wordsmiths-collection" />
-			</a>
-			<a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/graphs/contributors">
-				<img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/HenestrosaConH/the-wordsmiths-collection" />
-			</a>
-			<a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/issues">
-				<img alt="Issues" src="https://img.shields.io/github/issues/HenestrosaConH/the-wordsmiths-collection" />
-			</a>
-			<a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/pulls">
-				<img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/HenestrosaConH/the-wordsmiths-collection" />
-			</a>
-			<a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/blob/main/LICENSE">
-				<img alt="GitHub pull requests" src="https://img.shields.io/github/license/HenestrosaConH/the-wordsmiths-collection" />
-			</a>
-    </p>
+	<img src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/public/favicon.svg" alt="Logo" width="156" height="156">
+	<h1 align="center">The Wordsmith's Collection</h1>
+	<p align="center">Sitio web con una selección de las obras literarias más importantes de la historia.</p>
+	<p>
+		<a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/stargazers">
+			<img alt="GitHub Contributors" src="https://img.shields.io/github/stars/HenestrosaConH/the-wordsmiths-collection" />
+		</a>
+		<a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/graphs/contributors">
+			<img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/HenestrosaConH/the-wordsmiths-collection" />
+		</a>
+		<a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/issues">
+			<img alt="Issues" src="https://img.shields.io/github/issues/HenestrosaConH/the-wordsmiths-collection" />
+		</a>
+		<a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/pulls">
+			<img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/HenestrosaConH/the-wordsmiths-collection" />
+		</a>
+		<a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/blob/main/LICENSE">
+			<img alt="GitHub pull requests" src="https://img.shields.io/github/license/HenestrosaConH/the-wordsmiths-collection" />
+		</a>
+	</p>
 	<p>
 		<a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/issues/new/choose">Reportar Incidencia</a> · <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/issues/new/choose">Proponer Funcionalidad</a> · <a href="https://github.com/HenestrosaConH/the-wordsmiths-collection/discussions">¿Duda?</a>
 	</p>
-  <p>
-    <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/README.md/">🇬🇧 English</a> | 🇪🇸 Español
-  </p>
+	<p>
+		<a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/README.md/">🇬🇧 English</a> | 🇪🇸 Español
+	</p>
 </div>
 
 <!-- TABLA DE CONTENIDOS -->

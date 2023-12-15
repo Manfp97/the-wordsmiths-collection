@@ -32,7 +32,7 @@
         <img alt="GitHub pull requests" src="https://img.shields.io/github/license/HenestrosaDev/the-wordsmiths-collection" />
       </a>
     </p>
-	<p>
+  <p>
     <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/issues/new/choose">Report Issue</a> · <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/issues/new/choose">Request Feature</a> · <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/discussions">Ask Question</a>
   </p>
   <p>
