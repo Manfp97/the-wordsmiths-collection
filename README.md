@@ -36,7 +36,7 @@
     <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/issues/new/choose">Report Issue</a> · <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/issues/new/choose">Request Feature</a> · <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/discussions">Ask Question</a>
   </p>
   <p>
-    English | <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/README.md/">Español</a>
+    🇬🇧 English | <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/README.md/">🇪🇸 Español</a>
   </p>
 </div>
 
