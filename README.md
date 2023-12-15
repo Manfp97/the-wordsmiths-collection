@@ -270,15 +270,15 @@ The website has three types of users:
 <div align="center">
   <picture>
     <source 
-      srcset="docs/common/light/relational-model.png"
+      srcset="docs/common/light/relational-model.svg"
       media="(prefers-color-scheme: light)"
     />
     <source 
-      srcset="docs/common/dark/relational-model.png"
+      srcset="docs/common/dark/relational-model.svg"
       media="(prefers-color-scheme: dark)"
     />
     <img 
-      src="docs/common/light/relational-model.png"
+      src="docs/common/light/relational-model.svg"
       alt="Relational Model"
     >
   </picture>

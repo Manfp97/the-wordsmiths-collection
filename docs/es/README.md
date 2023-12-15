@@ -270,15 +270,15 @@ Y tres tipos de usuarios:
 <div align="center">
 	<picture>
 		<source 
-			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/common/light/relational-model.png"
+			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/common/light/relational-model.svg"
 			media="(prefers-color-scheme: light)"
 		/>
 		<source 
-			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/common/dark/relational-model.png"
+			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/common/dark/relational-model.svg"
 			media="(prefers-color-scheme: dark)"
 		/>
 		<img 
-			src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/common/light/relational-model.png"
+			src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/common/light/relational-model.svg"
 			alt="Relational Model"
 		>
 	</picture>
