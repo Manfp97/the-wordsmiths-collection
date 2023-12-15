@@ -247,58 +247,63 @@ The website has three types of users:
 
 ### Entity Relationship Model
 
-<picture>
-	<source 
-		srcset="docs/en/light/entity-relationship-diagram.png"
-		media="(prefers-color-scheme: light)"
-	/>
-	<source 
-		srcset="docs/en/dark/entity-relationship-diagram.png"
-		media="(prefers-color-scheme: dark)"
-	/>
-	<img 
-		src="docs/en/light/entity-relationship-diagram.png"
-		alt="Entity Relationship Model"
-	>
-</picture>
-
+<div align="center">
+  <picture>
+    <source 
+      srcset="docs/en/light/entity-relationship-diagram.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <source 
+      srcset="docs/en/dark/entity-relationship-diagram.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <img 
+      src="docs/en/light/entity-relationship-diagram.png"
+      alt="Entity Relationship Model"
+    >
+  </picture>
+</div>
 <!-- RELATIONAL MODEL -->
 
 ### Relational Model
 
-<picture>
-	<source 
-		srcset="docs/common/light/relational-model.png"
-		media="(prefers-color-scheme: light)"
-	/>
-	<source 
-		srcset="docs/common/dark/relational-model.png"
-		media="(prefers-color-scheme: dark)"
-	/>
-	<img 
-		src="docs/common/light/relational-model.png"
-		alt="Relational Model"
-	>
-</picture>
+<div align="center">
+  <picture>
+    <source 
+      srcset="docs/common/light/relational-model.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <source 
+      srcset="docs/common/dark/relational-model.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <img 
+      src="docs/common/light/relational-model.png"
+      alt="Relational Model"
+    >
+  </picture>
+</div>
 
 <!-- USE CASES -->
 
 ### Use Cases
 
-<picture>
-	<source 
-		srcset="docs/en/light/use-cases.png"
-		media="(prefers-color-scheme: light)"
-	/>
-	<source 
-		srcset="docs/en/dark/use-cases.png"
-		media="(prefers-color-scheme: dark)"
-	/>
-	<img 
-		src="docs/en/light/use-cases.png"
-		alt="Use Cases"
-	>
-</picture>
+<div align="center">
+  <picture>
+    <source 
+      srcset="docs/en/light/use-cases.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <source 
+      srcset="docs/en/dark/use-cases.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <img 
+      src="docs/en/light/use-cases.png"
+      alt="Use Cases"
+    >
+  </picture>
+</div>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

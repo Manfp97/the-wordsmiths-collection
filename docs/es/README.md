@@ -247,58 +247,63 @@ Y tres tipos de usuarios:
 
 ### Modelo Entidad Relación
 
-<picture>
-	<source 
-		srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/light/entity-relationship-diagram.png"
-		media="(prefers-color-scheme: light)"
-	/>
-	<source 
-		srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/dark/entity-relationship-diagram.png"
-		media="(prefers-color-scheme: dark)"
-	/>
-	<img 
-		src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/light/entity-relationship-diagram.png"
-		alt="Entity Relationship Model"
-	>
-</picture>
-
+<div align="center">
+	<picture>
+		<source 
+			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/light/entity-relationship-diagram.png"
+			media="(prefers-color-scheme: light)"
+		/>
+		<source 
+			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/dark/entity-relationship-diagram.png"
+			media="(prefers-color-scheme: dark)"
+		/>
+		<img 
+			src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/light/entity-relationship-diagram.png"
+			alt="Entity Relationship Model"
+		>
+	</picture>
+</div>
 <!-- MODELO RELACIONAL -->
 
 ### Modelo Relacional
 
-<picture>
-	<source 
-		srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/common/light/relational-model.png"
-		media="(prefers-color-scheme: light)"
-	/>
-	<source 
-		srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/common/dark/relational-model.png"
-		media="(prefers-color-scheme: dark)"
-	/>
-	<img 
-		src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/common/light/relational-model.png"
-		alt="Relational Model"
-	>
-</picture>
+<div align="center">
+	<picture>
+		<source 
+			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/common/light/relational-model.png"
+			media="(prefers-color-scheme: light)"
+		/>
+		<source 
+			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/common/dark/relational-model.png"
+			media="(prefers-color-scheme: dark)"
+		/>
+		<img 
+			src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/common/light/relational-model.png"
+			alt="Relational Model"
+		>
+	</picture>
+</div>
 
 <!-- CASOS DE USO -->
 
 ### Casos de Uso
 
-<picture>
-	<source 
-		srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/light/use-cases.png"
-		media="(prefers-color-scheme: light)"
-	/>
-	<source 
-		srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/dark/use-cases.png"
-		media="(prefers-color-scheme: dark)"
-	/>
-	<img 
-		src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/light/use-cases.png"
-		alt="Use Cases"
-	>
-</picture>
+<div align="center">
+	<picture>
+		<source 
+			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/light/use-cases.png"
+			media="(prefers-color-scheme: light)"
+		/>
+		<source 
+			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/dark/use-cases.png"
+			media="(prefers-color-scheme: dark)"
+		/>
+		<img 
+			src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/light/use-cases.png"
+			alt="Use Cases"
+		>
+	</picture>
+</div>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
