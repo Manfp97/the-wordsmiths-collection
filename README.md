@@ -291,15 +291,15 @@ The website has three types of users:
 <div align="center">
   <picture>
     <source 
-      srcset="docs/en/light/use-cases.png"
+      srcset="docs/en/light/use-cases.svg"
       media="(prefers-color-scheme: light)"
     />
     <source 
-      srcset="docs/en/dark/use-cases.png"
+      srcset="docs/en/dark/use-cases.svg"
       media="(prefers-color-scheme: dark)"
     />
     <img 
-      src="docs/en/light/use-cases.png"
+      src="docs/en/light/use-cases.svg"
       alt="Use Cases"
     >
   </picture>

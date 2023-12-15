@@ -291,15 +291,15 @@ Y tres tipos de usuarios:
 <div align="center">
 	<picture>
 		<source 
-			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/light/use-cases.png"
+			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/light/use-cases.svg"
 			media="(prefers-color-scheme: light)"
 		/>
 		<source 
-			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/dark/use-cases.png"
+			srcset="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/dark/use-cases.svg"
 			media="(prefers-color-scheme: dark)"
 		/>
 		<img 
-			src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/light/use-cases.png"
+			src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/light/use-cases.svg"
 			alt="Use Cases"
 		>
 	</picture>
