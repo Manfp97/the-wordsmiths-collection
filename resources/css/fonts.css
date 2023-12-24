@@ -1,0 +1,21 @@
+/* Helvetica */
+@font-face {
+	font-family: "Helvetica";
+	src: url("http://127.0.0.1:8000/fonts/Helvetica.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* Means Light Web */
+@font-face {
+	font-family: "Means Light Web";
+	src: url("http://127.0.0.1:8000/fonts/Means-Light-Web.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* Poppins */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: "Poppins";
+	font-style: normal;
+	font-weight: 100;
+	src: url("http://127.0.0.1:8000/fonts/poppins-v20-latin-100.woff2")
+		format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
