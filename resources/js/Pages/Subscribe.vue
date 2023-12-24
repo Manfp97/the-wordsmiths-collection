@@ -133,7 +133,7 @@ const faqs = [
 			<SubscribeFaqs :faqs="faqs" />
 
 			<section class="mx-auto mt-5 max-w-3xl text-center">
-				<h3 class="section-title font-means-web !leading-[1.175]">
+				<h3 class="section-title !leading-[1.175]">
 					Ready to read?<br />
 					Start your membership now
 				</h3>
