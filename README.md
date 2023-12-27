@@ -245,6 +245,7 @@ The website has three types of users:
 - [Vue.js 3](https://vuejs.org/): JavaScript framework.
 - [Inertia.js](https://inertiajs.com/): Enables the creation of fully client-side rendered, single-page applications without the complexity of modern SPAs.
 - [Wikipedia API](https://en.wikipedia.org/api/rest_v1/#): Used to retrieve descriptions of authors and books.
+- [Flowbite](https://flowbite.com): Open-source UI component library built on top of Tailwind CSS.
 
 <!-- ENTITY RELATIONSHIP MODEL -->
 
