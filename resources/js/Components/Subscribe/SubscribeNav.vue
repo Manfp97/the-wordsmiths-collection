@@ -3,7 +3,7 @@ import { Link } from "@inertiajs/inertia-vue3";
 </script>
 
 <template>
-	<nav class="center">
+	<nav class="container">
 		<div
 			class="mx-4 flex items-center justify-between py-3 md:mx-6 lg:mx-8 xl:mx-36 2xl:mx-4"
 		>

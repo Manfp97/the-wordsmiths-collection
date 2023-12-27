@@ -93,7 +93,7 @@ const faqs = [
 		</div>
 	</div>
 
-	<div class="center my-2 sm:my-10 md:mb-20 md:mt-8 lg:my-16 xl:my-24">
+	<div class="container my-2 sm:my-10 md:mb-20 md:mt-8 lg:my-16 xl:my-24">
 		<div class="mx-4 md:mx-6 lg:mx-8 xl:mx-36 2xl:mx-4">
 			<SubscribeFeature
 				v-for="feature in features"
@@ -128,7 +128,7 @@ const faqs = [
 		</div>
 	</section>
 
-	<div class="center mb-16 mt-3 lg:mb-20">
+	<div class="container mb-16 mt-3 lg:mb-20">
 		<div class="mx-4 md:mx-6 lg:mx-8 xl:mx-36 2xl:mx-4">
 			<SubscribeFaqs :faqs="faqs" />
 

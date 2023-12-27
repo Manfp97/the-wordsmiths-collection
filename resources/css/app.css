@@ -41,13 +41,13 @@
 	::selection {
 		@apply bg-skin-text text-skin-primary;
 	}
-
-	.center {
-		@apply mx-auto w-full max-w-6xl xl:max-w-[102rem];
-	}
 }
 
 @layer components {
+	.container {
+		@apply mx-auto max-w-[102rem];
+	}
+
 	.section-title {
 		@apply text-4xl font-bold xl:text-5xl font-means-web;
 	}
