@@ -68,7 +68,7 @@ const faqs = [
 	<div
 		class="hero relative h-screen w-full bg-cover bg-center py-3 text-skin-primary 2xl:h-[50vh]"
 	>
-		<Nav shouldInvertIconColor />
+		<Nav should-invert-icon-color />
 
 		<div
 			id="hero-content"
@@ -97,9 +97,10 @@ const faqs = [
 		<div class="mx-4 md:mx-6 lg:mx-8 xl:mx-36 2xl:mx-4">
 			<SubscribeFeature
 				v-for="feature in features"
+				:key="feature"
 				:title="feature.title"
 				:body="feature.body"
-				:imagePath="feature.imagePath"
+				:image-path="feature.imagePath"
 				class="py-8 sm:py-12 md:py-16"
 			/>
 		</div>

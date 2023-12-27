@@ -1,7 +1,13 @@
 <script setup>
 defineProps({
-	isCheck: Boolean,
-	text: String,
+	isCheck: {
+		type: Boolean,
+		required: true
+	},
+	text: {
+		type: String,
+		required: true
+	},
 });
 </script>
 
@@ -40,6 +46,7 @@ defineProps({
 			<path d="M18 6l-12 12" />
 			<path d="M6 6l12 12" />
 		</svg>
+		<!-- eslint-disable-next-line vue/no-v-html -->
 		<span v-html="text" />
 	</li>
 </template>

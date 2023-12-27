@@ -51,9 +51,9 @@ const onSearchClick = () => {
 			>
 				<!-- User icon -->
 				<button
+					id="user-menu-button"
 					type="button"
 					class="me-1 flex rounded-full bg-skin-card text-sm focus:ring-4 focus:ring-skin-border md:me-0"
-					id="user-menu-button"
 					aria-expanded="false"
 					data-dropdown-toggle="user-dropdown"
 					data-dropdown-placement="bottom"
@@ -116,8 +116,8 @@ const onSearchClick = () => {
 						<span class="sr-only">Search icon</span>
 					</div>
 					<input
-						type="text"
 						id="search-navbar"
+						type="text"
 						class="block w-full rounded-lg border border-skin-border bg-gray-100 p-2 ps-10 text-sm text-skin-text focus:border-skin-secondary focus:ring-skin-secondary"
 						placeholder="Search..."
 					/>
@@ -125,8 +125,8 @@ const onSearchClick = () => {
 
 				<!-- User dropdown menu -->
 				<div
-					class="z-50 my-4 hidden list-none divide-y divide-skin-border rounded-lg bg-skin-primary text-base shadow"
 					id="user-dropdown"
+					class="z-50 my-4 hidden list-none divide-y divide-skin-border rounded-lg bg-skin-primary text-base shadow"
 				>
 					<div class="px-4 py-3">
 						<span class="block text-sm font-semibold text-skin-text">
@@ -187,8 +187,8 @@ const onSearchClick = () => {
 			</div>
 
 			<div
-				class="hidden w-full flex-grow items-center justify-between md:order-1 md:flex md:w-auto"
 				id="navbar-user"
+				class="hidden w-full flex-grow items-center justify-between md:order-1 md:flex md:w-auto"
 			>
 				<div class="relative mt-3 md:hidden">
 					<div
@@ -211,11 +211,11 @@ const onSearchClick = () => {
 						</svg>
 					</div>
 					<input
-						type="text"
 						id="search-navbar-hamburger"
+						ref="searchInputField"
+						type="text"
 						class="block w-full rounded-lg border border-skin-border bg-gray-100 p-2 ps-10 text-sm text-skin-text focus:border-skin-secondary focus:ring-skin-secondary"
 						placeholder="Search..."
-						ref="searchInputField"
 					/>
 				</div>
 				<ul

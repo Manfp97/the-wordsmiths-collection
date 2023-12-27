@@ -2,7 +2,10 @@
 import { ref } from "vue";
 
 defineProps({
-	faqs: Array,
+	faqs: {
+		type: Array,
+		required: true,
+	},
 });
 
 const selectedFaqId = ref(null);
@@ -29,17 +32,17 @@ const isFaqSelected = (faqId) => {
 		<ul class="accordion mx-auto w-full text-left">
 			<li
 				v-for="faq in faqs"
-				class="w-full list-none p-1"
 				:key="faq.id"
+				class="w-full list-none p-1"
 			>
 				<input
+					:id="faq.id"
 					type="radio"
 					class="hidden"
 					name="accordion"
-					:id="faq.id"
 				/>
 				<label
-					class="mb-0.5 flex cursor-pointer content-center bg-skin-secondary p-5 text-lg transition-colors hover:bg-skin-secondary-offset sm:p-6 sm:text-xl md:text-2xl"
+					class="hover:bg-skin-secondary-offset mb-0.5 flex cursor-pointer content-center bg-skin-secondary p-5 text-lg transition-colors sm:p-6 sm:text-xl md:text-2xl"
 					:for="faq.id"
 					@click="toggleFaq(faq.id)"
 				>
@@ -57,6 +60,7 @@ const isFaqSelected = (faqId) => {
 						</span>
 					</div>
 				</label>
+				<!-- eslint-disable vue/no-v-html -->
 				<div
 					class="text-md space-y-5 overflow-hidden bg-skin-secondary px-5 transition-all duration-500 sm:text-xl"
 					:class="{
@@ -65,6 +69,7 @@ const isFaqSelected = (faqId) => {
 					}"
 					v-html="faq.body"
 				/>
+				<!--eslint-enable-->
 			</li>
 		</ul>
 	</section>

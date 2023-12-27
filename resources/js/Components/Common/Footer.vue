@@ -66,7 +66,7 @@ const socials = [
 	{
 		id: 4,
 		title: "Email",
-		link: `mailto:henestrosadev@gmail.com`,
+		link: "mailto:henestrosadev@gmail.com",
 		svg: `
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -89,16 +89,18 @@ const socials = [
 	>
 		<footer class="py-10 text-center">
 			<div class="mb-4 mt-2 flex justify-center space-x-12">
+				<!-- eslint-disable vue/no-v-html -->
 				<a
 					v-for="social in socials"
-					v-html="social.svg"
 					:key="social.id"
-					:href="social.link"
-					:title="social.title"
+					class="link-outline scale-150 hover:rotate-12"
 					target="_blank"
 					rel="noopener"
-					class="link-outline scale-150 hover:rotate-12"
+					:title="social.title"
+					:href="social.link"
+					v-html="social.svg"
 				/>
+				<!--eslint-enable-->
 			</div>
 			<p className="mt-5 font-bold">
 				&copy; The Wordsmith's Collection, LLC 2024

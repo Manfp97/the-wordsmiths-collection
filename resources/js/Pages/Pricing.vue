@@ -60,21 +60,21 @@ const premiumFeatures = commonFeatures.concat([
 					<PricingCard
 						title="Basic"
 						description="Unlock a world of knowledge with our Basic plan, which gives you access to a vast library of essential literary works."
-						priceIntPart="4"
-						priceDecimalPart="99"
+						price-int-part="4"
+						price-decimal-part="99"
 						currency="€"
 						:features="basicFeatures"
-						:shouldHighlight="false"
+						:should-highlight="false"
 						class="w-full"
 					/>
 					<PricingCard
 						title="Premium"
 						description="Exclusive access to a curated collection of Premium books that offer unparalleled depth of knowledge and entertainment."
-						priceIntPart="6"
-						priceDecimalPart="99"
+						price-int-part="6"
+						price-decimal-part="99"
 						currency="€"
 						:features="premiumFeatures"
-						shouldHighlight
+						should-highlight
 						class="w-full"
 					/>
 				</div>

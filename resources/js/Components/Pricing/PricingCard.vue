@@ -3,13 +3,34 @@ import PricingCardListItem from "@/Components/Pricing/PricingCardListItem.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 
 defineProps({
-	title: String,
-	description: String,
-	priceIntPart: String,
-	priceDecimalPart: String,
-	currency: String,
-	features: Array,
-	shouldHighlight: Boolean,
+	title: {
+		type: String,
+		required: true
+	},
+	description: {
+		type: String,
+		required: true
+	},
+	priceIntPart: {
+		type: String,
+		required: true
+	},
+	priceDecimalPart: {
+		type: String,
+		required: true
+	},
+	currency: {
+		type: String,
+		required: true
+	},
+	features: {
+		type: Array,
+		required: true
+	},
+	shouldHighlight: {
+		type: Boolean,
+		required: true
+	},
 });
 </script>
 
@@ -54,7 +75,7 @@ defineProps({
 					<PricingCardListItem
 						v-for="feature in features"
 						:key="feature"
-						:isCheck="feature.isCheck"
+						:is-check="feature.isCheck"
 						:text="feature.text"
 					/>
 				</ul>
