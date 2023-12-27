@@ -13,6 +13,7 @@ export default {
 		"./resources/**/*.blade.php",
 		"./resources/**/*.js",
 		"./resources/**/*.vue",
+		"./node_modules/flowbite/**/*.js",
 	],
 	theme: {
 		colors: {
@@ -42,5 +43,5 @@ export default {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [require("flowbite/plugin")],
 };
