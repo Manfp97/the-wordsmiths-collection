@@ -1,6 +1,6 @@
 <script setup>
 import AppHead from "@/Components/Common/AppHead.vue";
-import SubscribeNav from "@/Components/Subscribe/SubscribeNav.vue";
+import Nav from "@/Components/Common/Nav.vue";
 import SubscribeFeature from "@/Components/Subscribe/SubscribeFeature.vue";
 import SubscribeFaqs from "@/Components/Subscribe/SubscribeFaqs.vue";
 import Footer from "@/Components/Common/Footer.vue";
@@ -68,7 +68,7 @@ const faqs = [
 	<div
 		class="hero text-skin-primary relative h-screen w-full bg-cover bg-center py-3 2xl:h-[50vh]"
 	>
-		<SubscribeNav />
+		<Nav shouldInvertIconColor />
 
 		<div
 			id="hero-content"
