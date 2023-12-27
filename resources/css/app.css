@@ -51,6 +51,6 @@
 	}
 
 	.section-title {
-		@apply text-4xl font-bold xl:text-5xl font-means-web;
+		@apply font-means-web text-4xl font-bold xl:text-5xl;
 	}
 }

@@ -12,9 +12,7 @@ defineProps({
 	>
 		<div class="basis-full lg:basis-1/2">
 			<div class="mx-2 sm:mx-8">
-				<h2
-					class="section-title mb-3 md:mb-5 xl:mb-7 max-lg:text-center"
-				>
+				<h2 class="section-title mb-3 md:mb-5 xl:mb-7 max-lg:text-center">
 					{{ title }}
 				</h2>
 				<div

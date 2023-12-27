@@ -35,12 +35,12 @@ defineProps({
 				>
 					{{ title }}
 				</h3>
-				<p class="text-gray-500 font-light sm:text-lg">
+				<p class="font-light text-gray-500 sm:text-lg">
 					{{ description }}
 				</p>
 				<div class="my-6 flex items-baseline justify-center">
 					<span class="mr-2 text-5xl font-extrabold">
-						<span class="text-3xl font-normal mr-0.5">{{ currency }}</span>
+						<span class="mr-0.5 text-3xl font-normal">{{ currency }}</span>
 						<span class="price">{{ priceIntPart }}</span>
 						<sup class="-top-6 text-lg">{{ priceDecimalPart }}</sup>
 					</span>
@@ -60,7 +60,7 @@ defineProps({
 				</ul>
 				<Link
 					href="/signup"
-					class="focus:ring-skin-border rounded bg-skin-secondary px-5 py-2.5 text-center font-bold capitalize hover:bg-skin-secondary-offset focus:ring-4"
+					class="rounded bg-skin-secondary px-5 py-2.5 text-center font-bold capitalize hover:bg-skin-secondary-offset focus:ring-4 focus:ring-skin-border"
 				>
 					Get started
 				</Link>

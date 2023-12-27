@@ -52,7 +52,7 @@ const onSearchClick = () => {
 				<!-- User icon -->
 				<button
 					type="button"
-					class="bg-skin-card focus:ring-skin-border me-1 flex rounded-full text-sm focus:ring-4 md:me-0"
+					class="me-1 flex rounded-full bg-skin-card text-sm focus:ring-4 focus:ring-skin-border md:me-0"
 					id="user-menu-button"
 					aria-expanded="false"
 					data-dropdown-toggle="user-dropdown"
@@ -72,7 +72,7 @@ const onSearchClick = () => {
 					data-collapse-toggle="navbar-user"
 					aria-controls="navbar-user"
 					aria-expanded="false"
-					class="hover:text-skin-text-muted focus:text-skin-text-muted hover:bg-skin-secondary-offset me-1 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-skin-secondary md:hidden"
+					class="me-1 rounded-lg p-2.5 text-sm hover:bg-skin-secondary-offset hover:text-skin-text-muted focus:text-skin-text-muted focus:outline-none focus:ring-2 focus:ring-skin-secondary md:hidden"
 					@click="onSearchClick"
 				>
 					<svg
@@ -99,7 +99,7 @@ const onSearchClick = () => {
 						class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
 					>
 						<svg
-							class="text-skin-text-muted h-4 w-4"
+							class="h-4 w-4 text-skin-text-muted"
 							aria-hidden="true"
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
@@ -118,21 +118,21 @@ const onSearchClick = () => {
 					<input
 						type="text"
 						id="search-navbar"
-						class="bg-gray-100 block w-full rounded-lg border border-skin-border p-2 ps-10 text-sm text-skin-text focus:border-skin-secondary focus:ring-skin-secondary"
+						class="block w-full rounded-lg border border-skin-border bg-gray-100 p-2 ps-10 text-sm text-skin-text focus:border-skin-secondary focus:ring-skin-secondary"
 						placeholder="Search..."
 					/>
 				</div>
 
 				<!-- User dropdown menu -->
 				<div
-					class="divide-skin-border z-50 my-4 hidden list-none divide-y rounded-lg bg-skin-primary text-base shadow"
+					class="z-50 my-4 hidden list-none divide-y divide-skin-border rounded-lg bg-skin-primary text-base shadow"
 					id="user-dropdown"
 				>
 					<div class="px-4 py-3">
 						<span class="block text-sm font-semibold text-skin-text">
 							John Doe
 						</span>
-						<span class="text-skin-text-muted block truncate text-sm">
+						<span class="block truncate text-sm text-skin-text-muted">
 							example@mail.com
 						</span>
 					</div>
@@ -143,7 +143,7 @@ const onSearchClick = () => {
 						<li>
 							<a
 								href="#"
-								class="hover:bg-skin-secondary-offset block px-4 py-2 text-sm text-skin-text"
+								class="block px-4 py-2 text-sm text-skin-text hover:bg-skin-secondary-offset"
 							>
 								Settings
 							</a>
@@ -151,7 +151,7 @@ const onSearchClick = () => {
 						<li>
 							<a
 								href="#"
-								class="hover:bg-skin-secondary-offset block px-4 py-2 text-sm text-skin-text"
+								class="block px-4 py-2 text-sm text-skin-text hover:bg-skin-secondary-offset"
 							>
 								Sign out
 							</a>
@@ -163,7 +163,7 @@ const onSearchClick = () => {
 				<button
 					data-collapse-toggle="navbar-user"
 					type="button"
-					class="hover:text-skin-text-muted focus:text-skin-text-muted hover:bg-skin-secondary-offset inline-flex h-10 w-10 flex-grow items-center justify-center rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-skin-secondary md:hidden"
+					class="inline-flex h-10 w-10 flex-grow items-center justify-center rounded-lg p-2 text-sm hover:bg-skin-secondary-offset hover:text-skin-text-muted focus:text-skin-text-muted focus:outline-none focus:ring-2 focus:ring-skin-secondary md:hidden"
 					aria-controls="navbar-user"
 					aria-expanded="false"
 				>
@@ -195,7 +195,7 @@ const onSearchClick = () => {
 						class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
 					>
 						<svg
-							class="text-skin-text-muted h-4 w-4"
+							class="h-4 w-4 text-skin-text-muted"
 							aria-hidden="true"
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
@@ -213,18 +213,18 @@ const onSearchClick = () => {
 					<input
 						type="text"
 						id="search-navbar-hamburger"
-						class="bg-gray-100 block w-full rounded-lg border border-skin-border p-2 ps-10 text-sm text-skin-text focus:border-skin-secondary focus:ring-skin-secondary"
+						class="block w-full rounded-lg border border-skin-border bg-gray-100 p-2 ps-10 text-sm text-skin-text focus:border-skin-secondary focus:ring-skin-secondary"
 						placeholder="Search..."
 						ref="searchInputField"
 					/>
 				</div>
 				<ul
-					class="mt-4 flex flex-col rounded-lg border border-skin-border p-4 max-md:bg-skin-primary max-md:text-skin-text font-medium rtl:space-x-reverse md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0"
+					class="mt-4 flex flex-col rounded-lg border border-skin-border p-4 font-medium rtl:space-x-reverse md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0 max-md:bg-skin-primary max-md:text-skin-text"
 				>
 					<li>
 						<Link
 							href="#"
-							class="active-link hover:bg-skin-secondary-offset md:hover:bg-transparent block rounded px-3 py-2 md:p-0 md:hover:underline"
+							class="active-link block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-transparent md:hover:underline"
 							aria-current="page"
 						>
 							Home
@@ -232,7 +232,7 @@ const onSearchClick = () => {
 					</li>
 					<li>
 						<Link
-							class="hover:bg-skin-secondary-offset md:hover:bg-transparent block rounded px-3 py-2 md:p-0 md:hover:underline"
+							class="block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-transparent md:hover:underline"
 						>
 							Categories
 						</Link>
@@ -240,7 +240,7 @@ const onSearchClick = () => {
 					<li>
 						<Link
 							href="#"
-							class="hover:bg-skin-secondary-offset md:hover:bg-transparent block rounded px-3 py-2 md:p-0 md:hover:underline"
+							class="block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-transparent md:hover:underline"
 						>
 							Authors
 						</Link>
@@ -253,6 +253,6 @@ const onSearchClick = () => {
 
 <style scoped>
 .active-link {
-	@apply md:bg-transparent bg-skin-secondary md:underline md:decoration-skin-secondary md:decoration-4;
+	@apply bg-skin-secondary md:bg-transparent md:underline md:decoration-skin-secondary md:decoration-4;
 }
 </style>

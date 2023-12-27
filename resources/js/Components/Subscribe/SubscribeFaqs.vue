@@ -24,9 +24,7 @@ const isFaqSelected = (faqId) => {
 
 <template>
 	<section class="py-12 text-center sm:py-20">
-		<h2 class="section-title mb-6 xl:mb-7">
-			Frequently Asked Questions
-		</h2>
+		<h2 class="section-title mb-6 xl:mb-7">Frequently Asked Questions</h2>
 
 		<ul class="accordion mx-auto w-full text-left">
 			<li

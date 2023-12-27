@@ -9,7 +9,7 @@ defineProps({
 	<li class="flex items-center space-x-3">
 		<svg
 			v-if="isCheck"
-			class="text-green-500 h-5 w-5 shrink-0"
+			class="h-5 w-5 shrink-0 text-green-500"
 			fill="currentColor"
 			viewBox="0 0 20 20"
 			xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@ defineProps({
 		<svg
 			v-if="!isCheck"
 			xmlns="http://www.w3.org/2000/svg"
-			class="text-red-500 h-5 w-5 shrink-0"
+			class="h-5 w-5 shrink-0 text-red-500"
 			viewBox="0 0 24 24"
 			stroke-width="2"
 			stroke="currentColor"

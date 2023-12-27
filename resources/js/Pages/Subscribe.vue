@@ -66,7 +66,7 @@ const faqs = [
 	/>
 
 	<div
-		class="hero text-skin-primary relative h-screen w-full bg-cover bg-center py-3 2xl:h-[50vh]"
+		class="hero relative h-screen w-full bg-cover bg-center py-3 text-skin-primary 2xl:h-[50vh]"
 	>
 		<Nav shouldInvertIconColor />
 
@@ -109,11 +109,11 @@ const faqs = [
 		class="discover__section grid h-[36rem] place-items-center sm:h-[40rem]"
 	>
 		<div
-			class="bg-skin-tertiary mx-4 grid h-[21.125rem] place-items-center rounded-lg px-8 text-center md:mx-6 lg:mx-8 lg:w-[48rem] xl:mx-36 2xl:mx-4"
+			class="mx-4 grid h-[21.125rem] place-items-center rounded-lg bg-skin-tertiary px-8 text-center md:mx-6 lg:mx-8 lg:w-[48rem] xl:mx-36 2xl:mx-4"
 		>
 			<div class="lg:max-w-lg">
 				<p
-					class="font-means-web text-skin-primary text-3xl leading-tight sm:text-4xl"
+					class="font-means-web text-3xl leading-tight text-skin-primary sm:text-4xl"
 				>
 					Discover now the book that will change your life for only
 					<strong>4,99€</strong>
@@ -167,6 +167,6 @@ const faqs = [
 }
 
 .subscribe-button {
-	@apply bg-skin-secondary text-skin-text inline-block h-12 whitespace-nowrap rounded p-2 px-8 text-lg font-semibold hover:bg-skin-secondary-offset lg:px-12 lg:text-xl;
+	@apply inline-block h-12 whitespace-nowrap rounded bg-skin-secondary p-2 px-8 text-lg font-semibold text-skin-text hover:bg-skin-secondary-offset lg:px-12 lg:text-xl;
 }
 </style>
