@@ -10,7 +10,7 @@ import { Link } from "@inertiajs/inertia-vue3";
 const features = [
 	{
 		title: "Extensive curated library",
-		body: "<p>Access to a vast and curated library of the most important literary works in history. <a href='/library' class='underline hover:bg-opacity-60 bg-skin-secondary'>Browse the library now</a>.</p>",
+		body: "<p>Access to a vast and curated library of the most important literary works in history. <a href='/library' class='underline hover:bg-skin-secondary-offset bg-skin-secondary'>Browse the library now</a>.</p>",
 		imagePath: "/images/subscribe/feature-4.webp",
 	},
 	{
@@ -167,6 +167,6 @@ const faqs = [
 }
 
 .subscribe-button {
-	@apply bg-skin-secondary text-skin-text inline-block h-12 whitespace-nowrap rounded p-2 px-8 text-lg font-semibold hover:bg-opacity-70 lg:px-12 lg:text-xl;
+	@apply bg-skin-secondary text-skin-text inline-block h-12 whitespace-nowrap rounded p-2 px-8 text-lg font-semibold hover:bg-skin-secondary-offset lg:px-12 lg:text-xl;
 }
 </style>

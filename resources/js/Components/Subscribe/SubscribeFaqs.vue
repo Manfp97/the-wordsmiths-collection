@@ -41,7 +41,7 @@ const isFaqSelected = (faqId) => {
 					:id="faq.id"
 				/>
 				<label
-					class="mb-0.5 flex cursor-pointer content-center bg-skin-secondary p-5 text-lg transition-colors hover:bg-opacity-70 sm:p-6 sm:text-xl md:text-2xl"
+					class="mb-0.5 flex cursor-pointer content-center bg-skin-secondary p-5 text-lg transition-colors hover:bg-skin-secondary-offset sm:p-6 sm:text-xl md:text-2xl"
 					:for="faq.id"
 					@click="toggleFaq(faq.id)"
 				>
