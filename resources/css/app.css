@@ -7,8 +7,10 @@
 	html {
 		--color-primary: 243, 238, 229; /* #f3eee5 */
 		--color-secondary: 233, 196, 106; /* #e9c46a; */
+		--color-secondary-offset: 243, 220, 171; /* #f3dcab; */
 		--color-tertiary: 36, 28, 21; /* #241c15 */
 		--color-text: 11, 11, 11; /* #0b0b0b; */
+		--color-text-muted: 107, 114, 128; /* #6b7280; */
 		--color-card: 92, 99, 120; /* #303030 */
 		--color-border: 210, 210, 210; /* #D2D2D2; */
 	}

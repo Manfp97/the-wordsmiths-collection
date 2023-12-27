@@ -19,8 +19,10 @@ export default {
 			skin: {
 				primary: withOpacity("--color-primary"),
 				secondary: withOpacity("--color-secondary"),
+				"secondary-offset": withOpacity("--color-secondary-offset"),
 				tertiary: withOpacity("--color-tertiary"),
 				text: withOpacity("--color-text"),
+				"text-muted": withOpacity("--color-text-muted"),
 				card: withOpacity("--color-card"),
 				border: withOpacity("--color-border"),
 			},
