@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::inertia('/subscribe', 'Subscribe');
 Route::inertia('/pricing', 'Pricing');
+Route::inertia('/login', 'LogIn');
