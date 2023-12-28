@@ -33,6 +33,7 @@ const onSearchClick = () => {
 			<Logo
 				class="mr-8"
 				size="sm"
+				:should-invert-icon-color="shouldInvertIconColor"
 			/>
 
 			<div
