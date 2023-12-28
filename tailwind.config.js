@@ -19,11 +19,15 @@ export default {
 		colors: {
 			skin: {
 				primary: withOpacity("--color-primary"),
+				"primary-offset": withOpacity("--color-primary-offset"),
 				secondary: withOpacity("--color-secondary"),
 				"secondary-offset": withOpacity("--color-secondary-offset"),
 				tertiary: withOpacity("--color-tertiary"),
 				text: withOpacity("--color-text"),
 				"text-muted": withOpacity("--color-text-muted"),
+				link: withOpacity("--color-link"),
+				success: withOpacity("--color-success"),
+				alert: withOpacity("--color-alert"),
 				card: withOpacity("--color-card"),
 				border: withOpacity("--color-border"),
 			},

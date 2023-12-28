@@ -6,11 +6,15 @@
 	:root,
 	html {
 		--color-primary: 243, 238, 229; /* #f3eee5 */
+		--color-primary-offset: 249, 250, 251; /* #F9FAFB */
 		--color-secondary: 233, 196, 106; /* #e9c46a; */
 		--color-secondary-offset: 243, 220, 171; /* #f3dcab; */
 		--color-tertiary: 36, 28, 21; /* #241c15 */
 		--color-text: 11, 11, 11; /* #0b0b0b; */
 		--color-text-muted: 107, 114, 128; /* #6b7280; */
+		--color-link: 26, 86, 219; /* #1A56DB */
+		--color-success: 14, 159, 110; /* #0E9F6E */
+		--color-alert: 224, 36, 36; /* #E02424 */
 		--color-card: 92, 99, 120; /* #303030 */
 		--color-border: 210, 210, 210; /* #D2D2D2; */
 	}
