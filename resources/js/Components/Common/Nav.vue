@@ -140,7 +140,7 @@ const onSearchClick = () => {
 						<li>
 							<a
 								href="#"
-								class="hover:bg-skin-secondary-offset block px-4 py-2 text-sm text-skin-text"
+								class="hover:bg-skin-secondary-offset text-skin-alert block px-4 py-2 text-sm"
 							>
 								Log out
 							</a>
