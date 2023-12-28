@@ -61,7 +61,7 @@ const faqs = [
 
 <template>
 	<AppHead
-		title="Subscribe to The Wordsmith's Collection"
+		title="Subscribe"
 		description="Subscribe to The Wordsmith's Collection to read books directly on your computer, phone, tablet, eBook, and more."
 	/>
 

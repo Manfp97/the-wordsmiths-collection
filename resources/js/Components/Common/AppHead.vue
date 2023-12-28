@@ -1,16 +1,21 @@
 <script setup>
-import { Head } from "@inertiajs/inertia-vue3";
+import { Head, usePage } from "@inertiajs/inertia-vue3";
 
-defineProps({
+const props = defineProps({
 	title: {
 		type: String,
-		required: true
+		required: false,
+		default: "",
 	},
 	description: {
 		type: String,
-		required: true
+		required: true,
 	},
 });
+
+const appName = usePage().props.value.appName;
+const title =
+	props.title.trim() === "" ? appName : `${props.title} | ${appName}`;
 </script>
 
 <template>

@@ -32,7 +32,7 @@ const premiumFeatures = commonFeatures.concat([
 
 <template>
 	<AppHead
-		title="Pricing | The Wordsmith's Collection"
+		title="Pricing"
 		description="Looking for more information about plans and pricing for The Wordsmith's Collection? Find all the information you need about the Basic and Premium plans."
 	/>
 
