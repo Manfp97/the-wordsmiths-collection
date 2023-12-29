@@ -15,12 +15,12 @@ defineProps({
 	successMessage: {
 		type: String,
 		required: false,
-		default: "",
+		default: null,
 	},
 	errorMessage: {
 		type: String,
 		required: false,
-		default: "",
+		default: null,
 	},
 });
 </script>
