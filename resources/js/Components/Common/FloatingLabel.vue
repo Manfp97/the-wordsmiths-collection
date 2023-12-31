@@ -12,6 +12,10 @@ defineProps({
 		type: String,
 		required: true,
 	},
+	autocomplete: {
+		type: String,
+		required: true,
+	},
 	successMessage: {
 		type: String,
 		required: false,
@@ -37,6 +41,9 @@ defineProps({
 					'border-skin-alert': errorMessage,
 				}"
 				placeholder=" "
+				:autocomplete="autocomplete"
+				:aria-errormessage="errorMessage ? `${id}-error` : null"
+				:aria-invalid="errorMessage ? true : false"
 				:aria-describedby="`${id}-annotation`"
 			/>
 			<label
@@ -50,7 +57,7 @@ defineProps({
 		<p
 			v-if="successMessage"
 			:id="`${id}-success`"
-			class="mt-2 text-xs text-skin-success"
+			class="text-skin-success mt-2 text-xs"
 		>
 			{{ successMessage }}
 		</p>
@@ -58,7 +65,7 @@ defineProps({
 		<p
 			v-if="errorMessage"
 			:id="`${id}-error`"
-			class="mt-2 text-xs text-skin-alert"
+			class="text-skin-alert mt-2 text-xs"
 		>
 			{{ errorMessage }}
 		</p>

@@ -29,15 +29,15 @@ import Footer from "@/Components/Common/Footer.vue";
 
 					<FloatingLabel
 						:id="'email'"
+						label-text="Your email or username"
 						:type="'email'"
-						label-text="Your email"
+						:autocomplete="'email'"
 					/>
 					<FloatingLabel
 						:id="'password'"
-						:type="'password'"
 						label-text="Your password"
-						success-message=""
-						error-message=""
+						:type="'password'"
+						:autocomplete="'password'"
 					/>
 
 					<div class="flex items-start">
