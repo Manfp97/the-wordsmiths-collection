@@ -1,4 +1,6 @@
 <script setup>
+const value = defineModel("value");
+
 defineProps({
 	id: {
 		type: String,
@@ -34,6 +36,7 @@ defineProps({
 		<div class="relative">
 			<input
 				:id="id"
+				v-model="value"
 				:type="type"
 				class="bg-skin-primary-offset peer block w-full appearance-none rounded-lg border border-skin-border px-2.5 pb-2.5 pt-5 text-sm text-skin-text focus:border-skin-secondary focus:outline-none focus:ring-2 focus:ring-skin-secondary"
 				:class="{
