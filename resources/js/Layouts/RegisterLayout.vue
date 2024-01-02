@@ -30,7 +30,7 @@ defineProps({
 					<Logo size="md" />
 				</div>
 
-				<div class="bg-white w-4/5 2xl:w-2/3 rounded-lg bg-opacity-30 p-8">
+				<div class="bg-white w-80 rounded-lg bg-opacity-30 p-8 lg:w-2/3">
 					<h2 class="mb-2 text-2xl font-bold">Your selected plan</h2>
 					<h3 class="text-xl">{{ subscriptionPlan.name }}</h3>
 					<ul
@@ -54,7 +54,9 @@ defineProps({
 				</div>
 			</section>
 
-			<section class="relative flex w-full flex-col items-center p-12 lg:w-2/3">
+			<section
+				class="relative flex w-full flex-col items-center px-6 py-12 lg:w-2/3 lg:px-12"
+			>
 				<div class="mt-3 max-w-5xl sm:min-w-[28rem]">
 					<div class="mx-auto w-full max-w-md px-8 pb-20 sm:px-0">
 						<div class="relative">
