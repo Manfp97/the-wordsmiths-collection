@@ -25,7 +25,7 @@ import Footer from "@/Components/Common/Footer.vue";
 					class="space-y-6"
 					action="#"
 				>
-					<h5 class="font-means-web text-center text-3xl mb-8 sm:mb-12">Log in to your account</h5>
+					<h5 class="font-means-web font-bold text-center text-3xl mb-8 sm:mb-12">Log in to your account</h5>
 
 					<FloatingLabel
 						:id="'email'"
@@ -67,7 +67,7 @@ import Footer from "@/Components/Common/Footer.vue";
 					</div>
 					<button
 						type="submit"
-						class="hover:!bg-skin-secondary-offset w-full rounded-lg !bg-skin-secondary px-5 py-2.5 text-center text-sm font-medium focus:outline-none focus:ring-4 focus:ring-skin-border"
+						class="hover:!bg-skin-secondary-offset w-full rounded-lg !bg-skin-secondary px-5 py-2.5 text-center text-sm focus:outline-none focus:ring-4 focus:ring-skin-border font-bold"
 					>
 						Log in to your account
 					</button>
