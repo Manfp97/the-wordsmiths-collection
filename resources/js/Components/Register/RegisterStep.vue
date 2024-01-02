@@ -1,6 +1,4 @@
 <script setup>
-import { Link } from "@inertiajs/inertia-vue3";
-
 defineProps({
 	stepNumber: {
 		type: String,

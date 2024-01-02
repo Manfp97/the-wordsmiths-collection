@@ -1,5 +1,4 @@
 <script setup>
-import { Link } from "@inertiajs/inertia-vue3";
 import AppHead from "@/Components/Common/AppHead.vue";
 import FloatingLabel from "@/Components/Common/FloatingLabel.vue";
 import Logo from "@/Components/Common/Logo.vue";

@@ -1,6 +1,5 @@
 <script setup>
 import PricingCardListItem from "@/Components/Pricing/PricingCardListItem.vue";
-import { Link } from "@inertiajs/inertia-vue3";
 
 defineProps({
 	title: {
@@ -81,7 +80,7 @@ defineProps({
 				</ul>
 				<Link
 					href="/register"
-					class="rounded bg-skin-secondary px-5 py-2.5 text-center font-bold capitalize hover:bg-skin-secondary-offset focus:ring-4 focus:ring-skin-border"
+					class="rounded bg-skin-secondary px-5 py-2.5 text-center font-bold capitalize hover:bg-skin-secondary-offset"
 				>
 					Get started
 				</Link>

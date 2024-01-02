@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { initFlowbite } from "flowbite";
-import { Link } from "@inertiajs/inertia-vue3";
 import Logo from "@/Components/Common/Logo.vue";
 
 // initialize components based on data attribute selectors

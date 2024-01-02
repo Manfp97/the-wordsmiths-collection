@@ -5,8 +5,6 @@ import SubscribeFeature from "@/Components/Subscribe/SubscribeFeature.vue";
 import SubscribeFaqs from "@/Components/Subscribe/SubscribeFaqs.vue";
 import Footer from "@/Components/Common/Footer.vue";
 
-import { Link } from "@inertiajs/inertia-vue3";
-
 const features = [
 	{
 		title: "Extensive curated library",

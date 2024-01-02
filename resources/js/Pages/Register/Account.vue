@@ -2,7 +2,6 @@
 import AppHead from "@/Components/Common/AppHead.vue";
 import FloatingLabel from "@/Components/Common/FloatingLabel.vue";
 import RegisterLayout from "@/Layouts/RegisterLayout.vue";
-import { Link } from "@inertiajs/inertia-vue3";
 
 const subscriptionPlan = {
 	name: "Basic",

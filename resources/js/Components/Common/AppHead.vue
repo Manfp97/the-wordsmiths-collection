@@ -1,5 +1,5 @@
 <script setup>
-import { Head, usePage } from "@inertiajs/inertia-vue3";
+import { Head, usePage } from "@inertiajs/vue3";
 
 const props = defineProps({
 	title: {
@@ -13,7 +13,7 @@ const props = defineProps({
 	},
 });
 
-const appName = usePage().props.value.appName;
+const appName = usePage().props.appName;
 const title =
 	props.title.trim() === "" ? appName : `${props.title} | ${appName}`;
 </script>

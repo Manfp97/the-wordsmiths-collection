@@ -3,7 +3,6 @@ import Logo from "@/Components/Common/Logo.vue";
 import PricingCardListItem from "@/Components/Pricing/PricingCardListItem.vue";
 import RegisterStep from "@/Components/Register/RegisterStep.vue";
 import Footer from "@/Components/Common/Footer.vue";
-import { Link } from "@inertiajs/inertia-vue3";
 
 defineProps({
 	headerTitle: {

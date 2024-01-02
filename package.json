@@ -26,11 +26,10 @@
 		"vite": "^4.0.0"
 	},
 	"dependencies": {
-		"@inertiajs/inertia": "^0.11.1",
-		"@inertiajs/inertia-vue3": "^0.6.0",
+		"@inertiajs/vue3": "^1.0.14",
 		"@vitejs/plugin-vue": "^4.5.2",
 		"flowbite": "^2.2.1",
-		"vue": "^3.2.36"
+		"vue": "^3.3.0"
 	},
 	"lint-staged": {
 		"**/*.{js,vue}": [
