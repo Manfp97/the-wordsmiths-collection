@@ -172,7 +172,7 @@ const stringPrice = `${subscriptionPlan.currency}${subscriptionPlan.price}`;
 			</p>
 
 			<Link
-				href="/register/confirmation"
+				href="/register/confirmation#form"
 				class="hover:bg-skin-secondary-offset my-2 flex items-center justify-center rounded-md bg-skin-secondary py-3 font-bold"
 			>
 				Start paid membership

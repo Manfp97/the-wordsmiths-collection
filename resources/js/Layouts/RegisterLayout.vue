@@ -55,6 +55,7 @@ defineProps({
 			</section>
 
 			<section
+				id="form"
 				class="relative flex w-full flex-col items-center px-6 py-12 lg:w-2/3 lg:px-12"
 			>
 				<div class="mt-3 max-w-5xl sm:min-w-[28rem]">
