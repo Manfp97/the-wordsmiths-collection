@@ -36,7 +36,7 @@ const stringPrice = `${subscriptionPlan.currency}${subscriptionPlan.price}`;
 	<RegisterLayout
 		:header-title="'Secure payment info'"
 		:subscription-plan="subscriptionPlan"
-		:current-step="2"
+		:current-step="3"
 	>
 		<form
 			class="space-y-6"

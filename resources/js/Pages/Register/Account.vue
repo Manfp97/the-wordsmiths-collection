@@ -84,7 +84,7 @@ const subscriptionPlan = {
 			</div>
 
 			<Link
-				href="/register/payment"
+				href="/register/verification#form"
 				class="hover:bg-skin-secondary-offset my-2 flex items-center justify-center rounded-md bg-skin-secondary py-3 font-bold"
 			>
 				Continue

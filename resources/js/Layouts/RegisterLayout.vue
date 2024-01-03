@@ -69,7 +69,7 @@ defineProps({
 									class="bg-gray-900 absolute h-full"
 									:class="{
 										'w-1/2': currentStep === 2,
-										'w-full': currentStep === 3,
+										'w-full': currentStep >= 3,
 									}"
 								/>
 							</div>
@@ -85,18 +85,18 @@ defineProps({
 
 								<RegisterStep
 									step-number="2"
-									step-name="Payment"
-									step-name-position="-right-6"
-									:url="currentStep >= 2 ? '/register/payment' : null"
+									step-name="Verification"
+									step-name-position="-right-8"
+									:url="currentStep >= 2 ? '/register/verification' : null"
 									:is-done="currentStep >= 2"
 									:is-selected="currentStep === 2"
 								/>
 
 								<RegisterStep
 									step-number="3"
-									step-name="Confirmation"
-									step-name-position="-right-8"
-									:url="currentStep >= 3 ? '/register/confirmation' : null"
+									step-name="Payment"
+									step-name-position="-right-6"
+									:url="currentStep >= 3 ? '/register/payment' : null"
 									:is-done="currentStep >= 3"
 									:is-selected="currentStep === 3"
 								/>
