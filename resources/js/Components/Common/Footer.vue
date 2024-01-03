@@ -99,7 +99,7 @@ const socials = [
 				<!--eslint-enable-->
 			</div>
 			<p className="mt-5 font-bold">
-				&copy; The Wordsmith's Collection, LLC 2024
+				&copy; The Wordsmith's Collection 2024
 			</p>
 			<p>No tracking or ads.</p>
 		</footer>
