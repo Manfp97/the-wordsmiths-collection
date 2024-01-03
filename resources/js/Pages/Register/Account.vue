@@ -52,6 +52,37 @@ const subscriptionPlan = {
 				:autocomplete="'new-password'"
 			/>
 
+			<div class="flex items-start">
+				<div class="flex h-5 items-center">
+					<input
+						id="remember"
+						type="checkbox"
+						value=""
+						class="focus:ring-3 h-4 w-4 cursor-pointer rounded border border-skin-border focus:ring-skin-secondary"
+						required
+					/>
+				</div>
+				<label
+					for="remember"
+					class="ms-2 text-sm font-medium"
+				>
+					<span
+						id="terms-description"
+						class="text-skin-text-muted text-sm"
+					>
+						I agree to the
+						<a
+							class="underline"
+							href="#"
+							target="_blank"
+							rel="noopener"
+						>
+							Terms and Conditions
+						</a>
+					</span>
+				</label>
+			</div>
+
 			<Link
 				href="/register/payment"
 				class="hover:bg-skin-secondary-offset my-2 flex items-center justify-center rounded-md bg-skin-secondary py-3 font-bold"
