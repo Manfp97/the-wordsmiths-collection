@@ -1,7 +1,6 @@
 <script setup>
 const socials = [
 	{
-		id: 1,
 		title: "GitHub profile",
 		link: "https://github.com/henestrosadev",
 		svg: `
@@ -21,7 +20,6 @@ const socials = [
 		`,
 	},
 	{
-		id: 2,
 		title: "X profile",
 		link: "/#",
 		svg: `
@@ -42,7 +40,6 @@ const socials = [
 		`,
 	},
 	{
-		id: 3,
 		title: "Instagram",
 		link: "/#",
 		svg: `
@@ -64,7 +61,6 @@ const socials = [
 		`,
 	},
 	{
-		id: 4,
 		title: "Email",
 		link: "mailto:henestrosadev@gmail.com",
 		svg: `
@@ -91,8 +87,8 @@ const socials = [
 			<div class="mb-4 mt-2 flex justify-center space-x-12">
 				<!-- eslint-disable vue/no-v-html -->
 				<a
-					v-for="social in socials"
-					:key="social.id"
+					v-for="(social, index) in socials"
+					:key="index"
 					class="link-outline scale-150 hover:rotate-12"
 					target="_blank"
 					rel="noopener"
