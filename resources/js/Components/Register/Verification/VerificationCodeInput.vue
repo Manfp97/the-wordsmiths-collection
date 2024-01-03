@@ -30,7 +30,7 @@ const focusNextInput = (event, index) => {
 			maxlength="1"
 			required
 			autocomplete="off"
-			class="bg-skin-primary-offset uppercase block h-12 w-12 rounded-lg border border-skin-border py-3 text-center text-2xl font-bold focus:border-skin-secondary focus:ring-skin-secondary lg:text-4xl lg:h-16 lg:w-16"
+			class="block h-12 w-12 rounded-lg border border-skin-border bg-skin-primary-offset py-3 text-center text-2xl font-bold uppercase focus:border-skin-secondary focus:ring-skin-secondary lg:h-16 lg:w-16 lg:text-4xl"
 			@input="(event) => focusNextInput(event, index)"
 		/>
 	</div>

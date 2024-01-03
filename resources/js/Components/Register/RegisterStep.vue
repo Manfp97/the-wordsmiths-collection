@@ -52,7 +52,7 @@ defineProps({
 		</span>
 
 		<span
-			class="text-skin-text-muted absolute mt-2"
+			class="absolute mt-2 text-skin-text-muted"
 			:class="stepNamePosition"
 		>
 			{{ stepName }}
@@ -62,6 +62,6 @@ defineProps({
 
 <style scoped>
 .common {
-	@apply text-white flex h-5 w-5 items-center justify-center rounded-full text-xs font-semibold;
+	@apply flex h-5 w-5 items-center justify-center rounded-full text-xs font-semibold text-white;
 }
 </style>

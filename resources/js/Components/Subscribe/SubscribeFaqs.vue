@@ -42,7 +42,7 @@ const isFaqSelected = (faqId) => {
 					name="accordion"
 				/>
 				<label
-					class="hover:bg-skin-secondary-offset mb-0.5 flex cursor-pointer content-center bg-skin-secondary p-5 text-lg transition-colors sm:p-6 sm:text-xl md:text-2xl"
+					class="mb-0.5 flex cursor-pointer content-center bg-skin-secondary p-5 text-lg transition-colors hover:bg-skin-secondary-offset sm:p-6 sm:text-xl md:text-2xl"
 					:for="faq.id"
 					@click="toggleFaq(faq.id)"
 				>

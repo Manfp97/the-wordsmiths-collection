@@ -24,13 +24,13 @@ defineProps({
 	<div class="flex min-h-screen flex-col">
 		<div class="flex flex-wrap lg:flex-1">
 			<section
-				class="bg-skin-secondary-offset flex w-full flex-col items-center py-12 lg:w-1/3"
+				class="flex w-full flex-col items-center bg-skin-secondary-offset py-12 lg:w-1/3"
 			>
 				<div class="px-4 pb-12">
 					<Logo size="md" />
 				</div>
 
-				<div class="bg-white w-80 rounded-lg bg-opacity-30 p-8 lg:w-2/3">
+				<div class="w-80 rounded-lg bg-white bg-opacity-30 p-8 lg:w-2/3">
 					<h2 class="mb-2 text-2xl font-bold">Your selected plan</h2>
 					<h3 class="text-xl">{{ subscriptionPlan.name }}</h3>
 					<ul
@@ -47,7 +47,7 @@ defineProps({
 
 					<Link
 						href="/pricing"
-						class="hover:bg-skin-secondary-offset mx-auto block w-full rounded border border-skin-secondary px-5 py-2.5 text-center font-bold"
+						class="mx-auto block w-full rounded border border-skin-secondary px-5 py-2.5 text-center font-bold hover:bg-skin-secondary-offset"
 					>
 						Change plan
 					</Link>
@@ -67,7 +67,7 @@ defineProps({
 							>
 								<div
 									v-if="currentStep > 1"
-									class="bg-gray-900 absolute h-full"
+									class="absolute h-full bg-gray-900"
 									:class="{
 										'w-1/2': currentStep === 2,
 										'w-full': currentStep >= 3,

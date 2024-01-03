@@ -40,23 +40,23 @@ const subscriptionPlan = {
 			class="space-y-6"
 			action="#"
 		>
-			<div class="flex justify-center my-4 md:my-6 space-x-2 sm:space-x-4">
-				<VerificationCodeInput 
-					v-for="item in [1, 2, 3, 4, 5, 6]" 
+			<div class="my-4 flex justify-center space-x-2 sm:space-x-4 md:my-6">
+				<VerificationCodeInput
+					v-for="item in [1, 2, 3, 4, 5, 6]"
 					:key="item"
 					:index="item"
 				/>
 			</div>
 
 			<p
-				class="p-4 text-sm rounded-lg mb-4 md:mb-6 bg-skin-primary-offset text-skin-text-muted"
+				class="mb-4 rounded-lg bg-skin-primary-offset p-4 text-sm text-skin-text-muted md:mb-6"
 			>
 				Make sure to keep this window open while check your inbox.
 			</p>
 
 			<Link
 				href="/register/payment#form"
-				class="hover:bg-skin-secondary-offset my-2 flex items-center justify-center rounded-md bg-skin-secondary py-3 font-bold"
+				class="my-2 flex items-center justify-center rounded-md bg-skin-secondary py-3 font-bold hover:bg-skin-secondary-offset"
 			>
 				Verify account
 			</Link>

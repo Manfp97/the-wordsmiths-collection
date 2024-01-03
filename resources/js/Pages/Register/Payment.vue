@@ -89,9 +89,9 @@ const stringPrice = `${subscriptionPlan.currency}${subscriptionPlan.price}`;
 				class="sm:flex sm:flex-row sm:items-center sm:justify-between sm:gap-6 max-sm:space-y-6"
 			>
 				<div
-					class="bg-skin-primary-offset flex flex-col rounded-lg border border-skin-border px-2.5 py-1 sm:w-2/5"
+					class="flex flex-col rounded-lg border border-skin-border bg-skin-primary-offset px-2.5 py-1 sm:w-2/5"
 				>
-					<label class="text-skin-text-muted text-sm">Expiration date</label>
+					<label class="text-sm text-skin-text-muted">Expiration date</label>
 					<div>
 						<input
 							id="expiryMonth"
@@ -100,7 +100,7 @@ const stringPrice = `${subscriptionPlan.currency}${subscriptionPlan.price}`;
 							inputmode="numeric"
 							max="12"
 							placeholder="MM"
-							class="bg-skin-primary-offset w-16 rounded-lg border-none py-0"
+							class="w-16 rounded-lg border-none bg-skin-primary-offset py-0"
 							autocomplete="cc-exp-month"
 							@input="(event) => (expiryMonth = event.target.value.slice(0, 2))"
 						/>
@@ -113,7 +113,7 @@ const stringPrice = `${subscriptionPlan.currency}${subscriptionPlan.price}`;
 							min="24"
 							max="49"
 							placeholder="YY"
-							class="bg-skin-primary-offset w-16 rounded-lg border-none py-0"
+							class="w-16 rounded-lg border-none bg-skin-primary-offset py-0"
 							autocomplete="cc-exp-year"
 							@input="(event) => (expiryYear = event.target.value.slice(0, 2))"
 						/>
@@ -138,14 +138,14 @@ const stringPrice = `${subscriptionPlan.currency}${subscriptionPlan.price}`;
 						class="h-8 w-16"
 					/>
 
-					<p class="text-skin-text-muted text-sm">
+					<p class="text-sm text-skin-text-muted">
 						Last 3 digits on the back of the card
 					</p>
 				</div>
 			</div>
 
 			<div
-				class="bg-white flex items-center justify-between rounded-lg bg-opacity-60 px-4 py-3"
+				class="flex items-center justify-between rounded-lg bg-white bg-opacity-60 px-4 py-3"
 			>
 				<div>
 					<p class="font-bold">
@@ -155,14 +155,14 @@ const stringPrice = `${subscriptionPlan.currency}${subscriptionPlan.price}`;
 				</div>
 
 				<Link
-					class="text-skin-link font-bold"
+					class="font-bold text-skin-link"
 					href="/pricing"
 				>
 					Change
 				</Link>
 			</div>
 
-			<p class="text-skin-text-muted mx-auto max-w-xl text-sm">
+			<p class="mx-auto max-w-xl text-sm text-skin-text-muted">
 				By clicking the "Start paid membership" button below, you agree to our
 				Terms of Use and that you are over 18 and acknowledge the Privacy
 				Statement. The Wordsmith's Collection will automatically continue your
@@ -173,7 +173,7 @@ const stringPrice = `${subscriptionPlan.currency}${subscriptionPlan.price}`;
 
 			<Link
 				href="/register/confirmation#form"
-				class="hover:bg-skin-secondary-offset my-2 flex items-center justify-center rounded-md bg-skin-secondary py-3 font-bold"
+				class="my-2 flex items-center justify-center rounded-md bg-skin-secondary py-3 font-bold hover:bg-skin-secondary-offset"
 			>
 				Start paid membership
 				<svg

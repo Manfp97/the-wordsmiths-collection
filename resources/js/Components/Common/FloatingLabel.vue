@@ -38,7 +38,7 @@ defineProps({
 				:id="id"
 				v-model="value"
 				:type="type"
-				class="bg-skin-primary-offset peer block w-full appearance-none rounded-lg border border-skin-border px-2.5 pb-2.5 pt-5 text-sm text-skin-text focus:border-skin-secondary focus:outline-none focus:ring-2 focus:ring-skin-secondary"
+				class="peer block w-full appearance-none rounded-lg border border-skin-border bg-skin-primary-offset px-2.5 pb-2.5 pt-5 text-sm text-skin-text focus:border-skin-secondary focus:outline-none focus:ring-2 focus:ring-skin-secondary"
 				:class="{
 					'border-skin-success': successMessage,
 					'border-skin-alert': errorMessage,
@@ -51,7 +51,7 @@ defineProps({
 			/>
 			<label
 				:for="id"
-				class="text-skin-text-muted input-filled cursor-text peer-placeholder-shown:top-4 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:top-5 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-skin-text rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4"
+				class="input-filled cursor-text text-skin-text-muted peer-placeholder-shown:top-4 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:top-5 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-skin-text rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4"
 			>
 				{{ labelText }}
 			</label>
@@ -60,7 +60,7 @@ defineProps({
 		<p
 			v-if="successMessage"
 			:id="`${id}-success`"
-			class="text-skin-success mt-2 text-xs"
+			class="mt-2 text-xs text-skin-success"
 		>
 			{{ successMessage }}
 		</p>
@@ -68,7 +68,7 @@ defineProps({
 		<p
 			v-if="errorMessage"
 			:id="`${id}-error`"
-			class="text-skin-alert mt-2 text-xs"
+			class="mt-2 text-xs text-skin-alert"
 		>
 			{{ errorMessage }}
 		</p>

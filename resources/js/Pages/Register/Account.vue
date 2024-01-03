@@ -14,7 +14,7 @@ const subscriptionPlan = {
 			isCheck: true,
 			text: "Read <span class='font-bold'>Basic</span> books",
 		},
-	]
+	],
 };
 </script>
 
@@ -68,7 +68,7 @@ const subscriptionPlan = {
 				>
 					<span
 						id="terms-description"
-						class="text-skin-text-muted text-sm"
+						class="text-sm text-skin-text-muted"
 					>
 						I agree to the
 						<a
@@ -85,7 +85,7 @@ const subscriptionPlan = {
 
 			<Link
 				href="/register/verification#form"
-				class="hover:bg-skin-secondary-offset my-2 flex items-center justify-center rounded-md bg-skin-secondary py-3 font-bold"
+				class="my-2 flex items-center justify-center rounded-md bg-skin-secondary py-3 font-bold hover:bg-skin-secondary-offset"
 			>
 				Continue
 				<svg
@@ -104,9 +104,7 @@ const subscriptionPlan = {
 				</svg>
 			</Link>
 
-			<p
-				class="text-skin-text-muted text-sm text-center"
-			>
+			<p class="text-center text-sm text-skin-text-muted">
 				Already have an account?
 				<Link
 					href="/login"

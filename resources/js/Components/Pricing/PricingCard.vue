@@ -4,31 +4,31 @@ import PricingCardListItem from "@/Components/Pricing/PricingCardListItem.vue";
 defineProps({
 	title: {
 		type: String,
-		required: true
+		required: true,
 	},
 	description: {
 		type: String,
-		required: true
+		required: true,
 	},
 	priceIntPart: {
 		type: String,
-		required: true
+		required: true,
 	},
 	priceDecimalPart: {
 		type: String,
-		required: true
+		required: true,
 	},
 	currency: {
 		type: String,
-		required: true
+		required: true,
 	},
 	features: {
 		type: Array,
-		required: true
+		required: true,
 	},
 	shouldHighlight: {
 		type: Boolean,
-		required: true
+		required: true,
 	},
 });
 </script>

@@ -51,7 +51,7 @@ const subscriptionPlan = {
 		</div>
 		<Link
 			href="/login"
-			class="hover:bg-skin-secondary-offset my-2 flex items-center justify-center rounded-md bg-skin-secondary py-3 font-bold"
+			class="my-2 flex items-center justify-center rounded-md bg-skin-secondary py-3 font-bold hover:bg-skin-secondary-offset"
 		>
 			Log in to your account
 		</Link>

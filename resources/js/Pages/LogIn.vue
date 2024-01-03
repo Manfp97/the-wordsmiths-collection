@@ -13,18 +13,25 @@ import Footer from "@/Components/Common/Footer.vue";
 
 	<div class="flex min-h-screen flex-col">
 		<div
-			class="bg-skin-secondary-offset flex flex-col min-h-full flex-1 items-center justify-center "
+			class="flex min-h-full flex-1 flex-col items-center justify-center bg-skin-secondary-offset"
 		>
-			<Logo class="mt-16 2xl:mt-10 mx-4" size="md" />
+			<Logo
+				class="mx-4 mt-16 2xl:mt-10"
+				size="md"
+			/>
 
 			<section
-				class="mt-10 mb-24 mx-4 sm:w-full max-w-lg rounded-lg border bg-skin-primary p-6 shadow sm:p-8"
+				class="mx-4 mb-24 mt-10 max-w-lg rounded-lg border bg-skin-primary p-6 shadow sm:w-full sm:p-8"
 			>
 				<form
 					class="space-y-6"
 					action="#"
 				>
-					<h5 class="font-means-web font-bold text-center text-3xl mb-8 sm:mb-12">Log in to your account</h5>
+					<h5
+						class="mb-8 text-center font-means-web text-3xl font-bold sm:mb-12"
+					>
+						Log in to your account
+					</h5>
 
 					<FloatingLabel
 						:id="'email'"
@@ -59,18 +66,18 @@ import Footer from "@/Components/Common/Footer.vue";
 						</div>
 						<a
 							href="#"
-							class="text-skin-link ms-auto text-sm hover:underline hidden"
+							class="ms-auto hidden text-sm text-skin-link hover:underline"
 						>
 							Forgot password?
 						</a>
 					</div>
 					<button
 						type="submit"
-						class="hover:!bg-skin-secondary-offset w-full rounded-lg !bg-skin-secondary px-5 py-2.5 text-center text-sm focus:outline-none focus:ring-4 focus:ring-skin-border font-bold"
+						class="w-full rounded-lg !bg-skin-secondary px-5 py-2.5 text-center text-sm font-bold hover:!bg-skin-secondary-offset focus:outline-none focus:ring-4 focus:ring-skin-border"
 					>
 						Log in to your account
 					</button>
-					<div class="text-skin-text-muted text-center text-sm font-medium">
+					<div class="text-center text-sm font-medium text-skin-text-muted">
 						Not registered?
 						<Link
 							href="/register/account"
