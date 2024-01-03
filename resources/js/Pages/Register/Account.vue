@@ -103,6 +103,18 @@ const subscriptionPlan = {
 					/>
 				</svg>
 			</Link>
+
+			<p
+				class="text-skin-text-muted text-sm text-center"
+			>
+				Already have an account?
+				<Link
+					href="/login"
+					class="text-skin-link hover:underline"
+				>
+					Login here
+				</Link>
+			</p>
 		</form>
 	</RegisterLayout>
 </template>
