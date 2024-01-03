@@ -20,13 +20,13 @@ const subscriptionPlan = {
 <template>
 	<AppHead
 		title="Confirmation"
-		description="Your The Wordsmith's Collection account has been successfully created! Start reading now."
+		description="Congratulations! Your The Wordsmith's Collection account has been successfully created. Start reading now!"
 	/>
 
 	<RegisterLayout
-		:header-title="'Finished'"
+		:header-title="'Registration completed'"
 		:subscription-plan="subscriptionPlan"
-		:current-step="3"
+		:current-step="4"
 	>
 		<div class="mb-6 w-full text-center">
 			<svg
@@ -44,7 +44,10 @@ const subscriptionPlan = {
 				/>
 			</svg>
 
-			You have successfully verified your account
+			<p>
+				Your The Wordsmith's Collection account has been successfully created.
+			</p>
+			<p>Start reading now!</p>
 		</div>
 		<Link
 			href="/login"
