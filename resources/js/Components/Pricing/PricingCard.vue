@@ -72,8 +72,8 @@ defineProps({
 					class="mb-8 space-y-4 text-left"
 				>
 					<PricingCardListItem
-						v-for="feature in features"
-						:key="feature"
+						v-for="(feature, index) in features"
+						:key="index"
 						:is-check="feature.isCheck"
 						:text="feature.text"
 					/>

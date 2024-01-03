@@ -31,8 +31,8 @@ const isFaqSelected = (faqId) => {
 
 		<ul class="accordion mx-auto w-full text-left">
 			<li
-				v-for="faq in faqs"
-				:key="faq.id"
+				v-for="(faq, index) in faqs"
+				:key="index"
 				class="w-full list-none p-1"
 			>
 				<input
