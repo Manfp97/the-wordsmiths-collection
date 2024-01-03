@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::inertia('/subscribe', 'Subscribe');
 Route::inertia('/pricing', 'Pricing');
 Route::inertia('/login', 'LogIn');
-Route::inertia('/register', 'Register/Account');
+Route::inertia('/register/account', 'Register/Account');
 Route::inertia('/register/payment', 'Register/Payment');
 Route::inertia('/register/confirmation', 'Register/Confirmation');

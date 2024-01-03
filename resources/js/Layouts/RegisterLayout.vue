@@ -76,9 +76,9 @@ defineProps({
 							<ul class="relative flex w-full justify-between">
 								<RegisterStep
 									step-number="1"
-									step-name="Registration"
-									step-name-position="-right-8"
-									:url="currentStep >= 1 ? '/register' : null"
+									step-name="Account"
+									step-name-position="-right-5"
+									:url="currentStep >= 1 ? '/register/account' : null"
 									:is-done="currentStep >= 1"
 									:is-selected="currentStep == 1"
 								/>

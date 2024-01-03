@@ -73,7 +73,7 @@ import Footer from "@/Components/Common/Footer.vue";
 					<div class="text-skin-text-muted text-center text-sm font-medium">
 						Not registered?
 						<Link
-							href="/register"
+							href="/register/account"
 							class="text-skin-link hover:underline"
 						>
 							Create account

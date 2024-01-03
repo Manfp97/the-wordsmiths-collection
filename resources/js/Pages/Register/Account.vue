@@ -25,7 +25,7 @@ const subscriptionPlan = {
 	/>
 
 	<RegisterLayout
-		:header-title="'Create an account'"
+		:header-title="'Account details'"
 		:subscription-plan="subscriptionPlan"
 		:current-step="1"
 	>
