@@ -80,11 +80,12 @@ import Footer from "@/Components/Common/Footer.vue";
 					<div class="text-center text-sm font-medium text-skin-text-muted">
 						Not registered?
 						<Link
-							href="/register/account"
+							href="/pricing"
 							class="text-skin-link hover:underline"
 						>
-							Create account
+							Select a subscription plan
 						</Link>
+						to create your account
 					</div>
 				</form>
 			</section>
