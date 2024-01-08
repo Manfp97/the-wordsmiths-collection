@@ -13,6 +13,10 @@ defineProps({
 		type: Boolean,
 		default: false,
 	},
+	shouldWrapInContainer: {
+		type: Boolean,
+		default: true,
+	},
 });
 
 const searchInputField = ref(null);
@@ -27,7 +31,8 @@ const onSearchClick = () => {
 <template>
 	<nav class="border-skin-secondary-offset">
 		<div
-			class="container flex flex-wrap items-center justify-between p-4 md:justify-normal"
+			class="flex flex-wrap items-center justify-between p-4 md:justify-normal"
+			:class="{ container: shouldWrapInContainer }"
 		>
 			<Logo
 				class="mr-8"
@@ -177,7 +182,7 @@ const onSearchClick = () => {
 
 			<div
 				id="navbar-user"
-				class="hidden w-full flex-grow items-center justify-between md:order-1 md:flex md:w-auto"
+				class="z-50 hidden w-full flex-grow items-center justify-between md:z-0 md:order-1 md:flex md:w-auto"
 			>
 				<div class="relative mt-3 md:hidden">
 					<div
