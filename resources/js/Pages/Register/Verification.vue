@@ -23,7 +23,7 @@ const subscriptionPlan = {
 <template>
 	<AppHead
 		title="Payment"
-		description="Complete the payment to The Wordsmith's Collection to start reading a vast library of the greatest works of literature."
+		description="Verify your The Wordsmith's Collection account to start reading a vast library of the greatest works of literature."
 	/>
 
 	<RegisterLayout
