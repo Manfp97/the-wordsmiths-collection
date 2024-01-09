@@ -33,9 +33,12 @@
 		"vue": "^3.3.0"
 	},
 	"lint-staged": {
-		"*.{vue,js,css}": [
+		"*.{vue,js}": [
 			"prettier --write",
 			"eslint --fix"
+		],
+		"*.{css}": [
+			"prettier --write"
 		]
 	}
 }
