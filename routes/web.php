@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::inertia('/', 'Index');
+
 Route::inertia('/subscribe', 'Subscribe');
 Route::inertia('/pricing', 'Pricing');
 Route::inertia('/login', 'LogIn');
