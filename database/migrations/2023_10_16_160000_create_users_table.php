@@ -22,7 +22,6 @@ class CreateUsersTable extends Migration
 			$table->rememberToken();
 			$table->string('credit_card_number')->comment("only for demonstrational purposes. Sensible data shouldn't be stored in the DB");
 			$table->integer('status');
-			$table->binary('profile_image_data')->nullable();
 			$table->timestamps();
 		});
 	}

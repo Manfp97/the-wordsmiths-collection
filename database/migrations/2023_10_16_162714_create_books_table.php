@@ -10,7 +10,6 @@ class CreateBooksTable extends Migration
 	{
 		Schema::create('books', function (Blueprint $table) {
 			$table->id();
-			$table->foreignId('upload_id');
 			$table->string('isbn')->unique();
 			$table->string('title');
 			$table->timestamps();
