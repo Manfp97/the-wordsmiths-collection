@@ -9,7 +9,9 @@ const props = defineProps({
 	},
 	description: {
 		type: String,
-		required: true,
+		required: false,
+		default:
+			"Start reading a curated library of the most relevant literary works on The Wordsmith's Collection.",
 	},
 });
 
