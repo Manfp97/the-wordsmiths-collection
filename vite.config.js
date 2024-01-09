@@ -12,6 +12,12 @@ export default defineConfig({
 			script: {
 				defineModel: true,
 			},
+			template: {
+				compilerOptions: {
+					isCustomElement: (tag) =>
+						["swiper-container", "swiper-slide"].includes(tag),
+				},
+			},
 		}),
 	],
 });
