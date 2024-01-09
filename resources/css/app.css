@@ -7,6 +7,7 @@
 	html {
 		--color-primary: 243, 238, 229; /* #f3eee5 */
 		--color-primary-offset: 249, 250, 251; /* #F9FAFB */
+		--color-primary-dark: 6, 6, 19; /* #060613 */
 		--color-secondary: 233, 196, 106; /* #e9c46a; */
 		--color-secondary-offset: 243, 220, 171; /* #f3dcab; */
 		--color-tertiary: 36, 28, 21; /* #241c15 */
