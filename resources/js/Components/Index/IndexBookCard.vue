@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
 	book: {
-		type: String,
+		type: Object,
 		required: true,
 	},
 });
