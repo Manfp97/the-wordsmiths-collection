@@ -1,5 +1,5 @@
 <script setup>
-const value = defineModel("value");
+const value = defineModel("value"); // eslint-disable-line
 
 defineProps({
 	id: {
@@ -41,7 +41,7 @@ defineProps({
 				class="peer block w-full appearance-none rounded-lg border border-skin-border bg-skin-primary-offset px-2.5 pb-2.5 pt-5 text-sm text-skin-text focus:border-skin-secondary focus:outline-none focus:ring-2 focus:ring-skin-secondary"
 				:class="{
 					'border-skin-success': successMessage,
-					'border-skin-alert': errorMessage,
+					'border-skin-danger': errorMessage,
 				}"
 				placeholder=" "
 				:autocomplete="autocomplete"
@@ -68,7 +68,7 @@ defineProps({
 		<p
 			v-if="errorMessage"
 			:id="`${id}-error`"
-			class="mt-2 text-xs text-skin-alert"
+			class="mt-2 text-xs text-skin-danger"
 		>
 			{{ errorMessage }}
 		</p>
