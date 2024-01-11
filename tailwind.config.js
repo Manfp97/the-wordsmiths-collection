@@ -28,6 +28,7 @@ export default {
 				"text-muted": withOpacity("--color-text-muted"),
 				link: withOpacity("--color-link"),
 				success: withOpacity("--color-success"),
+				warning: withOpacity("--color-warning"),
 				danger: withOpacity("--color-danger"),
 				card: withOpacity("--color-card"),
 				border: withOpacity("--color-border"),
