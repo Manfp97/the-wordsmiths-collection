@@ -1,6 +1,6 @@
 <script setup>
 import AppHead from "@/Components/Common/AppHead.vue";
-import FloatingLabel from "@/Components/Common/FloatingLabel.vue";
+import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import Logo from "@/Components/Common/Logo.vue";
 import Footer from "@/Components/Common/Footer.vue";
 </script>
