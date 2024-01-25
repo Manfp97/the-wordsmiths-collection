@@ -27,14 +27,6 @@ class AuthorStoreRequest extends BaseFormRequest
 		];
 	}
 
-	public function messages()
-	{
-		return [
-			'first_name.required' => 'First name is required',
-			'last_name.required' => 'Last name is required',
-		];
-	}
-
 	/**
 	 *  Filters to be applied to the input.
 	 *

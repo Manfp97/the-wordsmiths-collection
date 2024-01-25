@@ -26,13 +26,6 @@ class CategoryStoreRequest extends BaseFormRequest
 		];
 	}
 
-	public function messages()
-	{
-		return [
-			'name.required' => 'Name is required',
-		];
-	}
-
 	/**
 	 *  Filters to be applied to the input.
 	 *
