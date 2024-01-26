@@ -34,7 +34,7 @@ class CategoryStoreRequest extends BaseFormRequest
 	public function filters()
 	{
 		return [
-			'name' => 'trim|capitalize|escape'
+			'name' => 'trim|capitalize|strip_tags'
 		];
 	}
 }

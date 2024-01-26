@@ -35,8 +35,8 @@ class AuthorStoreRequest extends BaseFormRequest
 	public function filters()
 	{
 		return [
-			'first_name' => 'trim|capitalize|escape',
-			'last_name' => 'trim|capitalize|escape'
+			'first_name' => 'trim|capitalize|strip_tags',
+			'last_name' => 'trim|capitalize|strip_tags'
 		];
 	}
 }
