@@ -4,25 +4,13 @@ import { usePage } from "@inertiajs/vue3";
 import useAlerts from "@/Composables/useAlerts";
 
 const receivedAlert = computed(() => usePage().props.flash.alert);
-const { addAlert, alerts } = useAlerts();
+const { addAlert, removeAlert, alerts } = useAlerts();
 
 watch(receivedAlert, (newVal) => {
 	if (newVal) {
 		addAlert(newVal);
 	}
 });
-
-const removeAlert = (event) => {
-	const dismissTargetId = event.target.getAttribute("data-dismiss-target");
-
-	if (dismissTargetId) {
-		const $dismissTarget = document.getElementById(dismissTargetId);
-
-		if ($dismissTarget) {
-			$dismissTarget.remove();
-		}
-	}
-};
 </script>
 
 <template>
@@ -96,7 +84,7 @@ const removeAlert = (event) => {
 						class="-mx-1.5 -my-1.5 ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg p-1.5 text-skin-text-muted hover:rounded-lg hover:bg-skin-primary hover:text-skin-danger"
 						:data-dismiss-target="`toast-${alert.type}-${index}`"
 						aria-label="Close"
-						@click="removeAlert"
+						@click="removeAlert(alert.id, (isImmediate = true))"
 					>
 						<span class="sr-only">Close</span>
 						<svg

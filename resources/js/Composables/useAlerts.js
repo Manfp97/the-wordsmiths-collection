@@ -4,10 +4,12 @@ import { v4 as uuidv4 } from "uuid";
 const alerts = ref([]);
 
 export default function useAlerts() {
-	const removeAlert = (id) => {
+	const removeAlert = (id, isImmediate = false) => {
+		const timeout = isImmediate ? 0 : 5000;
+
 		setTimeout(() => {
 			alerts.value = alerts.value.filter((alert) => alert.id !== id);
-		}, 5000);
+		}, timeout);
 	};
 
 	const addAlert = (alert) => {
