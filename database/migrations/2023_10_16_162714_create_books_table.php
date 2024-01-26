@@ -12,6 +12,7 @@ class CreateBooksTable extends Migration
 			$table->id();
 			$table->string('isbn')->unique();
 			$table->string('title');
+			$table->string('slug')->unique();
 			$table->timestamps();
 		});
 	}
