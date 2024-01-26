@@ -9,20 +9,6 @@ defineProps({
 });
 
 const selectedFaqId = ref(null);
-
-const toggleFaq = (faqId) => {
-	if (selectedFaqId.value == faqId) {
-		// Uncheck the input if it's already selected
-		selectedFaqId.value = null;
-	} else {
-		// Check the input if it's not selected
-		selectedFaqId.value = faqId;
-	}
-};
-
-const isFaqSelected = (faqId) => {
-	return selectedFaqId.value == faqId;
-};
 </script>
 
 <template>
@@ -44,15 +30,19 @@ const isFaqSelected = (faqId) => {
 				<label
 					class="mb-0.5 flex cursor-pointer content-center bg-skin-secondary p-5 text-lg transition-colors hover:bg-skin-secondary-offset sm:p-6 sm:text-xl md:text-2xl"
 					:for="faq.id"
-					@click="toggleFaq(faq.id)"
+					@click="
+						selectedFaqId == faq.id
+							? (selectedFaqId = null)
+							: (selectedFaqId = faq.id)
+					"
 				>
 					<div class="flex w-full items-center justify-between">
 						<span class="mr-1.5 font-semibold">{{ faq.title }}</span>
 						<span
 							class="close shrink-0 select-none overflow-hidden align-middle font-poppins text-[3.5rem] font-thin transition-transform duration-500"
 							:class="{
-								'rotate-[135deg]': isFaqSelected(faq.id),
-								'transform-none': !isFaqSelected(faq.id),
+								'rotate-[135deg]': selectedFaqId == faq.id,
+								'transform-none': selectedFaqId != faq.id,
 							}"
 							aria-hidden="true"
 						>
@@ -64,8 +54,8 @@ const isFaqSelected = (faqId) => {
 				<div
 					class="text-md space-y-5 overflow-hidden bg-skin-secondary px-5 transition-all duration-500 sm:text-xl"
 					:class="{
-						'max-h-[37.5rem] py-7': isFaqSelected(faq.id),
-						'max-h-0': !isFaqSelected(faq.id),
+						'max-h-[37.5rem] py-7': selectedFaqId == faq.id,
+						'max-h-0': selectedFaqId != faq.id,
 					}"
 					v-html="faq.body"
 				/>
