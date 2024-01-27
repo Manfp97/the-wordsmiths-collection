@@ -26,6 +26,7 @@ abstract class BaseFormRequest extends FormRequest
 		'*.int'                     => 'The selected :attribute must be an integer',
 		'*.distinct'                => 'Duplicate values are not allowed for :attribute',
 		'*.exists'                  => 'The selected :attribute is invalid',
+		'*.dimensions'              => 'The dimensions of the :attribute file are invalid',
 	];
 
 	/**
