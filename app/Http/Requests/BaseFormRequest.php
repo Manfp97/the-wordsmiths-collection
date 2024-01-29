@@ -18,7 +18,7 @@ abstract class BaseFormRequest extends FormRequest
 	 * @var array
 	 */
 	protected $defaultMessages = [
-		'*.required'                => 'The :attribute field is required',
+		'*.required'                => 'The :attribute is required',
 		'*.mimetypes'               => 'Invalid file type for :attribute',
 		'*.max'                     => 'The file size of :attribute exceeds the maximum allowed',
 		'*.array'                   => 'The :attribute must be an array',
