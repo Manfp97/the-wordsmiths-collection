@@ -11,7 +11,7 @@ defineProps({
 
 register();
 
-const swiperRef = ref(null);
+const $swiperContainer = ref(null);
 
 const params = {
 	injectStyles: [
@@ -94,8 +94,8 @@ const params = {
 };
 
 onMounted(() => {
-	Object.assign(swiperRef.value, params);
-	swiperRef.value.initialize();
+	Object.assign($swiperContainer.value, params);
+	$swiperContainer.value.initialize();
 });
 </script>
 
@@ -107,7 +107,7 @@ onMounted(() => {
 			{{ sectionTitle }}
 		</h2>
 		<swiper-container
-			ref="swiperRef"
+			ref="$swiperContainer"
 			init="false"
 			:navigation="true"
 			:breakpoints="{
