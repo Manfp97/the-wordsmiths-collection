@@ -19,22 +19,22 @@ class CategoryController extends Controller
 	{
 		$categories = Category::get()
 			->map(function ($category) {
-			return [
-				'id' => $category->id,
-				'name' => $category->name,
-				'books' => $category->books->map(function ($book) {
-					$cover = $book->getFirstMedia(MediaCollectionEnum::BOOK_COVERS);
-					$responsiveCover = $cover(MediaConversionEnum::WEBP)->toHtml();
+				return [
+					'id' => $category->id,
+					'name' => $category->name,
+					'books' => $category->books->map(function ($book) {
+						$cover = $book->getFirstMedia(MediaCollectionEnum::BOOK_COVERS);
+						$responsiveCover = $cover(MediaConversionEnum::WEBP)->toHtml();
 
-					return [
-						'id' => $book->id,
-						'title' => $book->title,
-						'slug' => Str::slug($book->title),
-						'cover' => $responsiveCover,
-					];
-				}),
-			];
-		});
+						return [
+							'id' => $book->id,
+							'title' => $book->title,
+							'slug' => Str::slug($book->title),
+							'cover' => $responsiveCover,
+						];
+					}),
+				];
+			});
 
 		return Inertia::render('Index', ['categories' => $categories]);
 	}
