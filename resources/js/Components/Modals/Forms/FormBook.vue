@@ -1,0 +1,156 @@
+<script setup>
+import { ref, onMounted } from "vue";
+import { useForm } from "@inertiajs/vue3";
+import { extractKeyValuesByPattern } from "@/Helpers/arrayHelper.js";
+import axios from "axios";
+import DragAndDrop from "@/Components/Forms/DragAndDrop.vue";
+import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
+import FloatingLabelSelectSearch from "@/Components/Forms/FloatingLabelSelectSearch.vue";
+
+const authors = ref([]);
+const categories = ref([]);
+
+const form = useForm({
+	title: null,
+	isbn: null,
+	authors_id: [],
+	categories_id: [],
+	book_file: null,
+	cover_image: null,
+});
+
+const fetchAuthors = async () => {
+	try {
+		const response = await axios.get("/api/authors?order_by=first_name");
+		authors.value = response.data["data"].map((author) => {
+			const id = author.id;
+			const name = `${author.first_name} ${author.last_name}`;
+
+			return { id, name };
+		});
+	} catch (error) {
+		console.error("Error fetching data:", error);
+	}
+};
+
+const fetchCategories = async () => {
+	try {
+		const response = await axios.get("/api/categories?order_by=name");
+		categories.value = response.data["data"].map((category) => {
+			const id = category.id;
+			const name = category.name;
+
+			return { id, name };
+		});
+	} catch (error) {
+		console.error("Error fetching data:", error);
+	}
+};
+
+onMounted(() => {
+	fetchAuthors();
+	fetchCategories();
+});
+
+const submitForm = () => {
+	form.post("/book", {
+		onSuccess: () => {
+			form.reset();
+			form.clearErrors();
+		},
+	});
+};
+</script>
+
+<template>
+	<form @submit.prevent="submitForm">
+		<div class="mb-4 grid gap-4 sm:grid-cols-2">
+			<FloatingLabel
+				:id="'book-title'"
+				v-model:value="form.title"
+				label-text="Title"
+				:type="'text'"
+				:autocomplete="'off'"
+				:error-message="form.errors.title"
+			/>
+			<FloatingLabel
+				:id="'book-isbn'"
+				v-model:value="form.isbn"
+				label-text="ISBN"
+				:type="'text'"
+				:autocomplete="'off'"
+				:error-message="form.errors.isbn"
+			/>
+
+			<FloatingLabelSelectSearch
+				:id="'book-author'"
+				v-model:value="form.authors_id"
+				label-text="Author"
+				:options="authors"
+				:error-messages="
+					extractKeyValuesByPattern(
+						form.errors,
+						'authors_id',
+						(splitBy = '.'),
+						(atIndex = 1)
+					)
+				"
+			/>
+			<FloatingLabelSelectSearch
+				:id="'book-category'"
+				v-model:value="form.categories_id"
+				label-text="Category"
+				:options="categories"
+				:error-messages="
+					extractKeyValuesByPattern(
+						form.errors,
+						'categories_id',
+						(splitBy = '.'),
+						(atIndex = 1)
+					)
+				"
+			/>
+
+			<DragAndDrop
+				:id="'book-file-input'"
+				v-model:value="form.book_file"
+				label-text="Book file"
+				:max-file-bytes="4200000"
+				:supported-mime-types="['application/pdf']"
+				:error-message="form.errors.book_file"
+				class="mb-4"
+			/>
+			<DragAndDrop
+				:id="'cover-image-input'"
+				v-model:value="form.cover_image"
+				label-text="Cover image"
+				:max-file-bytes="2100000"
+				:min-aspect-ratio-str="'1/2'"
+				:max-aspect-ratio-str="'2/3'"
+				:supported-mime-types="['image/webp', 'image/png', 'image/jpeg']"
+				:error-message="form.errors.cover_image"
+				class="mb-4"
+			/>
+		</div>
+
+		<button
+			type="submit"
+			class="hover:bg-primary-800 focus:ring-primary-300 inline-flex items-center rounded-lg !bg-skin-secondary px-5 py-2.5 text-center text-sm font-bold focus:outline-none"
+			:disabled="form.processing"
+		>
+			<svg
+				class="-ml-1 mr-1 h-6 w-6"
+				fill="currentColor"
+				viewBox="0 0 20 20"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					fill-rule="evenodd"
+					d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+					clip-rule="evenodd"
+				/>
+			</svg>
+			Add new book
+		</button>
+	</form>
+</template>
