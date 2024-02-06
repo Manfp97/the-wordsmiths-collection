@@ -1,33 +1,25 @@
 <script setup>
-defineProps({
+const props = defineProps({
 	book: {
 		type: Object,
 		required: true,
 	},
 });
+
+const cover = props.book.cover.replaceAll(">", "class='h-full w-full'>"); // object-cover
 </script>
 
 <template>
 	<div
-		class="my-1 select-none rounded hover:ring-4 hover:ring-skin-border active:ring-skin-secondary"
+		class="h-full select-none rounded-r-xl hover:ring-4 hover:ring-skin-card active:ring-skin-secondary"
 		:title="book.title"
 	>
+		<!-- eslint-disable vue/no-v-text-v-html-on-component vue/no-v-html -->
 		<Link
 			:href="`/book/${book.slug}`"
-			class="bg-card block overflow-hidden rounded"
-		>
-			<img
-				:src="book.imageUrl"
-				draggable="false"
-				class="lazy-loaded block h-full w-full object-cover"
-				:alt="book.title"
-			/>
-		</Link>
+			class="block h-full overflow-hidden rounded-r-xl"
+			v-html="cover"
+		/>
+		<!--eslint-enable-->
 	</div>
 </template>
-
-<style scoped>
-.lazy-loaded {
-	@apply opacity-100 transition-opacity duration-[.4s];
-}
-</style>
