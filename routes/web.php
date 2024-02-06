@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::inertia('/', 'Index');
+Route::get('/', [CategoryController::class, 'index']);
+
+Route::post('/book', [BookController::class, 'store']); // auth => admin
+Route::post('/category', [CategoryController::class, 'store']); // auth => admin
+Route::post('/author', [AuthorController::class, 'store']); // auth => admin
 
 Route::inertia('/subscribe', 'Subscribe');
 Route::inertia('/pricing', 'Pricing');
