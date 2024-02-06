@@ -2,6 +2,7 @@
 import { ref, onMounted } from "vue";
 import { initFlowbite } from "flowbite";
 import Logo from "@/Components/Common/Logo.vue";
+import ModalAdd from "@/Components/Modals/ModalAdd.vue";
 
 // initialize components based on data attribute selectors
 onMounted(() => {
@@ -9,27 +10,28 @@ onMounted(() => {
 });
 
 defineProps({
+	navClass: {
+		type: String,
+		required: false,
+		default: null,
+	},
 	shouldInvertIconColor: {
 		type: Boolean,
+		required: false,
 		default: false,
 	},
 	shouldWrapInContainer: {
 		type: Boolean,
+		required: false,
 		default: true,
 	},
 });
 
-const searchInputField = ref(null);
-
-const onSearchClick = () => {
-	if (searchInputField.value) {
-		searchInputField.value.focus();
-	}
-};
+const $searchInput = ref(null);
 </script>
 
 <template>
-	<nav class="border-skin-secondary-offset">
+	<nav :class="`border-skin-secondary-offset ${navClass}`">
 		<div
 			class="flex flex-wrap items-center justify-between p-4 md:justify-normal"
 			:class="{ container: shouldWrapInContainer }"
@@ -67,7 +69,7 @@ const onSearchClick = () => {
 					aria-controls="navbar-user"
 					aria-expanded="false"
 					class="me-1 rounded-lg p-2.5 text-sm hover:bg-skin-secondary-offset hover:text-skin-text-muted focus:text-skin-text-muted focus:outline-none focus:ring-2 focus:ring-skin-secondary md:hidden"
-					@click="onSearchClick"
+					@click="$searchInput ? $searchInput.focus() : null"
 				>
 					<svg
 						class="h-5 w-5"
@@ -120,7 +122,7 @@ const onSearchClick = () => {
 				<!-- User dropdown menu -->
 				<div
 					id="user-dropdown"
-					class="z-50 my-4 hidden list-none divide-y divide-skin-border rounded-lg bg-skin-primary text-base shadow"
+					class="z-40 my-4 hidden list-none divide-y divide-skin-border rounded-lg bg-skin-primary text-base shadow"
 				>
 					<div class="px-4 py-3">
 						<span class="block text-sm font-semibold text-skin-text">
@@ -141,6 +143,18 @@ const onSearchClick = () => {
 							>
 								Settings
 							</a>
+						</li>
+						<li>
+							<!-- TODO only admin -->
+							<button
+								id="modal-add-button"
+								data-modal-target="modal-add"
+								data-modal-toggle="modal-add"
+								class="block w-full px-4 py-2 text-left text-sm text-skin-text hover:bg-skin-secondary-offset"
+								type="button"
+							>
+								Add content
+							</button>
 						</li>
 						<li>
 							<a
@@ -206,7 +220,7 @@ const onSearchClick = () => {
 					</div>
 					<input
 						id="search-navbar-hamburger"
-						ref="searchInputField"
+						ref="$searchInput"
 						type="text"
 						class="block w-full rounded-lg border border-skin-border bg-gray-100 p-2 ps-10 text-sm text-skin-text focus:border-skin-secondary focus:ring-skin-secondary"
 						placeholder="Search..."
@@ -226,6 +240,7 @@ const onSearchClick = () => {
 					</li>
 					<li>
 						<Link
+							href="#"
 							class="block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-transparent md:hover:underline"
 						>
 							Categories
@@ -243,6 +258,8 @@ const onSearchClick = () => {
 			</div>
 		</div>
 	</nav>
+
+	<ModalAdd />
 </template>
 
 <style scoped>
