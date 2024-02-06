@@ -20,7 +20,6 @@ export default {
 			skin: {
 				primary: withOpacity("--color-primary"),
 				"primary-offset": withOpacity("--color-primary-offset"),
-				"primary-dark": withOpacity("--color-primary-dark"),
 				secondary: withOpacity("--color-secondary"),
 				"secondary-offset": withOpacity("--color-secondary-offset"),
 				tertiary: withOpacity("--color-tertiary"),
