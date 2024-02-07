@@ -17,18 +17,17 @@ defineProps({
 	<AppHead />
 
 	<div class="min-h-screen bg-skin-primary">
-		<div
-			class="hero relative h-[25vh] min-h-[15rem] w-full bg-cover bg-center py-3 text-skin-primary"
-		>
-			<Nav
-				:nav-class="'lg:px-12'"
-				should-invert-icon-color
-				:should-wrap-in-container="false"
-			/>
+		<Nav
+			:nav-class="'lg:px-12'"
+			:should-wrap-in-container="false"
+		/>
 
+		<div
+			class="hero relative h-[25vh] min-h-[15rem] w-full bg-cover bg-center pb-3 text-skin-primary"
+		>
 			<div
 				id="hero-content"
-				class="absolute left-1/2 top-1/2 mt-5 w-full -translate-x-1/2 -translate-y-1/2 px-4 text-center"
+				class="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 px-4 text-center"
 			>
 				<h1
 					class="font-means-web text-4xl font-bold !leading-[1.175] sm:text-5xl lg:text-6xl 2xl:text-7xl"

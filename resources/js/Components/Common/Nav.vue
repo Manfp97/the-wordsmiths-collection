@@ -17,7 +17,7 @@ defineProps({
 		required: false,
 		default: null,
 	},
-	shouldInvertIconColor: {
+	shouldBeTransparent: {
 		type: Boolean,
 		required: false,
 		default: false,
@@ -33,7 +33,14 @@ const $searchInput = ref(null);
 </script>
 
 <template>
-	<nav :class="`border-skin-secondary-offset ${navClass}`">
+	<nav
+		class="border-skin-secondary-offset py-0 md:py-2"
+		:class="{
+			[navClass]: !!navClass, // apply navClass if provided
+			'bg-transparent': shouldBeTransparent,
+			'bg-skin-tertiary text-white': !shouldBeTransparent,
+		}"
+	>
 		<div
 			class="flex flex-wrap items-center justify-between p-4 md:justify-normal"
 			:class="{ container: shouldWrapInContainer }"
@@ -41,7 +48,7 @@ const $searchInput = ref(null);
 			<Logo
 				class="mr-8"
 				size="sm"
-				:should-invert-icon-color="shouldInvertIconColor"
+				:should-invert-icon-color="true"
 			/>
 
 			<div

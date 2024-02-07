@@ -66,7 +66,7 @@ const faqs = [
 	<div
 		class="hero relative h-screen w-full bg-cover bg-center py-3 text-skin-primary 2xl:h-[50vh]"
 	>
-		<Nav should-invert-icon-color />
+		<Nav should-be-transparent />
 
 		<div
 			id="hero-content"
