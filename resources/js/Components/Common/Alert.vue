@@ -2,6 +2,10 @@
 import { computed, watch } from "vue";
 import { usePage } from "@inertiajs/vue3";
 import useAlerts from "@/Composables/useAlerts";
+import IconX from "@icons/x.svg?component";
+import IconCheckCircleFilled from "@icons/check-circle-filled.svg?component";
+import IconAlertCircleFilled from "@icons/alert-circle-filled.svg?component";
+import IconXCircleFilled from "@icons/x-circle-filled.svg?component";
 
 const receivedAlert = computed(() => usePage().props.flash.alert);
 const { addAlert, removeAlert, alerts } = useAlerts();
@@ -37,44 +41,26 @@ watch(receivedAlert, (newVal) => {
 					<div
 						class="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded text-white"
 					>
-						<svg
+						<IconCheckCircleFilled
 							v-if="alert.type === 'success'"
 							class="h-8 w-8 text-skin-success"
 							aria-hidden="true"
-							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
-							viewBox="0 0 20 20"
-						>
-							<path
-								d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
-							/>
-						</svg>
+						/>
 
-						<svg
+						<IconXCircleFilled
 							v-if="alert.type === 'danger'"
 							class="h-8 w-8 text-skin-danger"
 							aria-hidden="true"
-							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
-							viewBox="0 0 20 20"
-						>
-							<path
-								d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z"
-							/>
-						</svg>
+						/>
 
-						<svg
+						<IconAlertCircleFilled
 							v-if="alert.type === 'warning'"
 							class="h-8 w-8 text-skin-warning"
 							aria-hidden="true"
-							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
-							viewBox="0 0 20 20"
-						>
-							<path
-								d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z"
-							/>
-						</svg>
+						/>
 
 						<span class="sr-only">{{ alert.type }} icon</span>
 					</div>
@@ -87,21 +73,11 @@ watch(receivedAlert, (newVal) => {
 						@click="removeAlert(alert.id, (isImmediate = true))"
 					>
 						<span class="sr-only">Close</span>
-						<svg
+						<IconX
 							class="h-3 w-3"
 							aria-hidden="true"
-							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
-							viewBox="0 0 14 14"
-						>
-							<path
-								stroke="currentColor"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-							/>
-						</svg>
+						/>
 					</button>
 				</div>
 			</div>

@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from "vue";
+import IconSearch from "@icons/search.svg?component";
 
 const props = defineProps({
 	id: {
@@ -186,21 +187,11 @@ const handleCheckboxChange = (event) => {
 					<div
 						class="rtl:inset-r-0 pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
 					>
-						<svg
+						<IconSearch
 							class="h-4 w-4 text-gray-500"
 							aria-hidden="true"
-							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
-							viewBox="0 0 20 20"
-						>
-							<path
-								stroke="currentColor"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-							/>
-						</svg>
+						/>
 					</div>
 					<input
 						:id="`${id}-input-group-search`"

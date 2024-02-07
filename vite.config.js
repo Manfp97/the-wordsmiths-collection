@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 import vue from "@vitejs/plugin-vue";
 import svgLoader from "vite-svg-loader";
+import { fileURLToPath, URL } from "url";
 
 export default defineConfig({
 	plugins: [
@@ -22,4 +23,11 @@ export default defineConfig({
 		}),
 		svgLoader(),
 	],
+	resolve: {
+		alias: {
+			"@icons": fileURLToPath(
+				new URL("./public/images/icons", import.meta.url)
+			),
+		},
+	},
 });

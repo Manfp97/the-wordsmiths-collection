@@ -3,6 +3,8 @@ import { ref, onMounted } from "vue";
 import { initFlowbite } from "flowbite";
 import Logo from "@/Components/Common/Logo.vue";
 import ModalAdd from "@/Components/Modals/ModalAdd.vue";
+import IconSearch from "@icons/search.svg?component";
+import IconMenu from "@icons/menu.svg?component";
 
 // initialize components based on data attribute selectors
 onMounted(() => {
@@ -71,21 +73,11 @@ const $searchInput = ref(null);
 					class="me-1 rounded-lg p-2.5 text-sm hover:bg-skin-secondary-offset hover:text-skin-text-muted focus:text-skin-text-muted focus:outline-none focus:ring-2 focus:ring-skin-secondary md:hidden"
 					@click="$searchInput ? $searchInput.focus() : null"
 				>
-					<svg
+					<IconSearch
 						class="h-5 w-5"
 						aria-hidden="true"
-						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
-						viewBox="0 0 20 20"
-					>
-						<path
-							stroke="currentColor"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-						/>
-					</svg>
+					/>
 					<span class="sr-only">Search</span>
 				</button>
 
@@ -94,21 +86,11 @@ const $searchInput = ref(null);
 					<div
 						class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
 					>
-						<svg
+						<IconSearch
 							class="h-4 w-4 text-skin-text-muted"
 							aria-hidden="true"
-							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
-							viewBox="0 0 20 20"
-						>
-							<path
-								stroke="currentColor"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-							/>
-						</svg>
+						/>
 						<span class="sr-only">Search icon</span>
 					</div>
 					<input
@@ -176,21 +158,11 @@ const $searchInput = ref(null);
 					aria-expanded="false"
 				>
 					<span class="sr-only">Open main menu</span>
-					<svg
+					<IconMenu
 						class="h-5 w-5"
 						aria-hidden="true"
-						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
-						viewBox="0 0 17 14"
-					>
-						<path
-							stroke="currentColor"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M1 1h15M1 7h15M1 13h15"
-						/>
-					</svg>
+					/>
 				</button>
 			</div>
 
@@ -202,21 +174,11 @@ const $searchInput = ref(null);
 					<div
 						class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
 					>
-						<svg
+						<IconSearch
 							class="h-4 w-4 text-skin-text-muted"
 							aria-hidden="true"
-							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
-							viewBox="0 0 20 20"
-						>
-							<path
-								stroke="currentColor"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-							/>
-						</svg>
+						/>
 					</div>
 					<input
 						id="search-navbar-hamburger"

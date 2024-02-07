@@ -2,6 +2,7 @@
 import AppHead from "@/Components/Common/AppHead.vue";
 import VerificationCodeInput from "@/Components/Register/Verification/VerificationCodeInput.vue";
 import RegisterLayout from "@/Layouts/RegisterLayout.vue";
+import IconRightArrow from "@icons/right-arrow.svg?component";
 
 const subscriptionPlan = {
 	name: "Basic",
@@ -59,6 +60,13 @@ const subscriptionPlan = {
 				class="my-2 flex items-center justify-center rounded-md bg-skin-secondary py-3 font-bold hover:bg-skin-secondary-offset"
 			>
 				Verify account
+
+				<IconRightArrow
+					class="ml-4 h-4 w-4"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+				/>
 			</Link>
 		</form>
 	</RegisterLayout>
