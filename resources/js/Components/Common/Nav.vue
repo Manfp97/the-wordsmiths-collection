@@ -17,11 +17,6 @@ defineProps({
 		required: false,
 		default: null,
 	},
-	shouldBeTransparent: {
-		type: Boolean,
-		required: false,
-		default: false,
-	},
 	shouldWrapInContainer: {
 		type: Boolean,
 		required: false,
@@ -34,12 +29,8 @@ const $searchInput = ref(null);
 
 <template>
 	<nav
-		class="border-skin-secondary-offset py-0 md:py-2"
-		:class="{
-			[navClass]: !!navClass, // apply navClass if provided
-			'bg-transparent': shouldBeTransparent,
-			'bg-skin-tertiary text-white': !shouldBeTransparent,
-		}"
+		class="fixed top-0 z-50 w-full bg-skin-tertiary text-white"
+		:class="{ [navClass]: !!navClass }"
 	>
 		<div
 			class="flex flex-wrap items-center justify-between p-4 md:justify-normal"

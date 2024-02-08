@@ -63,91 +63,93 @@ const faqs = [
 		description="Subscribe to The Wordsmith's Collection to read books directly on your computer, phone, tablet, eBook, and more."
 	/>
 
-	<div
-		class="hero relative h-screen w-full bg-cover bg-center py-3 text-skin-primary 2xl:h-[50vh]"
-	>
-		<Nav should-be-transparent />
+	<Nav />
 
+	<div class="min-h-screen">
 		<div
-			id="hero-content"
-			class="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 px-4 pt-10 text-center"
-		>
-			<h1
-				class="font-means-web text-4xl font-bold !leading-[1.175] sm:text-6xl 2xl:text-7xl"
-			>
-				Your gateway to<br />
-				literary masterpieces.
-			</h1>
-			<h3 class="my-2 text-lg sm:my-5 sm:text-2xl">
-				Explore, read, and relive literary classics anywhere at any time.
-			</h3>
-			<Link
-				href="/pricing"
-				class="subscribe-button my-3"
-			>
-				Subscribe Now
-			</Link>
-			<p class="text-sm md:text-base">Cancel anytime.</p>
-		</div>
-	</div>
-
-	<main>
-		<div class="container my-2 sm:my-10 md:mb-20 md:mt-8 lg:my-16 xl:my-24">
-			<div class="mx-4">
-				<SubscribeFeature
-					v-for="feature in features"
-					:key="feature"
-					:title="feature.title"
-					:body="feature.body"
-					:image-path="feature.imagePath"
-					class="py-8 sm:py-12 md:py-16"
-				/>
-			</div>
-		</div>
-
-		<section
-			class="discover__section grid h-[36rem] place-items-center sm:h-[40rem]"
+			class="hero relative h-screen w-full bg-cover bg-center py-3 text-skin-primary 2xl:h-[50vh]"
 		>
 			<div
-				class="mx-4 grid h-[21.125rem] place-items-center rounded-lg bg-skin-tertiary px-8 text-center md:mx-6 lg:mx-8 lg:w-[48rem] xl:mx-36 2xl:mx-4"
+				id="hero-content"
+				class="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 px-4 pt-10 text-center"
 			>
-				<div class="lg:max-w-lg">
-					<p
-						class="font-means-web text-3xl leading-tight text-skin-primary sm:text-4xl"
-					>
-						Discover now the book that will change your life for only
-						<strong>4,99€</strong>
-					</p>
-					<Link
-						href="/pricing"
-						class="subscribe-button mt-6"
-					>
-						Subscribe Now
-					</Link>
-				</div>
-			</div>
-		</section>
-
-		<div class="container mb-16 mt-3 lg:mb-20">
-			<div class="mx-4">
-				<SubscribeFaqs :faqs="faqs" />
-				<section class="mx-auto mt-5 max-w-3xl text-center">
-					<h3 class="section-title !leading-[1.175]">
-						Ready to read?<br />
-						Start your membership now
-					</h3>
-					<Link
-						href="/pricing"
-						class="subscribe-button mt-6"
-					>
-						Subscribe Now
-					</Link>
-				</section>
+				<h1
+					class="font-means-web text-4xl font-bold !leading-[1.175] sm:text-6xl 2xl:text-7xl"
+				>
+					Your gateway to<br />
+					literary masterpieces.
+				</h1>
+				<h3 class="my-2 text-lg sm:my-5 sm:text-2xl">
+					Explore, read, and relive literary classics anywhere at any time.
+				</h3>
+				<Link
+					href="/pricing"
+					class="subscribe-button my-3"
+				>
+					Subscribe Now
+				</Link>
+				<p class="text-sm md:text-base">Cancel anytime.</p>
 			</div>
 		</div>
-	</main>
 
-	<Footer />
+		<main>
+			<div class="container my-2 sm:my-10 md:mb-20 md:mt-8 lg:my-16 xl:my-24">
+				<div class="mx-4">
+					<SubscribeFeature
+						v-for="feature in features"
+						:key="feature"
+						:title="feature.title"
+						:body="feature.body"
+						:image-path="feature.imagePath"
+						class="py-8 sm:py-12 md:py-16"
+					/>
+				</div>
+			</div>
+
+			<section
+				class="discover__section grid h-[36rem] place-items-center sm:h-[40rem]"
+			>
+				<div
+					class="mx-4 grid h-[21.125rem] place-items-center rounded-lg bg-skin-tertiary px-8 text-center md:mx-6 lg:mx-8 lg:w-[48rem] xl:mx-36 2xl:mx-4"
+				>
+					<div class="lg:max-w-lg">
+						<p
+							class="font-means-web text-3xl leading-tight text-skin-primary sm:text-4xl"
+						>
+							Discover now the book that will change your life for only
+							<strong>4,99€</strong>
+						</p>
+						<Link
+							href="/pricing"
+							class="subscribe-button mt-6"
+						>
+							Subscribe Now
+						</Link>
+					</div>
+				</div>
+			</section>
+
+			<div class="container mb-16 mt-3 lg:mb-20">
+				<div class="mx-4">
+					<SubscribeFaqs :faqs="faqs" />
+					<section class="mx-auto mt-5 max-w-3xl text-center">
+						<h3 class="section-title !leading-[1.175]">
+							Ready to read?<br />
+							Start your membership now
+						</h3>
+						<Link
+							href="/pricing"
+							class="subscribe-button mt-6"
+						>
+							Subscribe Now
+						</Link>
+					</section>
+				</div>
+			</div>
+		</main>
+
+		<Footer />
+	</div>
 </template>
 
 <style scoped>

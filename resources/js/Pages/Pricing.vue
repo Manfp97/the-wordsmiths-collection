@@ -36,9 +36,9 @@ const premiumFeatures = commonFeatures.concat([
 		description="Looking for more information about plans and pricing for The Wordsmith's Collection? Find all the information you need about the Basic and Premium plans."
 	/>
 
-	<div class="min-h-screen">
-		<Nav />
+	<Nav />
 
+	<div class="page-container">
 		<main class="container">
 			<div class="mx-auto pb-8 pt-12 lg:px-6 lg:pb-16">
 				<section class="mx-auto mb-8 text-center lg:mb-12">

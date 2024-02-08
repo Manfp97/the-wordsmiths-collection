@@ -16,14 +16,14 @@ defineProps({
 <template>
 	<AppHead />
 
-	<div class="min-h-screen bg-skin-primary">
-		<Nav
-			:nav-class="'lg:px-12'"
-			:should-wrap-in-container="false"
-		/>
+	<Nav
+		nav-class="lg:px-12"
+		:should-wrap-in-container="false"
+	/>
 
+	<div class="page-container">
 		<div
-			class="hero relative h-[25vh] min-h-[15rem] w-full bg-cover bg-center pb-3 text-skin-primary"
+			class="hero relative h-[25vh] min-h-[10rem] w-full bg-cover bg-center pb-3 text-skin-primary md:min-h-[14rem]"
 		>
 			<div
 				id="hero-content"
