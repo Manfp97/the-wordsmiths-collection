@@ -29,7 +29,7 @@ const $searchInput = ref(null);
 
 <template>
 	<nav
-		class="fixed top-0 z-50 w-full bg-skin-tertiary text-white"
+		class="fixed top-0 z-40 w-full bg-skin-tertiary text-white"
 		:class="{ [navClass]: !!navClass }"
 	>
 		<div
