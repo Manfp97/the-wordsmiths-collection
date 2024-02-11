@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Web\BookController;
+use App\Http\Controllers\Web\CategoryController;
+use App\Http\Controllers\Web\AuthorController;
 use Illuminate\Support\Facades\Route;
 
 /*
