@@ -29,7 +29,7 @@ const $searchInput = ref(null);
 
 <template>
 	<nav
-		class="fixed top-0 z-40 w-full bg-skin-tertiary text-white"
+		class="fixed top-0 z-40 w-full bg-skin-tertiary text-skin-white"
 		:class="{ [navClass]: !!navClass }"
 	>
 		<div
@@ -192,7 +192,7 @@ const $searchInput = ref(null);
 					<li>
 						<Link
 							href="#"
-							class="active-link block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-transparent md:hover:underline"
+							class="active-link block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-skin-transparent md:hover:underline"
 							aria-current="page"
 						>
 							Home
@@ -201,7 +201,7 @@ const $searchInput = ref(null);
 					<li>
 						<Link
 							href="#"
-							class="block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-transparent md:hover:underline"
+							class="block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-skin-transparent md:hover:underline"
 						>
 							Categories
 						</Link>
@@ -209,7 +209,7 @@ const $searchInput = ref(null);
 					<li>
 						<Link
 							href="#"
-							class="block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-transparent md:hover:underline"
+							class="block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-skin-transparent md:hover:underline"
 						>
 							Authors
 						</Link>
@@ -224,6 +224,6 @@ const $searchInput = ref(null);
 
 <style scoped>
 .active-link {
-	@apply bg-skin-secondary md:bg-transparent md:underline md:decoration-skin-secondary md:decoration-4;
+	@apply bg-skin-secondary md:bg-skin-transparent md:underline md:decoration-skin-secondary md:decoration-4;
 }
 </style>

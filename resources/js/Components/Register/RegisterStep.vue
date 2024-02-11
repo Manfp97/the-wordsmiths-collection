@@ -62,6 +62,6 @@ defineProps({
 
 <style scoped>
 .common {
-	@apply flex h-5 w-5 items-center justify-center rounded-full text-xs font-semibold text-white;
+	@apply flex h-5 w-5 items-center justify-center rounded-full text-xs font-semibold text-skin-white;
 }
 </style>

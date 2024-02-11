@@ -34,6 +34,8 @@ export default {
 				"danger-light": withOpacity("--color-danger-light"),
 				card: withOpacity("--color-card"),
 				border: withOpacity("--color-border"),
+				transparent: "transparent",
+				white: "white",
 			},
 		},
 		fontFamily: {

@@ -30,7 +30,7 @@ defineProps({
 					<Logo size="md" />
 				</div>
 
-				<div class="w-80 rounded-lg bg-white bg-opacity-30 p-8 lg:w-2/3">
+				<div class="w-80 rounded-lg bg-skin-white bg-opacity-30 p-8 lg:w-2/3">
 					<h2 class="mb-2 text-2xl font-bold">Your selected plan</h2>
 					<h3 class="text-xl">{{ subscriptionPlan.name }}</h3>
 					<ul

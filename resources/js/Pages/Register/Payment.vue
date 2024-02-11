@@ -146,7 +146,7 @@ const stringPrice = `${subscriptionPlan.currency}${subscriptionPlan.price}`;
 			</div>
 
 			<div
-				class="flex items-center justify-between rounded-lg bg-white bg-opacity-60 px-4 py-3"
+				class="flex items-center justify-between rounded-lg bg-skin-white bg-opacity-60 px-4 py-3"
 			>
 				<div>
 					<p class="font-bold">

@@ -18,12 +18,12 @@ defineProps({
 	<li class="flex items-center space-x-3">
 		<IconCheck
 			v-if="isCheck"
-			class="h-5 w-5 shrink-0 text-green-500"
+			class="h-5 w-5 shrink-0 text-skin-success"
 			fill="currentColor"
 		/>
 		<IconX
 			v-else
-			class="h-5 w-5 shrink-0 text-red-500"
+			class="h-5 w-5 shrink-0 text-skin-danger"
 			stroke="currentColor"
 			fill="currentColor"
 		/>
