@@ -84,8 +84,8 @@ const submitForm = () => {
 			/>
 
 			<FloatingLabelSelectSearch
-				:id="'book-author'"
 				v-model:value="form.authors_id"
+				input-id="book-author"
 				label-text="Author"
 				:options="authors"
 				:error-messages="
@@ -98,8 +98,8 @@ const submitForm = () => {
 				"
 			/>
 			<FloatingLabelSelectSearch
-				:id="'book-category'"
 				v-model:value="form.categories_id"
+				input-id="book-category"
 				label-text="Category"
 				:options="categories"
 				:error-messages="

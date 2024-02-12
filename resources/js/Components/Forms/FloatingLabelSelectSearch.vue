@@ -3,7 +3,7 @@ import { ref, computed, onMounted, onUnmounted, watch } from "vue";
 import IconSearch from "@icons/search.svg?component";
 
 const props = defineProps({
-	id: {
+	inputId: {
 		type: String,
 		required: true,
 	},
@@ -63,7 +63,7 @@ watch(
 
 const deselectAllCheckboxes = () => {
 	props.options.forEach((option) => {
-		const checkboxId = `${props.id}-${option.id}`;
+		const checkboxId = `${props.inputId}-${option.id}`;
 		const $checkbox = document.getElementById(checkboxId);
 
 		if ($checkbox && $checkbox.checked) {
@@ -121,19 +121,19 @@ const handleCheckboxChange = (event) => {
 <template>
 	<div class="relative">
 		<div
-			:id="`${id}-dropdown-search-button`"
+			:id="`${inputId}-dropdown-search-button`"
 			ref="$dropdownSearchButton"
-			:data-dropdown-toggle="`${id}-dropdown-search`"
+			:data-dropdown-toggle="`${inputId}-dropdown-search`"
 			data-dropdown-placement="bottom"
-			class="z-0 flex min-h-[3.25rem] w-full cursor-pointer flex-col rounded-lg border border-skin-border bg-skin-primary-offset px-2.5"
+			class="z-0 flex min-h-[3.25rem] w-full cursor-pointer flex-col rounded-lg border border-skin-border bg-skin-white px-4"
 			:class="{
 				'border-skin-secondary outline-none ring-2 ring-skin-secondary':
 					isDropdownVisible,
 			}"
 		>
 			<label
-				:for="id"
-				class="absolute cursor-pointer select-none text-sm text-skin-text-muted"
+				:for="inputId"
+				class="absolute cursor-pointer select-none text-sm text-skin-text"
 				:class="{
 					'top-4': !areAnyItemsSelected,
 					'top-3': areAnyItemsSelected,
@@ -143,7 +143,7 @@ const handleCheckboxChange = (event) => {
 			</label>
 
 			<ul
-				:id="`${id}-selected-values`"
+				:id="`${inputId}-selected-values`"
 				ref="$selectedItemsList"
 				class="mb-3 mt-10 flex flex-wrap gap-2"
 			></ul>
@@ -172,13 +172,13 @@ const handleCheckboxChange = (event) => {
 		</div>
 
 		<div
-			:id="`${id}-dropdown-search`"
+			:id="`${inputId}-dropdown-search`"
 			ref="$dropdownSearch"
 			class="absolute z-10 mt-2 hidden w-full rounded-lg border border-skin-border bg-skin-primary-offset shadow"
 		>
 			<div class="p-3">
 				<label
-					:for="`${id}-input-group-search`"
+					:for="`${inputId}-input-group-search`"
 					class="sr-only"
 				>
 					Search
@@ -188,13 +188,13 @@ const handleCheckboxChange = (event) => {
 						class="rtl:inset-r-0 pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
 					>
 						<IconSearch
-							class="h-4 w-4 text-gray-500"
+							class="h-4 w-4 text-skin-text-muted"
 							aria-hidden="true"
 							fill="none"
 						/>
 					</div>
 					<input
-						:id="`${id}-input-group-search`"
+						:id="`${inputId}-input-group-search`"
 						v-model="searchText"
 						type="text"
 						class="block w-full rounded-lg border border-skin-border bg-skin-primary-offset p-2 ps-10 text-sm focus:border-skin-secondary focus:ring-skin-secondary"
@@ -204,7 +204,7 @@ const handleCheckboxChange = (event) => {
 			</div>
 			<ul
 				class="max-h-48 overflow-y-auto px-3 pb-3 text-sm"
-				:aria-label="`${id}-dropdown-search-button`"
+				:aria-label="`${inputId}-dropdown-search-button`"
 			>
 				<li
 					v-for="(option, index) in filteredOptions"
@@ -214,14 +214,14 @@ const handleCheckboxChange = (event) => {
 						class="flex cursor-pointer items-center rounded ps-2 hover:bg-skin-primary"
 					>
 						<input
-							:id="`${id}-${option.id}`"
+							:id="`${inputId}-${option.id}`"
 							type="checkbox"
 							:value="option.id"
 							class="h-4 w-4 cursor-pointer rounded border-skin-border bg-gray-100 text-skin-secondary focus:ring-2 focus:ring-skin-secondary"
 							@change="handleCheckboxChange"
 						/>
 						<label
-							:for="`${id}-${option.id}`"
+							:for="`${inputId}-${option.id}`"
 							class="ms-2 w-full cursor-pointer select-none rounded py-2 text-sm font-medium"
 						>
 							{{ option.name }}
