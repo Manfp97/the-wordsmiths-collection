@@ -1,7 +1,7 @@
 <script setup>
 import Logo from "@/Components/Common/Logo.vue";
 import PricingCardListItem from "@/Components/Pricing/PricingCardListItem.vue";
-import RegisterStep from "@/Components/Register/RegisterStep.vue";
+import Stepper from "@/Components/Common/Stepper.vue";
 import Footer from "@/Components/Common/Footer.vue";
 
 defineProps({
@@ -75,7 +75,7 @@ defineProps({
 								/>
 							</div>
 							<ul class="relative flex w-full justify-between">
-								<RegisterStep
+								<Stepper
 									step-number="1"
 									step-name="Account"
 									step-name-position="-right-5"
@@ -84,7 +84,7 @@ defineProps({
 									:is-selected="currentStep == 1"
 								/>
 
-								<RegisterStep
+								<Stepper
 									step-number="2"
 									step-name="Verification"
 									step-name-position="-right-8"
@@ -93,7 +93,7 @@ defineProps({
 									:is-selected="currentStep === 2"
 								/>
 
-								<RegisterStep
+								<Stepper
 									step-number="3"
 									step-name="Payment"
 									step-name-position="-right-6"
