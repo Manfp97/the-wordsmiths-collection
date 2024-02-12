@@ -6,7 +6,7 @@ import IconX from "@icons/x.svg?component";
 import IconCloudUpload from "@icons/cloud-upload.svg?component";
 
 const props = defineProps({
-	id: {
+	inputId: {
 		type: String,
 		required: true,
 	},
@@ -64,7 +64,7 @@ const { extensions, handleClick, handleDrop, openFileInput, removeFile } =
 	<div>
 		<div>
 			<label
-				:for="id"
+				:for="inputId"
 				class="mb-2 inline-flex w-full justify-between font-medium"
 				@click.prevent
 			>
@@ -84,7 +84,7 @@ const { extensions, handleClick, handleDrop, openFileInput, removeFile } =
 				</button>
 			</label>
 			<div
-				class="flex min-h-[9.25rem] w-full flex-col items-center justify-center rounded-lg border-2 border-skin-border bg-skin-primary-offset"
+				class="flex min-h-[9.25rem] w-full flex-col items-center justify-center rounded-lg border-2 border-skin-border bg-skin-white"
 				:class="{
 					'border-dashed hover:bg-skin-secondary-offset': !selectedFile,
 					'': selectedFile,
@@ -118,7 +118,7 @@ const { extensions, handleClick, handleDrop, openFileInput, removeFile } =
 						{{ maxAspectRatioStr }}
 					</p>
 					<input
-						:id="id"
+						:id="inputId"
 						ref="$fileInput"
 						type="file"
 						class="hidden"
@@ -148,14 +148,14 @@ const { extensions, handleClick, handleDrop, openFileInput, removeFile } =
 
 		<p
 			v-if="successMessage"
-			:id="`${id}-success`"
+			:id="`${inputId}-success`"
 			class="mt-2 px-2 text-xs text-skin-success"
 		>
 			{{ successMessage }}
 		</p>
 		<p
 			v-if="errorMessage"
-			:id="`${id}-error`"
+			:id="`${inputId}-error`"
 			class="mt-2 px-2 text-xs text-skin-danger"
 		>
 			{{ errorMessage }}

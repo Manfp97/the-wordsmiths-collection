@@ -65,21 +65,21 @@ const submitForm = () => {
 
 <template>
 	<form @submit.prevent="submitForm">
-		<div class="mb-4 grid gap-4 sm:grid-cols-2">
+		<div class="grid gap-4 sm:grid-cols-2">
 			<FloatingLabel
-				:id="'book-title'"
 				v-model:value="form.title"
+				input-id="book-title"
 				label-text="Title"
-				:type="'text'"
-				:autocomplete="'off'"
+				input-type="text"
+				input-autocomplete="off"
 				:error-message="form.errors.title"
 			/>
 			<FloatingLabel
-				:id="'book-isbn'"
 				v-model:value="form.isbn"
+				input-id="book-isbn"
 				label-text="ISBN"
-				:type="'text'"
-				:autocomplete="'off'"
+				input-type="text"
+				input-autocomplete="off"
 				:error-message="form.errors.isbn"
 			/>
 
@@ -113,37 +113,37 @@ const submitForm = () => {
 			/>
 
 			<DragAndDrop
-				:id="'book-file-input'"
 				v-model:value="form.book_file"
+				input-id="book-file-input"
 				label-text="Book file"
 				:max-file-bytes="4200000"
 				:supported-mime-types="['application/pdf']"
 				:error-message="form.errors.book_file"
-				class="mb-4"
 			/>
 			<DragAndDrop
-				:id="'cover-image-input'"
 				v-model:value="form.cover_image"
+				input-id="cover-image-input"
 				label-text="Cover image"
 				:max-file-bytes="2100000"
-				:min-aspect-ratio-str="'1/2'"
-				:max-aspect-ratio-str="'2/3'"
+				min-aspect-ratio-str="1/2"
+				max-aspect-ratio-str="2/3"
 				:supported-mime-types="['image/webp', 'image/png', 'image/jpeg']"
 				:error-message="form.errors.cover_image"
-				class="mb-4"
 			/>
 		</div>
 
-		<button
-			type="submit"
-			class="hover:bg-primary-800 focus:ring-primary-300 inline-flex items-center rounded-lg !bg-skin-secondary px-5 py-2.5 text-center text-sm font-bold focus:outline-none"
-			:disabled="form.processing"
-		>
-			<IconPlus
-				class="-ml-1 mr-1 h-6 w-6"
-				fill="currentColor"
-			/>
-			Add new book
-		</button>
+		<div class="mt-6 flex justify-center">
+			<button
+				type="submit"
+				class="hover:bg-primary-800 focus:ring-primary-300 inline-flex items-center rounded-lg !bg-skin-secondary px-5 py-2.5 text-center text-sm font-bold focus:outline-none"
+				:disabled="form.processing"
+			>
+				<IconPlus
+					class="-ml-1 mr-1 h-6 w-6"
+					fill="currentColor"
+				/>
+				Add new book
+			</button>
+		</div>
 	</form>
 </template>
