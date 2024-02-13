@@ -25,7 +25,7 @@ const subscriptionPlan = {
 	/>
 
 	<RegisterLayout
-		:header-title="'Registration completed'"
+		header-title="Registration completed"
 		:subscription-plan="subscriptionPlan"
 		:current-step="4"
 	>

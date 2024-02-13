@@ -27,7 +27,7 @@ const subscriptionPlan = {
 	/>
 
 	<RegisterLayout
-		:header-title="'Verify your email address'"
+		header-title="Verify your email address"
 		:subscription-plan="subscriptionPlan"
 		:current-step="2"
 	>
