@@ -79,7 +79,7 @@ defineProps({
 					/>
 				</ul>
 				<Link
-					href="/register/account"
+					href="/register"
 					class="button py-2.5 font-bold capitalize"
 				>
 					Get started

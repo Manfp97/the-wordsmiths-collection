@@ -79,7 +79,7 @@ defineProps({
 									step-number="1"
 									step-name="Account"
 									step-name-position="-right-5"
-									:url="currentStep >= 1 ? '/register/account' : null"
+									:url="currentStep >= 1 ? '/register' : null"
 									:is-done="currentStep >= 1"
 									:is-selected="currentStep == 1"
 								/>
