@@ -1,8 +1,10 @@
 <script setup>
+// https://preline.co/docs/input.html#floating-label
+
 const value = defineModel("value"); // eslint-disable-line
 
 defineProps({
-	id: {
+	inputId: {
 		type: String,
 		required: true,
 	},
@@ -10,13 +12,29 @@ defineProps({
 		type: String,
 		required: true,
 	},
-	type: {
+	inputType: {
 		type: String,
 		required: true,
 	},
-	autocomplete: {
+	inputAutocomplete: {
 		type: String,
-		required: true,
+		required: false,
+		default: "on",
+	},
+	inputMode: {
+		type: String,
+		required: false,
+		default: "text",
+	},
+	inputPlaceholder: {
+		type: String,
+		required: false,
+		default: "",
+	},
+	inputMaxLength: {
+		type: String,
+		required: false,
+		default: null,
 	},
 	successMessage: {
 		type: String,
@@ -35,23 +53,25 @@ defineProps({
 	<div>
 		<div class="relative">
 			<input
-				:id="id"
+				:id="inputId"
 				v-model="value"
-				:type="type"
-				class="peer block w-full appearance-none rounded-lg border border-skin-border bg-skin-primary-offset px-2.5 pb-2.5 pt-5 text-sm text-skin-text focus:border-skin-secondary focus:outline-none focus:ring-2 focus:ring-skin-secondary"
+				:type="inputType"
+				:autocomplete="inputAutocomplete"
+				:inputmode="inputMode"
+				class="peer block w-full rounded-lg border-skin-border p-4 text-sm placeholder:text-transparent autofill:pb-2 autofill:pt-6 focus:border-skin-secondary focus:pb-2 focus:pt-6 focus:ring-2 focus:ring-skin-secondary disabled:pointer-events-none disabled:opacity-50 [&:not(:placeholder-shown)]:pb-2 [&:not(:placeholder-shown)]:pt-6"
 				:class="{
 					'border-skin-success': successMessage,
 					'border-skin-danger': errorMessage,
 				}"
-				placeholder=" "
-				:autocomplete="autocomplete"
-				:aria-errormessage="errorMessage ? `${id}-error` : null"
+				:placeholder="inputPlaceholder"
+				:maxlength="inputMaxLength"
+				:aria-errormessage="errorMessage ? `${inputId}-error` : null"
 				:aria-invalid="errorMessage ? true : false"
-				:aria-describedby="`${id}-annotation`"
+				:aria-describedby="`${inputId}-annotation`"
 			/>
 			<label
-				:for="id"
-				class="input-filled cursor-text text-skin-text-muted peer-placeholder-shown:top-4 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:top-5 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-skin-text rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4"
+				:for="inputId"
+				class="pointer-events-none absolute start-0 top-0 h-full truncate border border-transparent p-4 text-sm transition duration-100 ease-in-out peer-focus:-translate-y-1.5 peer-focus:text-xs peer-focus:text-skin-text-muted peer-disabled:pointer-events-none peer-disabled:opacity-50 peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-skin-text-muted"
 			>
 				{{ labelText }}
 			</label>
@@ -74,13 +94,3 @@ defineProps({
 		</p>
 	</div>
 </template>
-
-<style scoped>
-.input-filled {
-	@apply absolute start-2.5 top-5 z-10 origin-[0] -translate-y-4 scale-75 transform text-sm duration-300;
-}
-
-input:-webkit-autofill ~ label {
-	@apply input-filled;
-}
-</style>
