@@ -2,11 +2,10 @@
 import { ref, onMounted } from "vue";
 import { initFlowbite } from "flowbite";
 import Logo from "@/Components/Common/Logo.vue";
-import ModalAdd from "@/Components/Modals/ModalAdd.vue";
+import ModalAddContent from "@/Components/Modals/ModalAddContent.vue";
 import IconSearch from "@icons/search.svg?component";
 import IconMenu from "@icons/menu.svg?component";
 
-// initialize components based on data attribute selectors
 onMounted(() => {
 	initFlowbite();
 });
@@ -127,9 +126,8 @@ const $searchInput = ref(null);
 						<li>
 							<!-- TODO only admin -->
 							<button
-								id="modal-add-button"
-								data-modal-target="modal-add"
-								data-modal-toggle="modal-add"
+								data-modal-target="modal-add-content"
+								data-modal-toggle="modal-add-content"
 								class="block w-full px-4 py-2 text-left text-sm text-skin-text hover:bg-skin-secondary-offset"
 								type="button"
 							>
@@ -219,7 +217,7 @@ const $searchInput = ref(null);
 		</div>
 	</nav>
 
-	<ModalAdd />
+	<ModalAddContent />
 </template>
 
 <style scoped>
