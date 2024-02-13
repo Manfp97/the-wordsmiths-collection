@@ -30,6 +30,7 @@
 		"@inertiajs/vue3": "^1.0.14",
 		"@vitejs/plugin-vue": "^4.6.2",
 		"flowbite": "^2.2.1",
+		"pdfjs-dist": "^4.0.379",
 		"swiper": "^11.0.5",
 		"uuid": "^9.0.1",
 		"vue": "^3.3.0"
