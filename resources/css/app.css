@@ -39,7 +39,7 @@
 
 	/* Track */
 	::-webkit-scrollbar-track {
-		@apply bg-skin-primary;
+		@apply bg-skin-transparent;
 	}
 
 	/* Handle */
