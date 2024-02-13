@@ -84,7 +84,7 @@ const faqs = [
 				</h3>
 				<Link
 					href="/pricing"
-					class="subscribe-button my-3"
+					class="button button-subscribe my-3"
 				>
 					Subscribe Now
 				</Link>
@@ -121,7 +121,7 @@ const faqs = [
 						</p>
 						<Link
 							href="/pricing"
-							class="subscribe-button mt-6"
+							class="button button-subscribe mt-6"
 						>
 							Subscribe Now
 						</Link>
@@ -139,7 +139,7 @@ const faqs = [
 						</h3>
 						<Link
 							href="/pricing"
-							class="subscribe-button mt-6"
+							class="button button-subscribe mt-6"
 						>
 							Subscribe Now
 						</Link>
@@ -168,7 +168,7 @@ const faqs = [
 	background-image: url(/images/subscribe/bottom-image.webp);
 }
 
-.subscribe-button {
-	@apply inline-block h-12 whitespace-nowrap rounded bg-skin-secondary p-2 px-8 text-lg font-semibold text-skin-text hover:bg-skin-secondary-offset lg:px-12 lg:text-xl;
+.button-subscribe {
+	@apply px-8 text-lg font-bold lg:px-12 lg:text-xl;
 }
 </style>

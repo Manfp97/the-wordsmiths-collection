@@ -117,3 +117,9 @@ defineProps({
 		<Footer />
 	</div>
 </template>
+
+<style scoped>
+:deep(.button) {
+	@apply my-2 w-full py-3 font-bold;
+}
+</style>

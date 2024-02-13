@@ -66,7 +66,7 @@ const submitForm = () => {
 
 		<button
 			type="submit"
-			class="my-2 flex w-full items-center justify-center rounded-md bg-skin-secondary px-5 py-3 font-bold hover:bg-skin-secondary-offset"
+			class="button"
 			:disabled="form.processing"
 		>
 			Continue

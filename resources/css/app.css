@@ -72,4 +72,8 @@
 	.section-title {
 		@apply font-means-web text-4xl font-bold md:text-5xl;
 	}
+
+	.button {
+		@apply inline-flex cursor-pointer items-center justify-center whitespace-nowrap rounded bg-skin-secondary px-3 py-2 text-skin-text shadow hover:bg-skin-secondary-offset hover:shadow-md;
+	}
 }

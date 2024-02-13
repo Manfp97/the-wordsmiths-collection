@@ -135,7 +135,7 @@ const submitForm = () => {
 		<div class="mt-6 flex justify-center">
 			<button
 				type="submit"
-				class="hover:bg-primary-800 focus:ring-primary-300 inline-flex items-center rounded-lg !bg-skin-secondary px-5 py-2.5 text-center text-sm font-bold focus:outline-none"
+				class="button text-sm font-bold"
 				:disabled="form.processing"
 			>
 				<IconPlus

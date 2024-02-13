@@ -80,7 +80,7 @@ defineProps({
 				</ul>
 				<Link
 					href="/register/account"
-					class="rounded bg-skin-secondary px-5 py-2.5 text-center font-bold capitalize hover:bg-skin-secondary-offset"
+					class="button py-2.5 font-bold capitalize"
 				>
 					Get started
 				</Link>
