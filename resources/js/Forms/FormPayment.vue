@@ -72,7 +72,7 @@ const submitForm = () => {
 				input-mode="numeric"
 				:input-max-length="24"
 				:error-message="form.errors.cardNumber"
-				@input="cardNumber = cardNumber.slice(0, 24)"
+				@input="form.cardNumber = $event.target.value.slice(0, 24)"
 			/>
 		</div>
 
@@ -93,9 +93,7 @@ const submitForm = () => {
 						placeholder="MM"
 						class="w-9 rounded-lg border-none p-0 focus:ring-0"
 						autocomplete="cc-exp-month"
-						@input="
-							(event) => (form.expiryMonth = event.target.value.slice(0, 2))
-						"
+						@input="form.expiryMonth = $event.target.value.slice(0, 2)"
 					/>
 					/
 					<input
@@ -108,9 +106,7 @@ const submitForm = () => {
 						placeholder="YY"
 						class="w-9 rounded-lg border-none p-0 focus:ring-0"
 						autocomplete="cc-exp-year"
-						@input="
-							(event) => (form.expiryYear = event.target.value.slice(0, 2))
-						"
+						@input="form.expiryYear = $event.target.value.slice(0, 2)"
 					/>
 				</div>
 
@@ -133,7 +129,7 @@ const submitForm = () => {
 					input-mode="numeric"
 					:input-max-length="3"
 					:error-message="form.errors.cvv"
-					@input="(event) => (form.cvv = event.target.value.slice(0, 3))"
+					@input="form.cvv = $event.target.value.slice(0, 3)"
 				/>
 
 				<img

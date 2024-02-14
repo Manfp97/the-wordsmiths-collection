@@ -43,20 +43,18 @@ const focusNextInput = (el, prevId, nextId) => {
 					autocomplete="off"
 					class="block h-12 w-12 rounded-lg border border-skin-border bg-skin-primary-offset py-3 text-center text-2xl font-bold uppercase focus:border-skin-secondary focus:ring-skin-secondary lg:h-16 lg:w-16 lg:text-4xl"
 					@keyup="
-						(event) => {
-							if (event.key !== 'Tab') {
-								pin[inputNumber - 1] = event.target.value.trim() || null;
+						if ($event.key !== 'Tab') {
+							pin[inputNumber - 1] = $event.target.value.trim() || null;
 
-								focusNextInput(
-									event.target,
-									`code-${inputNumber == 1 ? 1 : inputNumber - 1}`,
-									`code-${
-										inputNumber == inputsNumber.length
-											? inputNumber
-											: inputNumber + 1
-									}`
-								);
-							}
+							focusNextInput(
+								$event.target,
+								`code-${inputNumber == 1 ? 1 : inputNumber - 1}`,
+								`code-${
+									inputNumber == inputsNumber.length
+										? inputNumber
+										: inputNumber + 1
+								}`
+							);
 						}
 					"
 				/>

@@ -38,7 +38,7 @@ const autoGrow = (element) => {
 			v-model="value"
 			:class="`${textareaClass} peer block w-full resize-none overflow-hidden rounded-lg border-skin-border p-4 text-sm placeholder:text-skin-transparent autofill:pb-2 autofill:pt-6 focus:border-skin-secondary focus:pb-2 focus:pt-6 focus:ring-2 focus:ring-skin-secondary disabled:pointer-events-none disabled:opacity-50 [&:not(:placeholder-shown)]:pb-2 [&:not(:placeholder-shown)]:pt-6`"
 			:placeholder="placeholderText"
-			@input="(event) => autoGrow(event.target)"
+			@input="autoGrow($event.target)"
 		></textarea>
 		<label
 			:for="textareaId"
