@@ -46,15 +46,16 @@ class BookController extends Controller
 	/*
 	public function show(int $id)
 	{
-		return Inertia::render(
-			'Book/Index',
-			[
-				'book' => Book::findOrFail($id)
-				'image' => $book->getFirstMedia('book-covers')->toHtml()
-			]
-		);
+	public function read(string $slug)
+	{
+		$book = Book::where('slug', $slug)->firstOrFail();
+		$bookFile = $book->getFirstMedia(MediaCollectionEnum::BOOKS);
+		return Inertia::render('Book/Read', [
+			'pdfUrl' => $bookFile->getFullUrl(),
+			'bookTitle' => $book->title,
+			'bookSlug' => $book->slug,
+		]);
 	}
-	*/
 
 	public function store(BookStoreRequest $request)
 	{
