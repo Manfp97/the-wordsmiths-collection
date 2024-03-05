@@ -1,5 +1,6 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
+import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 
 const form = useForm({
 	email: null,
