@@ -64,10 +64,14 @@ defineProps({
 				:required="inputRequired"
 				:autocomplete="inputAutocomplete"
 				:inputmode="inputMode"
-				class="peer block w-full rounded-lg border-skin-border p-4 text-sm placeholder:text-transparent autofill:pb-2 autofill:pt-6 focus:border-skin-secondary focus:pb-2 focus:pt-6 focus:ring-2 focus:ring-skin-secondary disabled:pointer-events-none disabled:opacity-50 [&:not(:placeholder-shown)]:pb-2 [&:not(:placeholder-shown)]:pt-6"
+				class="peer block w-full rounded-lg p-4 text-sm placeholder:text-transparent autofill:pb-2 autofill:pt-6 focus:pb-2 focus:pt-6 focus:ring-2 disabled:pointer-events-none disabled:opacity-50 [&:not(:placeholder-shown)]:pb-2 [&:not(:placeholder-shown)]:pt-6"
 				:class="{
-					'border-skin-success': successMessage,
-					'border-skin-danger': errorMessage,
+					'border-skin-success text-skin-success focus:border-skin-success focus:ring-skin-success':
+						successMessage,
+					'border-skin-danger text-skin-danger focus:border-skin-danger focus:ring-skin-danger':
+						errorMessage,
+					'border-skin-border focus:border-skin-secondary focus:ring-skin-secondary':
+						!successMessage && !errorMessage,
 				}"
 				:placeholder="inputPlaceholder"
 				:maxlength="inputMaxLength"
