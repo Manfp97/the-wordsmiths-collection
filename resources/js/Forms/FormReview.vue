@@ -42,6 +42,7 @@ const submitForm = () => {
 			<button
 				type="submit"
 				class="button px-5 py-2.5 text-sm font-bold"
+				:class="{ 'opacity-25': form.processing }"
 				:disabled="form.processing"
 			>
 				Submit

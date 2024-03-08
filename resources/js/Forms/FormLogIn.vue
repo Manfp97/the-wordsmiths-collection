@@ -72,6 +72,7 @@ const submitForm = () => {
 		<button
 			type="submit"
 			class="w-full rounded-lg !bg-skin-secondary px-5 py-2.5 text-center text-sm font-bold hover:!bg-skin-secondary-offset focus:outline-none focus:ring-4 focus:ring-skin-border"
+			:class="{ 'opacity-25': form.processing }"
 			:disabled="form.processing"
 		>
 			Log in to your account

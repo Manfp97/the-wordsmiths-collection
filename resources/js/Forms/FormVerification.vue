@@ -33,6 +33,7 @@ const submitForm = () => {
 		<button
 			type="submit"
 			class="button"
+			:class="{ 'opacity-25': form.processing }"
 			:disabled="form.processing"
 		>
 			Verify account

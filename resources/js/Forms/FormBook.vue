@@ -136,6 +136,7 @@ const submitForm = () => {
 			<button
 				type="submit"
 				class="button text-sm font-bold"
+				:class="{ 'opacity-25': form.processing }"
 				:disabled="form.processing"
 			>
 				<IconPlus
