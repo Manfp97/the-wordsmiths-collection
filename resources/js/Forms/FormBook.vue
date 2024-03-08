@@ -132,7 +132,7 @@ const submitForm = () => {
 			/>
 		</div>
 
-		<div class="mt-6 flex justify-center">
+		<div class="mt-6 flex justify-end">
 			<button
 				type="submit"
 				class="button text-sm font-bold"
