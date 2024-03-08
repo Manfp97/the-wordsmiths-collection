@@ -56,7 +56,7 @@ defineProps({
 
 <template>
 	<div>
-		<div class="relative">
+		<div class="relative rounded-lg shadow-sm">
 			<input
 				:id="inputId"
 				v-model="value"
