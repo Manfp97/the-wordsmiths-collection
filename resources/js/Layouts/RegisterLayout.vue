@@ -79,7 +79,6 @@ defineProps({
 									step-number="1"
 									step-name="Account"
 									step-name-position="-right-5"
-									:url="currentStep >= 1 ? '/register' : null"
 									:is-done="currentStep >= 1"
 									:is-selected="currentStep == 1"
 								/>
@@ -88,7 +87,6 @@ defineProps({
 									step-number="2"
 									step-name="Verification"
 									step-name-position="-right-8"
-									:url="currentStep >= 2 ? '/register/verification' : null"
 									:is-done="currentStep >= 2"
 									:is-selected="currentStep === 2"
 								/>
@@ -97,7 +95,6 @@ defineProps({
 									step-number="3"
 									step-name="Payment"
 									step-name-position="-right-6"
-									:url="currentStep >= 3 ? '/register/payment' : null"
 									:is-done="currentStep >= 3"
 									:is-selected="currentStep === 3"
 								/>

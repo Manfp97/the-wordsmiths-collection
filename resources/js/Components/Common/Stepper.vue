@@ -43,10 +43,14 @@ defineProps({
 		>
 			{{ stepNumber }}
 		</Link>
-
 		<span
-			v-if="!url"
-			class="common select-none bg-skin-border"
+			v-else
+			class="common"
+			:class="{
+				'ring ring-skin-card ring-offset-2': isSelected,
+				'bg-skin-card': isDone,
+				'select-none bg-skin-border': !isSelected && !isDone,
+			}"
 		>
 			{{ stepNumber }}
 		</span>
