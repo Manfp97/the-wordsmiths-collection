@@ -25,7 +25,8 @@ defineProps({
 
 const value = defineModel("value"); // eslint-disable-line
 
-const autoGrow = (element) => {
+const autoGrow = (e) => {
+	const element = e.target;
 	element.style.height = "5px";
 	element.style.height = element.scrollHeight + "px";
 };
@@ -36,9 +37,10 @@ const autoGrow = (element) => {
 		<textarea
 			:id="textareaId"
 			v-model="value"
-			:class="`${textareaClass} peer block w-full resize-none overflow-hidden rounded-lg border-skin-border p-4 text-sm placeholder:text-skin-transparent autofill:pb-2 autofill:pt-6 focus:border-skin-secondary focus:pb-2 focus:pt-6 focus:ring-2 focus:ring-skin-secondary disabled:pointer-events-none disabled:opacity-50 [&:not(:placeholder-shown)]:pb-2 [&:not(:placeholder-shown)]:pt-6`"
+			class="peer block w-full resize-none overflow-hidden rounded-lg border-skin-border p-4 text-sm placeholder:text-skin-transparent autofill:pb-2 autofill:pt-6 focus:border-skin-secondary focus:pb-2 focus:pt-6 focus:ring-2 focus:ring-skin-secondary disabled:pointer-events-none disabled:opacity-50 [&:not(:placeholder-shown)]:pb-2 [&:not(:placeholder-shown)]:pt-6"
+			:class="textareaClass"
 			:placeholder="placeholderText"
-			@input="autoGrow($event.target)"
+			@input="autoGrow"
 		></textarea>
 		<label
 			:for="textareaId"
