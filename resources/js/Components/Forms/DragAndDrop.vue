@@ -62,7 +62,7 @@ const { extensions, handleClick, handleDrop, openFileInput, removeFile } =
 
 <template>
 	<div>
-		<div>
+		<div class="rounded-lg shadow-sm">
 			<label
 				:for="inputId"
 				class="mb-2 inline-flex w-full justify-between font-medium"

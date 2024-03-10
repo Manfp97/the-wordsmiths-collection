@@ -32,7 +32,7 @@ const autoGrow = (element) => {
 </script>
 
 <template>
-	<div class="relative">
+	<div class="relative rounded-lg shadow-sm">
 		<textarea
 			:id="textareaId"
 			v-model="value"

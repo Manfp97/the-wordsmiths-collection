@@ -125,7 +125,7 @@ const handleCheckboxChange = (event) => {
 			ref="$dropdownSearchButton"
 			:data-dropdown-toggle="`${inputId}-dropdown-search`"
 			data-dropdown-placement="bottom"
-			class="z-0 flex min-h-[3.25rem] w-full cursor-pointer flex-col rounded-lg border border-skin-border bg-skin-white px-4"
+			class="z-0 flex min-h-[3.25rem] w-full cursor-pointer flex-col rounded-lg border border-skin-border bg-skin-white px-4 shadow-sm"
 			:class="{
 				'border-skin-secondary outline-none ring-2 ring-skin-secondary':
 					isDropdownVisible,

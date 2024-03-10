@@ -41,7 +41,7 @@ const focusNextInput = (el, prevId, nextId) => {
 					maxlength="1"
 					required
 					autocomplete="off"
-					class="block h-12 w-12 rounded-lg border border-skin-border bg-skin-primary-offset py-3 text-center text-2xl font-bold uppercase focus:border-skin-secondary focus:ring-skin-secondary lg:h-16 lg:w-16 lg:text-4xl"
+					class="block h-12 w-12 rounded-lg border border-skin-border bg-skin-primary-offset py-3 text-center text-2xl font-bold uppercase shadow-sm focus:border-skin-secondary focus:ring-skin-secondary lg:h-16 lg:w-16 lg:text-4xl"
 					@keyup="
 						if ($event.key !== 'Tab') {
 							pin[inputNumber - 1] = $event.target.value.trim() || null;
