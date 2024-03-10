@@ -45,11 +45,11 @@ defineProps({
 		</Link>
 		<span
 			v-else
-			class="common"
+			class="common select-none"
 			:class="{
 				'ring ring-skin-card ring-offset-2': isSelected,
 				'bg-skin-card': isDone,
-				'select-none bg-skin-border': !isSelected && !isDone,
+				'bg-skin-border': !isSelected && !isDone,
 			}"
 		>
 			{{ stepNumber }}
