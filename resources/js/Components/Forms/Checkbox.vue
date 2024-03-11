@@ -14,6 +14,11 @@ defineProps({
 		required: false,
 		default: "text-sm font-medium",
 	},
+	isRequired: {
+		type: Boolean,
+		required: false,
+		default: false,
+	},
 });
 
 const value = defineModel("value"); // eslint-disable-line
@@ -26,6 +31,7 @@ const value = defineModel("value"); // eslint-disable-line
 			v-model="value"
 			type="checkbox"
 			:class="`rounded border-skin-border bg-skin-primary-offset text-skin-secondary focus:ring-2 focus:ring-skin-secondary ${inputSize}`"
+			:required="isRequired"
 		/>
 		<label
 			:for="inputId"
