@@ -14,12 +14,17 @@ defineProps({
 		default: "Write a review",
 	},
 });
+
+const emit = defineEmits(["close"]);
+
+const emitClose = () => emit("close");
 </script>
 
 <template>
 	<ModalContainer
 		:modal-id="modalId"
 		:modal-title="modalTitle"
+		@close="emitClose"
 	>
 		<FormReview />
 	</ModalContainer>

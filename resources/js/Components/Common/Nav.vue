@@ -24,6 +24,7 @@ defineProps({
 });
 
 const $searchInput = ref(null);
+const addingContent = ref(false);
 </script>
 
 <template>
@@ -124,12 +125,10 @@ const $searchInput = ref(null);
 							</a>
 						</li>
 						<li>
-							<!-- TODO only admin -->
 							<button
-								data-modal-target="modal-add-content"
-								data-modal-toggle="modal-add-content"
 								class="block w-full px-4 py-2 text-left text-sm text-skin-text hover:bg-skin-secondary-offset"
 								type="button"
+								@click="addingContent = true"
 							>
 								Add content
 							</button>
@@ -217,7 +216,11 @@ const $searchInput = ref(null);
 		</div>
 	</nav>
 
-	<ModalAddContent />
+	<ModalAddContent
+		v-if="isAdmin"
+		:show="addingContent"
+		@close="addingContent = false"
+	/>
 </template>
 
 <style scoped>
