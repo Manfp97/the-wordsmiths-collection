@@ -46,7 +46,7 @@ const socials = [
 					/>
 				</a>
 			</div>
-			<p className="mt-5 font-bold">&copy; The Wordsmith's Collection 2024</p>
+			<p className="mt-5 font-bold">The Wordsmith's Collection &copy; 2024</p>
 			<p>No tracking or ads.</p>
 		</footer>
 	</div>
