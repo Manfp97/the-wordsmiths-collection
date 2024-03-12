@@ -33,7 +33,7 @@ const socials = [
 				<a
 					v-for="(social, index) in socials"
 					:key="index"
-					class="link-outline scale-150 invert hover:rotate-12"
+					class="link-outline scale-150 select-none invert hover:rotate-12"
 					target="_blank"
 					rel="noopener"
 					:title="social.title"
