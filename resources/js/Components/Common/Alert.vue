@@ -67,16 +67,20 @@ watch(receivedAlert, (newVal) => {
 					<div class="ms-3 text-sm font-normal">{{ alert.message }}</div>
 					<button
 						type="button"
-						class="-mx-1.5 -my-1.5 ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg p-1.5 text-skin-text-muted hover:rounded-lg hover:bg-skin-primary hover:text-skin-danger"
+						class="-mx-1.5 -my-1.5 ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg p-1.5 hover:rounded-lg hover:fill-skin-white"
+						:class="{
+							'hover:bg-skin-success': alert.type === 'success',
+							'hover:bg-skin-warning': alert.type === 'warning',
+							'hover:bg-skin-danger': alert.type === 'danger',
+						}"
 						:data-dismiss-target="`toast-${alert.type}-${index}`"
 						aria-label="Close"
 						@click="removeAlert(alert.id, (isImmediate = true))"
 					>
 						<span class="sr-only">Close</span>
 						<IconX
-							class="h-3 w-3"
+							class="h-6 w-6"
 							aria-hidden="true"
-							fill="none"
 						/>
 					</button>
 				</div>
