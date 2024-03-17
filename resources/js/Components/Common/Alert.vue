@@ -22,7 +22,7 @@ watch(receivedAlert, (newVal) => {
 		<Transition>
 			<div
 				v-if="alerts.length"
-				class="fixed bottom-0 right-0 z-50 mr-4 w-full max-w-xs max-sm:left-1/2 max-sm:-translate-x-1/2 max-sm:transform"
+				class="fixed bottom-0 right-0 z-[99] mr-4 w-full max-w-xs max-sm:left-1/2 max-sm:-translate-x-1/2 max-sm:transform"
 			>
 				<div
 					v-for="(alert, index) in alerts"
