@@ -136,7 +136,7 @@ const submitForm = () => {
 
 			<FloatingTextarea
 				v-model:value="form.description"
-				class="col-span-2"
+				class="sm:col-span-2"
 				textarea-id="book-description"
 				label-text="Description"
 				textarea-class="min-h-[7rem]"
