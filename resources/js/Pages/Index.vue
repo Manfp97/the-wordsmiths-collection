@@ -30,7 +30,7 @@ defineProps({
 				class="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 px-4 text-center"
 			>
 				<h1
-					class="font-means-web text-4xl font-bold !leading-[1.175] sm:text-5xl lg:text-6xl 2xl:text-7xl"
+					class="font-means-web text-4xl font-bold !leading-[1.175] sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl"
 				>
 					What are you going to read today?
 				</h1>
