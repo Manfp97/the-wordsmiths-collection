@@ -16,10 +16,7 @@ defineProps({
 <template>
 	<AppHead />
 
-	<Nav
-		nav-class="lg:px-12"
-		:should-wrap-in-container="false"
-	/>
+	<Nav />
 
 	<div class="page-container">
 		<div
