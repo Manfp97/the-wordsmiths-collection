@@ -14,5 +14,5 @@ export const extractKeyValuesByPattern = (
 		}
 	}
 
-	return array;
+	return array.length ? array : null;
 };
