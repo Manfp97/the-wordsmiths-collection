@@ -21,6 +21,11 @@ defineProps({
 		required: false,
 		default: "",
 	},
+	isRequired: {
+		type: Boolean,
+		required: false,
+		default: false,
+	},
 });
 
 const value = defineModel("value"); // eslint-disable-line
@@ -40,6 +45,7 @@ const autoGrow = (e) => {
 			class="peer block w-full resize-none overflow-hidden rounded-lg border-skin-border p-4 text-sm placeholder:text-skin-transparent autofill:pb-2 autofill:pt-6 focus:border-skin-secondary focus:pb-2 focus:pt-6 focus:ring-2 focus:ring-skin-secondary disabled:pointer-events-none disabled:opacity-50 [&:not(:placeholder-shown)]:pb-2 [&:not(:placeholder-shown)]:pt-6"
 			:class="textareaClass"
 			:placeholder="placeholderText"
+			:required="isRequired"
 			@input="autoGrow"
 		></textarea>
 		<label
