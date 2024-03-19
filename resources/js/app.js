@@ -2,6 +2,9 @@ import { createApp, h } from "vue";
 import { createInertiaApp, Link } from "@inertiajs/vue3";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import BaseLayout from "@/Layouts/BaseLayout.vue";
+import { register } from "swiper/element/bundle";
+
+register();
 
 createInertiaApp({
 	progress: {
