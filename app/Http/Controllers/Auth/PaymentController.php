@@ -27,7 +27,7 @@ class PaymentController extends Controller
 	public function store(PaymentStoreRequest $request): RedirectResponse
 	{
 		$validatedData = $request->validated();
-		$book = CreditCard::create([
+		CreditCard::create([
 			'user_id' => $request->user()->id,
 			'cardholder_name' => $validatedData['cardholder_name'],
 			'card_number' => $validatedData['card_number'],
