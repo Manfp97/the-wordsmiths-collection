@@ -26,6 +26,16 @@ defineProps({
 		required: false,
 		default: false,
 	},
+	successMessage: {
+		type: String,
+		required: false,
+		default: null,
+	},
+	errorMessage: {
+		type: String,
+		required: false,
+		default: null,
+	},
 });
 
 const value = defineModel("value"); // eslint-disable-line
@@ -54,5 +64,21 @@ const autoGrow = (e) => {
 		>
 			{{ labelText }}
 		</label>
+
+		<p
+			v-if="successMessage"
+			:id="`${id}-success`"
+			class="mt-2 text-xs text-skin-success"
+		>
+			{{ successMessage }}
+		</p>
+
+		<p
+			v-if="errorMessage"
+			:id="`${id}-error`"
+			class="mt-2 text-xs text-skin-danger"
+		>
+			{{ errorMessage }}
+		</p>
 	</div>
 </template>
