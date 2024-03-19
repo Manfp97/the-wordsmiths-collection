@@ -14,6 +14,8 @@ class CreateBooksTable extends Migration
 			$table->string('slug')->unique();
 			$table->string('title');
 			$table->string('description');
+			$table->unsignedSmallInteger('page_count');
+			$table->string('language');
 			$table->timestamps();
 		});
 	}

@@ -18,6 +18,8 @@ const form = useForm({
 	authors_id: [],
 	categories_id: [],
 	description: null,
+	language: null,
+	page_count: null,
 	book_file: null,
 	cover_image: null,
 });
@@ -112,6 +114,24 @@ const submitForm = () => {
 						(atIndex = 1)
 					)
 				"
+			/>
+
+			<FloatingLabel
+				v-model:value="form.language"
+				input-id="book-language"
+				label-text="Language"
+				input-type="text"
+				input-autocomplete="off"
+				input-max-length="50"
+				:error-message="form.errors.language"
+			/>
+			<FloatingLabel
+				v-model:value="form.page_count"
+				input-id="book-page-count"
+				label-text="Page count"
+				input-type="number"
+				input-autocomplete="off"
+				:error-message="form.errors.page_count"
 			/>
 
 			<FloatingTextarea
