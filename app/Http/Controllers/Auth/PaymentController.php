@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\PaymentRequest;
+use App\Http\Requests\Auth\PaymentStoreRequest;
 use App\Models\CreditCard;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
@@ -24,7 +24,7 @@ class PaymentController extends Controller
 	 *
 	 * @throws \Illuminate\Validation\ValidationException
 	 */
-	public function store(PaymentRequest $request): RedirectResponse
+	public function store(PaymentStoreRequest $request): RedirectResponse
 	{
 		$validatedData = $request->validated();
 		$book = CreditCard::create([
