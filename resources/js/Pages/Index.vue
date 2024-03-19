@@ -57,7 +57,7 @@ defineProps({
 			</IndexBooksRow>
 		</main>
 
-		<Footer class="border-t-4" />
+		<Footer />
 	</div>
 </template>
 
