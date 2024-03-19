@@ -15,7 +15,7 @@ class CreditCardSeeder extends Seeder
 	public function run()
 	{
 		CreditCard::create([
-			'user_id' => '1',
+			'user_id' => 1,
 			'cardholder_name' => 'Kathrin Valdimarsdttir',
 			'card_number' => '4469079440280428',
 			'expiration_month' => '12',
@@ -24,7 +24,7 @@ class CreditCardSeeder extends Seeder
 		]);
 
 		CreditCard::create([
-			'user_id' => '2',
+			'user_id' => 2,
 			'cardholder_name' => 'Quinzia Chiagoziem',
 			'card_number' => '4469088483233855',
 			'expiration_month' => '08',
