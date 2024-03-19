@@ -1,9 +1,9 @@
 <script setup>
 import AppHead from "@/Components/Common/AppHead.vue";
 import Nav from "@/Components/Common/Nav.vue";
+import BookCard from "@/Components/Book/BookCard.vue";
+import SwiperSection from "@/Components/Swiper/SwiperSection.vue";
 import Footer from "@/Components/Common/Footer.vue";
-import IndexBookCard from "@/Components/Index/IndexBookCard.vue";
-import IndexBooksRow from "@/Components/Index/IndexBooksRow.vue";
 
 defineProps({
 	categories: {
@@ -11,6 +11,29 @@ defineProps({
 		required: true,
 	},
 });
+
+const swiperBreakpoints = {
+	0: {
+		slidesPerView: 3,
+		spaceBetween: 8,
+	},
+	640: {
+		slidesPerView: 4,
+		spaceBetween: 8,
+	},
+	768: {
+		slidesPerView: 5,
+		spaceBetween: 8,
+	},
+	1024: {
+		slidesPerView: 6,
+		spaceBetween: 16,
+	},
+	1536: {
+		slidesPerView: 8,
+		spaceBetween: 16,
+	},
+};
 </script>
 
 <template>
@@ -37,21 +60,27 @@ defineProps({
 		<main
 			class="space-y-12 py-10 sm:space-y-10 lg:space-y-14 xl:py-12 2xl:py-16"
 		>
-			<IndexBooksRow
+			<SwiperSection
 				v-for="(category, indexCategory) in categories"
 				:key="indexCategory"
-				:section-title="category.name"
+				:breakpoints="swiperBreakpoints"
 			>
+				<template #header>
+					<h2
+						class="mb-4 px-4 text-xl font-bold md:mb-6 md:px-6 md:text-2xl lg:px-16 xl:text-3xl 2xl:text-4xl"
+					>
+						{{ category.name }}
+					</h2>
+				</template>
+				>
 				<swiper-slide
-					v-for="(book, indexBook) in category.books.concat(
-						category.books.concat(category.books.concat())
-					)"
+					v-for="(book, indexBook) in category.books"
 					:key="indexBook"
 					class="my-1 h-auto"
 				>
-					<IndexBookCard :book="book" />
+					<BookCard :book="book" />
 				</swiper-slide>
-			</IndexBooksRow>
+			</SwiperSection>
 		</main>
 
 		<Footer />
