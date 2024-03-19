@@ -40,6 +40,10 @@ Route::middleware('auth')->group(function () {
 
 	Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
+	Route::get('payment', [PaymentController::class, 'show'])->name('payment');
+	Route::post('payment', [PaymentController::class, 'store']);
+	
+	Route::inertia('confirmation', 'Auth/Confirmation')->name('confirmation');
 
 	Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
