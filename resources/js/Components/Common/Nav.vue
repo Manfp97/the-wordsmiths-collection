@@ -19,7 +19,7 @@ defineProps({
 	shouldWrapInContainer: {
 		type: Boolean,
 		required: false,
-		default: true,
+		default: false,
 	},
 });
 
@@ -29,7 +29,7 @@ const addingContent = ref(false);
 
 <template>
 	<nav
-		class="fixed top-0 z-40 w-full bg-skin-tertiary text-skin-white"
+		class="fixed top-0 z-40 w-full bg-skin-tertiary text-skin-white lg:px-12"
 		:class="{ [navClass]: !!navClass }"
 	>
 		<div
@@ -94,7 +94,8 @@ const addingContent = ref(false);
 					<input
 						id="search-navbar"
 						type="text"
-						class="block w-full rounded-lg border border-skin-border bg-gray-100 p-2 ps-10 text-sm text-skin-text focus:border-skin-secondary focus:ring-skin-secondary"
+						class="block w-full rounded-lg border border-skin-border p-2 ps-10 text-sm text-skin-text focus:border-skin-secondary focus:ring-skin-secondary"
+						autocomplete="off"
 						placeholder="Search..."
 					/>
 				</div>
@@ -179,7 +180,8 @@ const addingContent = ref(false);
 						id="search-navbar-hamburger"
 						ref="$searchInput"
 						type="text"
-						class="block w-full rounded-lg border border-skin-border bg-gray-100 p-2 ps-10 text-sm text-skin-text focus:border-skin-secondary focus:ring-skin-secondary"
+						class="block w-full rounded-lg border border-skin-border p-2 ps-10 text-sm text-skin-text focus:border-skin-secondary focus:ring-skin-secondary"
+						autocomplete="off"
 						placeholder="Search..."
 					/>
 				</div>
