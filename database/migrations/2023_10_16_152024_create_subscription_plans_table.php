@@ -12,6 +12,7 @@ class CreateSubscriptionPlansTable extends Migration
 			$table->id();
 			$table->string('name');
 			$table->decimal('price', 10, 2);
+			$table->string('currency');
 			$table->integer('duration_days');
 			$table->text('description')->nullable();
 			$table->timestamps();
