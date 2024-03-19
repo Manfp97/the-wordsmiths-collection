@@ -26,6 +26,7 @@ class BookStoreRequest extends BaseFormRequest
 		return [
 			'isbn' 						=> ['required', 'unique:books', new ISBN],
 			'title' 					=> 'required|string',
+			'description'			=> 'required|string|max:15000',
 			'book_file' 			=> 'required|mimetypes:application/pdf|max:4096',
 			'cover_image' 		=> 'required|mimetypes:image/jpeg,image/png,image/webp|max:2048',
 			'authors_id' 			=> 'required|array|min:1',
@@ -43,8 +44,9 @@ class BookStoreRequest extends BaseFormRequest
 	public function filters()
 	{
 		return [
-			'isbn' => 'trim|escape',
-			'title' => 'trim|capitalize'
+			'isbn' 				=> 'trim|escape',
+			'title' 			=> 'trim|capitalize|strip_tags',
+			'description' => 'trim|strip_tags'
 		];
 	}
 }

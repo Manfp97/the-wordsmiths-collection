@@ -6,6 +6,7 @@ import axios from "axios";
 import DragAndDrop from "@/Components/Forms/DragAndDrop.vue";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import FloatingLabelSelectSearch from "@/Components/Forms/FloatingLabelSelectSearch.vue";
+import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
 import IconPlus from "@icons/plus.svg?component";
 
 const authors = ref([]);
@@ -16,6 +17,7 @@ const form = useForm({
 	isbn: null,
 	authors_id: [],
 	categories_id: [],
+	description: null,
 	book_file: null,
 	cover_image: null,
 });
@@ -110,6 +112,15 @@ const submitForm = () => {
 						(atIndex = 1)
 					)
 				"
+			/>
+
+			<FloatingTextarea
+				v-model:value="form.description"
+				class="col-span-2"
+				textarea-id="book-description"
+				label-text="Description"
+				textarea-class="min-h-[7rem]"
+				:error-message="form.errors.description"
 			/>
 
 			<DragAndDrop
