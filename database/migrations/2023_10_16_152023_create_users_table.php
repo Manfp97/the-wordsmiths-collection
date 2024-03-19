@@ -14,14 +14,11 @@ class CreateUsersTable extends Migration
 		Schema::create('users', function (Blueprint $table) {
 			$table->id();
 			$table->foreignId('role_id')->constrained();
-			$table->foreignId('subscription_id')->constrained();
 			$table->string('username')->unique();
 			$table->string('email')->unique();
 			$table->timestamp('email_verified_at')->nullable();
 			$table->string('password');
 			$table->rememberToken();
-			$table->string('credit_card_number')->comment("only for demonstrational purposes. Sensible data shouldn't be stored in the DB");
-			$table->integer('status');
 			$table->timestamps();
 		});
 	}
