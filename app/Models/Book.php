@@ -20,6 +20,7 @@ class Book extends Model implements HasMedia
 	protected $fillable = [
 		'title',
 		'isbn',
+		'description',
 	];
 
 	/**
