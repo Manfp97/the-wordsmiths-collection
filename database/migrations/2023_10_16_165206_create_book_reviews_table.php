@@ -12,7 +12,7 @@ class CreateBookReviewsTable extends Migration
 			$table->id();
 			$table->foreignId('book_id')->constrained();
 			$table->foreignId('user_id')->constrained();
-			$table->unsignedTinyInteger('rating')->unsigned()->comment('From 0 to 10');
+			$table->unsignedTinyInteger('rating')->comment('From 1 to 5');
 			$table->text('review_text')->nullable();
 			$table->timestamps();
 		});
