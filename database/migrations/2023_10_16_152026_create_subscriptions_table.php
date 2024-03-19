@@ -10,10 +10,11 @@ class CreateSubscriptionsTable extends Migration
 	{
 		Schema::create('subscriptions', function (Blueprint $table) {
 			$table->id();
+			$table->foreignId('user_id')->constrained();
 			$table->foreignId('subscription_plan_id')->constrained();
-			$table->timestamp('start_date');
-			$table->timestamp('end_date');
-			$table->string('status');
+			$table->dateTime('start_date');
+			$table->dateTime('end_date')->nullable();
+			$table->enum('status', ['active', 'canceled', 'expired'])->default('active');
 			$table->timestamps();
 		});
 	}
