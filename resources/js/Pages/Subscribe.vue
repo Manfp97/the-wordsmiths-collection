@@ -8,7 +8,7 @@ import Footer from "@/Components/Common/Footer.vue";
 const features = [
 	{
 		title: "Extensive curated library",
-		body: "<p>Access to a vast and curated library of the most important literary works in history. <a href='/library' class='underline hover:bg-skin-secondary-offset bg-skin-secondary'>Browse the library now</a>.</p>",
+		body: "<p>Access to a vast and curated library of the most important literary works in history. <a href='/' class='underline hover:bg-skin-secondary-offset bg-skin-secondary'>Browse the library now</a>.</p>",
 		imagePath: "/images/subscribe/feature-4.webp",
 	},
 	{
