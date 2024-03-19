@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia, MustVerifyEmail
 {
-	use HasApiTokens, HasFactory, Notifiable;
+	use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia;
 
 	/**
 	 * The attributes that are mass assignable.
@@ -18,7 +20,8 @@ class User extends Authenticatable
 	 * @var array<int, string>
 	 */
 	protected $fillable = [
-		'name',
+		'role_id',
+		'username',
 		'email',
 		'password',
 	];
@@ -42,4 +45,23 @@ class User extends Authenticatable
 		'email_verified_at' => 'datetime',
 		'password' => 'hashed',
 	];
+
+	public function subscription()
+	{
+		return $this->hasOne(Subscription::class);
+	}
+
+	public function creditCard()
+	{
+		return $this->hasOne(CreditCard::class);
+	}
+
+	public function registerMediaCollections(): void
+	{
+		$this
+			->addMediaCollection('avatars')
+			->acceptsMimeTypes(['image/png', 'image/jpeg', 'image/webp'])
+			->singleFile()
+			->withResponsiveImages();
+	}
 }
