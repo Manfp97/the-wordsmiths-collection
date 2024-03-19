@@ -4,6 +4,7 @@ import Nav from "@/Components/Common/Nav.vue";
 import SectionDeleteUser from "./Partials/SectionDeleteUser.vue";
 import SectionUpdatePassword from "./Partials/SectionUpdatePassword.vue";
 import SectionUpdateProfileInformation from "./Partials/SectionUpdateProfileInformation.vue";
+import SectionCreditCardDetails from "./Partials/SectionCreditCardDetails.vue";
 import Footer from "@/Components/Common/Footer.vue";
 
 defineProps({
@@ -16,6 +17,10 @@ defineProps({
 		type: String,
 		required: false,
 		default: null,
+	},
+	creditCard: {
+		type: Object,
+		required: true,
 	},
 });
 </script>
@@ -44,6 +49,9 @@ defineProps({
 						<SectionUpdatePassword />
 					</div>
 
+					<div class="section-container">
+						<SectionCreditCardDetails :credit-card="creditCard" />
+					</div>
 					<div class="section-container">
 						<SectionDeleteUser />
 					</div>
