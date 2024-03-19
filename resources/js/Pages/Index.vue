@@ -37,7 +37,9 @@ defineProps({
 			</div>
 		</div>
 
-		<div class="space-y-12 py-10 sm:space-y-10 lg:space-y-14 lg:py-16">
+		<main
+			class="space-y-12 py-10 sm:space-y-10 lg:space-y-14 xl:py-12 2xl:py-16"
+		>
 			<IndexBooksRow
 				v-for="(category, indexCategory) in categories"
 				:key="indexCategory"
@@ -53,7 +55,7 @@ defineProps({
 					<IndexBookCard :book="book" />
 				</swiper-slide>
 			</IndexBooksRow>
-		</div>
+		</main>
 
 		<Footer class="border-t-4" />
 	</div>
