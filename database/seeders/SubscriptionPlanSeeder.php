@@ -15,15 +15,15 @@ class SubscriptionPlanSeeder extends Seeder
 	public function run()
 	{
 		SubscriptionPlan::create([
-			'name' => 'Basic',
-			'price' => 4.99,
+			'name' => 'Premium',
+			'price' => 6.99,
 			'duration_days' => 30,
 		]);
 
 		SubscriptionPlan::create([
-			'name' => 'Premium',
-			'price' => '6.99',
-			'duration_days' => '30',
+			'name' => 'Basic',
+			'price' => 4.99,
+			'duration_days' => 30,
 		]);
 	}
 }
