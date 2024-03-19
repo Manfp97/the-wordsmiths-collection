@@ -38,10 +38,10 @@ const subscriptionPlan = {
 			<p>Start reading now!</p>
 		</div>
 		<Link
-			href="/login"
+			href="/"
 			class="button"
 		>
-			Log in to your account
+			Go to Home
 		</Link>
 	</RegisterLayout>
 </template>

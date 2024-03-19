@@ -8,7 +8,7 @@ const form = useForm({
 });
 
 const submitForm = () => {
-	form.post("/register/verification", {
+	form.post("/verify-email", {
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();

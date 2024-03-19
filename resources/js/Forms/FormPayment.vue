@@ -3,29 +3,18 @@ import { useForm } from "@inertiajs/vue3";
 import IconRightArrow from "@icons/right-arrow.svg?component";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 
-defineProps({
-	subscriptionPlanName: {
-		type: String,
-		required: false,
-		default: null,
-	},
-	subscriptionPrice: {
-		type: String,
-		required: false,
-		default: null,
-	},
-});
-
 const form = useForm({
-	cardholderName: null,
-	cvv: null,
-	cardNumber: null,
-	expiryMonth: null,
-	expiryYear: null,
+	cardholder_name: null,
+	card_number: null,
+	expiration_month: null,
+	expiration_year: null,
+	cvc: null,
 });
 
 const submitForm = () => {
-	form.post("/register/payment", {
+	form.expiration_year = `20${form.expiration_year}`;
+
+	form.post("/payment", {
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();
@@ -40,12 +29,12 @@ const submitForm = () => {
 		@submit.prevent="submitForm"
 	>
 		<FloatingLabel
-			v-model:value="form.cardholderName"
+			v-model:value="form.cardholder_name"
 			input-id="cardholder-name"
 			label-text="Name on card"
 			input-type="text"
 			input-autocomplete="cc-name"
-			:error-message="form.errors.cardholderName"
+			:error-message="form.errors.cardholder_name"
 		/>
 
 		<div>
@@ -64,15 +53,15 @@ const submitForm = () => {
 			</span>
 
 			<FloatingLabel
-				v-model:value="form.cardNumber"
+				v-model:value="form.card_number"
 				input-id="card-number"
 				label-text="Card number"
 				input-type="number"
 				input-autocomplete="cc-number"
 				input-mode="numeric"
 				:input-max-length="24"
-				:error-message="form.errors.cardNumber"
-				@input="form.cardNumber = $event.target.value.slice(0, 24)"
+				:error-message="form.errors.card_number"
+				@input="form.card_number = $event.target.value.slice(0, 24)"
 			/>
 		</div>
 
@@ -86,19 +75,19 @@ const submitForm = () => {
 				<div class="flex w-full justify-start space-x-2">
 					<input
 						id="expiryMonth"
-						v-model="form.expiryMonth"
+						v-model="form.expiration_month"
 						type="number"
 						inputmode="numeric"
 						max="12"
 						placeholder="MM"
 						class="w-9 rounded-lg border-none p-0 focus:ring-0"
 						autocomplete="cc-exp-month"
-						@input="form.expiryMonth = $event.target.value.slice(0, 2)"
+						@input="form.expiration_month = $event.target.value.slice(0, 2)"
 					/>
 					/
 					<input
 						id="expiryYear"
-						v-model="form.expiryYear"
+						v-model="form.expiration_year"
 						type="number"
 						inputmode="numeric"
 						min="24"
@@ -106,12 +95,12 @@ const submitForm = () => {
 						placeholder="YY"
 						class="w-9 rounded-lg border-none p-0 focus:ring-0"
 						autocomplete="cc-exp-year"
-						@input="form.expiryYear = $event.target.value.slice(0, 2)"
+						@input="form.expiration_year = $event.target.value.slice(0, 2)"
 					/>
 				</div>
 
 				<p
-					v-if="form.errors.expiryMonth || form.errors.expiryYear"
+					v-if="form.errors.expiration_month || form.errors.expiration_year"
 					class="mt-2 text-sm text-skin-danger"
 				>
 					The expiry date is invalid
@@ -120,16 +109,16 @@ const submitForm = () => {
 
 			<div class="flex flex-row items-center space-x-2 sm:w-3/5">
 				<FloatingLabel
-					v-model:value="form.cvv"
+					v-model:value="form.cvc"
 					class="w-16"
-					input-id="cvv"
-					label-text="CVV"
+					input-id="cvc"
+					label-text="CVC"
 					input-type="text"
 					input-autocomplete="cc-csc"
 					input-mode="numeric"
 					:input-max-length="3"
-					:error-message="form.errors.cvv"
-					@input="form.cvv = $event.target.value.slice(0, 3)"
+					:error-message="form.errors.cvc"
+					@input="form.cvc = $event.target.value.slice(0, 3)"
 				/>
 
 				<img
@@ -143,32 +132,7 @@ const submitForm = () => {
 			</div>
 		</div>
 
-		<div
-			class="flex items-center justify-between rounded-lg bg-skin-white bg-opacity-60 px-4 py-3"
-		>
-			<div>
-				<p class="font-bold">
-					{{ subscriptionPrice }}<span class="text-xs">/month</span>
-				</p>
-				<p class="text-skin-text-muted">{{ subscriptionPlanName }}</p>
-			</div>
-
-			<Link
-				class="font-bold text-skin-link"
-				href="/pricing"
-			>
-				Change
-			</Link>
-		</div>
-
-		<p class="mx-auto max-w-xl text-sm text-skin-text-muted">
-			By clicking the "Start paid membership" button below, you agree to our
-			Terms of Use and that you are over 18 and acknowledge the Privacy
-			Statement. The Wordsmith's Collection will automatically continue your
-			membership and charge the membership fee (currently
-			{{ subscriptionPrice }}/month) to your payment method until you cancel.
-			You may cancel at any time to avoid future charges.
-		</p>
+		<slot name="subscriptionPlan" />
 
 		<button
 			type="submit"
@@ -176,7 +140,7 @@ const submitForm = () => {
 			:class="{ 'opacity-25': form.processing }"
 			:disabled="form.processing"
 		>
-			Verify account
+			Pay
 			<IconRightArrow
 				class="ml-4 h-4 w-4"
 				fill="none"

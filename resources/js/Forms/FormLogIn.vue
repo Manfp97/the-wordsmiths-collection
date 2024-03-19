@@ -1,14 +1,25 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
+import Checkbox from "@/Components/Forms/Checkbox.vue";
+
+defineProps({
+	canResetPassword: {
+		type: Boolean,
+		required: false,
+		default: true,
+	},
+});
 
 const form = useForm({
 	email: null,
 	password: null,
+	remember: false,
 });
 
 const submitForm = () => {
 	form.post("/login", {
+		onFinish: () => form.reset("password"),
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();
@@ -22,16 +33,13 @@ const submitForm = () => {
 		class="space-y-6"
 		@submit.prevent="submitForm"
 	>
-		<h5 class="mb-8 text-center font-means-web text-3xl font-bold sm:mb-12">
-			Log in to your account
-		</h5>
-
 		<FloatingLabel
 			v-model:value="form.email"
 			input-id="email"
-			label-text="Your email or username"
+			label-text="Your email"
 			input-type="email"
 			input-autocomplete="email"
+			input-required
 			:error-message="form.errors.email"
 		/>
 		<FloatingLabel
@@ -39,34 +47,26 @@ const submitForm = () => {
 			input-id="password"
 			label-text="Your password"
 			input-type="password"
-			input-autocomplete="password"
+			input-autocomplete="current-password"
+			input-required
 			:error-message="form.errors.password"
 		/>
 
 		<div class="flex items-start">
-			<div class="flex items-start">
-				<div class="flex h-5 items-center">
-					<input
-						id="remember"
-						type="checkbox"
-						value=""
-						class="focus:ring-3 h-4 w-4 cursor-pointer rounded border border-skin-border focus:ring-skin-secondary"
-						required
-					/>
-				</div>
-				<label
-					for="remember"
-					class="ms-2 text-sm font-medium"
-				>
-					Remember me
-				</label>
-			</div>
-			<a
-				href="#"
-				class="ms-auto hidden text-sm text-skin-link hover:underline"
+			<Checkbox
+				v-model:value="form.remember"
+				input-id="remember"
+			>
+				Remember me
+			</Checkbox>
+
+			<Link
+				v-if="canResetPassword"
+				href="/forgot-password"
+				class="ms-auto text-sm text-skin-link underline hover:text-skin-text"
 			>
 				Forgot password?
-			</a>
+			</Link>
 		</div>
 
 		<button
@@ -82,10 +82,9 @@ const submitForm = () => {
 			Not registered?
 			<Link
 				href="/pricing"
-				class="text-skin-link hover:underline"
+				class="text-skin-link underline hover:text-skin-text"
+				>Select a subscription plan</Link
 			>
-				Select a subscription plan
-			</Link>
 			to create your account
 		</div>
 	</form>

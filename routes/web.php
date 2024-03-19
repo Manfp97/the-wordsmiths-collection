@@ -25,9 +25,11 @@ Route::post('/author', [AuthorController::class, 'store']); // auth => admin
 
 Route::inertia('/subscribe', 'Subscribe');
 Route::inertia('/pricing', 'Pricing');
-Route::inertia('/login', 'LogIn');
 
-Route::inertia('/register', 'Register/Account');
-Route::inertia('/register/verification', 'Register/Verification');
-Route::inertia('/register/payment', 'Register/Payment');
-Route::inertia('/register/confirmation', 'Register/Confirmation');
+Route::middleware('auth')->group(function () {
+	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+	Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
