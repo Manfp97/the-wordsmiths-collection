@@ -8,11 +8,12 @@ const form = useForm({
 	username: null,
 	email: null,
 	password: null,
-	has_accepted_terms: false,
+	password_confirmation: null,
 });
 
 const submitForm = () => {
 	form.post("/register", {
+		onFinish: () => form.reset("password", "password_confirmation"),
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();
@@ -32,6 +33,7 @@ const submitForm = () => {
 			label-text="Your username"
 			input-type="text"
 			input-autocomplete="off"
+			input-required
 			:error-message="form.errors.username"
 		/>
 		<FloatingLabel
@@ -40,6 +42,7 @@ const submitForm = () => {
 			label-text="Your email"
 			input-type="email"
 			input-autocomplete="off"
+			input-required
 			:error-message="form.errors.email"
 		/>
 		<FloatingLabel
@@ -48,12 +51,22 @@ const submitForm = () => {
 			label-text="Your password"
 			input-type="password"
 			input-autocomplete="new-password"
+			input-required
 			:error-message="form.errors.password"
+		/>
+		<FloatingLabel
+			v-model:value="form.password_confirmation"
+			input-id="password_confirmation"
+			label-text="Confirm your password"
+			input-type="password"
+			input-autocomplete="new-password"
+			input-required
+			:error-message="form.errors.password_confirmation"
 		/>
 
 		<Checkbox
-			v-model:value="form.has_accepted_terms"
 			input-id="accept-terms"
+			is-required
 		>
 			I agree to the
 			<Link
@@ -67,6 +80,7 @@ const submitForm = () => {
 		<button
 			type="submit"
 			class="button"
+			:class="{ 'opacity-25': form.processing }"
 			:disabled="form.processing"
 		>
 			Continue

@@ -1,7 +1,7 @@
 <script setup>
 import AppHead from "@/Components/Common/AppHead.vue";
 import RegisterLayout from "@/Layouts/RegisterLayout.vue";
-import FormAccount from "@/Forms/FormAccount.vue";
+import FormRegister from "@/Forms/FormRegister.vue";
 
 const subscriptionPlan = {
 	name: "Basic",
@@ -29,6 +29,6 @@ const subscriptionPlan = {
 		:subscription-plan="subscriptionPlan"
 		:current-step="1"
 	>
-		<FormAccount />
+		<FormRegister />
 	</RegisterLayout>
 </template>
