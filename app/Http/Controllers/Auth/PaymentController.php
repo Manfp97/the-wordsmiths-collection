@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\PaymentStoreRequest;
 use App\Models\CreditCard;
+use App\Models\Subscription;
+use App\Models\SubscriptionPlan;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -34,6 +37,16 @@ class PaymentController extends Controller
 			'expiration_month' => $validatedData['expiration_month'],
 			'expiration_year' => $validatedData['expiration_year'],
 			'cvc' => $validatedData['cvc'],
+		]);
+
+		$subscriptionPlan = SubscriptionPlan::find(
+			$request->session()->get('selected_subscription_plan_id')
+		);
+		Subscription::create([
+			'user_id' => $request->user()->id,
+			'subscription_plan_id' => $subscriptionPlan->id,
+			'end_date' => Carbon::now()->addDays($subscriptionPlan->duration_days),
+			'status' => 'active'
 		]);
 
 		return redirect()->route("confirmation");
