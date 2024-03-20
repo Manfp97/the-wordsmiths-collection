@@ -18,6 +18,15 @@ class CreditCard extends Model
 		'cvc'
 	];
 
+	/**
+	 * The attributes that should be hidden for serialization.
+	 *
+	 * @var array<int, string>
+	 */
+	protected $hidden = [
+		'cvc',
+	];
+
 	public function user()
 	{
 		return $this->belongsTo(User::class);
