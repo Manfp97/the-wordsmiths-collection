@@ -4,6 +4,7 @@ import Nav from "@/Components/Common/Nav.vue";
 import SectionDeleteUser from "./Partials/SectionDeleteUser.vue";
 import SectionUpdatePassword from "./Partials/SectionUpdatePassword.vue";
 import SectionUpdateProfileInformation from "./Partials/SectionUpdateProfileInformation.vue";
+import SectionSubscriptionDetails from "./Partials/SectionSubscriptionDetails.vue";
 import SectionCreditCardDetails from "./Partials/SectionCreditCardDetails.vue";
 import Footer from "@/Components/Common/Footer.vue";
 
@@ -15,6 +16,16 @@ defineProps({
 	},
 	status: {
 		type: String,
+		required: false,
+		default: null,
+	},
+	subscription: {
+		type: Object,
+		required: false,
+		default: null,
+	},
+	otherSubscriptionPlan: {
+		type: Object,
 		required: false,
 		default: null,
 	},
@@ -48,6 +59,16 @@ defineProps({
 
 					<div class="section-container">
 						<SectionUpdatePassword />
+					</div>
+
+					<div
+						v-if="subscription"
+						class="section-container"
+					>
+						<SectionSubscriptionDetails
+							:subscription="subscription"
+							:other-subscription-plan="otherSubscriptionPlan"
+						/>
 					</div>
 
 					<div

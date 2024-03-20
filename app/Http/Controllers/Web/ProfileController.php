@@ -26,18 +26,27 @@ class ProfileController extends Controller
 			$user->creditCard->card_number = substr($user->creditCard->card_number, -4);
 		}
 
+		$subscriptionPlanId = $user->subscription->subscription_plan_id;
+		$subscriptionPlan = SubscriptionPlan::find($subscriptionPlanId);
+		
+		$otherSubscriptionPlanId = $subscriptionPlanId == 1 ? 2 : 1;
+		$otherSubscriptionPlan = SubscriptionPlan::find($otherSubscriptionPlanId);
+
 		return Inertia::render('Profile/Edit', [
 			'mustVerifyEmail' => $user instanceof MustVerifyEmail,
 			'status' => session('status'),
 			'creditCard' => $user->creditCard,
 			'subscription' => $user->subscription 
 				? [
-					'name' => SubscriptionPlan::find($user->subscription->subscription_plan_id)->name,
+					'name' => $subscriptionPlan->name,
+					'price' => $subscriptionPlan->price,
+					'currency' => $subscriptionPlan->currency,
 					'startDate' => $user->subscription->start_date,
 					'endDate' => $user->subscription->end_date,
 					'status' => $user->subscription->status
 				] 
-				: null
+				: null,
+			'otherSubscriptionPlan' => $otherSubscriptionPlan
 		]);
 	}
 
