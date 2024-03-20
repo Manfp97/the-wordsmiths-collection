@@ -16,14 +16,11 @@ class SubscriptionSeeder extends Seeder
 	 */
 	public function run()
 	{
-		$currentDate = Carbon::now();
-
 		$proSubscriptionPlan = SubscriptionPlan::find(1);
 		Subscription::create([
 			'user_id' => 1,
 			'subscription_plan_id' => 1,
-			'start_date' => $currentDate,
-			'end_date' => $currentDate->addDays($proSubscriptionPlan->duration_days),
+			'end_date' => Carbon::now()->addDays($proSubscriptionPlan->duration_days),
 			'status' => 'active'
 		]);
 
@@ -31,8 +28,7 @@ class SubscriptionSeeder extends Seeder
 		Subscription::create([
 			'user_id' => 2,
 			'subscription_plan_id' => 2,
-			'start_date' => $currentDate,
-			'end_date' => $currentDate->addDays($basicSubscriptionPlan->duration_days),
+			'end_date' => Carbon::now()->addDays($basicSubscriptionPlan->duration_days),
 			'status' => 'active'
 		]);
 	}
