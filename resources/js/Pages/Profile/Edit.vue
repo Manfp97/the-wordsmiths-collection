@@ -33,7 +33,7 @@ defineProps({
 	<div class="page-container">
 		<main class="container">
 			<header class="mx-auto pt-12 text-center">
-				<h2 class="section-title">Profile</h2>
+				<h2 class="section-title underline">Profile</h2>
 			</header>
 
 			<div class="mx-auto max-w-3xl py-12">
