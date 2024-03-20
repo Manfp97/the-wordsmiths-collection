@@ -3,6 +3,7 @@
 use App\Http\Controllers\Web\BookController;
 use App\Http\Controllers\Web\CategoryController;
 use App\Http\Controllers\Web\AuthorController;
+use App\Http\Controllers\Web\PricingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +25,9 @@ Route::post('/category', [CategoryController::class, 'store']); // auth => admin
 Route::post('/author', [AuthorController::class, 'store']); // auth => admin
 
 Route::inertia('/subscribe', 'Subscribe');
-Route::inertia('/pricing', 'Pricing');
+
+Route::get('/pricing', [PricingController::class, 'show'])->name('pricing');
+Route::post('/pricing/{subscription_plan_id}', [PricingController::class, 'store']);
 
 Route::middleware('auth')->group(function () {
 	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
