@@ -20,7 +20,8 @@ defineProps({
 	},
 	creditCard: {
 		type: Object,
-		required: true,
+		required: false,
+		default: null,
 	},
 });
 </script>
@@ -49,7 +50,10 @@ defineProps({
 						<SectionUpdatePassword />
 					</div>
 
-					<div class="section-container">
+					<div
+						v-if="creditCard"
+						class="section-container"
+					>
 						<SectionCreditCardDetails :credit-card="creditCard" />
 					</div>
 					<div class="section-container">
