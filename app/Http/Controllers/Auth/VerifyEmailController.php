@@ -17,20 +17,16 @@ class VerifyEmailController extends Controller
 	{
 		if ($request->user()->hasVerifiedEmail()) {
 			if (!$request->user()->creditCard()) {
-				return redirect()->intended('/payment'); // route('payment')
+				return redirect()->route('payment');
 			} else {
-				return redirect()->intended('/');
+				return redirect()->intended(RouteServiceProvider::HOME);
 			}
-
-			// BEFORE: no if-else block, just the line below:
-			//return redirect()->intended(RouteServiceProvider::HOME.'?verified=1');
 		}
 
 		if ($request->user()->markEmailAsVerified()) {
 			event(new Verified($request->user()));
 		}
 
-		return redirect()->intended('/payment'); // route('payment')
-		//return redirect()->intended(RouteServiceProvider::HOME.'?verified=1');
+		return redirect()->route('payment'); 
 	}
 }
