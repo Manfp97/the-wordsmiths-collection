@@ -70,7 +70,7 @@ const submitForm = () => {
 		>
 			I agree to the
 			<Link
-				class="text-skin-link underline"
+				class="text-skin-link underline hover:text-skin-text"
 				href="/terms"
 			>
 				Terms and Conditions
@@ -96,7 +96,7 @@ const submitForm = () => {
 			Already have an account?
 			<Link
 				href="/login"
-				class="text-skin-link hover:underline"
+				class="text-skin-link underline hover:text-skin-text"
 			>
 				Login here
 			</Link>
