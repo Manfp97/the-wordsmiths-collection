@@ -78,12 +78,7 @@ defineProps({
 						:text="feature.text"
 					/>
 				</ul>
-				<Link
-					href="/register"
-					class="button py-2.5 font-bold capitalize"
-				>
-					Get started
-				</Link>
+				<slot name="button" />
 			</div>
 		</div>
 	</div>

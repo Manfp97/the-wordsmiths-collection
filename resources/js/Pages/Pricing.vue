@@ -1,4 +1,5 @@
 <script setup>
+import { usePage } from "@inertiajs/vue3";
 import AppHead from "@/Components/Common/AppHead.vue";
 import PricingCard from "@/Components/Pricing/PricingCard.vue";
 import Nav from "@/Components/Common/Nav.vue";
@@ -64,7 +65,19 @@ const premiumFeatures = commonFeatures.concat([
 							:features="basicFeatures"
 							:should-highlight="false"
 							class="w-full"
-						/>
+						>
+							<template #button>
+								<Link
+									href="/pricing/2"
+									method="post"
+									as="button"
+									class="button py-2.5 font-bold capitalize"
+								>
+									Get started
+								</Link>
+							</template>
+						</PricingCard>
+
 						<PricingCard
 							title="Premium"
 							description="Exclusive access to a curated collection of Premium books that offer unparalleled depth of knowledge and entertainment."
@@ -74,7 +87,25 @@ const premiumFeatures = commonFeatures.concat([
 							:features="premiumFeatures"
 							should-highlight
 							class="w-full"
-						/>
+						>
+							<template #button>
+								<Link
+									href="/pricing/1"
+									method="post"
+									as="button"
+									class="button py-2.5 font-bold capitalize"
+								>
+									Get started
+								</Link>
+							</template>
+						</PricingCard>
+					</div>
+
+					<div
+						v-if="usePage().props.errors.subscription_plan_id"
+						class="mx-auto mt-6 max-w-5xl text-center text-skin-danger"
+					>
+						{{ usePage().props.errors.subscription_plan_id }}
 					</div>
 				</section>
 			</div>
