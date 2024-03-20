@@ -26,7 +26,13 @@ class VerifyEmailController extends Controller
 		if ($request->user()->markEmailAsVerified()) {
 			event(new Verified($request->user()));
 		}
-
-		return redirect()->route('payment'); 
+		
+		return redirect()->route('payment')->with(
+			'alert',
+			[
+				'type' => 'success',
+				'message' => 'Email successfully verified',
+			]
+		); 
 	}
 }
