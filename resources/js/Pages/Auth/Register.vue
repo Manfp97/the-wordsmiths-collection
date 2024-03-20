@@ -3,19 +3,12 @@ import AppHead from "@/Components/Common/AppHead.vue";
 import RegisterLayout from "@/Layouts/RegisterLayout.vue";
 import FormRegister from "@/Forms/FormRegister.vue";
 
-const subscriptionPlan = {
-	name: "Basic",
-	features: [
-		{
-			isCheck: true,
-			text: "Write reviews",
-		},
-		{
-			isCheck: true,
-			text: "Read <span class='font-bold'>Basic</span> books",
-		},
-	],
-};
+defineProps({
+	selectedSubscriptionPlan: {
+		type: Object,
+		required: true,
+	},
+});
 </script>
 
 <template>
@@ -26,7 +19,7 @@ const subscriptionPlan = {
 
 	<RegisterLayout
 		header-title="Account details"
-		:subscription-plan="subscriptionPlan"
+		:subscription-plan="selectedSubscriptionPlan"
 		:current-step="1"
 	>
 		<FormRegister />

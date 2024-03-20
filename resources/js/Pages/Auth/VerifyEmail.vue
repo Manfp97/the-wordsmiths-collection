@@ -10,23 +10,11 @@ const props = defineProps({
 		required: false,
 		default: null,
 	},
+	selectedSubscriptionPlan: {
+		type: Object,
+		required: true,
+	},
 });
-
-const subscriptionPlan = {
-	name: "Basic",
-	price: 4.99,
-	currency: "€",
-	features: [
-		{
-			isCheck: true,
-			text: "Write reviews",
-		},
-		{
-			isCheck: true,
-			text: "Read <span class='font-bold'>Basic</span> books",
-		},
-	],
-};
 
 const form = useForm({});
 
@@ -47,7 +35,7 @@ const verificationLinkSent = computed(
 
 	<RegisterLayout
 		header-title="Verify your email address"
-		:subscription-plan="subscriptionPlan"
+		:subscription-plan="selectedSubscriptionPlan"
 		:current-step="2"
 	>
 		<p>

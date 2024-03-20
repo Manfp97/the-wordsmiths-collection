@@ -3,19 +3,12 @@ import AppHead from "@/Components/Common/AppHead.vue";
 import RegisterLayout from "@/Layouts/RegisterLayout.vue";
 import IconCheckCircleFilled from "@icons/check-circle-filled.svg?component";
 
-const subscriptionPlan = {
-	name: "Basic",
-	features: [
-		{
-			isCheck: true,
-			text: "Write reviews",
-		},
-		{
-			isCheck: true,
-			text: "Read <span class='font-bold'>Basic</span> books",
-		},
-	],
-};
+defineProps({
+	selectedSubscriptionPlan: {
+		type: Object,
+		required: true,
+	},
+});
 </script>
 
 <template>
@@ -26,7 +19,8 @@ const subscriptionPlan = {
 
 	<RegisterLayout
 		header-title="Registration completed"
-		:subscription-plan="subscriptionPlan"
+		:subscription-plan="selectedSubscriptionPlan"
+		:should-show-change-plan="false"
 		:current-step="4"
 	>
 		<div class="mb-6 w-full text-center">

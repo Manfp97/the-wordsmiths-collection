@@ -1,6 +1,6 @@
 <script setup>
+import BaseLayout from "./BaseLayout.vue";
 import Logo from "@/Components/Common/Logo.vue";
-import PricingCardListItem from "@/Components/Pricing/PricingCardListItem.vue";
 import Stepper from "@/Components/Common/Stepper.vue";
 import Footer from "@/Components/Common/Footer.vue";
 
@@ -13,6 +13,11 @@ defineProps({
 		type: Object,
 		required: true,
 	},
+	shouldShowChangePlan: {
+		type: Boolean,
+		required: false,
+		default: true,
+	},
 	currentStep: {
 		type: Number,
 		required: true,
@@ -21,7 +26,7 @@ defineProps({
 </script>
 
 <template>
-	<div class="flex min-h-screen flex-col">
+	<BaseLayout class="flex min-h-screen flex-col">
 		<div class="flex flex-wrap lg:flex-1">
 			<section
 				class="flex w-full flex-col items-center bg-skin-secondary-offset py-12 lg:w-1/3"
@@ -32,20 +37,16 @@ defineProps({
 
 				<div class="w-80 rounded-lg bg-skin-white bg-opacity-30 p-8 lg:w-2/3">
 					<h2 class="mb-2 text-2xl font-bold">Your selected plan</h2>
-					<h3 class="text-xl">{{ subscriptionPlan.name }}</h3>
-					<ul
-						role="list"
-						class="mb-7 mt-4 space-y-3 text-left"
-					>
-						<PricingCardListItem
-							v-for="(feature, index) in subscriptionPlan.features"
-							:key="index"
-							:is-check="feature.isCheck"
-							:text="feature.text"
-						/>
-					</ul>
+					<div class="mb-7 mt-4 flex justify-between text-xl">
+						<span>{{ subscriptionPlan.name }}</span>
+						<span
+							>{{ subscriptionPlan.price }}
+							{{ subscriptionPlan.currency }}</span
+						>
+					</div>
 
 					<Link
+						v-if="shouldShowChangePlan"
 						href="/pricing"
 						class="mx-auto block w-full rounded border border-skin-secondary px-5 py-2.5 text-center font-bold hover:bg-skin-secondary-offset"
 					>
@@ -112,7 +113,7 @@ defineProps({
 		</div>
 
 		<Footer />
-	</div>
+	</BaseLayout>
 </template>
 
 <style scoped>

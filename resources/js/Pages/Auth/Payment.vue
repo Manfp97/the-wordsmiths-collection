@@ -3,21 +3,12 @@ import RegisterLayout from "@/Layouts/RegisterLayout.vue";
 import AppHead from "@/Components/Common/AppHead.vue";
 import FormPayment from "@/Forms/FormPayment.vue";
 
-const subscriptionPlan = {
-	name: "Basic",
-	price: 4.99,
-	currency: "€",
-	features: [
-		{
-			isCheck: true,
-			text: "Write reviews",
-		},
-		{
-			isCheck: true,
-			text: "Read <span class='font-bold'>Basic</span> books",
-		},
-	],
-};
+defineProps({
+	selectedSubscriptionPlan: {
+		type: Object,
+		required: true,
+	},
+});
 </script>
 
 <template>
@@ -28,7 +19,7 @@ const subscriptionPlan = {
 
 	<RegisterLayout
 		header-title="Secure payment info"
-		:subscription-plan="subscriptionPlan"
+		:subscription-plan="selectedSubscriptionPlan"
 		:current-step="3"
 	>
 		<FormPayment>
@@ -38,9 +29,13 @@ const subscriptionPlan = {
 				>
 					<div>
 						<p class="font-bold">
-							{{ subscriptionPrice }}<span class="text-xs">/month</span>
+							{{ selectedSubscriptionPlan.price }}
+							{{ selectedSubscriptionPlan.currency }}
+							<span class="text-xs">/month</span>
 						</p>
-						<p class="text-skin-text-muted">{{ subscriptionPlanName }}</p>
+						<p class="text-skin-text-muted">
+							{{ selectedSubscriptionPlan.name }}
+						</p>
 					</div>
 
 					<Link
@@ -56,8 +51,10 @@ const subscriptionPlan = {
 					Terms of Use and that you are over 18 and acknowledge the Privacy
 					Statement. The Wordsmith's Collection will automatically continue your
 					membership and charge the membership fee (currently
-					{{ subscriptionPrice }}/month) to your payment method until you
-					cancel. You may cancel at any time to avoid future charges.
+					{{ selectedSubscriptionPlan.price }}
+					{{ selectedSubscriptionPlan.currency }}
+					/month) to your payment method until you cancel. You may cancel at any
+					time to avoid future charges.
 				</p>
 			</template>
 		</FormPayment>
