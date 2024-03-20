@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\SubscriptionPlan;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -28,6 +29,37 @@ class SubscriptionController extends Controller
 			[
 				'type' => 'success',
 				'message' => 'Subscription successfully reactivated. We\'re glad to have you back :)',
+			]
+		);
+	}
+
+	/**
+	 * Change user's subscription plan.
+	 */
+	public function update(Request $request, int $id): RedirectResponse
+	{
+		$newSubscriptionPlan = SubscriptionPlan::find($id);
+
+		if ($newSubscriptionPlan) {
+			$request->user()->subscription->update([
+				'subscription_plan_id' => $id
+			]);
+		} else {
+			return back()->with(
+				'alert',
+				[
+					'type' => 'danger',
+					'message' => "Your subscription plan could not be changed. Please try again.",
+				]
+			);
+		}
+		
+
+		return back()->with(
+			'alert',
+			[
+				'type' => 'success',
+				'message' => "Subscription successfully changed to {$newSubscriptionPlan->name}.",
 			]
 		);
 	}

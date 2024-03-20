@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\PaymentController;
+use App\Http\Controllers\Auth\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -42,9 +43,14 @@ Route::middleware('auth')->group(function () {
 	Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
 	Route::get('payment', [PaymentController::class, 'show'])->name('payment');
+	//Route::patch('payment', [PaymentController::class, 'update'])->name('payment.update');
 	Route::post('payment', [PaymentController::class, 'store']);
 	
 	Route::inertia('confirmation', 'Auth/Confirmation')->name('confirmation');
+
+	Route::post('subscription/reactivate', [SubscriptionController::class, 'reactivate'])->name('subscription.reactivate');
+	Route::patch('subscription/update/{id}', [SubscriptionController::class, 'update'])->name('subscription.update');
+	Route::post('subscription/cancel', [SubscriptionController::class, 'cancel'])->name('subscription.cancel');
 
 	Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
