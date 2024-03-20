@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\SubscriptionPlan;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,13 +22,22 @@ class ProfileController extends Controller
 	public function edit(Request $request): Response
 	{
 		$user = $request->user();
-		$user->creditCard->card_number = substr($user->creditCard->card_number, -4);
+		if ($user->creditCard) {
+			$user->creditCard->card_number = substr($user->creditCard->card_number, -4);
+		}
 
 		return Inertia::render('Profile/Edit', [
 			'mustVerifyEmail' => $user instanceof MustVerifyEmail,
 			'status' => session('status'),
 			'creditCard' => $user->creditCard,
-			'subscription' => $user->creditCard
+			'subscription' => $user->subscription 
+				? [
+					'name' => SubscriptionPlan::find($user->subscription->subscription_plan_id)->name,
+					'startDate' => $user->subscription->start_date,
+					'endDate' => $user->subscription->end_date,
+					'status' => $user->subscription->status
+				] 
+				: null
 		]);
 	}
 
@@ -64,6 +75,6 @@ class ProfileController extends Controller
 		$request->session()->invalidate();
 		$request->session()->regenerateToken();
 
-		return Redirect::to('/');
+		return Redirect::to(RouteServiceProvider::HOME);
 	}
 }
