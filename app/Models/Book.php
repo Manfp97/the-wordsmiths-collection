@@ -23,6 +23,7 @@ class Book extends Model implements HasMedia
 		'description',
 		'page_count',
 		'language',
+		'is_premium',
 	];
 
 	/**

@@ -6,6 +6,7 @@ import axios from "axios";
 import DragAndDrop from "@/Components/Forms/DragAndDrop.vue";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import FloatingLabelSelectSearch from "@/Components/Forms/FloatingLabelSelectSearch.vue";
+import Checkbox from "@/Components/Forms/Checkbox.vue";
 import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
 import IconPlus from "@icons/plus.svg?component";
 
@@ -20,6 +21,7 @@ const form = useForm({
 	description: null,
 	language: null,
 	page_count: null,
+	is_premium: false,
 	book_file: null,
 	cover_image: null,
 });
@@ -133,6 +135,13 @@ const submitForm = () => {
 				input-autocomplete="off"
 				:error-message="form.errors.page_count"
 			/>
+
+			<Checkbox
+				v-model:value="form.is_premium"
+				input-id="book-is-premium"
+			>
+				¿Es para suscripciones premium?
+			</Checkbox>
 
 			<FloatingTextarea
 				v-model:value="form.description"

@@ -29,6 +29,7 @@ class BookStoreRequest extends BaseFormRequest
 			'description'			=> 'required|string|max:15000',
 			'language'				=> 'required|string|max:50',
 			'page_count'			=> 'required|int|max:4',
+			'is_premium'			=> 'bool',
 			'book_file' 			=> 'required|mimetypes:application/pdf|max:4096',
 			'cover_image' 		=> 'required|mimetypes:image/jpeg,image/png,image/webp|max:2048',
 			'authors_id' 			=> 'required|array|min:1',
