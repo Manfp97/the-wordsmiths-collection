@@ -16,6 +16,7 @@ class CreateBooksTable extends Migration
 			$table->string('description');
 			$table->unsignedSmallInteger('page_count');
 			$table->string('language');
+			$table->unsignedSmallInteger('year');
 			$table->boolean('is_premium')->default(false);
 			$table->timestamps();
 		});

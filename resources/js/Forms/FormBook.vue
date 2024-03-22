@@ -21,6 +21,7 @@ const form = useForm({
 	description: null,
 	language: null,
 	page_count: null,
+	year: null,
 	is_premium: false,
 	book_file: null,
 	cover_image: null,
@@ -134,13 +135,23 @@ const submitForm = () => {
 				input-type="number"
 				input-autocomplete="off"
 				:error-message="form.errors.page_count"
+				@input="form.page_count = $event.target.value.slice(0, 4)"
 			/>
 
+			<FloatingLabel
+				v-model:value="form.year"
+				input-id="book-year"
+				label-text="Year"
+				input-type="number"
+				input-autocomplete="off"
+				:error-message="form.errors.year"
+				@input="form.year = $event.target.value.slice(0, 4)"
+			/>
 			<Checkbox
 				v-model:value="form.is_premium"
 				input-id="book-is-premium"
 			>
-				¿Es para suscripciones premium?
+				Is it for premium subscriptions?
 			</Checkbox>
 
 			<FloatingTextarea
