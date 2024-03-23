@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Model
+class BookReview extends Model
 {
 	use HasFactory;
 
@@ -15,4 +15,9 @@ class Review extends Model
 		'rating', 
 		'review_text'
 	];
+
+	public function book(): BelongsTo
+	{
+		return $this->belongsTo(Book::class);
+	}
 }

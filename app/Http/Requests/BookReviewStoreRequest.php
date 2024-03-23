@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class ReviewStoreRequest extends BaseFormRequest
+class BookReviewStoreRequest extends BaseFormRequest
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,8 +22,6 @@ class ReviewStoreRequest extends BaseFormRequest
 	public function rules()
 	{
 		return [
-			'book_id' 		=> 'required|int|exists:books,id',
-			'user_id' 		=> 'required|int|exists:users,id',
 			'rating' 			=> 'required|int|between:1,5',
 			'review_text' => 'required|string|max:15000',
 		];
