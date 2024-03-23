@@ -30,6 +30,14 @@ const submitForm = () => {
 			textarea-class="min-h-[10rem]"
 		/>
 
+		<div
+			v-if="form.errors"
+			class="text-skin-danger"
+		>
+			<span v-if="form.errors.book_id">The book ID is not valid.</span>
+			<span v-if="form.errors.rating">{{ form.errors.rating }}</span>
+		</div>
+
 		<div class="flex items-center justify-between">
 			<div class="flex space-x-3">
 				<span class="font-bold">Rating</span>
