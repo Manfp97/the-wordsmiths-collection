@@ -42,6 +42,7 @@ const submitForm = () => {
 			<div class="flex space-x-3">
 				<span class="font-bold">Rating</span>
 				<Rating
+					v-model:value="form.rating"
 					:rating="0"
 					icon-class="w-5 h-5"
 				/>
