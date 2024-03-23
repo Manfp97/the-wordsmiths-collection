@@ -13,7 +13,7 @@ class CreateBooksTable extends Migration
 			$table->string('isbn')->unique();
 			$table->string('slug')->unique();
 			$table->string('title');
-			$table->string('description');
+			$table->text('description');
 			$table->unsignedSmallInteger('page_count');
 			$table->string('language');
 			$table->unsignedSmallInteger('year');
