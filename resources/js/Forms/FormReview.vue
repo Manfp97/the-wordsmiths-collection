@@ -4,7 +4,7 @@ import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
 import Rating from "@/Components/Common/Rating.vue";
 
 const form = useForm({
-	text: null,
+	review_text: null,
 	rating: null,
 });
 
@@ -24,7 +24,7 @@ const submitForm = () => {
 		@submit.prevent="submitForm"
 	>
 		<FloatingTextarea
-			v-model:value="form.text"
+			v-model:value="form.review_text"
 			textarea-id="review-textarea"
 			label-text="Review"
 			textarea-class="min-h-[10rem]"
