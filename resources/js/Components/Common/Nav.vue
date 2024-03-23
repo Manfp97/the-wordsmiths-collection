@@ -5,6 +5,7 @@ import Logo from "@/Components/Common/Logo.vue";
 import ModalAddContent from "@/Components/Modals/ModalAddContent.vue";
 import IconSearch from "@icons/search.svg?component";
 import IconMenu from "@icons/menu.svg?component";
+import IconUserCircle from "@icons/user-circle.svg?component";
 
 onMounted(() => {
 	initFlowbite();
@@ -49,16 +50,15 @@ const addingContent = ref(false);
 				<button
 					id="user-menu-button"
 					type="button"
-					class="me-1 flex rounded-full bg-skin-card text-sm focus:ring-4 focus:ring-skin-border md:me-0"
+					class="me-1 flex rounded-full text-sm focus:ring-2 focus:ring-skin-border md:me-0"
 					aria-expanded="false"
 					data-dropdown-toggle="user-dropdown"
 					data-dropdown-placement="bottom"
 				>
 					<span class="sr-only">Open user menu</span>
-					<img
-						class="h-8 w-8 rounded-full"
-						src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
-						alt="user photo"
+					<IconUserCircle
+						class="h-10 w-10 rounded-full"
+						fill="none"
 					/>
 				</button>
 
