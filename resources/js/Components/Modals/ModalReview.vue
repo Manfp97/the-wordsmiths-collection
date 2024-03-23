@@ -13,6 +13,10 @@ defineProps({
 		required: false,
 		default: "Write a review",
 	},
+	bookId: {
+		type: Number,
+		required: true,
+	},
 });
 
 const emit = defineEmits(["close"]);
@@ -26,6 +30,6 @@ const emitClose = () => emit("close");
 		:modal-title="modalTitle"
 		@close="emitClose"
 	>
-		<FormReview />
+		<FormReview :book-id="bookId" />
 	</ModalContainer>
 </template>

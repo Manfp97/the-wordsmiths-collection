@@ -3,13 +3,20 @@ import { useForm } from "@inertiajs/vue3";
 import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
 import Rating from "@/Components/Common/Rating.vue";
 
+const props = defineProps({
+	bookId: {
+		type: Number,
+		required: true,
+	},
+});
+
 const form = useForm({
 	review_text: null,
 	rating: null,
 });
 
 const submitForm = () => {
-	form.post("/review", {
+	form.post(`/review/${props.bookId}`, {
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();
