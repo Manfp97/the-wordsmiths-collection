@@ -72,7 +72,7 @@ const swiperBreakpoints = {
 						{{ category.name }}
 					</h2>
 				</template>
-				>
+
 				<swiper-slide
 					v-for="(book, indexBook) in category.books"
 					:key="indexBook"
