@@ -62,6 +62,11 @@ class Book extends Model implements HasMedia
 		return $this->belongsToMany(Category::class);
 	}
 
+	public function bookReviews(): HasMany
+	{
+		return $this->hasMany(BookReview::class);
+	}
+
 	public function registerMediaCollections(): void
 	{
 		$this
