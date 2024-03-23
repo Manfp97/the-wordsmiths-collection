@@ -9,6 +9,7 @@ const form = useForm({
 
 const submitForm = () => {
 	form.post("/category", {
+		preserveScroll: true,
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();

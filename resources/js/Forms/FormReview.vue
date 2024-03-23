@@ -17,6 +17,7 @@ const form = useForm({
 
 const submitForm = () => {
 	form.post(`/review/${props.bookId}`, {
+		preserveScroll: true,
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();

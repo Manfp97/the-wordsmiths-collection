@@ -62,6 +62,7 @@ onMounted(() => {
 
 const submitForm = () => {
 	form.post("/book", {
+		preserveScroll: true,
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();

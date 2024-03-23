@@ -10,6 +10,7 @@ const form = useForm({
 
 const submitForm = () => {
 	form.post("/author", {
+		preserveScroll: true,
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();
