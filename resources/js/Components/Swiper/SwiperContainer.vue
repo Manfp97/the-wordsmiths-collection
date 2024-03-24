@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 
 const props = defineProps({
 	breakpoints: {
@@ -14,10 +14,9 @@ const props = defineProps({
 });
 
 const navigationValue = props.navigation ?? true;
+const $swiperContainer = ref(null);
 
 onMounted(() => {
-	const $swiperContainer = document.querySelector("swiper-container");
-
 	// swiper parameters
 	const params = {
 		navigation: navigationValue,
@@ -99,13 +98,14 @@ onMounted(() => {
 		],
 	};
 
-	Object.assign($swiperContainer, params);
-	$swiperContainer.initialize();
+	Object.assign($swiperContainer.value, params);
+	$swiperContainer.value.initialize();
 });
 </script>
 
 <template>
 	<swiper-container
+		ref="$swiperContainer"
 		init="false"
 		:breakpoints="breakpoints"
 	>
