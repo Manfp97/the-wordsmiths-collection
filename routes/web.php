@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [CategoryController::class, 'index']);
 
+Route::get('/book/{book:slug}', [BookController::class, 'show']);
 Route::get('/book/{book:slug}/read', [BookController::class, 'read']);
 Route::post('/book', [BookController::class, 'store']); // auth => admin
 Route::post('/category', [CategoryController::class, 'store']); // auth => admin
