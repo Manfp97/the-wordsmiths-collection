@@ -36,7 +36,7 @@ const isReviewing = ref(false);
 const subscription = usePage().props.auth.subscription;
 
 const isSubscriptionActive = subscription?.status === "active";
-const canReadPremiumBook = props.book.is_premium
+const canReadPremiumBook = props.book.isPremium
 	? subscription?.subscription_plan_id === 1
 	: true;
 
@@ -103,7 +103,7 @@ const swiperBreakpoints = {
 								<Link
 									:href="readButtonHref"
 									class="button w-full !rounded-3xl text-lg font-bold lg:text-xl max-md:max-w-sm"
-									:class="{ 'premium-gradient': book.is_premium }"
+									:class="{ 'premium-gradient': book.isPremium }"
 									as="button"
 								>
 									<IconBook class="mr-2 w-6" />
@@ -112,7 +112,7 @@ const swiperBreakpoints = {
 							</div>
 
 							<div class="mt-3 text-center text-sm text-skin-text-muted">
-								<p v-if="book.is_premium">
+								<p v-if="book.isPremium">
 									Book available for <strong>Premium</strong> subscriptions
 								</p>
 								<p v-else>
