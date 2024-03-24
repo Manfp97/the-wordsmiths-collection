@@ -30,8 +30,8 @@ class VerifyEmailController extends Controller
 		return redirect()->route('payment')->with(
 			'alert',
 			[
-				'type' => 'success',
-				'message' => 'Email successfully verified',
+				'type'		=> 'success',
+				'message'	=> 'Email successfully verified',
 			]
 		); 
 	}

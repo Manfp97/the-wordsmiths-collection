@@ -27,8 +27,8 @@ class SubscriptionController extends Controller
 		return back()->with(
 			'alert',
 			[
-				'type' => 'success',
-				'message' => 'Subscription successfully reactivated. We\'re glad to have you back :)',
+				'type'		=> 'success',
+				'message'	=> 'Subscription successfully reactivated. We\'re glad to have you back :)',
 			]
 		);
 	}
@@ -48,8 +48,8 @@ class SubscriptionController extends Controller
 			return back()->with(
 				'alert',
 				[
-					'type' => 'danger',
-					'message' => "Your subscription plan could not be changed. Please try again.",
+					'type'		=> 'danger',
+					'message'	=> "Your subscription plan could not be changed. Please try again.",
 				]
 			);
 		}
@@ -58,8 +58,8 @@ class SubscriptionController extends Controller
 		return back()->with(
 			'alert',
 			[
-				'type' => 'success',
-				'message' => "Subscription successfully changed to {$newSubscriptionPlan->name}.",
+				'type'		=> 'success',
+				'message'	=> "Subscription successfully changed to {$newSubscriptionPlan->name}.",
 			]
 		);
 	}
@@ -76,8 +76,8 @@ class SubscriptionController extends Controller
 		return back()->with(
 			'alert',
 			[
-				'type' => 'success',
-				'message' => 'Subscription successfully canceled. We\'re sorry to see you go :(',
+				'type'		=> 'success',
+				'message'	=> 'Subscription successfully canceled. We\'re sorry to see you go :(',
 			]
 		);
 	}

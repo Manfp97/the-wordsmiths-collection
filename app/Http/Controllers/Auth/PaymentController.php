@@ -31,22 +31,22 @@ class PaymentController extends Controller
 	{
 		$validatedData = $request->validated();
 		CreditCard::create([
-			'user_id' => $request->user()->id,
-			'cardholder_name' => $validatedData['cardholder_name'],
-			'card_number' => $validatedData['card_number'],
-			'expiration_month' => $validatedData['expiration_month'],
-			'expiration_year' => $validatedData['expiration_year'],
-			'cvc' => $validatedData['cvc'],
+			'user_id'						=> $request->user()->id,
+			'cardholder_name'		=> $validatedData['cardholder_name'],
+			'card_number'				=> $validatedData['card_number'],
+			'expiration_month'	=> $validatedData['expiration_month'],
+			'expiration_year'		=> $validatedData['expiration_year'],
+			'cvc'								=> $validatedData['cvc'],
 		]);
 
 		$subscriptionPlan = SubscriptionPlan::find(
 			$request->session()->get('selected_subscription_plan_id')
 		);
 		Subscription::create([
-			'user_id' => $request->user()->id,
-			'subscription_plan_id' => $subscriptionPlan->id,
-			'end_date' => Carbon::now()->addDays($subscriptionPlan->duration_days),
-			'status' => 'active'
+			'user_id'								=> $request->user()->id,
+			'subscription_plan_id'	=> $subscriptionPlan->id,
+			'end_date'							=> Carbon::now()->addDays($subscriptionPlan->duration_days),
+			'status'								=> 'active'
 		]);
 
 		return redirect()->route("confirmation");

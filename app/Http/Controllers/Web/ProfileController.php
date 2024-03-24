@@ -33,17 +33,17 @@ class ProfileController extends Controller
 		$otherSubscriptionPlan = SubscriptionPlan::find($otherSubscriptionPlanId);
 
 		return Inertia::render('Profile/Edit', [
-			'mustVerifyEmail' => $user instanceof MustVerifyEmail,
-			'status' => session('status'),
-			'creditCard' => $user->creditCard,
-			'subscription' => $user->subscription 
+			'mustVerifyEmail'	=> $user instanceof MustVerifyEmail,
+			'status'					=> session('status'),
+			'creditCard'			=> $user->creditCard,
+			'subscription'		=> $user->subscription 
 				? [
-					'name' => $subscriptionPlan->name,
-					'price' => $subscriptionPlan->price,
-					'currency' => $subscriptionPlan->currency,
-					'startDate' => $user->subscription->start_date,
-					'endDate' => $user->subscription->end_date,
-					'status' => $user->subscription->status
+					'name'			=> $subscriptionPlan->name,
+					'price'			=> $subscriptionPlan->price,
+					'currency'	=> $subscriptionPlan->currency,
+					'startDate'	=> $user->subscription->start_date,
+					'endDate'		=> $user->subscription->end_date,
+					'status'		=> $user->subscription->status
 				] 
 				: null,
 			'otherSubscriptionPlan' => $otherSubscriptionPlan

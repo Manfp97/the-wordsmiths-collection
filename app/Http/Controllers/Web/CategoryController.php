@@ -20,17 +20,17 @@ class CategoryController extends Controller
 		$categories = Category::get()
 			->map(function ($category) {
 				return [
-					'id' => $category->id,
-					'name' => $category->name,
-					'books' => $category->books->map(function ($book) {
+					'id'		=> $category->id,
+					'name'	=> $category->name,
+					'books'	=> $category->books->map(function ($book) {
 						$cover = $book->getFirstMedia(MediaCollectionEnum::BOOK_COVERS);
 						$responsiveCover = $cover(MediaConversionEnum::WEBP)->toHtml();
 
 						return [
-							'id' => $book->id,
-							'title' => $book->title,
-							'slug' => Str::slug($book->title),
-							'cover' => $responsiveCover,
+							'id'		=> $book->id,
+							'title'	=> $book->title,
+							'slug'	=> Str::slug($book->title),
+							'cover'	=> $responsiveCover,
 						];
 					}),
 				];
@@ -60,8 +60,8 @@ class CategoryController extends Controller
 		return back()->with(
 			'alert',
 			[
-				'type' => 'success', // 'warning', 'danger'
-				'message' => 'Category successfully created',
+				'type'		=> 'success', // 'warning', 'danger'
+				'message'	=> 'Category successfully created',
 			]
 		);
 	}
@@ -73,8 +73,8 @@ class CategoryController extends Controller
 		return back()->with(
 			'alert',
 			[
-				'type' => 'success', // 'warning', 'danger'
-				'message' => 'Category successfully deleted',
+				'type'		=> 'success', // 'warning', 'danger'
+				'message'	=> 'Category successfully deleted',
 			]
 		);
 	}

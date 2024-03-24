@@ -56,23 +56,23 @@ class BookController extends Controller
 		$responsiveCover = $cover(MediaConversionEnum::WEBP)->toHtml();
 
 		$bookData = [
-			'id' 					=> $book->id,
-			'isbn' 				=> $book->isbn,
+			'id'					=> $book->id,
+			'isbn'				=> $book->isbn,
 			'slug'				=> $book->slug,
-			'title' 			=> $book->title,
-			'description' => $book->description,
-			'pageCount' 	=> $book->page_count,
-			'language' 		=> $book->language,
-			'year' 				=> $book->year,
-			'is_premium' 	=> $book->is_premium,
-			'cover' 			=> $responsiveCover,
+			'title'				=> $book->title,
+			'description'	=> $book->description,
+			'pageCount'		=> $book->page_count,
+			'language'		=> $book->language,
+			'year'				=> $book->year,
+			'isPremium'		=> $book->is_premium,
+			'cover'				=> $responsiveCover,
 			'authors'			=> $book->authors->map(function($author) {
 				return [
 					'name' => "$author->first_name $author->last_name",
 					'slug' => $author->slug,
 				];
 			}),
-			'categories' => $book->categories->map(function($category) {
+			'categories'	=> $book->categories->map(function($category) {
 				return [
 					'name' => $category->name,
 					'slug' => $category->slug,
@@ -80,9 +80,10 @@ class BookController extends Controller
 			}),
 			'reviews' => $book->bookReviews->map(function($review) {
 				return [
-					'username' 		=> User::find($review->user_id)->username,
-					'rating' 			=> $review->rating,
-					'reviewText' 	=> $review->review_text,
+					'id'					=> $review->id,
+					'username'		=> User::find($review->user_id)->username,
+					'rating'			=> $review->rating,
+					'reviewText'	=> $review->review_text,
 					'date'				=> $review->created_at,
 				];
 			}),
@@ -99,10 +100,10 @@ class BookController extends Controller
 				$responsiveCover = $cover(MediaConversionEnum::WEBP)->toHtml();
 
 				return [
-					'id' 		=> $book->id,
-					'title' => $book->title,
-					'slug' 	=> Str::slug($book->title),
-					'cover' => $responsiveCover,
+					'id'		=> $book->id,
+					'title'	=> $book->title,
+					'slug'	=> Str::slug($book->title),
+					'cover'	=> $responsiveCover,
 				];
 			})
 			->take(18) // If there are fewer than 18 related books, it will return all of them.
@@ -127,7 +128,7 @@ class BookController extends Controller
 		}
 
 		return Inertia::render('Book/Detail', [
-			'book' 							=> $bookData,
+			'book'							=> $bookData,
 			'relatedBooks'			=> $relatedBooks,
 			'canPublishReview'	=> $canPublishReview
 		]);
@@ -140,8 +141,8 @@ class BookController extends Controller
 
 		return Inertia::render('Book/Read', [
 			'pdfUrl'		=> $bookFile->getFullUrl(),
-			'bookTitle' => $book->title,
-			'bookSlug' 	=> $book->slug,
+			'bookTitle'	=> $book->title,
+			'bookSlug'	=> $book->slug,
 		]);
 	}
 
@@ -177,8 +178,8 @@ class BookController extends Controller
 		return back()->with(
 			'alert',
 			[
-				'type' => 'success',
-				'message' => 'Book successfully created',
+				'type'		=> 'success',
+				'message'	=> 'Book successfully created',
 			]
 		);
 	}
@@ -190,8 +191,8 @@ class BookController extends Controller
 		return back()->with(
 			'alert',
 			[
-				'type' => 'success',
-				'message' => 'Book successfully deleted',
+				'type'		=> 'success',
+				'message'	=> 'Book successfully deleted',
 			]
 		);
 	}

@@ -33,8 +33,8 @@ class AuthorController extends Controller
 		return back()->with(
 			'alert',
 			[
-				'type' => 'success', // 'warning', 'danger'
-				'message' => 'Author successfully created',
+				'type'		=> 'success', // 'warning', 'danger'
+				'message'	=> 'Author successfully created',
 			]
 		);
 	}
@@ -46,8 +46,8 @@ class AuthorController extends Controller
 		return back()->with(
 			'alert',
 			[
-				'type' => 'success', // 'warning', 'danger'
-				'message' => 'Author successfully deleted',
+				'type'		=> 'success', // 'warning', 'danger'
+				'message'	=> 'Author successfully deleted',
 			]
 		);
 	}
