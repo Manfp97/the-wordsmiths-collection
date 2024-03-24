@@ -111,7 +111,7 @@ const swiperBreakpoints = {
 								</Link>
 							</div>
 
-							<div class="mt-3 text-center text-sm text-skin-text-muted">
+							<div class="mt-3 text-center text-sm text-skin-muted">
 								<p v-if="book.isPremium">
 									Book available for <strong>Premium</strong> subscriptions
 								</p>
@@ -135,7 +135,7 @@ const swiperBreakpoints = {
 								>
 									<Link
 										:href="`/author/${author.slug}`"
-										class="underline hover:text-skin-text-muted"
+										class="underline hover:text-skin-muted"
 									>
 										{{ author.name }}
 									</Link>
@@ -146,7 +146,7 @@ const swiperBreakpoints = {
 							<p>{{ book.description }}</p>
 
 							<div class="mt-3 flex items-center space-x-4">
-								<span class="text-skin-text-muted">Genres</span>
+								<span class="text-skin-muted">Genres</span>
 								<Link
 									v-for="(category, index) in book.categories"
 									:key="index"
@@ -158,7 +158,7 @@ const swiperBreakpoints = {
 							</div>
 
 							<div class="mt-4 grid w-fit grid-cols-2 gap-10">
-								<div class="text-skin-text-muted">
+								<div class="text-skin-muted">
 									<p>Page count</p>
 									<p>Publishing year</p>
 									<p>Language</p>

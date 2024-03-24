@@ -24,7 +24,7 @@ export default {
 				"secondary-offset": withOpacity("--color-secondary-offset"),
 				tertiary: withOpacity("--color-tertiary"),
 				text: withOpacity("--color-text"),
-				"text-muted": withOpacity("--color-text-muted"),
+				muted: withOpacity("--color-muted"),
 				link: withOpacity("--color-link"),
 				success: withOpacity("--color-success"),
 				"success-light": withOpacity("--color-success-light"),

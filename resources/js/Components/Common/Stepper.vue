@@ -56,7 +56,7 @@ defineProps({
 		</span>
 
 		<span
-			class="absolute mt-2 text-skin-text-muted"
+			class="absolute mt-2 text-skin-muted"
 			:class="stepNamePosition"
 		>
 			{{ stepName }}

@@ -188,7 +188,7 @@ const handleCheckboxChange = (event) => {
 						class="rtl:inset-r-0 pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
 					>
 						<IconSearch
-							class="h-4 w-4 text-skin-text-muted"
+							class="h-4 w-4 text-skin-muted"
 							aria-hidden="true"
 							fill="none"
 						/>

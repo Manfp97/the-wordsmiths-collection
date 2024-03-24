@@ -68,7 +68,7 @@ const form = useForm({
 						href="/email/verification-notification"
 						method="post"
 						as="button"
-						class="rounded-md text-sm text-skin-text-muted underline hover:text-skin-text focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+						class="rounded-md text-sm text-skin-muted underline hover:text-skin-text focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
 					>
 						Click here to re-send the verification email.
 					</Link>
@@ -98,7 +98,7 @@ const form = useForm({
 				>
 					<p
 						v-if="form.recentlySuccessful"
-						class="text-sm text-skin-text-muted"
+						class="text-sm text-skin-muted"
 					>
 						Saved.
 					</p>

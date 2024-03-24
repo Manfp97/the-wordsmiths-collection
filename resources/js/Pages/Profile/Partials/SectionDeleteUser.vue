@@ -39,7 +39,7 @@ const closeModal = () => {
 		<header>
 			<h2 class="pb-3 font-means-web text-2xl font-bold">Delete account</h2>
 
-			<p class="mt-1 text-sm text-skin-text-muted">
+			<p class="mt-1 text-sm text-skin-muted">
 				Once your account is deleted, all of its resources and data will be
 				permanently deleted. Before deleting your account, please download any
 				data or information that you wish to retain.
@@ -59,7 +59,7 @@ const closeModal = () => {
 			:show="confirmingUserDeletion"
 			@close="closeModal"
 		>
-			<p class="mt-1 text-skin-text-muted">
+			<p class="mt-1 text-skin-muted">
 				Once your account is deleted, all of its resources and data will be
 				permanently deleted. Please enter your password to confirm you would
 				like to permanently delete your account.
@@ -79,7 +79,7 @@ const closeModal = () => {
 
 			<div class="mt-6 flex justify-end space-x-4">
 				<button
-					class="button !bg-skin-text-muted text-skin-white"
+					class="button !bg-skin-muted text-skin-white"
 					@click="closeModal"
 				>
 					Cancel

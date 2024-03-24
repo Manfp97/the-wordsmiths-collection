@@ -71,7 +71,7 @@ const submitForm = () => {
 			<div
 				class="flex flex-col rounded-lg border border-skin-border bg-skin-white px-4 py-1 sm:w-2/5"
 			>
-				<label class="mt-1 text-xs text-skin-text-muted">Expiration date</label>
+				<label class="mt-1 text-xs text-skin-muted">Expiration date</label>
 				<div class="flex w-full justify-start space-x-2">
 					<input
 						id="expiryMonth"
@@ -126,7 +126,7 @@ const submitForm = () => {
 					class="h-8 w-16"
 				/>
 
-				<p class="text-sm text-skin-text-muted">
+				<p class="text-sm text-skin-muted">
 					Last 3 digits on the back of the card
 				</p>
 			</div>

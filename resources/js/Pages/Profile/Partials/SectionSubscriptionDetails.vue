@@ -103,7 +103,7 @@ const formattedEndDate = endDate.toLocaleDateString();
 
 			<div class="mt-6 flex justify-end space-x-4">
 				<button
-					class="button !bg-skin-text-muted text-skin-white"
+					class="button !bg-skin-muted text-skin-white"
 					@click="isCancelSubscriptionModalOpen = false"
 				>
 					No
@@ -168,7 +168,7 @@ const formattedEndDate = endDate.toLocaleDateString();
 
 			<div class="mt-6 flex justify-end space-x-4">
 				<button
-					class="button !bg-skin-text-muted text-skin-white"
+					class="button !bg-skin-muted text-skin-white"
 					@click="isChangePlanModalOpen = false"
 				>
 					Cancel

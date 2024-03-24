@@ -101,7 +101,7 @@ const maxWidthClass = computed(() => {
 						class="fixed inset-0 transform transition-all"
 						@click="close"
 					>
-						<div class="absolute inset-0 bg-skin-text-muted opacity-75" />
+						<div class="absolute inset-0 bg-skin-muted opacity-75" />
 					</div>
 				</Transition>
 
@@ -134,7 +134,7 @@ const maxWidthClass = computed(() => {
 							<button
 								v-show="closeable"
 								type="button"
-								class="ml-auto rounded-full border border-skin-border p-1 text-sm text-skin-text-muted hover:bg-skin-danger hover:text-skin-white"
+								class="ml-auto rounded-full border border-skin-border p-1 text-sm text-skin-muted hover:bg-skin-danger hover:text-skin-white"
 								@click="close"
 							>
 								<IconX

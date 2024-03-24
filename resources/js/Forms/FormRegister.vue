@@ -92,7 +92,7 @@ const submitForm = () => {
 			/>
 		</button>
 
-		<p class="text-center text-sm text-skin-text-muted">
+		<p class="text-center text-sm text-skin-muted">
 			Already have an account?
 			<Link
 				href="/login"

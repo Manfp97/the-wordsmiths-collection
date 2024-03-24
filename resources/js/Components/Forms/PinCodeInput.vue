@@ -61,6 +61,6 @@ const focusNextInput = (el, prevId, nextId) => {
 			</div>
 		</div>
 
-		<p class="mt-3 text-sm text-skin-text-muted">{{ explanationText }}</p>
+		<p class="mt-3 text-sm text-skin-muted">{{ explanationText }}</p>
 	</div>
 </template>

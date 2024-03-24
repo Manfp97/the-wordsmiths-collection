@@ -73,7 +73,7 @@ const { extensions, handleClick, handleDrop, openFileInput, removeFile } =
 					v-if="selectedFile"
 					title="Remove file"
 					aria-title="Remove file"
-					class="text-skin-text-muted"
+					class="text-skin-muted"
 					@click="removeFile"
 				>
 					<IconX
@@ -100,19 +100,19 @@ const { extensions, handleClick, handleDrop, openFileInput, removeFile } =
 					@click="openFileInput($fileInput)"
 				>
 					<IconCloudUpload
-						class="mb-4 h-8 w-8 text-skin-text-muted"
+						class="mb-4 h-8 w-8 text-skin-muted"
 						aria-hidden="true"
 						fill="none"
 					/>
-					<p class="mb-2 text-sm text-skin-text-muted">
+					<p class="mb-2 text-sm text-skin-muted">
 						<strong>Click to upload</strong> or <strong>drag and drop</strong>
 					</p>
-					<p class="text-xs text-skin-text-muted">
+					<p class="text-xs text-skin-muted">
 						{{ extensions }} (max. {{ formatBytes(maxFileBytes) }})
 					</p>
 					<p
 						v-if="minAspectRatioStr && maxAspectRatioStr"
-						class="text-xs text-skin-text-muted"
+						class="text-xs text-skin-muted"
 					>
 						Aspect ratio: min. {{ minAspectRatioStr }}, max.
 						{{ maxAspectRatioStr }}
@@ -139,7 +139,7 @@ const { extensions, handleClick, handleDrop, openFileInput, removeFile } =
 					<p class="max-w-full break-words text-sm">
 						{{ selectedFile.name }}
 					</p>
-					<p class="text-xs text-skin-text-muted sm:text-sm">
+					<p class="text-xs text-skin-muted sm:text-sm">
 						{{ formatBytes(selectedFile.size) }}
 					</p>
 				</div>

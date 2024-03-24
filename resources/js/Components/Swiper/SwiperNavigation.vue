@@ -37,6 +37,6 @@ defineProps({
 }
 
 :deep(.swiper-button-disabled) {
-	@apply cursor-default fill-skin-text-muted hover:fill-skin-text-muted;
+	@apply cursor-default fill-skin-muted hover:fill-skin-muted;
 }
 </style>

@@ -55,7 +55,7 @@ defineProps({
 				>
 					{{ title }}
 				</h3>
-				<p class="font-light text-skin-text-muted sm:text-lg">
+				<p class="font-light text-skin-muted sm:text-lg">
 					{{ description }}
 				</p>
 				<div class="my-6 flex items-baseline justify-center">
@@ -64,7 +64,7 @@ defineProps({
 						<span class="price">{{ priceIntPart }}</span>
 						<sup class="-top-6 text-lg">{{ priceDecimalPart }}</sup>
 					</span>
-					<span class="text-skin-text-muted">/month</span>
+					<span class="text-skin-muted">/month</span>
 				</div>
 				<!-- List -->
 				<ul

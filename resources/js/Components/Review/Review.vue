@@ -54,7 +54,7 @@ const formattedDate = date.toLocaleString("default", {
 			</h3> -->
 		</div>
 
-		<footer class="mb-3 text-sm text-skin-text-muted">
+		<footer class="mb-3 text-sm text-skin-muted">
 			<p>
 				Reviewed on
 				<time :datetime="props.review.date">{{ formattedDate }}</time>
@@ -104,7 +104,7 @@ const formattedDate = date.toLocaleString("default", {
 
 			<div class="mt-6 flex justify-end space-x-4">
 				<button
-					class="button !bg-skin-text-muted text-skin-white"
+					class="button !bg-skin-muted text-skin-white"
 					@click="isDeleting = false"
 				>
 					No

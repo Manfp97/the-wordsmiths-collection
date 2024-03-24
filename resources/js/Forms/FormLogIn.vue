@@ -78,7 +78,7 @@ const submitForm = () => {
 			Log in to your account
 		</button>
 
-		<div class="text-center text-sm font-medium text-skin-text-muted">
+		<div class="text-center text-sm font-medium text-skin-muted">
 			Not registered?
 			<Link
 				href="/pricing"

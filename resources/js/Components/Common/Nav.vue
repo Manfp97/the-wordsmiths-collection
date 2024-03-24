@@ -92,7 +92,7 @@ const isAdmin = user?.role_id === 1;
 					data-collapse-toggle="navbar-user"
 					aria-controls="navbar-user"
 					aria-expanded="false"
-					class="me-1 rounded-lg p-2.5 text-sm hover:bg-skin-secondary-offset hover:text-skin-text-muted focus:text-skin-text-muted focus:outline-none focus:ring-2 focus:ring-skin-secondary md:hidden"
+					class="me-1 rounded-lg p-2.5 text-sm hover:bg-skin-secondary-offset hover:text-skin-muted focus:text-skin-muted focus:outline-none focus:ring-2 focus:ring-skin-secondary md:hidden"
 					@click="$searchInput ? $searchInput.focus() : null"
 				>
 					<IconSearch
@@ -109,7 +109,7 @@ const isAdmin = user?.role_id === 1;
 						class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
 					>
 						<IconSearch
-							class="h-4 w-4 text-skin-text-muted"
+							class="h-4 w-4 text-skin-muted"
 							aria-hidden="true"
 							fill="none"
 						/>
@@ -134,7 +134,7 @@ const isAdmin = user?.role_id === 1;
 						<span class="block text-sm font-semibold text-skin-text">
 							{{ user.username }}
 						</span>
-						<span class="block truncate text-sm text-skin-text-muted">
+						<span class="block truncate text-sm text-skin-muted">
 							{{ user.email }}
 						</span>
 					</div>
@@ -177,7 +177,7 @@ const isAdmin = user?.role_id === 1;
 				<button
 					data-collapse-toggle="navbar-user"
 					type="button"
-					class="inline-flex h-10 w-10 flex-grow items-center justify-center rounded-lg p-2 text-sm hover:bg-skin-secondary-offset hover:text-skin-text-muted focus:text-skin-text-muted focus:outline-none focus:ring-2 focus:ring-skin-secondary md:hidden"
+					class="inline-flex h-10 w-10 flex-grow items-center justify-center rounded-lg p-2 text-sm hover:bg-skin-secondary-offset hover:text-skin-muted focus:text-skin-muted focus:outline-none focus:ring-2 focus:ring-skin-secondary md:hidden"
 					aria-controls="navbar-user"
 					aria-expanded="false"
 				>
@@ -199,7 +199,7 @@ const isAdmin = user?.role_id === 1;
 						class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
 					>
 						<IconSearch
-							class="h-4 w-4 text-skin-text-muted"
+							class="h-4 w-4 text-skin-muted"
 							aria-hidden="true"
 							fill="none"
 						/>

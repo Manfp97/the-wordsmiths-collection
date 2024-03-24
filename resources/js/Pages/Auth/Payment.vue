@@ -33,7 +33,7 @@ defineProps({
 							{{ selectedSubscriptionPlan.currency }}
 							<span class="text-xs">/month</span>
 						</p>
-						<p class="text-skin-text-muted">
+						<p class="text-skin-muted">
 							{{ selectedSubscriptionPlan.name }}
 						</p>
 					</div>
@@ -46,7 +46,7 @@ defineProps({
 					</Link>
 				</div>
 
-				<p class="mx-auto max-w-xl text-sm text-skin-text-muted">
+				<p class="mx-auto max-w-xl text-sm text-skin-muted">
 					By clicking the "Start paid membership" button below, you agree to our
 					Terms of Use and that you are over 18 and acknowledge the Privacy
 					Statement. The Wordsmith's Collection will automatically continue your
