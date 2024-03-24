@@ -76,4 +76,8 @@
 	.button {
 		@apply inline-flex cursor-pointer items-center justify-center whitespace-nowrap rounded bg-skin-secondary px-3 py-2 text-skin-text shadow hover:bg-skin-secondary-offset hover:shadow-md;
 	}
+
+	.premium-gradient {
+		@apply bg-gradient-to-r from-[#fbc997] to-[#66afaf];
+	}
 }

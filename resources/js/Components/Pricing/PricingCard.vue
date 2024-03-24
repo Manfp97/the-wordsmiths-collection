@@ -37,7 +37,7 @@ defineProps({
 	<div
 		class="mx-auto rounded-lg"
 		:class="{
-			'bg-gradient-to-r from-[#fbc997] to-[#66afaf]': shouldHighlight,
+			'premium-gradient': shouldHighlight,
 			'bg-skin-secondary': !shouldHighlight,
 		}"
 	>
