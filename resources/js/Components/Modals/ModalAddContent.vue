@@ -12,10 +12,6 @@ const modalId = "modal-add-content";
 onMounted(() => {
 	initFlowbite();
 });
-
-const emit = defineEmits(["close"]);
-
-const emitClose = () => emit("close");
 </script>
 
 <template>
@@ -23,7 +19,6 @@ const emitClose = () => emit("close");
 		:modal-id="modalId"
 		modal-title="What do you want to add?"
 		:should-show-header-border="false"
-		@close="emitClose"
 	>
 		<Tabs
 			:parent-id="modalId"
