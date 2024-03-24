@@ -35,9 +35,9 @@ const isReviewing = ref(false);
 
 const subscription = usePage().props.auth.subscription;
 
-const isSubscriptionActive = subscription && subscription.status === "active";
+const isSubscriptionActive = subscription?.status === "active";
 const canReadPremiumBook = props.book.is_premium
-	? isSubscriptionActive && subscription.subscription_plan_id === 1
+	? subscription?.subscription_plan_id === 1
 	: true;
 
 const readButtonText = computed(() => {

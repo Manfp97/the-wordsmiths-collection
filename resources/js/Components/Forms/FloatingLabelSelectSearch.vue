@@ -66,7 +66,7 @@ const deselectAllCheckboxes = () => {
 		const checkboxId = `${props.inputId}-${option.id}`;
 		const $checkbox = document.getElementById(checkboxId);
 
-		if ($checkbox && $checkbox.checked) {
+		if ($checkbox?.checked) {
 			$checkbox.checked = false;
 		}
 	});

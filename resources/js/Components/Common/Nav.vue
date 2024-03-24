@@ -29,7 +29,7 @@ const $searchInput = ref(null);
 const addingContent = ref(false);
 
 const user = usePage().props.auth.user;
-const isAdmin = user && user.role_id === 1;
+const isAdmin = user?.role_id === 1;
 </script>
 
 <template>
