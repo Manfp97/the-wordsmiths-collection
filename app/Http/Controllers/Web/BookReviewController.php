@@ -8,7 +8,7 @@ use App\Support\Enums\MediaCollectionEnum;
 use App\Support\Enums\MediaConversionEnum;
 use App\Http\Requests\BookReviewStoreRequest;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
@@ -63,6 +63,33 @@ class BookReviewController extends Controller
 	}
 
 	/**
+	 * Update the book review.
+	 */
+	public function update(BookReviewStoreRequest $request, int $id)
+	{
+		$bookReview = BookReview::find($id);
+
+		if ($bookReview && optional($request->user())->id === $bookReview->user_id) {
+			$bookReview->fill($request->validated())->save();
+
+			return back()->with(
+				'alert',
+				[
+					'type' => 'success',
+					'message' => 'Review successfully edited',
+				]
+			);
+		}
+
+		return back()->with(
+			'alert',
+			[
+				'type' => 'danger',
+				'message' => 'You cannot edit this review',
+			]
+		);
+	}
+
 	 * Delete the review.
 	 */
 	public function destroy(int $id): RedirectResponse
