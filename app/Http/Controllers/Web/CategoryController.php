@@ -27,10 +27,11 @@ class CategoryController extends Controller
 						$responsiveCover = $cover(MediaConversionEnum::WEBP)->toHtml();
 
 						return [
-							'id'		=> $book->id,
-							'title'	=> $book->title,
-							'slug'	=> Str::slug($book->title),
-							'cover'	=> $responsiveCover,
+							'id'				=> $book->id,
+							'title'			=> $book->title,
+							'slug'			=> Str::slug($book->title),
+							'isPremium'	=> $book->is_premium,
+							'cover'			=> $responsiveCover,
 						];
 					}),
 				];
