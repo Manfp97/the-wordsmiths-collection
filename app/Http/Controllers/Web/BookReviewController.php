@@ -1,0 +1,80 @@
+<?php
+
+namespace App\Http\Controllers\Web;
+
+use App\Http\Controllers\Controller;
+use App\Models\BookReview;
+use App\Support\Enums\MediaCollectionEnum;
+use App\Support\Enums\MediaConversionEnum;
+use App\Http\Requests\BookReviewStoreRequest;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
+use Inertia\Inertia;
+
+class BookReviewController extends Controller
+{
+	/**
+	 * Handle an incoming new review.
+	 */
+	public function store(BookReviewStoreRequest $request, int $book_id)
+	{
+		$validatedData = $request->validated();
+
+		$validator = Validator::make(['book_id' => $book_id], [
+			'book_id' => 'required|int|exists:books,id',
+    ]);
+
+		if ($validator->fails()) {
+			return redirect()->back()->withErrors($validator);
+    }
+
+		$user_id = $request->user()->id;
+		$doesReviewExist = BookReview::where('book_id', $book_id)
+			->where('user_id', $user_id)
+			->exists();
+
+		if ($doesReviewExist) {
+			return back()->with(
+				'alert',
+				[
+					'type' => 'danger',
+					'message' => 'You cannot post more than one review per book.',
+				]
+			);
+		} else {
+			$review = BookReview::create([
+				'user_id' 		=> $user_id,
+				'book_id' 		=> $book_id,
+				'rating' 			=> $validatedData['rating'],
+				'review_text' => $validatedData['review_text'],
+			]);
+
+			return back()->with(
+				'alert',
+				[
+					'type' => 'success',
+					'message' => 'Review successfully posted',
+				]
+			);
+		}
+	}
+
+	/**
+	 * Delete the review.
+	 */
+	public function destroy(int $id): RedirectResponse
+	{
+		BookReview::destroy($id);
+
+		return back()->with(
+			'alert',
+			[
+				'type' => 'success',
+				'message' => 'Review successfully deleted',
+			]
+		);
+	}
+}
