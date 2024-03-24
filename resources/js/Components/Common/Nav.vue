@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { initFlowbite } from "flowbite";
 import { usePage } from "@inertiajs/vue3";
 import Logo from "@/Components/Common/Logo.vue";
@@ -28,8 +28,8 @@ defineProps({
 const $searchInput = ref(null);
 const addingContent = ref(false);
 
-const user = usePage().props.auth.user;
-const isAdmin = user?.role_id === 1;
+const user = computed(() => usePage().props.auth.user);
+const isAdmin = user.value?.role_id === 1;
 </script>
 
 <template>
