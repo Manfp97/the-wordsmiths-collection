@@ -11,7 +11,8 @@ import {
 	navigation,
 } from "@/Components/Swiper/SwiperNavigation.vue";
 import Footer from "@/Components/Common/Footer.vue";
-import ModalReview from "@/Components/Modals/ModalReview.vue";
+import ModalContainer from "@/Components/Modals/ModalContainer.vue";
+import FormReview from "@/Forms/FormReview.vue";
 import IconBook from "@icons/book.svg?component";
 
 const props = defineProps({
@@ -244,10 +245,12 @@ const swiperBreakpoints = {
 		<Footer />
 	</div>
 
-	<ModalReview
-		:show="isReviewing"
+	<ModalContainer
+		modal-id="modal-review"
 		:modal-title="`'${book.title}' review`"
-		:book-id="book.id"
+		:show="isReviewing"
 		@close="isReviewing = false"
-	/>
+	>
+		<FormReview :book-id="book.id" />
+	</ModalContainer>
 </template>
