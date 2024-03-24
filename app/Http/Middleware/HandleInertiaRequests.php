@@ -37,6 +37,8 @@ class HandleInertiaRequests extends Middleware
 	 */
 	public function share(Request $request): array
 	{
+		$user = $request->user();
+
 		return array_merge(
 			parent::share($request), 
 			[
@@ -44,7 +46,8 @@ class HandleInertiaRequests extends Middleware
 					'alert' => fn () => $request->session()->get('alert')
 				],
 				'auth' => [
-					'user' => $request->user(),
+					'user' => $user,
+					'subscription' => $user ? $user->subscription : null,
 				],
 				'selectedSubscriptionPlan' => SubscriptionPlan::find($request->session()->get('selected_subscription_plan_id'))
 			]
