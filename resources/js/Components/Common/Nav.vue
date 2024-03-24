@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { initFlowbite } from "flowbite";
+import { usePage } from "@inertiajs/vue3";
 import Logo from "@/Components/Common/Logo.vue";
 import ModalAddContent from "@/Components/Modals/ModalAddContent.vue";
 import IconSearch from "@icons/search.svg?component";
@@ -26,6 +27,9 @@ defineProps({
 
 const $searchInput = ref(null);
 const addingContent = ref(false);
+
+const user = usePage().props.auth.user;
+const isAdmin = user && user.role_id === 1;
 </script>
 
 <template>
@@ -48,6 +52,7 @@ const addingContent = ref(false);
 			>
 				<!-- User icon -->
 				<button
+					v-if="user"
 					id="user-menu-button"
 					type="button"
 					class="me-1 flex rounded-full text-sm focus:ring-2 focus:ring-skin-border md:me-0"
@@ -61,6 +66,25 @@ const addingContent = ref(false);
 						fill="none"
 					/>
 				</button>
+
+				<!-- Unregistered options -->
+				<div
+					v-else
+					class="flex h-9 space-x-2"
+				>
+					<Link
+						href="/subscribe"
+						class="flex min-w-[2rem] items-center justify-center rounded-lg bg-skin-secondary px-3 text-sm font-bold uppercase text-skin-text hover:bg-skin-secondary-offset"
+					>
+						Subscribe
+					</Link>
+					<Link
+						href="/login"
+						class="flex min-w-[2rem] items-center justify-center rounded-lg border-2 border-skin-white px-3 text-sm font-bold uppercase text-skin-white hover:border-skin-border"
+					>
+						Log in
+					</Link>
+				</div>
 
 				<!-- Search icon -->
 				<button
@@ -102,15 +126,16 @@ const addingContent = ref(false);
 
 				<!-- User dropdown menu -->
 				<div
+					v-if="user"
 					id="user-dropdown"
 					class="z-40 my-4 hidden list-none divide-y divide-skin-border rounded-lg bg-skin-primary text-base shadow"
 				>
 					<div class="px-4 py-3">
 						<span class="block text-sm font-semibold text-skin-text">
-							John Doe
+							{{ user.username }}
 						</span>
 						<span class="block truncate text-sm text-skin-text-muted">
-							example@mail.com
+							{{ user.email }}
 						</span>
 					</div>
 					<ul
@@ -118,15 +143,16 @@ const addingContent = ref(false);
 						aria-labelledby="user-menu-button"
 					>
 						<li>
-							<a
-								href="#"
+							<Link
+								href="/profile"
 								class="block px-4 py-2 text-sm text-skin-text hover:bg-skin-secondary-offset"
 							>
-								Settings
-							</a>
+								Profile
+							</Link>
 						</li>
 						<li>
 							<button
+								v-if="isAdmin"
 								class="block w-full px-4 py-2 text-left text-sm text-skin-text hover:bg-skin-secondary-offset"
 								type="button"
 								@click="addingContent = true"
@@ -135,12 +161,14 @@ const addingContent = ref(false);
 							</button>
 						</li>
 						<li>
-							<a
-								href="#"
-								class="block px-4 py-2 text-sm text-skin-danger hover:bg-skin-secondary-offset"
+							<Link
+								href="/logout"
+								method="post"
+								as="button"
+								class="block w-full px-4 py-2 text-left text-sm text-skin-danger hover:bg-skin-secondary-offset"
 							>
 								Log out
-							</a>
+							</Link>
 						</li>
 					</ul>
 				</div>
