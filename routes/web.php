@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
 
 	Route::post('/review/{book_id}', [BookReviewController::class, 'store'])->name('review.store');
 	Route::put('/review/{id}', [BookReviewController::class, 'update'])->name('review.update');
+	Route::delete('/review/{id}', [BookReviewController::class, 'destroy'])->name('review.destroy');
 });
 
 require __DIR__.'/auth.php';

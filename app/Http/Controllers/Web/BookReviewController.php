@@ -90,17 +90,36 @@ class BookReviewController extends Controller
 		);
 	}
 
+	/**
 	 * Delete the review.
 	 */
-	public function destroy(int $id): RedirectResponse
+	public function destroy(Request $request, int $id): RedirectResponse
 	{
-		BookReview::destroy($id);
+		$bookReview = BookReview::find($id);
+
+		if ($bookReview) {
+			$user = optional($request->user());
+			$isAdmin = $user->role_id === 1;
+			$isWrittenByUser = $user->id === $bookReview->user_id;
+
+			if ($isWrittenByUser || $isAdmin) {
+				$bookReview->delete();
+
+				return back()->with(
+					'alert',
+					[
+						'type' => 'success',
+						'message' => 'Review successfully deleted',
+					]
+				);
+			}
+		}
 
 		return back()->with(
 			'alert',
 			[
-				'type' => 'success',
-				'message' => 'Review successfully deleted',
+				'type' => 'danger',
+				'message' => 'You cannot delete this review',
 			]
 		);
 	}
