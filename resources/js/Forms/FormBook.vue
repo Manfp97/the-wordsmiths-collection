@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { useForm } from "@inertiajs/vue3";
 import { extractKeyValuesByPattern } from "@/Helpers/arrayHelper.js";
 import axios from "axios";
@@ -55,11 +55,6 @@ const fetchCategories = async () => {
 	}
 };
 
-onMounted(() => {
-	fetchAuthors();
-	fetchCategories();
-});
-
 const submitForm = () => {
 	form.post("/book", {
 		preserveScroll: true,
@@ -104,6 +99,7 @@ const submitForm = () => {
 						(atIndex = 1)
 					)
 				"
+				@click="fetchAuthors"
 			/>
 			<FloatingLabelSelectSearch
 				v-model:value="form.categories_id"
@@ -118,6 +114,7 @@ const submitForm = () => {
 						(atIndex = 1)
 					)
 				"
+				@click="fetchCategories"
 			/>
 
 			<FloatingLabel
