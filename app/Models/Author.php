@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -44,7 +45,7 @@ class Author extends Model implements HasMedia
 		return 'slug';
 	}
 
-	public function books()
+	public function books(): BelongsToMany
 	{
 		return $this->belongsToMany(Book::class);
 	}

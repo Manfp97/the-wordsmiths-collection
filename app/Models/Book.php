@@ -7,6 +7,8 @@ use App\Support\Enums\MediaConversionEnum;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -52,12 +54,12 @@ class Book extends Model implements HasMedia
 		return 'slug';
 	}
 
-	public function authors()
+	public function authors(): BelongsToMany
 	{
 		return $this->belongsToMany(Author::class);
 	}
 
-	public function categories()
+	public function categories(): BelongsToMany
 	{
 		return $this->belongsToMany(Category::class);
 	}
