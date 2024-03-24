@@ -26,7 +26,7 @@ class BookController extends Controller
 			'Index', 
 			[
 				'books' => Book::query()
-					->when(Request::input('search'), function ($query, $search) {
+					->when(FacadesRequest::input('search'), function ($query, $search) {
 						$query->where('name', 'like', "%{$search}%");
 					})
 					->withQueryString()
@@ -40,7 +40,7 @@ class BookController extends Controller
 						// ]  //TODO
 					]),
 
-				'filters' => Request::only(['search']),
+				'filters' => FacadesRequest::only(['search']),
 				// 'can' => [
 				// 	'createUser' => Auth::user()->can('create', User::class)
 				// ] //TODO
@@ -137,10 +137,11 @@ class BookController extends Controller
 	{
 		$book = Book::where('slug', $slug)->firstOrFail();
 		$bookFile = $book->getFirstMedia(MediaCollectionEnum::BOOKS);
+
 		return Inertia::render('Book/Read', [
-			'pdfUrl' => $bookFile->getFullUrl(),
+			'pdfUrl'		=> $bookFile->getFullUrl(),
 			'bookTitle' => $book->title,
-			'bookSlug' => $book->slug,
+			'bookSlug' 	=> $book->slug,
 		]);
 	}
 
