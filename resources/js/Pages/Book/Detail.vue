@@ -186,6 +186,7 @@ const swiperBreakpoints = {
 								<Review
 									v-for="(review, index) in book.reviews"
 									:key="index"
+									:book-id="book.id"
 									:review="review"
 								/>
 							</div>
@@ -251,6 +252,9 @@ const swiperBreakpoints = {
 		:show="isReviewing"
 		@close="isReviewing = false"
 	>
-		<FormReview :book-id="book.id" />
+		<FormReview
+			:book-id="book.id"
+			http-method="post"
+		/>
 	</ModalContainer>
 </template>

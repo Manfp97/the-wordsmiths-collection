@@ -8,15 +8,29 @@ const props = defineProps({
 		type: Number,
 		required: true,
 	},
+	review: {
+		type: Object,
+		required: false,
+		default: null,
+	},
+	httpMethod: {
+		type: String,
+		required: true,
+	},
 });
 
 const form = useForm({
-	review_text: null,
-	rating: null,
+	review_text: props.review?.reviewText,
+	rating: props.review?.rating,
 });
 
 const submitForm = () => {
-	form.post(`/review/${props.bookId}`, {
+	const url =
+		props.httpMethod === "post"
+			? `/review/${props.bookId}`
+			: `/review/${props.review.id}`;
+
+	form[props.httpMethod](url, {
 		preserveScroll: true,
 		onSuccess: () => {
 			form.reset();
