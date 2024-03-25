@@ -11,9 +11,18 @@ const cover = props.book.cover.replaceAll(">", "class='h-full w-full'>");
 
 <template>
 	<div
-		class="h-full select-none rounded-r-xl hover:ring-4 hover:ring-skin-card active:ring-skin-secondary"
+		class="relative h-full select-none rounded-r-xl hover:ring-4 hover:ring-skin-card active:ring-skin-secondary"
 		:title="book.title"
 	>
+		<p
+			v-if="book.isPremium"
+			class="absolute left-3 top-3 rounded bg-skin-text p-0.5 px-1 text-[0.5rem] font-bold uppercase xs:text-xs"
+		>
+			<span class="premium-gradient bg-clip-text text-transparent">
+				Premium
+			</span>
+		</p>
+
 		<!-- eslint-disable vue/no-v-text-v-html-on-component vue/no-v-html -->
 		<Link
 			:href="`/book/${book.slug}`"
