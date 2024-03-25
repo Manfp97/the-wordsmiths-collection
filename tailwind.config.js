@@ -45,6 +45,7 @@ export default {
 		},
 		extend: {
 			screens: {
+				xs: { min: "480px" },
 				"max-xs": { max: "479px" },
 				"max-sm": { max: "639px" },
 				"max-md": { max: "767px" },
