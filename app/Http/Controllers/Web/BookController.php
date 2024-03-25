@@ -118,10 +118,11 @@ class BookController extends Controller
 				$responsiveCover = $cover(MediaConversionEnum::WEBP)->toHtml();
 
 				return [
-					'id'		=> $book->id,
-					'title'	=> $book->title,
-					'slug'	=> Str::slug($book->title),
-					'cover'	=> $responsiveCover,
+					'id'				=> $book->id,
+					'title'			=> $book->title,
+					'slug'			=> Str::slug($book->title),
+					'isPremium'	=> $book->is_premium,
+					'cover'			=> $responsiveCover,
 				];
 			})
 			->take(18) // If there are fewer than 18 related books, it will return all of them.
