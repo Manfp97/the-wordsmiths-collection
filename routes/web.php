@@ -27,8 +27,7 @@ Route::post('/author', [AuthorController::class, 'store']); // auth => admin
 
 Route::inertia('/subscribe', 'Subscribe');
 
-Route::get('/pricing', [PricingController::class, 'show'])->name('pricing');
-Route::post('/pricing/{subscription_plan_id}', [PricingController::class, 'store']);
+Route::post('/subscription-plan/{id}', [SubscriptionPlanController::class, 'select']);
 
 Route::middleware('auth')->group(function () {
 	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

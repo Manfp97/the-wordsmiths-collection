@@ -3,9 +3,35 @@ import AppHead from "@/Components/Common/AppHead.vue";
 import Nav from "@/Components/Common/Nav.vue";
 import SubscribeFeature from "@/Components/Subscribe/SubscribeFeature.vue";
 import SubscribeFaqs from "@/Components/Subscribe/SubscribeFaqs.vue";
+import PricingCard from "@/Components/Pricing/PricingCard.vue";
 import Footer from "@/Components/Common/Footer.vue";
 
-const features = [
+const commonPlanFeatures = [
+	{
+		isCheck: true,
+		text: "Write reviews",
+	},
+	{
+		isCheck: true,
+		text: "Read <span class='font-bold'>Basic</span> books",
+	},
+];
+
+const planBasicFeatures = commonPlanFeatures.concat([
+	{
+		isCheck: false,
+		text: "Read <span class='font-bold'>Premium</span> books",
+	},
+]);
+
+const planPremiumFeatures = commonPlanFeatures.concat([
+	{
+		isCheck: true,
+		text: "Read <span class='font-bold'>Premium</span> books",
+	},
+]);
+
+const serviceFeatures = [
 	{
 		title: "Extensive curated library",
 		body: "<p>Access to a vast and curated library of the most important literary works in history. <a href='/' class='underline hover:bg-skin-secondary-offset bg-skin-secondary'>Browse the library now</a>.</p>",
@@ -66,41 +92,81 @@ const faqs = [
 	<Nav />
 
 	<div class="min-h-screen">
-		<div
-			class="hero relative h-screen w-full bg-cover bg-center py-3 text-skin-primary 2xl:h-[50vh]"
-		>
-			<div
-				id="hero-content"
-				class="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 px-4 pt-10 text-center"
-			>
-				<h1
-					class="font-means-web text-4xl font-bold !leading-[1.175] sm:text-6xl 2xl:text-7xl"
+		<section class="hero bg-cover bg-center pb-16 pt-32">
+			<div class="px-8 text-center">
+				<header class="text-skin-primary">
+					<h1
+						class="font-means-web text-4xl font-bold !leading-[1.175] sm:text-6xl 2xl:text-7xl"
+					>
+						Choose the plan that best suits
+						<span class="text-skin-secondary">your needs</span>
+					</h1>
+					<h3 class="my-2 text-lg sm:my-5 sm:text-2xl">
+						Explore, read, and relive literary classics anywhere at any time.
+					</h3>
+				</header>
+
+				<div
+					class="mx-auto my-10 max-w-5xl text-skin-text sm:grid sm:grid-cols-2 sm:gap-6 md:gap-10 lg:gap-16 max-sm:space-y-10"
 				>
-					Your gateway to<br />
-					literary masterpieces.
-				</h1>
-				<h3 class="my-2 text-lg sm:my-5 sm:text-2xl">
-					Explore, read, and relive literary classics anywhere at any time.
-				</h3>
-				<Link
-					href="/pricing"
-					class="button button-subscribe my-3"
-				>
-					Subscribe Now
-				</Link>
-				<p class="text-sm md:text-base">Cancel anytime.</p>
+					<PricingCard
+						title="Basic"
+						description="Unlock a world of knowledge with our Basic plan, which gives you access to a vast library of essential literary works."
+						price-int-part="4"
+						price-decimal-part="99"
+						currency="€"
+						:features="planBasicFeatures"
+						:should-highlight="false"
+						class="w-full"
+					>
+						<template #button>
+							<Link
+								href="/subscription-plan/2"
+								method="post"
+								as="button"
+								class="button py-2.5 font-bold capitalize"
+							>
+								Continue
+							</Link>
+						</template>
+					</PricingCard>
+
+					<PricingCard
+						title="Premium"
+						description="Exclusive access to a curated collection of Premium books that offer unparalleled depth of knowledge and entertainment."
+						price-int-part="6"
+						price-decimal-part="99"
+						currency="€"
+						:features="planPremiumFeatures"
+						should-highlight
+						class="w-full"
+					>
+						<template #button>
+							<Link
+								href="/subscription-plan/1"
+								method="post"
+								as="button"
+								class="button py-2.5 font-bold capitalize"
+							>
+								Continue
+							</Link>
+						</template>
+					</PricingCard>
+				</div>
+
+				<p class="text-sm text-skin-primary md:text-base">Cancel anytime</p>
 			</div>
-		</div>
+		</section>
 
 		<main>
 			<div class="container my-2 sm:my-10 md:mb-20 md:mt-8 lg:my-16 xl:my-24">
 				<div class="mx-4">
 					<SubscribeFeature
-						v-for="feature in features"
-						:key="feature"
-						:title="feature.title"
-						:body="feature.body"
-						:image-path="feature.imagePath"
+						v-for="serviceFeature in serviceFeatures"
+						:key="serviceFeature"
+						:title="serviceFeature.title"
+						:body="serviceFeature.body"
+						:image-path="serviceFeature.imagePath"
 						class="py-8 sm:py-12 md:py-16"
 					/>
 				</div>
@@ -110,7 +176,7 @@ const faqs = [
 				class="discover__section grid h-[36rem] place-items-center sm:h-[40rem]"
 			>
 				<div
-					class="mx-4 grid h-[21.125rem] place-items-center rounded-lg bg-skin-tertiary px-8 text-center md:mx-6 lg:mx-8 lg:w-[48rem] xl:mx-36 2xl:mx-4"
+					class="mx-8 grid h-[21.125rem] place-items-center rounded-lg bg-skin-tertiary px-8 text-center lg:w-[48rem]"
 				>
 					<div class="lg:max-w-lg">
 						<p
@@ -119,30 +185,30 @@ const faqs = [
 							Discover now the book that will change your life for only
 							<strong>4,99€</strong>
 						</p>
-						<Link
-							href="/pricing"
+						<a
+							href="#"
 							class="button button-subscribe mt-6"
 						>
 							Subscribe Now
-						</Link>
+						</a>
 					</div>
 				</div>
 			</section>
 
 			<div class="container mb-16 mt-3 lg:mb-20">
-				<div class="mx-4">
+				<div class="mx-8">
 					<SubscribeFaqs :faqs="faqs" />
 					<section class="mx-auto mt-5 max-w-3xl text-center">
 						<h3 class="section-title !leading-[1.175]">
 							Ready to read?<br />
 							Start your membership now
 						</h3>
-						<Link
-							href="/pricing"
+						<a
+							href="#"
 							class="button button-subscribe mt-6"
 						>
 							Subscribe Now
-						</Link>
+						</a>
 					</section>
 				</div>
 			</div>

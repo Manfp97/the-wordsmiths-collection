@@ -40,7 +40,7 @@ defineProps({
 
 					<Link
 						class="font-bold text-skin-link"
-						href="/pricing"
+						href="/subscribe"
 					>
 						Change
 					</Link>

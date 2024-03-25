@@ -81,7 +81,7 @@ const submitForm = () => {
 		<div class="text-center text-sm font-medium text-skin-muted">
 			Not registered?
 			<Link
-				href="/pricing"
+				href="/subscribe"
 				class="text-skin-link underline hover:text-skin-text"
 				>Select a subscription plan</Link
 			>
