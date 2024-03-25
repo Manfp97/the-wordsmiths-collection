@@ -67,7 +67,7 @@ const swiperBreakpoints = {
 			>
 				<template #header>
 					<h2
-						class="mb-4 px-4 text-xl font-bold md:mb-6 md:px-6 md:text-2xl lg:px-16 xl:text-3xl 2xl:text-4xl"
+						class="mb-4 px-4 text-xl font-bold md:mb-6 md:px-6 md:text-2xl lg:px-16 2xl:text-3xl"
 					>
 						{{ category.name }}
 					</h2>
