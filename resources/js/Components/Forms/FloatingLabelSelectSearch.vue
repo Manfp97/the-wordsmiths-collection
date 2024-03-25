@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from "vue";
 import IconSearch from "@icons/search.svg?component";
+import IconTrash from "@icons/trash.svg?component";
 
 const props = defineProps({
 	inputId: {
@@ -33,7 +34,7 @@ const props = defineProps({
 const selectedOptions = defineModel("value"); // eslint-disable-line
 
 const isDropdownVisible = ref(false);
-const areAnyItemsSelected = ref(false);
+const areAnyItemsSelected = computed(() => selectedOptions.value.length > 0);
 const $selectedItemsList = ref(null);
 const $dropdownSearch = ref(null);
 const $dropdownSearchButton = ref(null);
@@ -61,6 +62,14 @@ watch(
 	}
 );
 
+const onTrashClick = (e) => {
+	if (!isDropdownVisible.value) {
+		e.stopPropagation();
+	}
+
+	selectedOptions.value = [];
+};
+
 const deselectAllCheckboxes = () => {
 	props.options.forEach((option) => {
 		const checkboxId = `${props.inputId}-${option.id}`;
@@ -72,7 +81,6 @@ const deselectAllCheckboxes = () => {
 	});
 
 	$selectedItemsList.value.innerHTML = "";
-	areAnyItemsSelected.value = false;
 };
 
 const filteredOptions = computed(() => {
@@ -113,8 +121,6 @@ const handleCheckboxChange = (event) => {
 			selectedOptions.value.splice(index, 1);
 		}
 	}
-
-	areAnyItemsSelected.value = selectedOptions.value.length > 0;
 };
 </script>
 
@@ -131,16 +137,26 @@ const handleCheckboxChange = (event) => {
 					isDropdownVisible,
 			}"
 		>
-			<label
-				:for="inputId"
-				class="absolute cursor-pointer select-none text-sm text-skin-text"
+			<div
+				class="absolute flex w-full justify-between pr-8"
 				:class="{
 					'top-4': !areAnyItemsSelected,
 					'top-3': areAnyItemsSelected,
 				}"
 			>
-				{{ labelText }}
-			</label>
+				<label
+					:for="inputId"
+					class="cursor-pointer select-none text-sm text-skin-text"
+				>
+					{{ labelText }}
+				</label>
+
+				<IconTrash
+					v-if="areAnyItemsSelected"
+					class="w-5 stroke-skin-danger"
+					@click="onTrashClick"
+				/>
+			</div>
 
 			<ul
 				:id="`${inputId}-selected-values`"
