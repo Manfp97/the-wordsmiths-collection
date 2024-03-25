@@ -3,7 +3,9 @@
 use App\Http\Controllers\Web\BookController;
 use App\Http\Controllers\Web\CategoryController;
 use App\Http\Controllers\Web\AuthorController;
-use App\Http\Controllers\Web\PricingController;
+use App\Http\Controllers\Web\BookReviewController;
+use App\Http\Controllers\Web\SubscriptionPlanController;
+use App\Http\Controllers\Web\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
