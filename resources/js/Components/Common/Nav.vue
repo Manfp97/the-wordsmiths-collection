@@ -218,25 +218,27 @@ const isAdmin = user.value?.role_id === 1;
 				>
 					<li>
 						<Link
-							href="#"
-							class="active-link block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-skin-transparent md:hover:underline"
-							aria-current="page"
-						>
-							Home
-						</Link>
-					</li>
-					<li>
-						<Link
-							href="#"
+							href="/"
 							class="block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-skin-transparent md:hover:underline"
+							:class="{ 'active-link': usePage().component === 'Index' }"
 						>
 							Categories
 						</Link>
 					</li>
 					<li>
 						<Link
-							href="#"
+							href="/books"
 							class="block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-skin-transparent md:hover:underline"
+							:class="{ 'active-link': usePage().component === 'Book/Index' }"
+						>
+							Books
+						</Link>
+					</li>
+					<li>
+						<Link
+							href="/authors"
+							class="block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-skin-transparent md:hover:underline"
+							:class="{ 'active-link': usePage().component === 'Author/Index' }"
 						>
 							Authors
 						</Link>
@@ -255,6 +257,6 @@ const isAdmin = user.value?.role_id === 1;
 
 <style scoped>
 .active-link {
-	@apply bg-skin-secondary md:bg-skin-transparent md:underline md:decoration-skin-secondary md:decoration-4;
+	@apply bg-skin-secondary underline-offset-4 md:bg-skin-transparent md:underline md:decoration-skin-secondary md:decoration-4;
 }
 </style>
