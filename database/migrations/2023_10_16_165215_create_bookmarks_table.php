@@ -13,7 +13,7 @@ class CreateBookmarksTable extends Migration
 			$table->foreignId('book_id')->constrained();
 			$table->foreignId('user_id')->constrained();
 			$table->integer('page_number');
-			$table->boolean('is_favorite');
+			$table->boolean('is_favorite')->default(false);
 			$table->timestamps();
 		});
 	}
