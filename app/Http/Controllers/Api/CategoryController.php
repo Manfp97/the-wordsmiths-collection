@@ -3,18 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Http\Resources\CategoryResource;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
-
 	public function getAll(Request $request)
 	{
-		try 
-		{
+		try {
 			$orderByColumn = $request->input('order_by');
 			$direction = $request->input('direction', 'asc');
 
@@ -29,12 +27,10 @@ class CategoryController extends Controller
 				->get();
 
 			return CategoryResource::collection($categories);
-		} 
-		catch (\Exception $e)
-		{
+		
+		} catch (\Exception $e) {
 			$response = ['error' => $e->getMessage(),];
 			return response()->json($response, 404);
 		}
 	}
-	
 }
