@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\BookController;
+use App\Http\Controllers\Web\BookmarkController;
 use App\Http\Controllers\Web\CategoryController;
 use App\Http\Controllers\Web\AuthorController;
 use App\Http\Controllers\Web\BookReviewController;
@@ -39,6 +40,8 @@ Route::middleware('auth')->group(function () {
 	Route::post('/review/{book_id}', [BookReviewController::class, 'store'])->name('review.store');
 	Route::put('/review/{id}', [BookReviewController::class, 'update'])->name('review.update');
 	Route::delete('/review/{id}', [BookReviewController::class, 'destroy'])->name('review.destroy');
+
+	Route::post('/bookmark', [BookmarkController::class, 'upsert'])->name('bookmark.upsert');
 });
 
 require __DIR__.'/auth.php';

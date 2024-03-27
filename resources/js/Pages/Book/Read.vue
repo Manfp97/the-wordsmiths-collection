@@ -1,5 +1,6 @@
 <script setup>
-import { router } from "@inertiajs/vue3";
+import { ref, onBeforeUnmount } from "vue";
+import { router, usePage } from "@inertiajs/vue3";
 import AppHead from "@/Components/Common/AppHead.vue";
 import SimplePdfReader from "@/Components/Common/SimplePdfReader.vue";
 
@@ -8,33 +9,53 @@ const props = defineProps({
 		type: String,
 		required: true,
 	},
-	bookTitle: {
-		type: String,
-		required: true,
-	},
-	bookSlug: {
-		type: String,
+	book: {
+		type: Object,
 		required: true,
 	},
 	bookmarkPage: {
-		// TODO in controller
 		type: Number,
 		required: false,
 		default: 1,
 	},
 });
 
-const handleClose = () => {
-	// AJAX POST request to bookmark. In the promise, put the following line at the end:
-	router.visit(`/book/${props.bookSlug}`);
+const page = ref(props.bookmarkPage);
+const didClickClose = ref(false);
+
+onBeforeUnmount(() => {
+	if (!didClickClose.value) {
+		postBookmark();
+	}
+});
+
+const postBookmark = () => {
+	if (props.bookmarkPage !== page.value) {
+		router.visit("/bookmark", {
+			method: "post",
+			data: {
+				user_id: usePage().props.auth.user.id,
+				book_id: props.book.id,
+				page_number: page.value,
+			},
+		});
+	} else {
+		router.visit(`/book/${props.book.slug}`);
+	}
+};
+
+const onClose = () => {
+	didClickClose.value = true;
+	postBookmark();
 };
 </script>
 
 <template>
-	<AppHead :title="bookTitle" />
+	<AppHead :title="book.title" />
 	<SimplePdfReader
+		v-model:page="page"
 		:pdf-source="pdfUrl"
 		:initial-page="bookmarkPage"
-		@close="handleClose"
+		@close="onClose"
 	/>
 </template>

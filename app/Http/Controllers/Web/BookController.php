@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\Bookmark;
 use App\Models\BookReview;
 use App\Models\Category;
 use App\Models\User;
@@ -151,15 +152,19 @@ class BookController extends Controller
 		]);
 	}
 
-	public function read(string $slug)
+	public function read(HttpRequest $request, string $slug)
 	{
 		$book = Book::where('slug', $slug)->firstOrFail();
 		$bookFile = $book->getFirstMedia(MediaCollectionEnum::BOOKS);
 
+		$bookmark = Bookmark::where('book_id', $book->id)
+			->where('user_id', $request->user()->id)
+			->first();
+
 		return Inertia::render('Book/Read', [
-			'pdfUrl'		=> $bookFile->getFullUrl(),
-			'bookTitle'	=> $book->title,
-			'bookSlug'	=> $book->slug,
+			'pdfUrl'				=> $bookFile->getFullUrl(),
+			'book'					=> $book,
+			'bookmarkPage'	=> optional($bookmark)->page_number ?? 1
 		]);
 	}
 

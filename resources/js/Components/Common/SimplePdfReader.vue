@@ -7,17 +7,13 @@ import IconCaretLeftFilled from "@icons/caret-left-filled.svg?component";
 import IconCaretRightFilled from "@icons/caret-right-filled.svg?component";
 
 defineEmits(["close"]);
+const page = defineModel("page"); // eslint-disable-line
 
 const props = defineProps({
 	// base64 or URL
 	pdfSource: {
 		type: String,
 		required: true,
-	},
-	initialPage: {
-		type: Number,
-		required: false,
-		default: 1,
 	},
 	defaultZoom: {
 		type: Number,
@@ -34,7 +30,7 @@ const props = defineProps({
 const currentPdf = {
 	fileData: null,
 	pageCount: 0,
-	currentPage: props.initialPage,
+	currentPage: page.value,
 	zoom: props.defaultZoom / 100,
 };
 
@@ -46,7 +42,6 @@ const $textLayerDiv = ref(null);
 
 const isPageInputFocus = ref(false);
 const isZoomInputFocus = ref(false);
-const pageInputValue = ref(props.initialPage);
 const zoomValue = ref(props.defaultZoom);
 
 onMounted(() => {
@@ -100,7 +95,7 @@ const renderPage = (pageNumber) => {
 			.then((textContent) => renderTextLayer(textContent, viewport));
 	});
 
-	pageInputValue.value = pageNumber;
+	page.value = pageNumber;
 	currentPdf.currentPage = pageNumber;
 };
 
@@ -162,12 +157,12 @@ const changeZoom = (newValue) => {
 
 const onPageInputKeyUp = (event) => {
 	if (event.key === "Enter" || event.keyCode === 13) {
-		const value = pageInputValue.value;
+		const value = page.value;
 
 		if (value >= 1 && value <= currentPdf.pageCount) {
 			renderPage(value);
 		} else {
-			pageInputValue.value = currentPdf.currentPage;
+			page.value = currentPdf.currentPage;
 		}
 	}
 };
@@ -234,7 +229,7 @@ const onWheel = (event) => {
 
 					<div>
 						<input
-							v-model="pageInputValue"
+							v-model="page"
 							type="number"
 							class="h-7 w-9 !p-0 text-center text-skin-text focus:border-2 focus:border-skin-secondary focus:ring-0"
 							@keyup="onPageInputKeyUp"
