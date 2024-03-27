@@ -26,7 +26,7 @@ defineProps({
 </script>
 
 <template>
-	<BaseLayout class="flex min-h-screen flex-col">
+	<BaseLayout>
 		<div class="flex flex-wrap lg:flex-1">
 			<section
 				class="flex w-full flex-col items-center bg-skin-secondary-offset py-12 lg:w-1/3"
@@ -47,7 +47,7 @@ defineProps({
 
 					<Link
 						v-if="shouldShowChangePlan"
-						href="/subscribe"
+						href="/pricing"
 						class="mx-auto block w-full rounded border border-skin-secondary px-5 py-2.5 text-center font-bold hover:bg-skin-secondary-offset"
 					>
 						Change plan

@@ -3,7 +3,7 @@ import Alert from "@/Components/Common/Alert.vue";
 </script>
 
 <template>
-	<div>
+	<div class="flex min-h-screen flex-col">
 		<slot />
 		<Alert />
 	</div>
