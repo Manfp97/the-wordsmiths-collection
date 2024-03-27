@@ -47,7 +47,7 @@ defineProps({
 
 					<Link
 						v-if="shouldShowChangePlan"
-						href="/pricing"
+						href="/subscribe"
 						class="mx-auto block w-full rounded border border-skin-secondary px-5 py-2.5 text-center font-bold hover:bg-skin-secondary-offset"
 					>
 						Change plan
