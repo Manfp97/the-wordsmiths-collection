@@ -8,6 +8,7 @@ use App\Models\Bookmark;
 use App\Models\BookReview;
 use App\Models\Category;
 use App\Models\User;
+use App\Http\Resources\BookResource;
 use App\Support\Enums\MediaCollectionEnum;
 use App\Support\Enums\MediaConversionEnum;
 use App\Http\Requests\BookStoreRequest;
@@ -21,32 +22,18 @@ use Inertia\Inertia;
 class BookController extends Controller
 {
 
-	public function index()
+	public function index(HttpRequest $request)
 	{
-		return Inertia::render(
-			'Index', 
-			[
-				'books' => Book::query()
-					->when(FacadesRequest::input('search'), function ($query, $search) {
-						$query->where('name', 'like', "%{$search}%");
-					})
-					->withQueryString()
-					->paginate(10)
-					->through(fn ($book) => [
-						'title' => $book->title,
-						'slug' => Str::slug($book->title),
-						'cover' => $book->getFirstMedia(MediaCollectionEnum::BOOK_COVERS)->toHtml(),
-						// 'can' => [
-						// 	'edit' => Auth::user()->can('edit', User::class)
-						// ]  //TODO
-					]),
+		$books = Book::latest()->cursorPaginate(10);
 
-				'filters' => FacadesRequest::only(['search']),
-				// 'can' => [
-				// 	'createUser' => Auth::user()->can('create', User::class)
-				// ] //TODO
-			]
-		);
+		if ($request->wantsJson()) {
+			return BookResource::collection($books);
+		}
+
+		return Inertia::render('Book/Index', [
+			'books'				=> BookResource::collection($books),
+			'booksCount'	=> Book::count()
+		]);
 	}
 
 	public function show(HttpRequest $request, string $slug)
