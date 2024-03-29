@@ -82,7 +82,7 @@ class BookController extends Controller
 						'canDelete'		=> $canDelete,
 					];
 				})
-				// first review => the one written for the current user
+				// first review => the one written by the current user
 				->sort(function ($a, $b) use ($user) {
 					if ($a['username'] === $user->username) {
 						return -1; // $a comes before $b
