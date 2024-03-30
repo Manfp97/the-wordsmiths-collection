@@ -47,8 +47,8 @@ const { stop } = useIntersectionObserver(
 	<Nav />
 
 	<div class="page-container">
-		<main class="px-4 md:px-6 lg:px-16">
-			<h2 class="my-6 text-xl font-bold">{{ booksCount }} books</h2>
+		<main class="px-4 py-10 md:px-6 lg:px-16 xl:py-12 2xl:py-16">
+			<h2 class="mb-6 text-xl font-bold">{{ booksCount }} books</h2>
 			<!-- same breakpoints as swiperBreakpoints from the Index page -->
 			<div
 				class="mb-12 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 lg:gap-4 2xl:grid-cols-8"
