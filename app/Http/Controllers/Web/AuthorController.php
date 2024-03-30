@@ -4,16 +4,35 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Author;
+use App\Http\Resources\AuthorResource;
 use App\Http\Requests\AuthorStoreRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class AuthorController extends Controller
 {
 
+	public function index(Request $request): Response|ResourceCollection
+	{
+		$authors = Author::with('books')
+			->whereHas('books')
+			->orderBy('first_name')
+			->cursorPaginate(10);
+
+		if ($request->wantsJson()) {
+			return AuthorResource::collection($authors);
+		}
+
+		return Inertia::render('Author/Index', [
+			'authors'	=> AuthorResource::collection($authors)
+		]);
+	}
 	/*
-	public function show(int $id)
+	public function show(int $id): Response
 	{
 		return Inertia::render(
 			'Author/Detail',
@@ -25,7 +44,7 @@ class AuthorController extends Controller
 	}
 	*/
 
-	public function store(AuthorStoreRequest $request)
+	public function store(AuthorStoreRequest $request): RedirectResponse
 	{
 		$validatedData = $request->validated();
     Author::create($validatedData);
