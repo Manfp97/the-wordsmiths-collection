@@ -44,13 +44,16 @@ class BookController extends Controller
 			->with(['authors', 'categories', 'bookReviews'])
 			->firstOrFail();
 
+		// first review => the one written by the current user
+		$book->bookReviews = $book->bookReviews
+			->sortBy(function ($review) use ($request) {
+				return $review->user->is($request->user()) ? -1 : 1;
+			});
+
 		$relatedBooks = Category::find($book->categories->first()->id)
 			->books
-			->filter(function ($relatedBook) use ($book) {
-				// Filter out the book with the same ID as $book
-				return $relatedBook->id !== $book->id;
-			})
-			->take(18); // If there are fewer than 18 related books, it will return all of them.
+			->where('id', '!=', $book->id)
+			->take(18); // 18 or fewer
 
 		return Inertia::render('Book/Detail', [
 			'book'							=> new BookResource($book),
