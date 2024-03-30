@@ -20,7 +20,7 @@ const props = defineProps({
 });
 
 const form = useForm({
-	review_text: props.review?.reviewText,
+	review_text: props.review?.review_text,
 	rating: props.review?.rating,
 });
 

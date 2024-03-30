@@ -1,13 +1,16 @@
 <script setup>
+import axios from "axios";
+import { ref } from "vue";
+import { useIntersectionObserver } from "@vueuse/core";
 import AppHead from "@/Components/Common/AppHead.vue";
 import Nav from "@/Components/Common/Nav.vue";
 import BookCard from "@/Components/Book/BookCard.vue";
 import SwiperSection from "@/Components/Swiper/SwiperSection.vue";
 import Footer from "@/Components/Common/Footer.vue";
 
-defineProps({
+const props = defineProps({
 	categories: {
-		type: Array,
+		type: Object,
 		required: true,
 	},
 });
@@ -34,6 +37,37 @@ const swiperBreakpoints = {
 		spaceBetween: 16,
 	},
 };
+
+const $infiniteScrollingOffset = ref(null);
+const categoriesState = ref({
+	data: props.categories.data,
+	meta: props.categories.meta,
+});
+
+const { stop } = useIntersectionObserver(
+	$infiniteScrollingOffset,
+	([{ isIntersecting }]) => {
+		if (!isIntersecting) {
+			return;
+		}
+
+		if (props.categories.meta.next_cursor) {
+			axios
+				.get(
+					`${props.categories.meta.path}?cursor=${props.categories.meta.next_cursor}`
+				)
+				.then((response) => {
+					categoriesState.value.data = [
+						...props.categories.data,
+						...response.data.data,
+					];
+					categoriesState.value.meta = response.data.meta;
+				});
+		} else {
+			stop();
+		}
+	}
+);
 </script>
 
 <template>
@@ -61,7 +95,7 @@ const swiperBreakpoints = {
 			class="space-y-12 py-10 sm:space-y-10 lg:space-y-14 xl:py-12 2xl:py-16"
 		>
 			<SwiperSection
-				v-for="(category, indexCategory) in categories"
+				v-for="(category, indexCategory) in categoriesState.data"
 				:key="indexCategory"
 				:breakpoints="swiperBreakpoints"
 			>
@@ -81,6 +115,11 @@ const swiperBreakpoints = {
 					<BookCard :book="book" />
 				</swiper-slide>
 			</SwiperSection>
+
+			<div
+				ref="$infiniteScrollingOffset"
+				class="-translate-y-32"
+			/>
 		</main>
 
 		<Footer />

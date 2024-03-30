@@ -14,15 +14,17 @@ use App\Support\Enums\MediaConversionEnum;
 use App\Http\Requests\BookStoreRequest;
 use Illuminate\Support\Facades\Request as FacadesRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class BookController extends Controller
 {
 
-	public function index(HttpRequest $request)
+	public function index(HttpRequest $request): Response|ResourceCollection
 	{
 		$books = Book::latest()->cursorPaginate(10);
 
@@ -36,110 +38,28 @@ class BookController extends Controller
 		]);
 	}
 
-	public function show(HttpRequest $request, string $slug)
+	public function show(HttpRequest $request, string $slug): Response
 	{
-		$book = Book::where('slug', $slug)->firstOrFail();
-		$user = optional($request->user());
+		$book = Book::where('slug', $slug)
+			->with(['authors', 'categories', 'bookReviews'])
+			->firstOrFail();
 
-		$cover = $book->getFirstMedia(MediaCollectionEnum::BOOK_COVERS);
-		$responsiveCover = $cover(MediaConversionEnum::WEBP)->toHtml();
-
-		$bookData = [
-			'id'					=> $book->id,
-			'isbn'				=> $book->isbn,
-			'slug'				=> $book->slug,
-			'title'				=> $book->title,
-			'description'	=> $book->description,
-			'pageCount'		=> $book->page_count,
-			'language'		=> $book->language,
-			'year'				=> $book->year,
-			'isPremium'		=> $book->is_premium,
-			'cover'				=> $responsiveCover,
-			'authors'			=> $book->authors->map(function($author) {
-				return [
-					'name' => "$author->first_name $author->last_name",
-					'slug' => $author->slug,
-				];
-			}),
-			'categories'	=> $book->categories->map(function($category) {
-				return [
-					'name' => $category->name,
-					'slug' => $category->slug,
-				];
-			}),
-			'reviews' => $book->bookReviews
-				->map(function($review) use ($user) {
-					$canEdit = $user->id === $review->user_id;
-					$canDelete = $canEdit || $user->role_id === 1;
-
-					return [
-						'id'					=> $review->id,
-						'username'		=> User::find($review->user_id)->username,
-						'rating'			=> $review->rating,
-						'reviewText'	=> $review->review_text,
-						'date'				=> $review->created_at,
-						'canEdit'			=> $canEdit,
-						'canDelete'		=> $canDelete,
-					];
-				})
-				// first review => the one written by the current user
-				->sort(function ($a, $b) use ($user) {
-					if ($a['username'] === $user->username) {
-						return -1; // $a comes before $b
-					} elseif ($b['username'] === $user->username) {
-						return 1; // $b comes before $a
-					} else {
-						return 0; // Maintain the order
-					}
-				})
-				->values()
-    ];
-
-		$relatedBooks = Category::find($book->categories[0]->id)
+		$relatedBooks = Category::find($book->categories->first()->id)
 			->books
 			->filter(function ($relatedBook) use ($book) {
 				// Filter out the book with the same ID as $book
 				return $relatedBook->id !== $book->id;
 			})
-			->map(function ($book) {
-				$cover = $book->getFirstMedia(MediaCollectionEnum::BOOK_COVERS);
-				$responsiveCover = $cover(MediaConversionEnum::WEBP)->toHtml();
-
-				return [
-					'id'				=> $book->id,
-					'title'			=> $book->title,
-					'slug'			=> Str::slug($book->title),
-					'isPremium'	=> $book->is_premium,
-					'cover'			=> $responsiveCover,
-				];
-			})
-			->take(18) // If there are fewer than 18 related books, it will return all of them.
-			->values(); // https://stackoverflow.com/questions/59338079/can-not-return-a-collection-as-an-array-after-it-has-been-filtered
-
-		$canPublishReview = false;
-		$subscription = $user->subscription;
-
-		if ($subscription !== null) {
-			// subscription_plan_id === 2 => Basic plan
-			if ($book->is_premium && $subscription->subscription_plan_id === 2) {
-				$canPublishReview = false;
-			} else {
-				$doesReviewExist = BookReview::where('book_id', $book->id)
-					->where('user_id', $user->id)
-					->exists();
-
-				$canPublishReview = !$doesReviewExist && $subscription->status === 'active';
-			}
-		}
+			->take(18); // If there are fewer than 18 related books, it will return all of them.
 
 		return Inertia::render('Book/Detail', [
-			'book'							=> $bookData,
-			'relatedBooks'			=> $relatedBooks,
-			'canPublishReview'	=> $canPublishReview
+			'book'							=> new BookResource($book),
+			'relatedBooks'			=> BookResource::collection($relatedBooks),
+			'canPublishReview'	=> $this->canPublishReview($request, $book)
 		]);
 	}
 
-	public function read(HttpRequest $request, string $slug)
+	public function read(HttpRequest $request, string $slug): Response
 	{
 		$book = Book::where('slug', $slug)->firstOrFail();
 		$bookFile = $book->getFirstMedia(MediaCollectionEnum::BOOKS);
@@ -206,4 +126,31 @@ class BookController extends Controller
 		);
 	}
 
+	/**
+	 * Helper method to determine if a user can publish a review for the given book.
+	 *
+	 * This method checks if the user has an active subscription and if they have already submitted a review for the book.
+	 * If the book is premium and the user has a basic subscription plan, they cannot publish a review.
+	 *
+	 * @param HttpRequest $request The HTTP request instance containing the user information.
+	 * @param Book $book The book for which the review publishing eligibility is being checked.
+	 * @return bool True if the user can publish a review, false otherwise.
+	 */
+	private function canPublishReview(HttpRequest $request, Book $book): bool
+	{
+    $user = optional($request->user());
+    $subscription = $user->subscription;
+
+    if ($subscription !== null) {
+			if ($book->is_premium && $subscription->subscription_plan_id === 2) {
+				return false;
+			}
+
+			return !BookReview::where('book_id', $book->id)
+				->where('user_id', $user->id)
+				->exists() && $subscription->status === 'active';
+    }
+
+    return false;
+	}
 }

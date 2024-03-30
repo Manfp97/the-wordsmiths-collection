@@ -21,7 +21,7 @@ const props = defineProps({
 		required: true,
 	},
 	relatedBooks: {
-		type: Array,
+		type: Object,
 		required: false,
 		default: null,
 	},
@@ -36,7 +36,7 @@ const isReviewing = ref(false);
 const subscription = usePage().props.auth.subscription;
 
 const isSubscriptionActive = subscription?.status === "active";
-const canReadPremiumBook = props.book.isPremium
+const canReadPremiumBook = props.book.is_premium
 	? subscription?.subscription_plan_id === 1
 	: true;
 
@@ -103,7 +103,7 @@ const swiperBreakpoints = {
 								<Link
 									:href="readButtonHref"
 									class="button w-full !rounded-3xl text-lg font-bold lg:text-xl max-md:max-w-sm"
-									:class="{ 'premium-gradient': book.isPremium }"
+									:class="{ 'premium-gradient': book.is_premium }"
 									as="button"
 								>
 									<IconBook class="mr-2 w-6" />
@@ -112,7 +112,7 @@ const swiperBreakpoints = {
 							</div>
 
 							<div class="mt-3 text-center text-sm text-skin-muted">
-								<p v-if="book.isPremium">
+								<p v-if="book.is_premium">
 									Book available for <strong>Premium</strong> subscriptions
 								</p>
 								<p v-else>
@@ -137,7 +137,7 @@ const swiperBreakpoints = {
 										:href="`/author/${author.slug}`"
 										class="underline hover:text-skin-muted"
 									>
-										{{ author.name }}
+										{{ author.first_name }} {{ author.last_name }}
 									</Link>
 									<span v-if="index + 1 < book.authors.length">, </span>
 								</span>
@@ -166,7 +166,7 @@ const swiperBreakpoints = {
 								</div>
 
 								<div>
-									<p>{{ book.pageCount }} pages</p>
+									<p>{{ book.page_count }} pages</p>
 									<p>{{ book.year }}</p>
 									<p>{{ book.language }}</p>
 									<p>{{ book.isbn }}</p>
@@ -212,12 +212,12 @@ const swiperBreakpoints = {
 				</div>
 
 				<hr
-					v-if="relatedBooks.length"
+					v-if="relatedBooks.data.length"
 					class="my-8 border border-skin-border md:my-10"
 				/>
 
 				<div
-					v-if="relatedBooks.length"
+					v-if="relatedBooks.data.length"
 					class="mt-8 overflow-hidden"
 				>
 					<SwiperSection
@@ -232,7 +232,7 @@ const swiperBreakpoints = {
 						</template>
 
 						<swiper-slide
-							v-for="(relatedBook, index) in relatedBooks"
+							v-for="(relatedBook, index) in relatedBooks.data"
 							:key="index"
 							class="my-1 h-auto"
 						>

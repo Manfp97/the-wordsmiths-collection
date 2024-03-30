@@ -9,6 +9,8 @@ use App\Support\Enums\MediaConversionEnum;
 
 class BookResource extends JsonResource
 {
+	public static $wrap = null;
+
 	/**
 	 * Transform the resource into an array.
 	 *
@@ -21,10 +23,20 @@ class BookResource extends JsonResource
 
 		return [
 			'id'					=> $this->id,
-			'title'				=> $this->title,
+			'isbn'				=> $this->isbn,
 			'slug'				=> $this->slug,
-			'isPremium' 	=> $this->is_premium,
+			'title'				=> $this->title,
+			'description'	=> $this->description,
+			'page_count'	=> $this->page_count,
+			'language'		=> $this->language,
+			'year'				=> $this->year,
+			'is_premium' 	=> $this->is_premium,
 			'cover'				=> $responsiveCover,
+			'authors'			=> AuthorResource::collection($this->whenLoaded('authors')),
+			'categories'	=> CategoryResource::collection($this->whenLoaded('authors')),
+			'reviews'			=> BookReviewResource::collection($this->whenLoaded('bookReviews')),
+			'created_at'	=> $this->created_at,
+			'updated_at'	=> $this->updated_at,
 		];
 	}
 }

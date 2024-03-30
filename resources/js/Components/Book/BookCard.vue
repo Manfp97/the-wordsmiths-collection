@@ -15,7 +15,7 @@ const cover = props.book.cover.replaceAll(">", "class='h-full w-full'>");
 		:title="book.title"
 	>
 		<p
-			v-if="book.isPremium"
+			v-if="book.is_premium"
 			class="absolute left-3 top-3 rounded bg-skin-text p-0.5 px-1 text-[0.5rem] font-bold uppercase xs:text-xs"
 		>
 			<span class="premium-gradient bg-clip-text text-transparent">

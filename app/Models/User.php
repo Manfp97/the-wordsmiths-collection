@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
@@ -46,14 +47,19 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
 		'password' => 'hashed',
 	];
 
-	public function subscription()
+	public function subscription(): HasOne
 	{
 		return $this->hasOne(Subscription::class);
 	}
 
-	public function creditCard()
+	public function creditCard(): HasOne
 	{
 		return $this->hasOne(CreditCard::class);
+	}
+
+	public function reviews(): HasMany
+	{
+		return $this->hasMany(BookReview::class);
 	}
 
 	public function registerMediaCollections(): void

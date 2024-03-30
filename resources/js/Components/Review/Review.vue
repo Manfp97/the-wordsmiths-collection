@@ -21,7 +21,7 @@ const props = defineProps({
 const isDeleting = ref(false);
 const isEditing = ref(false);
 
-const date = new Date(props.review.date);
+const date = new Date(props.review.created_at);
 const formattedDate = date.toLocaleString("default", {
 	day: "numeric",
 	month: "long",
@@ -57,20 +57,20 @@ const formattedDate = date.toLocaleString("default", {
 		<footer class="mb-3 text-sm text-skin-muted">
 			<p>
 				Reviewed on
-				<time :datetime="props.review.date">{{ formattedDate }}</time>
+				<time :datetime="props.review.created_at">{{ formattedDate }}</time>
 			</p>
 		</footer>
 
 		<p class="mb-2">
-			{{ review.reviewText }}
+			{{ review.review_text }}
 		</p>
 
 		<div
-			v-if="review.canEdit || review.canDelete"
+			v-if="review.can_edit || review.can_delete"
 			class="flex space-x-4"
 		>
 			<button
-				v-if="review.canDelete"
+				v-if="review.can_delete"
 				class="common-options text-skin-danger"
 				@click="isDeleting = true"
 			>
@@ -79,7 +79,7 @@ const formattedDate = date.toLocaleString("default", {
 			</button>
 
 			<button
-				v-if="review.canEdit"
+				v-if="review.can_edit"
 				class="common-options text-skin-link"
 				@click="isEditing = true"
 			>
@@ -89,7 +89,7 @@ const formattedDate = date.toLocaleString("default", {
 		</div>
 
 		<ModalContainer
-			v-if="review.canDelete"
+			v-if="review.can_delete"
 			:modal-id="`modal-delete-review-${review.id}`"
 			modal-title="Delete review"
 			:show="isDeleting"
@@ -124,7 +124,7 @@ const formattedDate = date.toLocaleString("default", {
 		</ModalContainer>
 
 		<ModalContainer
-			v-if="review.canEdit"
+			v-if="review.can_edit"
 			modal-id="modal-edit-review"
 			modal-title="Edit review"
 			:show="isEditing"

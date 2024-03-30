@@ -5,43 +5,35 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Http\Requests\CategoryStoreRequest;
+use App\Http\Resources\CategoryResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
-use Inertia\Inertia;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Support\Enums\MediaCollectionEnum;
 use App\Support\Enums\MediaConversionEnum;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class CategoryController extends Controller
 {
 
-	public function index()
+	public function index(Request $request): Response|ResourceCollection
 	{
-		$categories = Category::get()
-			->map(function ($category) {
-				return [
-					'id'		=> $category->id,
-					'name'	=> $category->name,
-					'books'	=> $category->books->map(function ($book) {
-						$cover = $book->getFirstMedia(MediaCollectionEnum::BOOK_COVERS);
-						$responsiveCover = $cover(MediaConversionEnum::WEBP)->toHtml();
+		$categories = Category::with('books')->cursorPaginate(2);
 
-						return [
-							'id'				=> $book->id,
-							'title'			=> $book->title,
-							'slug'			=> Str::slug($book->title),
-							'isPremium'	=> $book->is_premium,
-							'cover'			=> $responsiveCover,
-						];
-					}),
-				];
-			});
+		if ($request->wantsJson()) {
+			return CategoryResource::collection($categories);
+		}
 
-		return Inertia::render('Index', ['categories' => $categories]);
+		return Inertia::render('Index', [
+			'categories' => CategoryResource::collection($categories)
+		]);
 	}
 
 	/*
-	public function show(int $id)
+	public function show(int $id): Response
 	{
 		return Inertia::render(
 			'Book/Index',

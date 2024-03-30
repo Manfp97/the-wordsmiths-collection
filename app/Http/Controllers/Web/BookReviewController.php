@@ -31,9 +31,9 @@ class BookReviewController extends Controller
 			return redirect()->back()->withErrors($validator);
     }
 
-		$user_id = $request->user()->id;
+		$userId = $request->user()->id;
 		$doesReviewExist = BookReview::where('book_id', $book_id)
-			->where('user_id', $user_id)
+			->where('user_id', $userId)
 			->exists();
 
 		if ($doesReviewExist) {
@@ -46,7 +46,7 @@ class BookReviewController extends Controller
 			);
 		} else {
 			$review = BookReview::create([
-				'user_id' 		=> $user_id,
+				'user_id' 		=> $userId,
 				'book_id' 		=> $book_id,
 				'rating' 			=> $validatedData['rating'],
 				'review_text' => $validatedData['review_text'],
