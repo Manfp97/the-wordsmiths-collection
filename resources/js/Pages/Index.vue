@@ -1,12 +1,17 @@
 <script setup>
 import axios from "axios";
-import { ref } from "vue";
+import { usePage } from "@inertiajs/vue3";
+import { ref, computed } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
 import AppHead from "@/Components/Common/AppHead.vue";
 import Nav from "@/Components/Common/Nav.vue";
 import BookCard from "@/Components/Book/BookCard.vue";
 import SwiperSection from "@/Components/Swiper/SwiperSection.vue";
 import Footer from "@/Components/Common/Footer.vue";
+import ModalContainer from "@/Components/Modals/ModalContainer.vue";
+import FormCategory from "@/Forms/FormCategory.vue";
+import IconTrash from "@icons/trash.svg?component";
+import IconEdit from "@icons/edit.svg?component";
 
 const props = defineProps({
 	categories: {
@@ -44,6 +49,13 @@ const categoriesState = ref({
 	meta: props.categories.meta,
 });
 
+const selectedCategory = ref(null);
+const isDeleting = ref(false);
+const isEditing = ref(false);
+
+const user = computed(() => usePage().props.auth.user);
+const isAdmin = user.value?.role_id === 1;
+
 const { stop } = useIntersectionObserver(
 	$infiniteScrollingOffset,
 	([{ isIntersecting }]) => {
@@ -68,6 +80,16 @@ const { stop } = useIntersectionObserver(
 		}
 	}
 );
+
+const askToDeleteCategory = (category) => {
+	selectedCategory.value = category;
+	isDeleting.value = true;
+};
+
+const askToEditCategory = (category) => {
+	selectedCategory.value = category;
+	isEditing.value = true;
+};
 </script>
 
 <template>
@@ -100,11 +122,25 @@ const { stop } = useIntersectionObserver(
 				:breakpoints="swiperBreakpoints"
 			>
 				<template #header>
-					<h2
-						class="mb-4 px-4 text-xl font-bold md:mb-6 md:px-6 md:text-2xl lg:px-16 2xl:text-3xl"
+					<div
+						class="mb-4 flex items-center space-x-6 px-4 md:mb-6 md:px-6 lg:px-16"
 					>
-						{{ category.name }}
-					</h2>
+						<h2 class="text-xl font-bold md:text-2xl 2xl:text-3xl">
+							{{ category.name }}
+						</h2>
+						<div class="flex space-x-1.5">
+							<IconTrash
+								v-if="isAdmin"
+								class="w-8 cursor-pointer text-skin-danger"
+								@click="askToDeleteCategory(category)"
+							/>
+							<IconEdit
+								v-if="isAdmin"
+								class="w-8 cursor-pointer text-skin-link"
+								@click="askToEditCategory(category)"
+							/>
+						</div>
+					</div>
 				</template>
 
 				<swiper-slide
@@ -122,6 +158,54 @@ const { stop } = useIntersectionObserver(
 			/>
 		</main>
 
+		<ModalContainer
+			v-if="isAdmin"
+			modal-id="modal-delete-category"
+			modal-title="Delete category"
+			:show="isDeleting"
+			@close="isDeleting = false"
+		>
+			<div class="space-y-2">
+				<p>
+					Are you sure you want to delete the '{{ selectedCategory?.name }}'
+					category? The books attached to it won't be deleted. This action
+					cannot be undone.
+				</p>
+			</div>
+
+			<div class="mt-6 flex justify-end space-x-4">
+				<button
+					class="button !bg-skin-muted text-skin-white"
+					@click="isDeleting = false"
+				>
+					No
+				</button>
+
+				<Link
+					:href="`/category/${selectedCategory?.id}`"
+					method="delete"
+					as="button"
+					class="button !bg-skin-danger text-skin-white"
+					preserve-scroll
+					@click="isDeleting = false"
+				>
+					Yes
+				</Link>
+			</div>
+		</ModalContainer>
+
+		<ModalContainer
+			v-if="isAdmin"
+			modal-id="modal-edit-category"
+			modal-title="Edit category"
+			:show="isEditing"
+			@close="isEditing = false"
+		>
+			<FormCategory
+				:category="selectedCategory"
+				http-method="put"
+			/>
+		</ModalContainer>
 		<Footer />
 	</div>
 </template>

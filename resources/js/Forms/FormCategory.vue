@@ -1,14 +1,44 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
+import { watch, computed } from "vue";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import IconPlus from "@icons/plus.svg?component";
+import IconEdit from "@icons/edit.svg?component";
 
-const form = useForm({
-	name: null,
+const props = defineProps({
+	category: {
+		type: Object,
+		required: false,
+		default: null,
+	},
+	httpMethod: {
+		type: String,
+		required: true,
+	},
 });
 
+const categoryState = computed(() => props.category);
+
+let form = useForm({
+	name: categoryState.value?.name,
+});
+
+watch(categoryState, () => {
+	form = useForm({
+		name: categoryState.value?.name,
+	});
+});
+
+const buttonText =
+	props.httpMethod === "post" ? "Add new category" : "Edit category";
+
 const submitForm = () => {
-	form.post("/category", {
+	const url =
+		props.httpMethod === "post"
+			? "/category"
+			: `/category/${categoryState.value?.id}`;
+
+	form[props.httpMethod](url, {
 		preserveScroll: true,
 		onSuccess: () => {
 			form.reset();
@@ -37,10 +67,15 @@ const submitForm = () => {
 				:disabled="form.processing"
 			>
 				<IconPlus
-					class="-ml-1 mr-1 h-6 w-6"
+					v-if="httpMethod === 'post'"
+					class="mr-1 h-6 w-6"
 					fill="currentColor"
 				/>
-				Add new category
+				<IconEdit
+					v-else-if="httpMethod === 'put'"
+					class="mr-1 h-6 w-6"
+				/>
+				{{ buttonText }}
 			</button>
 		</div>
 	</form>
