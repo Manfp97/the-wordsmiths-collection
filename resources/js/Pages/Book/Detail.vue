@@ -255,7 +255,7 @@ const swiperBreakpoints = {
 		<FormReview
 			:book-id="book.id"
 			http-method="post"
-			@submit-success="isReviewing = false"
+			@success="isReviewing = false"
 		/>
 	</ModalContainer>
 </template>
