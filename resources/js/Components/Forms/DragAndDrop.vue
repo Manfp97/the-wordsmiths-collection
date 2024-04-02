@@ -5,6 +5,8 @@ import dragAndDropHelper from "@/Helpers/dragAndDropHelper.js";
 import IconX from "@icons/x.svg?component";
 import IconCloudUpload from "@icons/cloud-upload.svg?component";
 
+const selectedFile = defineModel("value"); // eslint-disable-line
+
 const props = defineProps({
 	inputId: {
 		type: String,
@@ -43,8 +45,6 @@ const props = defineProps({
 		default: null,
 	},
 });
-
-const selectedFile = defineModel("value"); // eslint-disable-line
 
 const $fileInput = ref(null);
 const isDragOver = ref(false);
