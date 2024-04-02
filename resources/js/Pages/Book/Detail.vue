@@ -143,7 +143,7 @@ const swiperBreakpoints = {
 								</span>
 							</div>
 
-							<p>{{ book.description }}</p>
+							<p class="whitespace-pre">{{ book.description }}</p>
 
 							<div class="mt-3 flex items-center space-x-4">
 								<span class="text-skin-muted">Genres</span>
