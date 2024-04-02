@@ -23,8 +23,8 @@ const form = useForm({
 	name: categoryState.value?.name,
 });
 
-watch(categoryState, () => {
-	form.name = categoryState.value?.name;
+watch(categoryState, (newValue) => {
+	form.name = newValue?.name;
 });
 
 const buttonText =
