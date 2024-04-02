@@ -1,5 +1,7 @@
 <script setup>
 // https://preline.co/docs/textarea.html#floating-label
+import { ref, watch, nextTick } from "vue";
+
 const value = defineModel("value"); // eslint-disable-line
 
 defineProps({
@@ -39,10 +41,23 @@ defineProps({
 	},
 });
 
-const autoGrow = (e) => {
-	const element = e.target;
-	element.style.height = "5px";
-	element.style.height = element.scrollHeight + "px";
+const $textarea = ref(null);
+
+watch(
+	() => value.value,
+	(newValue) => {
+		if (newValue) {
+			autoGrow();
+		}
+	}
+);
+
+const autoGrow = () => {
+	nextTick(() => {
+		$textarea.value.style.height = "5px";
+		// Access the scrollHeight after the DOM has been fully updated
+		$textarea.value.style.height = $textarea.value.scrollHeight + "px";
+	});
 };
 </script>
 
@@ -50,6 +65,7 @@ const autoGrow = (e) => {
 	<div class="relative">
 		<textarea
 			:id="textareaId"
+			ref="$textarea"
 			v-model="value"
 			class="peer block w-full resize-none overflow-hidden rounded-lg border-skin-border p-4 text-sm shadow-sm placeholder:text-skin-transparent autofill:pb-2 autofill:pt-6 focus:border-skin-secondary focus:pb-2 focus:pt-6 focus:ring-2 focus:ring-skin-secondary disabled:pointer-events-none disabled:opacity-50 [&:not(:placeholder-shown)]:pb-2 [&:not(:placeholder-shown)]:pt-6"
 			:class="textareaClass"
