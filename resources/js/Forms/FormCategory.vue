@@ -19,14 +19,12 @@ const props = defineProps({
 
 const categoryState = computed(() => props.category);
 
-let form = useForm({
+const form = useForm({
 	name: categoryState.value?.name,
 });
 
 watch(categoryState, () => {
-	form = useForm({
-		name: categoryState.value?.name,
-	});
+	form.name = categoryState.value?.name;
 });
 
 const buttonText =
