@@ -3,6 +3,8 @@ import { ref, computed, onMounted, onUnmounted, watch } from "vue";
 import IconSearch from "@icons/search.svg?component";
 import IconTrash from "@icons/trash.svg?component";
 
+const selectedOptions = defineModel("value"); // eslint-disable-line
+
 const props = defineProps({
 	inputId: {
 		type: String,
@@ -30,8 +32,6 @@ const props = defineProps({
 		default: null,
 	},
 });
-
-const selectedOptions = defineModel("value"); // eslint-disable-line
 
 const isDropdownVisible = ref(false);
 const areAnyItemsSelected = computed(() => selectedOptions.value.length > 0);

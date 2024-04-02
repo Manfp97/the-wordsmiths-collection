@@ -1,5 +1,6 @@
 <script setup>
 // https://preline.co/docs/textarea.html#floating-label
+const value = defineModel("value"); // eslint-disable-line
 
 defineProps({
 	textareaId: {
@@ -37,8 +38,6 @@ defineProps({
 		default: null,
 	},
 });
-
-const value = defineModel("value"); // eslint-disable-line
 
 const autoGrow = (e) => {
 	const element = e.target;

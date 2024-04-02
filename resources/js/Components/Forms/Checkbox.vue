@@ -1,4 +1,6 @@
 <script setup>
+const value = defineModel("value"); // eslint-disable-line
+
 defineProps({
 	inputId: {
 		type: String,
@@ -20,8 +22,6 @@ defineProps({
 		default: false,
 	},
 });
-
-const value = defineModel("value"); // eslint-disable-line
 </script>
 
 <template>

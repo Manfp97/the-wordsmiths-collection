@@ -1,4 +1,6 @@
 <script setup>
+const pin = defineModel("value"); // eslint-disable-line
+
 defineProps({
 	inputsNumber: {
 		type: Number,
@@ -10,8 +12,6 @@ defineProps({
 		default: "",
 	},
 });
-
-const pin = defineModel("value"); // eslint-disable-line
 
 const focusNextInput = (el, prevId, nextId) => {
 	if (el.value.length === 0) {
