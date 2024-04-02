@@ -1,8 +1,8 @@
 <script setup>
+import { ref, watch } from "vue";
 import IconStar from "@icons/star.svg?component";
-import { ref } from "vue";
 
-const ultimateModel = defineModel("value"); // eslint-disable-line
+const valueModel = defineModel("value"); // eslint-disable-line
 
 const props = defineProps({
 	stars: {
@@ -25,7 +25,7 @@ const props = defineProps({
 	},
 });
 
-const currentRating = ref(ultimateModel.value ?? props.rating);
+const currentRating = ref(valueModel.value ?? props.rating);
 
 const hoverRating = (starCount) => {
 	currentRating.value = starCount;
@@ -33,12 +33,20 @@ const hoverRating = (starCount) => {
 
 const setRating = (starCount) => {
 	currentRating.value = starCount;
-	ultimateModel.value = starCount;
+	valueModel.value = starCount;
 };
 
 const resetRating = () => {
-	currentRating.value = ultimateModel.value ?? props.rating;
+	currentRating.value = valueModel.value ?? props.rating;
 };
+
+// Watch for changes in props.rating and update currentRating accordingly
+watch(
+	() => props.rating,
+	(newValue) => {
+		currentRating.value = newValue;
+	}
+);
 </script>
 
 <template>

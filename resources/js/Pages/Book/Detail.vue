@@ -31,7 +31,26 @@ const props = defineProps({
 	},
 });
 
+const canEdit = props.book.reviews.some((review) => review.can_edit);
+const canDelete = props.book.reviews.some((review) => review.can_delete);
+
 const isReviewing = ref(false);
+const isEditing = ref(false);
+const isDeleting = ref(false);
+
+const selectedReview = ref(null);
+const editReview = (review) => {
+	selectedReview.value = review;
+	isEditing.value = true;
+};
+const deleteReview = (review) => {
+	selectedReview.value = review;
+	isDeleting.value = true;
+};
+const closeEdit = () => {
+	isEditing.value = false;
+	selectedReview.value = null;
+};
 
 const subscription = usePage().props.auth.subscription;
 
@@ -188,6 +207,8 @@ const swiperBreakpoints = {
 									:key="index"
 									:book-id="book.id"
 									:review="review"
+									@edit="editReview(review)"
+									@delete="deleteReview(review)"
 								/>
 							</div>
 							<div
@@ -255,7 +276,55 @@ const swiperBreakpoints = {
 		<FormReview
 			:book-id="book.id"
 			http-method="post"
-			@success="isReviewing = false"
+		/>
+	</ModalContainer>
+
+	<ModalContainer
+		v-if="canDelete"
+		modal-id="modal-delete-review"
+		modal-title="Delete review"
+		:show="isDeleting"
+		@close="isDeleting = false"
+	>
+		<div class="space-y-2">
+			<p>
+				Are you sure you want to delete this review? This action cannot be
+				undone.
+			</p>
+		</div>
+
+		<div class="mt-6 flex justify-end space-x-4">
+			<button
+				class="button !bg-skin-muted text-skin-white"
+				@click="isDeleting = false"
+			>
+				No
+			</button>
+
+			<Link
+				:href="`/review/${selectedReview?.id}`"
+				method="delete"
+				as="button"
+				class="button !bg-skin-danger text-skin-white"
+				preserve-scroll
+				@click="isDeleting = false"
+			>
+				Yes
+			</Link>
+		</div>
+	</ModalContainer>
+
+	<ModalContainer
+		v-if="canEdit"
+		modal-id="modal-edit-review"
+		modal-title="Edit review"
+		:show="isEditing"
+		@close="closeEdit"
+	>
+		<FormReview
+			:book-id="book.id"
+			:review="selectedReview"
+			http-method="put"
 		/>
 	</ModalContainer>
 </template>

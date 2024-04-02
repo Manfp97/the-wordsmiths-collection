@@ -1,5 +1,6 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
+import { watch } from "vue";
 import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
 import Rating from "@/Components/Common/Rating.vue";
 
@@ -26,6 +27,14 @@ const form = useForm({
 	rating: props.review?.rating,
 });
 
+watch(
+	() => props.review,
+	(newValue) => {
+		form.review_text = newValue?.review_text;
+		form.rating = newValue?.rating;
+	}
+);
+
 const submitForm = () => {
 	const url =
 		props.httpMethod === "post"
@@ -34,6 +43,7 @@ const submitForm = () => {
 
 	form[props.httpMethod](url, {
 		preserveScroll: true,
+		preserveState: "errors",
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();
@@ -68,7 +78,7 @@ const submitForm = () => {
 				<span class="font-bold">Rating</span>
 				<Rating
 					v-model:value="form.rating"
-					:rating="0"
+					:rating="form.rating ?? 0"
 					icon-class="w-5 h-5"
 				/>
 			</div>
