@@ -61,7 +61,7 @@ const formattedDate = date.toLocaleString("default", {
 			</p>
 		</footer>
 
-		<p class="mb-2 whitespace-pre">
+		<p class="mb-2 whitespace-pre-wrap">
 			{{ review.review_text }}
 		</p>
 
