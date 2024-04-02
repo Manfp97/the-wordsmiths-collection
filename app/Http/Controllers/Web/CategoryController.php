@@ -61,6 +61,33 @@ class CategoryController extends Controller
 		);
 	}
 
+	/**
+	 * Update the category.
+	 */
+	public function update(CategoryStoreRequest $request, int $id)
+	{
+		try {
+			$category = Category::findOrFail($id);
+			$category->fill($request->validated())->save();
+
+			return back()->with(
+				'alert',
+				[
+					'type' => 'success',
+					'message' => 'Category successfully edited',
+				]
+			);
+		} catch (\Exception $e) {
+			return back()->with(
+				'alert',
+				[
+					'type' => 'danger',
+					'message' => 'You cannot edit this category',
+				]
+			);
+		}
+	}
+
 	public function destroy(int $id): RedirectResponse
 	{
 		Category::destroy($id);

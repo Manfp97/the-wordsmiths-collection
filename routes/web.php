@@ -27,6 +27,8 @@ Route::get('/book/{book:slug}', [BookController::class, 'show']);
 Route::get('/book/{book:slug}/read', [BookController::class, 'read']);
 Route::post('/book', [BookController::class, 'store']); // auth => admin
 Route::post('/category', [CategoryController::class, 'store']); // auth => admin
+Route::put('/category/{id}', [CategoryController::class, 'update']);
+
 Route::get('/authors', [AuthorController::class, 'index']);
 Route::post('/author', [AuthorController::class, 'store']); // auth => admin
 
