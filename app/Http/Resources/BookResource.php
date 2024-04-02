@@ -33,7 +33,7 @@ class BookResource extends JsonResource
 			'is_premium' 	=> $this->is_premium,
 			'cover'				=> $responsiveCover,
 			'authors'			=> AuthorResource::collection($this->whenLoaded('authors')),
-			'categories'	=> CategoryResource::collection($this->whenLoaded('authors')),
+			'categories'	=> CategoryResource::collection($this->whenLoaded('categories')),
 			'reviews'			=> BookReviewResource::collection($this->whenLoaded('bookReviews')),
 			'created_at'	=> $this->created_at,
 			'updated_at'	=> $this->updated_at,
