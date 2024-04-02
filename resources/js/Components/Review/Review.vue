@@ -134,6 +134,7 @@ const formattedDate = date.toLocaleString("default", {
 				:book-id="bookId"
 				:review="review"
 				http-method="put"
+				@submit-success="isEditing = false"
 			/>
 		</ModalContainer>
 	</article>

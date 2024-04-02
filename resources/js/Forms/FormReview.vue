@@ -3,6 +3,8 @@ import { useForm } from "@inertiajs/vue3";
 import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
 import Rating from "@/Components/Common/Rating.vue";
 
+const emit = defineEmits(["submitSuccess"]);
+
 const props = defineProps({
 	bookId: {
 		type: Number,
@@ -35,6 +37,7 @@ const submitForm = () => {
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();
+			emit("submitSuccess");
 		},
 	});
 };
