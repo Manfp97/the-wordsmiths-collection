@@ -128,12 +128,12 @@ const askToEditCategory = (category) => {
 						<div class="flex space-x-1.5">
 							<IconTrash
 								v-if="isAdmin"
-								class="w-8 cursor-pointer text-skin-danger"
+								class="w-6 cursor-pointer text-skin-danger md:w-8"
 								@click="askToDeleteCategory(category)"
 							/>
 							<IconEdit
 								v-if="isAdmin"
-								class="w-8 cursor-pointer text-skin-link"
+								class="w-6 cursor-pointer text-skin-link md:w-8"
 								@click="askToEditCategory(category)"
 							/>
 						</div>
