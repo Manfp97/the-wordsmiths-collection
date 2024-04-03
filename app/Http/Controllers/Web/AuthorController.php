@@ -58,6 +58,33 @@ class AuthorController extends Controller
 		);
 	}
 
+	/**
+	 * Update the author.
+	 */
+	public function update(AuthorStoreRequest $request, int $id)
+	{
+		try {
+			$author = Author::findOrFail($id);
+			$author->fill($request->validated())->save();
+
+			return back()->with(
+				'alert',
+				[
+					'type' => 'success',
+					'message' => 'Author successfully edited',
+				]
+			);
+		} catch (\Exception $e) {
+			return back()->with(
+				'alert',
+				[
+					'type' => 'danger',
+					'message' => 'You cannot edit this author',
+				]
+			);
+		}
+	}
+
 	public function destroy(int $id): RedirectResponse
 	{
 		Author::destroy($id);
