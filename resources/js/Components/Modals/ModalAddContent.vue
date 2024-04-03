@@ -38,6 +38,7 @@ onMounted(() => {
 				class="hidden"
 				role="tabpanel"
 				:aria-labelledby="`${modalId}-tab-author`"
+				http-method="post"
 			/>
 			<FormCategory
 				:id="`${modalId}-tab-category-content`"

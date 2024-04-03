@@ -1,11 +1,22 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
+import { watch, computed } from "vue";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import IconPlus from "@icons/plus.svg?component";
+import IconEdit from "@icons/edit.svg?component";
 
 const emit = defineEmits(["success"]);
 
 const props = defineProps({
+	author: {
+		type: Object,
+		required: false,
+		default: null,
+	},
+	httpMethod: {
+		type: String,
+		required: true,
+	},
 	preserveScroll: {
 		type: Boolean,
 		required: false,
@@ -18,13 +29,28 @@ const props = defineProps({
 	},
 });
 
+const authorState = computed(() => props.author);
+
 const form = useForm({
 	first_name: null,
 	last_name: null,
 });
 
+watch(authorState, (newValue) => {
+	form.first_name = newValue?.first_name;
+	form.last_name = newValue?.last_name;
+});
+
+const buttonText =
+	props.httpMethod === "post" ? "Add new author" : "Edit author";
+
 const submitForm = () => {
-	form.post("/author", {
+	const url =
+		props.httpMethod === "post"
+			? "/author"
+			: `/author/${authorState.value?.id}`;
+
+	form[props.httpMethod](url, {
 		preserveScroll: props.preserveScroll,
 		preserveState: props.preserveState,
 		onSuccess: () => {
@@ -65,10 +91,15 @@ const submitForm = () => {
 				:disabled="form.processing"
 			>
 				<IconPlus
-					class="-ml-1 mr-1 h-6 w-6"
+					v-if="httpMethod === 'post'"
+					class="mr-1 h-6 w-6"
 					fill="currentColor"
 				/>
-				Add new author
+				<IconEdit
+					v-else-if="httpMethod === 'put'"
+					class="mr-1 h-6 w-6"
+				/>
+				{{ buttonText }}
 			</button>
 		</div>
 	</form>
