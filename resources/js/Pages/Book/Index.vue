@@ -19,6 +19,10 @@ const props = defineProps({
 });
 
 const $infiniteScrollingOffset = ref(null);
+const booksState = ref({
+	data: props.books.data,
+	meta: props.books.meta,
+});
 
 const { stop } = useIntersectionObserver(
 	$infiniteScrollingOffset,
@@ -27,13 +31,15 @@ const { stop } = useIntersectionObserver(
 			return;
 		}
 
-		if (props.books.meta.next_cursor) {
-			axios
-				.get(`${props.books.meta.path}?cursor=${props.books.meta.next_cursor}`)
-				.then((response) => {
-					props.books.data = [...props.books.data, ...response.data.data]; // eslint-disable-line
-					props.books.meta = response.data.meta; // eslint-disable-line
-				});
+		const meta = booksState.value.meta;
+		if (meta.next_cursor) {
+			axios.get(`${meta.path}?cursor=${meta.next_cursor}`).then((response) => {
+				booksState.value.data = [
+					...booksState.value.data,
+					...response.data.data,
+				];
+				booksState.value.meta = response.data.meta;
+			});
 		} else {
 			stop();
 		}
@@ -54,7 +60,7 @@ const { stop } = useIntersectionObserver(
 				class="mb-12 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 lg:gap-4 2xl:grid-cols-8"
 			>
 				<BookCard
-					v-for="(book, index) in books.data"
+					v-for="(book, index) in booksState.data"
 					:key="index"
 					:book="book"
 				/>

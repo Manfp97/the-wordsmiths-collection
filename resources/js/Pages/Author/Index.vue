@@ -51,18 +51,15 @@ const { stop } = useIntersectionObserver(
 			return;
 		}
 
-		if (props.authors.meta.next_cursor) {
-			axios
-				.get(
-					`${props.authors.meta.path}?cursor=${props.authors.meta.next_cursor}`
-				)
-				.then((response) => {
-					authorsState.value.data = [
-						...props.authors.data,
-						...response.data.data,
-					];
-					authorsState.value.meta = response.data.meta;
-				});
+		const meta = authorsState.value.meta;
+		if (meta.next_cursor) {
+			axios.get(`${meta.path}?cursor=${meta.next_cursor}`).then((response) => {
+				authorsState.value.data = [
+					...authorsState.value.data,
+					...response.data.data,
+				];
+				authorsState.value.meta = response.data.meta;
+			});
 		} else {
 			stop();
 		}

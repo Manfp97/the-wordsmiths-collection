@@ -63,18 +63,15 @@ const { stop } = useIntersectionObserver(
 			return;
 		}
 
-		if (props.categories.meta.next_cursor) {
-			axios
-				.get(
-					`${props.categories.meta.path}?cursor=${props.categories.meta.next_cursor}`
-				)
-				.then((response) => {
-					categoriesState.value.data = [
-						...props.categories.data,
-						...response.data.data,
-					];
-					categoriesState.value.meta = response.data.meta;
-				});
+		const meta = categoriesState.value.meta;
+		if (meta.next_cursor) {
+			axios.get(`${meta.path}?cursor=${meta.next_cursor}`).then((response) => {
+				categoriesState.value.data = [
+					...categoriesState.value.data,
+					...response.data.data,
+				];
+				categoriesState.value.meta = response.data.meta;
+			});
 		} else {
 			stop();
 		}
