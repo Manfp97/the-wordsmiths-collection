@@ -266,6 +266,7 @@ const swiperBreakpoints = {
 		<FormReview
 			:book-id="book.id"
 			http-method="post"
+			@success="isReviewing = false"
 		/>
 	</ModalContainer>
 
@@ -315,6 +316,7 @@ const swiperBreakpoints = {
 			:book-id="book.id"
 			:review="selectedReview"
 			http-method="put"
+			preserve-state="errors"
 		/>
 	</ModalContainer>
 </template>
