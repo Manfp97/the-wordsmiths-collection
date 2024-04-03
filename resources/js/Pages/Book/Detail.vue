@@ -59,23 +59,13 @@ const canReadPremiumBook = props.book.is_premium
 	? subscription?.subscription_plan_id === 1
 	: true;
 
-const readButtonText = computed(() => {
+const readButtonInfo = computed(() => {
 	if (isSubscriptionActive && canReadPremiumBook) {
-		return "Read";
+		return { text: "Read", href: `/book/${props.book.slug}/read` };
 	} else if (isSubscriptionActive && !canReadPremiumBook) {
-		return "Upgrade to premium";
+		return { text: "Upgrade to premium", href: "/profile" };
 	} else {
-		return "Subscribe";
-	}
-});
-
-const readButtonHref = computed(() => {
-	if (isSubscriptionActive && canReadPremiumBook) {
-		return `/book/${props.book.slug}/read`;
-	} else if (isSubscriptionActive && !canReadPremiumBook) {
-		return "/profile";
-	} else {
-		return "/subscribe";
+		return { text: "Subscribe", href: "/subscribe" };
 	}
 });
 
@@ -120,13 +110,13 @@ const swiperBreakpoints = {
 							<!-- eslint-enable -->
 							<div class="mt-6 flex w-full justify-center">
 								<Link
-									:href="readButtonHref"
+									:href="readButtonInfo.href"
 									class="button w-full !rounded-3xl text-lg font-bold lg:text-xl max-md:max-w-sm"
 									:class="{ 'premium-gradient': book.is_premium }"
 									as="button"
 								>
 									<IconBook class="mr-2 w-6" />
-									{{ readButtonText }}
+									{{ readButtonInfo.text }}
 								</Link>
 							</div>
 
