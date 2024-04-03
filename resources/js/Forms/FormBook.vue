@@ -11,6 +11,11 @@ import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
 import IconPlus from "@icons/plus.svg?component";
 
 const props = defineProps({
+	preserveScroll: {
+		type: Boolean,
+		required: false,
+		default: true,
+	},
 	preserveState: {
 		type: [String, Boolean],
 		required: false,
@@ -65,7 +70,7 @@ const fetchCategories = async () => {
 
 const submitForm = () => {
 	form.post("/book", {
-		preserveScroll: true,
+		preserveScroll: props.preserveScroll,
 		preserveState: props.preserveState,
 		onSuccess: () => {
 			form.reset();

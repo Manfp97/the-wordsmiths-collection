@@ -3,6 +3,11 @@ import { useForm } from "@inertiajs/vue3";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 
 const props = defineProps({
+	preserveScroll: {
+		type: Boolean,
+		required: false,
+		default: true,
+	},
 	preserveState: {
 		type: [String, Boolean],
 		required: false,
@@ -16,6 +21,7 @@ const form = useForm({
 
 const submit = () => {
 	form.post("/forgot-password", {
+		preserveScroll: props.preserveScroll,
 		preserveState: props.preserveState,
 	}); // route(password.email)
 };

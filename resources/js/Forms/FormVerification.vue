@@ -4,6 +4,11 @@ import PinCodeInput from "@/Components/Forms/PinCodeInput.vue";
 import IconRightArrow from "@icons/right-arrow.svg?component";
 
 const props = defineProps({
+	preserveScroll: {
+		type: Boolean,
+		required: false,
+		default: true,
+	},
 	preserveState: {
 		type: [String, Boolean],
 		required: false,
@@ -17,6 +22,7 @@ const form = useForm({
 
 const submitForm = () => {
 	form.post("/verify-email", {
+		preserveScroll: props.preserveScroll,
 		preserveState: props.preserveState,
 		onSuccess: () => {
 			form.reset();

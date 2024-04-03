@@ -9,6 +9,11 @@ const props = defineProps({
 		required: false,
 		default: true,
 	},
+	preserveScroll: {
+		type: Boolean,
+		required: false,
+		default: true,
+	},
 	preserveState: {
 		type: [String, Boolean],
 		required: false,
@@ -24,6 +29,7 @@ const form = useForm({
 
 const submitForm = () => {
 	form.post("/login", {
+		preserveScroll: props.preserveScroll,
 		preserveState: props.preserveState,
 		onFinish: () => form.reset("password"),
 		onSuccess: () => {

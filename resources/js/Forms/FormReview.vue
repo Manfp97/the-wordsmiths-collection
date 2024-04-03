@@ -20,6 +20,11 @@ const props = defineProps({
 		type: String,
 		required: true,
 	},
+	preserveScroll: {
+		type: Boolean,
+		required: false,
+		default: true,
+	},
 	preserveState: {
 		type: [String, Boolean],
 		required: false,
@@ -47,7 +52,7 @@ const submitForm = () => {
 			: `/review/${props.review.id}`;
 
 	form[props.httpMethod](url, {
-		preserveScroll: true,
+		preserveScroll: props.preserveScroll,
 		preserveState: props.preserveState,
 		onSuccess: () => {
 			form.reset();

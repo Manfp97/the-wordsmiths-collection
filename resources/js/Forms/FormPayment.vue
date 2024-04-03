@@ -4,6 +4,11 @@ import IconRightArrow from "@icons/right-arrow.svg?component";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 
 const props = defineProps({
+	preserveScroll: {
+		type: Boolean,
+		required: false,
+		default: true,
+	},
 	preserveState: {
 		type: [String, Boolean],
 		required: false,
@@ -23,6 +28,7 @@ const submitForm = () => {
 	form.expiration_year = `20${form.expiration_year}`;
 
 	form.post("/payment", {
+		preserveScroll: props.preserveScroll,
 		preserveState: props.preserveState,
 		onSuccess: () => {
 			form.reset();
