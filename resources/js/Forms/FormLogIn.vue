@@ -3,9 +3,14 @@ import { useForm } from "@inertiajs/vue3";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
 
-defineProps({
+const props = defineProps({
 	canResetPassword: {
 		type: Boolean,
+		required: false,
+		default: true,
+	},
+	preserveState: {
+		type: [String, Boolean],
 		required: false,
 		default: true,
 	},
@@ -19,6 +24,7 @@ const form = useForm({
 
 const submitForm = () => {
 	form.post("/login", {
+		preserveState: props.preserveState,
 		onFinish: () => form.reset("password"),
 		onSuccess: () => {
 			form.reset();

@@ -3,12 +3,21 @@ import { useForm } from "@inertiajs/vue3";
 import PinCodeInput from "@/Components/Forms/PinCodeInput.vue";
 import IconRightArrow from "@icons/right-arrow.svg?component";
 
+const props = defineProps({
+	preserveState: {
+		type: [String, Boolean],
+		required: false,
+		default: true,
+	},
+});
+
 const form = useForm({
 	verification_code: [],
 });
 
 const submitForm = () => {
 	form.post("/verify-email", {
+		preserveState: props.preserveState,
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();

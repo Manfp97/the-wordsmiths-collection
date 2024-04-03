@@ -3,6 +3,14 @@ import { useForm } from "@inertiajs/vue3";
 import IconRightArrow from "@icons/right-arrow.svg?component";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 
+const props = defineProps({
+	preserveState: {
+		type: [String, Boolean],
+		required: false,
+		default: true,
+	},
+});
+
 const form = useForm({
 	cardholder_name: null,
 	card_number: null,
@@ -15,6 +23,7 @@ const submitForm = () => {
 	form.expiration_year = `20${form.expiration_year}`;
 
 	form.post("/payment", {
+		preserveState: props.preserveState,
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();

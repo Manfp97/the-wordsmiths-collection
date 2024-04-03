@@ -4,6 +4,14 @@ import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
 import IconRightArrow from "@icons/right-arrow.svg?component";
 
+const props = defineProps({
+	preserveState: {
+		type: [String, Boolean],
+		required: false,
+		default: true,
+	},
+});
+
 const form = useForm({
 	username: null,
 	email: null,
@@ -13,6 +21,7 @@ const form = useForm({
 
 const submitForm = () => {
 	form.post("/register", {
+		preserveState: props.preserveState,
 		onFinish: () => form.reset("password", "password_confirmation"),
 		onSuccess: () => {
 			form.reset();

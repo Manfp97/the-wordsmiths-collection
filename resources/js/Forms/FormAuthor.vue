@@ -3,6 +3,14 @@ import { useForm } from "@inertiajs/vue3";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import IconPlus from "@icons/plus.svg?component";
 
+const props = defineProps({
+	preserveState: {
+		type: [String, Boolean],
+		required: false,
+		default: true,
+	},
+});
+
 const form = useForm({
 	first_name: null,
 	last_name: null,
@@ -11,6 +19,7 @@ const form = useForm({
 const submitForm = () => {
 	form.post("/author", {
 		preserveScroll: true,
+		preserveState: props.preserveState,
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();

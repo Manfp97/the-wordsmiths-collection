@@ -20,6 +20,11 @@ const props = defineProps({
 		type: String,
 		required: true,
 	},
+	preserveState: {
+		type: [String, Boolean],
+		required: false,
+		default: true,
+	},
 });
 
 const form = useForm({
@@ -43,7 +48,7 @@ const submitForm = () => {
 
 	form[props.httpMethod](url, {
 		preserveScroll: true,
-		preserveState: "errors",
+		preserveState: props.preserveState,
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();

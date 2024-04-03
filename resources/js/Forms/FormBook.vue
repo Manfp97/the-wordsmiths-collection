@@ -10,8 +10,13 @@ import Checkbox from "@/Components/Forms/Checkbox.vue";
 import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
 import IconPlus from "@icons/plus.svg?component";
 
-const authors = ref([]);
-const categories = ref([]);
+const props = defineProps({
+	preserveState: {
+		type: [String, Boolean],
+		required: false,
+		default: true,
+	},
+});
 
 const form = useForm({
 	title: null,
@@ -26,6 +31,9 @@ const form = useForm({
 	book_file: null,
 	cover_image: null,
 });
+
+const authors = ref([]);
+const categories = ref([]);
 
 const fetchAuthors = async () => {
 	try {
@@ -58,6 +66,7 @@ const fetchCategories = async () => {
 const submitForm = () => {
 	form.post("/book", {
 		preserveScroll: true,
+		preserveState: props.preserveState,
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();
