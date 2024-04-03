@@ -31,6 +31,8 @@ Route::put('/category/{id}', [CategoryController::class, 'update']);
 
 Route::get('/authors', [AuthorController::class, 'index']);
 Route::post('/author', [AuthorController::class, 'store']); // auth => admin
+Route::put('/author/{id}', [AuthorController::class, 'update']);
+Route::delete('/author/{id}', [AuthorController::class, 'destroy']); // auth => admin
 
 Route::inertia('/subscribe', 'Subscribe');
 
