@@ -22,7 +22,7 @@ class CategoryStoreRequest extends BaseFormRequest
 	public function rules()
 	{
 		return [
-			'name' => 'required|string|max:255',
+			'name' => 'required|string|max:255|unique:categories,name',
 		];
 	}
 
