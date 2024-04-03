@@ -183,7 +183,7 @@ const askToEditCategory = (category) => {
 					method="delete"
 					as="button"
 					class="button !bg-skin-danger text-skin-white"
-					preserve-scroll
+					:preserve-state="false"
 					@click="isDeleting = false"
 				>
 					Yes
@@ -201,6 +201,8 @@ const askToEditCategory = (category) => {
 			<FormCategory
 				:category="selectedCategory"
 				http-method="put"
+				:preserve-scroll="false"
+				preserve-state="errors"
 			/>
 		</ModalContainer>
 		<Footer />
