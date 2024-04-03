@@ -3,6 +3,8 @@ import { useForm } from "@inertiajs/vue3";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
 
+const emit = defineEmits(["success"]);
+
 const props = defineProps({
 	canResetPassword: {
 		type: Boolean,
@@ -35,6 +37,7 @@ const submitForm = () => {
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();
+			emit("success");
 		},
 	});
 };

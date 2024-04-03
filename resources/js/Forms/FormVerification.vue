@@ -3,6 +3,8 @@ import { useForm } from "@inertiajs/vue3";
 import PinCodeInput from "@/Components/Forms/PinCodeInput.vue";
 import IconRightArrow from "@icons/right-arrow.svg?component";
 
+const emit = defineEmits(["success"]);
+
 const props = defineProps({
 	preserveScroll: {
 		type: Boolean,
@@ -27,6 +29,7 @@ const submitForm = () => {
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();
+			emit("success");
 		},
 	});
 };

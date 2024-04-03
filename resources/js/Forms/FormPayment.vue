@@ -3,6 +3,8 @@ import { useForm } from "@inertiajs/vue3";
 import IconRightArrow from "@icons/right-arrow.svg?component";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 
+const emit = defineEmits(["success"]);
+
 const props = defineProps({
 	preserveScroll: {
 		type: Boolean,
@@ -33,6 +35,7 @@ const submitForm = () => {
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();
+			emit("success");
 		},
 	});
 };

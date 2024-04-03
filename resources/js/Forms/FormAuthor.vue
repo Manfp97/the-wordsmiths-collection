@@ -3,6 +3,8 @@ import { useForm } from "@inertiajs/vue3";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import IconPlus from "@icons/plus.svg?component";
 
+const emit = defineEmits(["success"]);
+
 const props = defineProps({
 	preserveScroll: {
 		type: Boolean,
@@ -28,6 +30,7 @@ const submitForm = () => {
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();
+			emit("success");
 		},
 	});
 };

@@ -5,6 +5,8 @@ import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import IconPlus from "@icons/plus.svg?component";
 import IconEdit from "@icons/edit.svg?component";
 
+const emit = defineEmits(["success"]);
+
 const props = defineProps({
 	category: {
 		type: Object,
@@ -52,6 +54,7 @@ const submitForm = () => {
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();
+			emit("success");
 		},
 	});
 };

@@ -4,6 +4,8 @@ import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
 import IconRightArrow from "@icons/right-arrow.svg?component";
 
+const emit = defineEmits(["success"]);
+
 const props = defineProps({
 	preserveScroll: {
 		type: Boolean,
@@ -32,6 +34,7 @@ const submitForm = () => {
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();
+			emit("success");
 		},
 	});
 };

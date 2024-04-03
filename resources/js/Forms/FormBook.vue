@@ -10,6 +10,8 @@ import Checkbox from "@/Components/Forms/Checkbox.vue";
 import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
 import IconPlus from "@icons/plus.svg?component";
 
+const emit = defineEmits(["success"]);
+
 const props = defineProps({
 	preserveScroll: {
 		type: Boolean,
@@ -75,6 +77,7 @@ const submitForm = () => {
 		onSuccess: () => {
 			form.reset();
 			form.clearErrors();
+			emit("success");
 		},
 	});
 };
