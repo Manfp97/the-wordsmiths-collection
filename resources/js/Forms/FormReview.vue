@@ -79,8 +79,12 @@ const submitForm = () => {
 			v-if="form.errors"
 			class="text-skin-danger"
 		>
-			<span v-if="form.errors.book_id">The book ID is not valid.</span>
-			<span v-if="form.errors.rating">{{ form.errors.rating }}</span>
+			<p
+				v-for="(error, index) in form.errors"
+				:key="index"
+			>
+				{{ error }}
+			</p>
 		</div>
 
 		<div class="flex items-center justify-between">
