@@ -43,6 +43,10 @@ const searchText = ref("");
 let observer = null;
 
 onMounted(() => {
+	selectedOptions.value.forEach((option) => {
+		createElement(`${props.inputId}-${option.id}`, option.name);
+	});
+
 	observer = new MutationObserver(() => {
 		isDropdownVisible.value =
 			!$dropdownSearch.value.classList.contains("hidden");
@@ -68,6 +72,7 @@ const onTrashClick = (e) => {
 	}
 
 	selectedOptions.value = [];
+	selectedOptions.value.length = 0; // = [] is not enough to change the value
 };
 
 const deselectAllCheckboxes = () => {
@@ -91,34 +96,42 @@ const filteredOptions = computed(() => {
 	);
 });
 
+const createElement = (elementId, textContent) => {
+	const $newLiElement = document.createElement("li");
+	$newLiElement.textContent = textContent;
+	$newLiElement.classList.add(
+		"bg-skin-secondary",
+		"px-2",
+		"text-sm",
+		"py-1",
+		"rounded"
+	);
+	$newLiElement.id = `li-${elementId}`;
+	$selectedItemsList.value.appendChild($newLiElement);
+};
+
 const handleCheckboxChange = (event) => {
 	const elementId = event.target.id;
 	const elementIdSplit = elementId.split("-");
 	const valueId = parseInt(elementIdSplit[elementIdSplit.length - 1]);
 
 	if (event.target.checked) {
-		const $newLiElement = document.createElement("li");
 		const valueLabelText = document.querySelector(
 			`label[for="${elementId}"]`
 		).textContent;
-		$newLiElement.textContent = valueLabelText;
-		$newLiElement.classList.add(
-			"bg-skin-secondary",
-			"px-2",
-			"text-sm",
-			"py-1",
-			"rounded"
-		);
-		$newLiElement.id = `li-${elementId}`;
-		selectedOptions.value.push(valueId);
-
-		$selectedItemsList.value.appendChild($newLiElement);
+		createElement(elementId, valueLabelText);
+		selectedOptions.value.push({
+			id: valueId,
+			name: valueLabelText,
+		});
 	} else {
 		document.getElementById(`li-${elementId}`).remove();
 
-		var index = selectedOptions.value.indexOf(valueId);
-		if (index !== -1) {
-			selectedOptions.value.splice(index, 1);
+		for (let i = 0; i < selectedOptions.value.length; i++) {
+			if (selectedOptions.value[i].id === valueId) {
+				selectedOptions.value.splice(i, 1);
+				i--; // Decrement i to account for the removed element
+			}
 		}
 	}
 };
@@ -238,6 +251,7 @@ const handleCheckboxChange = (event) => {
 							type="checkbox"
 							:value="option.id"
 							class="h-4 w-4 cursor-pointer rounded border-skin-border bg-gray-100 text-skin-secondary focus:ring-2 focus:ring-skin-secondary"
+							:checked="selectedOptions.some((e) => e.id === option.id)"
 							@change="handleCheckboxChange"
 						/>
 						<label
