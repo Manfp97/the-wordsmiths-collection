@@ -9,10 +9,24 @@ import FloatingLabelSelectSearch from "@/Components/Forms/FloatingLabelSelectSea
 import Checkbox from "@/Components/Forms/Checkbox.vue";
 import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
 import IconPlus from "@icons/plus.svg?component";
+import IconEdit from "@icons/edit.svg?component";
 
 const emit = defineEmits(["success"]);
 
 const props = defineProps({
+	formId: {
+		type: String,
+		required: true,
+	},
+	book: {
+		type: Object,
+		required: false,
+		default: null,
+	},
+	httpMethod: {
+		type: String,
+		required: true,
+	},
 	preserveScroll: {
 		type: Boolean,
 		required: false,
@@ -26,17 +40,25 @@ const props = defineProps({
 });
 
 const form = useForm({
-	title: null,
-	isbn: null,
-	authors_id: [],
-	categories_id: [],
-	description: null,
-	language: null,
-	page_count: null,
-	year: null,
-	is_premium: false,
-	book_file: null,
-	cover_image: null,
+	title: props.book?.title,
+	isbn: props.book?.isbn,
+	authors_id:
+		props.book?.authors.map((author) => ({
+			id: author.id,
+			name: `${author.first_name} ${author.last_name}`,
+		})) ?? [],
+	categories_id:
+		props.book?.categories.map((category) => ({
+			id: category.id,
+			name: category.name,
+		})) ?? [],
+	description: props.book?.description,
+	language: props.book?.language,
+	page_count: props.book?.page_count,
+	year: props.book?.year,
+	is_premium: Boolean(props.book?.is_premium),
+	book_file: props.book?.book_file,
+	cover_image: props.book?.cover_image,
 });
 
 const authors = ref([]);
@@ -70,25 +92,38 @@ const fetchCategories = async () => {
 	}
 };
 
+const buttonText = props.httpMethod === "post" ? "Add new book" : "Edit book";
+
 const submitForm = () => {
-	form.post("/book", {
-		preserveScroll: props.preserveScroll,
-		preserveState: props.preserveState,
-		onSuccess: () => {
-			form.reset();
-			form.clearErrors();
-			emit("success");
-		},
-	});
+	const url = props.httpMethod === "post" ? "/book" : `/book/${props.book?.id}`;
+
+	form
+		.transform((data) => ({
+			...data,
+			authors_id: data.authors_id.map((e) => e.id),
+			categories_id: data.categories_id.map((e) => e.id),
+		}))
+		[props.httpMethod](url, {
+			preserveScroll: props.preserveScroll,
+			preserveState: props.preserveState,
+			onSuccess: () => {
+				form.reset();
+				form.clearErrors();
+				emit("success");
+			},
+		});
 };
 </script>
 
 <template>
-	<form @submit.prevent="submitForm">
+	<form
+		:id="formId"
+		@submit.prevent="submitForm"
+	>
 		<div class="grid gap-4 sm:grid-cols-2">
 			<FloatingLabel
 				v-model:value="form.title"
-				input-id="book-title"
+				:input-id="`${formId}-title`"
 				label-text="Title"
 				input-type="text"
 				input-autocomplete="off"
@@ -96,7 +131,7 @@ const submitForm = () => {
 			/>
 			<FloatingLabel
 				v-model:value="form.isbn"
-				input-id="book-isbn"
+				:input-id="`${formId}-isbn`"
 				label-text="ISBN"
 				input-type="text"
 				input-autocomplete="off"
@@ -105,7 +140,7 @@ const submitForm = () => {
 
 			<FloatingLabelSelectSearch
 				v-model:value="form.authors_id"
-				input-id="book-author"
+				:input-id="`${formId}-author`"
 				label-text="Author"
 				:options="authors"
 				:error-messages="
@@ -120,7 +155,7 @@ const submitForm = () => {
 			/>
 			<FloatingLabelSelectSearch
 				v-model:value="form.categories_id"
-				input-id="book-category"
+				:input-id="`${formId}-category`"
 				label-text="Category"
 				:options="categories"
 				:error-messages="
@@ -136,7 +171,7 @@ const submitForm = () => {
 
 			<FloatingLabel
 				v-model:value="form.language"
-				input-id="book-language"
+				:input-id="`${formId}-language`"
 				label-text="Language"
 				input-type="text"
 				input-autocomplete="off"
@@ -145,7 +180,7 @@ const submitForm = () => {
 			/>
 			<FloatingLabel
 				v-model:value="form.page_count"
-				input-id="book-page-count"
+				:input-id="`${formId}-page-count`"
 				label-text="Page count"
 				input-type="number"
 				input-autocomplete="off"
@@ -155,7 +190,7 @@ const submitForm = () => {
 
 			<FloatingLabel
 				v-model:value="form.year"
-				input-id="book-year"
+				:input-id="`${formId}-year`"
 				label-text="Year"
 				input-type="number"
 				input-autocomplete="off"
@@ -164,7 +199,7 @@ const submitForm = () => {
 			/>
 			<Checkbox
 				v-model:value="form.is_premium"
-				input-id="book-is-premium"
+				:input-id="`${formId}-is-premium`"
 			>
 				Is it for premium subscriptions?
 			</Checkbox>
@@ -172,7 +207,7 @@ const submitForm = () => {
 			<FloatingTextarea
 				v-model:value="form.description"
 				class="sm:col-span-2"
-				textarea-id="book-description"
+				:textarea-id="`${formId}-description`"
 				label-text="Description"
 				textarea-class="min-h-[7rem]"
 				:error-message="form.errors.description"
@@ -180,7 +215,7 @@ const submitForm = () => {
 
 			<DragAndDrop
 				v-model:value="form.book_file"
-				input-id="book-file-input"
+				:input-id="`${formId}-file-input`"
 				label-text="Book file"
 				:max-file-bytes="4200000"
 				:supported-mime-types="['application/pdf']"
@@ -188,7 +223,7 @@ const submitForm = () => {
 			/>
 			<DragAndDrop
 				v-model:value="form.cover_image"
-				input-id="cover-image-input"
+				:input-id="`${formId}-image-input`"
 				label-text="Cover image"
 				:max-file-bytes="2100000"
 				min-aspect-ratio-str="1/2"
@@ -206,10 +241,15 @@ const submitForm = () => {
 				:disabled="form.processing"
 			>
 				<IconPlus
-					class="-ml-1 mr-1 h-6 w-6"
+					v-if="httpMethod === 'post'"
+					class="mr-1 h-6 w-6"
 					fill="currentColor"
 				/>
-				Add new book
+				<IconEdit
+					v-else-if="httpMethod === 'put'"
+					class="mr-1 h-6 w-6"
+				/>
+				{{ buttonText }}
 			</button>
 		</div>
 	</form>

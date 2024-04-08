@@ -28,10 +28,11 @@ onMounted(() => {
 
 		<div :id="`${modalId}-tabs-content`">
 			<FormBook
-				:id="`${modalId}-tab-book-content`"
+				:form-id="`${modalId}-tab-book-content`"
 				class="hidden"
 				role="tabpanel"
 				:aria-labelledby="`${modalId}-tab-book`"
+				http-method="post"
 			/>
 			<FormAuthor
 				:id="`${modalId}-tab-author-content`"
