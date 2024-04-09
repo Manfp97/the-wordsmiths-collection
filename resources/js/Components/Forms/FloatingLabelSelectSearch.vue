@@ -144,14 +144,15 @@ const handleCheckboxChange = (event) => {
 			ref="$dropdownSearchButton"
 			:data-dropdown-toggle="`${inputId}-dropdown-search`"
 			data-dropdown-placement="bottom"
-			class="z-0 flex min-h-[3.25rem] w-full cursor-pointer flex-col rounded-lg border border-skin-border bg-skin-white px-4 shadow-sm"
+			class="z-0 flex min-h-[3.25rem] w-full cursor-pointer flex-col rounded-lg border border-skin-border bg-skin-white px-4 shadow-sm focus:ring-2"
 			:class="{
-				'border-skin-success focus:border-skin-success focus:ring-skin-success':
-					successMessages,
-				'border-skin-danger focus:border-skin-danger focus:ring-skin-danger':
-					errorMessages,
-				'border-skin-secondary outline-none ring-2 ring-skin-secondary':
-					isDropdownVisible,
+				'outline-none ring-2': isDropdownVisible,
+				'border-skin-secondary ring-skin-secondary':
+					isDropdownVisible && !successMessages && !errorMessages,
+				'ring-skin-success': isDropdownVisible && successMessages,
+				'ring-skin-danger': isDropdownVisible && errorMessages,
+				'border-skin-success': successMessages,
+				'border-skin-danger': errorMessages,
 			}"
 		>
 			<div
@@ -184,7 +185,7 @@ const handleCheckboxChange = (event) => {
 
 		<div
 			v-if="successMessages"
-			class="mt-2 px-2 text-xs text-skin-success"
+			class="-ml-1 mt-2 px-2 text-xs text-skin-success"
 		>
 			<p
 				v-for="(successMessage, index) in successMessages"
@@ -195,7 +196,7 @@ const handleCheckboxChange = (event) => {
 
 		<div
 			v-if="errorMessages"
-			class="mt-2 px-2 text-xs text-skin-danger"
+			class="-ml-2 mt-2 px-2 text-xs text-skin-danger"
 		>
 			<p
 				v-for="(errorMessage, index) in errorMessages"
