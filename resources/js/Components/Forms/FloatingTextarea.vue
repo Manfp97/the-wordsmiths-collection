@@ -68,7 +68,15 @@ const autoGrow = () => {
 			ref="$textarea"
 			v-model="value"
 			class="peer block w-full resize-none overflow-hidden rounded-lg border-skin-border p-4 text-sm shadow-sm placeholder:text-skin-transparent autofill:pb-2 autofill:pt-6 focus:border-skin-secondary focus:pb-2 focus:pt-6 focus:ring-2 focus:ring-skin-secondary disabled:pointer-events-none disabled:opacity-50 [&:not(:placeholder-shown)]:pb-2 [&:not(:placeholder-shown)]:pt-6"
-			:class="textareaClass"
+			:class="{
+				[textareaClass]: !!textareaClass,
+				'border-skin-success text-skin-success focus:border-skin-success focus:ring-skin-success':
+					successMessage,
+				'border-skin-danger text-skin-danger focus:border-skin-danger focus:ring-skin-danger':
+					errorMessage,
+				'border-skin-border focus:border-skin-secondary focus:ring-skin-secondary':
+					!successMessage && !errorMessage,
+			}"
 			:placeholder="placeholderText"
 			:required="isRequired"
 			@input="autoGrow"
