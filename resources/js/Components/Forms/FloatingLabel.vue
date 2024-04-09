@@ -41,6 +41,11 @@ defineProps({
 		required: false,
 		default: false,
 	},
+	inputDisabled: {
+		type: Boolean,
+		required: false,
+		default: false,
+	},
 	successMessage: {
 		type: String,
 		required: false,
@@ -61,9 +66,12 @@ defineProps({
 				:id="inputId"
 				v-model="value"
 				:type="inputType"
-				:required="inputRequired"
 				:autocomplete="inputAutocomplete"
 				:inputmode="inputMode"
+				:placeholder="inputPlaceholder"
+				:maxlength="inputMaxLength"
+				:required="inputRequired"
+				:disabled="inputDisabled"
 				class="peer block w-full rounded-lg p-4 text-sm placeholder:text-transparent autofill:pb-2 autofill:pt-6 focus:pb-2 focus:pt-6 focus:ring-2 disabled:pointer-events-none disabled:opacity-50 [&:not(:placeholder-shown)]:pb-2 [&:not(:placeholder-shown)]:pt-6"
 				:class="{
 					'border-skin-success text-skin-success focus:border-skin-success focus:ring-skin-success':
@@ -73,8 +81,6 @@ defineProps({
 					'border-skin-border focus:border-skin-secondary focus:ring-skin-secondary':
 						!successMessage && !errorMessage,
 				}"
-				:placeholder="inputPlaceholder"
-				:maxlength="inputMaxLength"
 				:aria-errormessage="errorMessage ? `${inputId}-error` : null"
 				:aria-invalid="errorMessage ? true : false"
 				:aria-describedby="`${inputId}-annotation`"
