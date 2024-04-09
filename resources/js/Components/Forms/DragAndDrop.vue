@@ -1,7 +1,11 @@
 <script setup>
 import { ref } from "vue";
-import { isImage, formatBytes } from "@/Helpers/fileHelper.js";
-import dragAndDropHelper from "@/Helpers/dragAndDropHelper.js";
+import {
+	isImage,
+	formatBytes,
+	getFileExtensionFromMimeType,
+} from "@/Helpers/fileHelper.js";
+import useAlerts from "@/Composables/useAlerts.js";
 import IconX from "@icons/x.svg?component";
 import IconCloudUpload from "@icons/cloud-upload.svg?component";
 
@@ -46,18 +50,126 @@ const props = defineProps({
 	},
 });
 
+const { addAlert } = useAlerts();
+
 const $fileInput = ref(null);
 const isDragOver = ref(false);
 const filePreview = ref(null);
 
-const { extensions, handleClick, handleDrop, openFileInput, removeFile } =
-	dragAndDropHelper(selectedFile, isDragOver, filePreview, {
-		fieldName: props.labelText,
-		maxFileBytes: props.maxFileBytes,
-		supportedMimeTypes: props.supportedMimeTypes,
-		minAspectRatioStr: props.minAspectRatioStr,
-		maxAspectRatioStr: props.maxAspectRatioStr,
+const extensions = props.supportedMimeTypes
+	.map((mimeType) => `${getFileExtensionFromMimeType(mimeType).toUpperCase()}`)
+	.join(", ");
+
+const handleClick = (event) => {
+	handleFileInput(event.target.files[0]);
+};
+
+const handleDrop = (event) => {
+	isDragOver.value = false;
+	handleFileInput(event.dataTransfer.files[0]);
+};
+
+const handleFileInput = async (file) => {
+	const isFileTypeValid = props.supportedMimeTypes.includes(file.type);
+	const isFileSizeValid = file.size <= props.maxFileBytes;
+
+	if (isFileTypeValid && isFileSizeValid) {
+		const isAspectRatioValid =
+			props.minAspectRatioStr || props.maxAspectRatioStr
+				? await checkAspectRatio(
+					file,
+					eval(props.minAspectRatioStr).toFixed(2),
+					eval(props.maxAspectRatioStr).toFixed(2)
+				)
+				: true;
+
+		if (isAspectRatioValid) {
+			uploadFile(file);
+		} else {
+			addAlert(getErrorMessage(ErrorType.INVALID_ASPECT_RATIO));
+		}
+	} else {
+		if (!isFileTypeValid) {
+			addAlert(getErrorMessage(ErrorType.INVALID_FILE_TYPE));
+		} else if (!isFileSizeValid) {
+			addAlert(getErrorMessage(ErrorType.INVALID_FILE_SIZE));
+		}
+	}
+};
+
+const ErrorType = {
+	INVALID_FILE_TYPE: "invalidFileType",
+	INVALID_FILE_SIZE: "invalidFileSize",
+	INVALID_ASPECT_RATIO: "invalidAspectRatio",
+};
+
+const getErrorMessage = (errorType) => {
+	switch (errorType) {
+	case ErrorType.INVALID_FILE_TYPE:
+		return {
+			type: "danger",
+			message: `File type for ${props.fieldName.toLowerCase()} not supported`,
+		};
+
+	case ErrorType.INVALID_FILE_SIZE:
+		return {
+			type: "danger",
+			message: `The file cannot be larger than ${formatBytes(
+				props.maxFileBytes
+			)}`,
+		};
+
+	case ErrorType.INVALID_ASPECT_RATIO:
+		return {
+			type: "danger",
+			message: `The image must have an aspect ratio between ${props.minAspectRatioStr} and ${props.maxAspectRatioStr}`,
+		};
+	}
+};
+
+const openFileInput = ($fileInput) => {
+	$fileInput.click();
+};
+
+const uploadFile = (file) => {
+	const reader = new FileReader();
+	reader.onload = () => {
+		selectedFile.value = file;
+		filePreview.value = reader.result;
+	};
+	reader.readAsDataURL(file);
+};
+
+const removeFile = () => {
+	selectedFile.value = null;
+	filePreview.value = null;
+};
+
+const checkAspectRatio = (file, minAspectRatio, maxAspectRatio) => {
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader();
+
+		reader.onload = function (e) {
+			const img = new Image();
+
+			img.onload = function () {
+				const aspectRatio = img.width / img.height;
+				console.log(aspectRatio);
+				console.log(maxAspectRatio);
+
+				resolve(aspectRatio >= minAspectRatio && aspectRatio <= maxAspectRatio);
+			};
+
+			img.src = e.target.result;
+		};
+
+		reader.onerror = function () {
+			reject(false);
+		};
+
+		reader.readAsDataURL(file);
 	});
+};
 </script>
 
 <template>
@@ -132,7 +244,7 @@ const { extensions, handleClick, handleDrop, openFileInput, removeFile } =
 				>
 					<img
 						v-if="isImage(selectedFile.type)"
-						:src="filePreview"
+						:src="filePreview || selectedFile.url"
 						alt="Preview"
 						class="mb-2 max-h-20 max-w-full"
 					/>
