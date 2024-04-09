@@ -95,7 +95,7 @@ defineProps({
 
 		<p
 			v-if="successMessage"
-			:id="`${id}-success`"
+			:id="`${inputId}-success`"
 			class="mt-2 text-xs text-skin-success"
 		>
 			{{ successMessage }}
@@ -103,7 +103,7 @@ defineProps({
 
 		<p
 			v-if="errorMessage"
-			:id="`${id}-error`"
+			:id="`${inputId}-error`"
 			class="mt-2 text-xs text-skin-danger"
 		>
 			{{ errorMessage }}
