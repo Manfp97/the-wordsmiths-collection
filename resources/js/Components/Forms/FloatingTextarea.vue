@@ -90,7 +90,7 @@ const autoGrow = () => {
 
 		<p
 			v-if="successMessage"
-			:id="`${id}-success`"
+			:id="`${textareaId}-success`"
 			class="mt-2 text-xs text-skin-success"
 		>
 			{{ successMessage }}
@@ -98,7 +98,7 @@ const autoGrow = () => {
 
 		<p
 			v-if="errorMessage"
-			:id="`${id}-error`"
+			:id="`${textareaId}-error`"
 			class="mt-2 text-xs text-skin-danger"
 		>
 			{{ errorMessage }}
