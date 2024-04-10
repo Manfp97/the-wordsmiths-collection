@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryStoreRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 use App\Http\Resources\CategoryResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Support\Enums\MediaCollectionEnum;
-use App\Support\Enums\MediaConversionEnum;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -64,7 +63,7 @@ class CategoryController extends Controller
 	/**
 	 * Update the category.
 	 */
-	public function update(CategoryStoreRequest $request, int $id)
+	public function update(CategoryUpdateRequest $request, int $id)
 	{
 		try {
 			$category = Category::findOrFail($id);

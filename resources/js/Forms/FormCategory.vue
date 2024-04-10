@@ -2,6 +2,7 @@
 import { useForm } from "@inertiajs/vue3";
 import { watch, computed } from "vue";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
+import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
 import IconPlus from "@icons/plus.svg?component";
 import IconEdit from "@icons/edit.svg?component";
 import IconReset from "@icons/reset.svg?component";
@@ -38,12 +39,17 @@ const categoryState = computed(() => props.category);
 
 const form = useForm({
 	name: categoryState.value?.name,
+	description: categoryState.value?.description,
 });
 
 watch(categoryState, (newValue) => {
 	form.name = newValue?.name;
+	form.description = newValue?.description;
 
-	form.defaults("name", newValue?.name);
+	form.defaults({
+		name: newValue?.name,
+		description: newValue?.description,
+	});
 });
 
 const buttonText =
@@ -72,15 +78,27 @@ const submitForm = () => {
 		:id="formId"
 		@submit.prevent="submitForm"
 	>
-		<FloatingLabel
-			v-model:value="form.name"
-			:input-id="`${formId}-name`"
-			label-text="Name"
-			input-type="text"
-			input-autocomplete="off"
-			is-required
-			:error-message="form.errors.name"
-		/>
+		<div class="space-y-4">
+			<FloatingLabel
+				v-model:value="form.name"
+				:input-id="`${formId}-name`"
+				label-text="Name"
+				input-type="text"
+				input-autocomplete="off"
+				is-required
+				:error-message="form.errors.name"
+			/>
+
+			<FloatingTextarea
+				v-model:value="form.description"
+				class="sm:col-span-2"
+				:textarea-id="`${formId}-description`"
+				label-text="Description"
+				textarea-class="min-h-[7rem]"
+				is-required
+				:error-message="form.errors.description"
+			/>
+		</div>
 
 		<div class="mt-6 flex justify-end space-x-4">
 			<button
