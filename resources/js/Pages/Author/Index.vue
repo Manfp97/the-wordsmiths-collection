@@ -111,8 +111,9 @@ const askToEditAuthor = (author) => {
 							{{ author.first_name }} {{ author.last_name }}
 						</h2>
 						<div class="flex space-x-1.5">
+							<!-- Allow deletion of authors without books only -->
 							<IconTrash
-								v-if="isAdmin"
+								v-if="isAdmin && !author.books.length"
 								class="w-6 cursor-pointer text-skin-danger md:w-8"
 								@click="askToDeleteAuthor(author)"
 							/>
@@ -145,8 +146,7 @@ const askToEditAuthor = (author) => {
 			<div class="space-y-2">
 				<p>
 					Are you sure you want to delete the '{{ selectedAuthor?.first_name }}
-					{{ selectedAuthor?.last_name }}' author? The books attached to it
-					won't be deleted. This action cannot be undone.
+					{{ selectedAuthor?.last_name }}' author? This action cannot be undone.
 				</p>
 			</div>
 
