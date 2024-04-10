@@ -10,8 +10,8 @@ class CreateBooksTable extends Migration
 	{
 		Schema::create('books', function (Blueprint $table) {
 			$table->id();
-			$table->string('isbn')->unique();
 			$table->string('slug')->unique();
+			$table->string('isbn')->unique();
 			$table->string('title');
 			$table->text('description');
 			$table->unsignedSmallInteger('page_count');
