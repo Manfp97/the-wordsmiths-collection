@@ -126,8 +126,9 @@ const askToEditCategory = (category) => {
 							{{ category.name }}
 						</h2>
 						<div class="flex space-x-1.5">
+							<!-- Allow deletion of categories without books only -->
 							<IconTrash
-								v-if="isAdmin"
+								v-if="isAdmin && !category.books.length"
 								class="w-6 cursor-pointer text-skin-danger md:w-8"
 								@click="askToDeleteCategory(category)"
 							/>
@@ -165,8 +166,7 @@ const askToEditCategory = (category) => {
 			<div class="space-y-2">
 				<p>
 					Are you sure you want to delete the '{{ selectedCategory?.name }}'
-					category? The books attached to it won't be deleted. This action
-					cannot be undone.
+					category? This action cannot be undone.
 				</p>
 			</div>
 
