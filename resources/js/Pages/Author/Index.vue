@@ -3,11 +3,9 @@ import axios from "axios";
 import { usePage } from "@inertiajs/vue3";
 import { ref, computed } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
-import AppHead from "@/Components/Common/AppHead.vue";
-import Nav from "@/Components/Common/Nav.vue";
-import BookCard from "@/Components/Book/BookCard.vue";
+import IndexLayout from "@//Layouts/IndexLayout.vue";
 import SwiperSection from "@/Components/Swiper/SwiperSection.vue";
-import Footer from "@/Components/Common/Footer.vue";
+import BookCard from "@/Components/Book/BookCard.vue";
 import ModalContainer from "@/Components/Modals/ModalContainer.vue";
 import FormAuthor from "@/Forms/FormAuthor.vue";
 import IconTrash from "@icons/trash.svg?component";
@@ -90,14 +88,8 @@ const askToEditAuthor = (author) => {
 </script>
 
 <template>
-	<AppHead />
-
-	<Nav />
-
-	<div class="page-container">
-		<main
-			class="space-y-12 py-10 sm:space-y-10 lg:space-y-14 xl:py-12 2xl:py-16"
-		>
+	<IndexLayout>
+		<template #main-content>
 			<SwiperSection
 				v-for="(author, indexAuthor) in authorsState.data"
 				:key="indexAuthor"
@@ -107,7 +99,7 @@ const askToEditAuthor = (author) => {
 					<div
 						class="mb-4 flex items-center space-x-6 px-4 md:mb-6 md:px-6 lg:px-16"
 					>
-						<h2 class="text-xl font-bold md:text-2xl 2xl:text-3xl">
+						<h2 class="h2-title">
 							{{ author.first_name }} {{ author.last_name }}
 						</h2>
 						<div class="flex space-x-1.5">
@@ -134,57 +126,59 @@ const askToEditAuthor = (author) => {
 					<BookCard :book="book" />
 				</swiper-slide>
 			</SwiperSection>
-		</main>
+		</template>
 
-		<ModalContainer
-			v-if="isAdmin"
-			modal-id="modal-delete-author"
-			modal-title="Delete author"
-			:show="isDeleting"
-			@close="isDeleting = false"
-		>
-			<div class="space-y-2">
-				<p>
-					Are you sure you want to delete the '{{ selectedAuthor?.first_name }}
-					{{ selectedAuthor?.last_name }}' author? This action cannot be undone.
-				</p>
-			</div>
+		<template #modals>
+			<ModalContainer
+				v-if="isAdmin"
+				modal-id="modal-delete-author"
+				modal-title="Delete author"
+				:show="isDeleting"
+				@close="isDeleting = false"
+			>
+				<div class="space-y-2">
+					<p>
+						Are you sure you want to delete the author
+						{{ selectedAuthor?.first_name }} {{ selectedAuthor?.last_name }}?
+						This action cannot be undone.
+					</p>
+				</div>
 
-			<div class="mt-6 flex justify-end space-x-4">
-				<button
-					class="button !bg-skin-muted text-skin-white"
-					@click="isDeleting = false"
-				>
-					No
-				</button>
+				<div class="mt-6 flex justify-end space-x-4">
+					<button
+						class="button !bg-skin-muted text-skin-white"
+						@click="isDeleting = false"
+					>
+						No
+					</button>
 
-				<Link
-					:href="`/author/${selectedAuthor?.id}`"
-					method="delete"
-					as="button"
-					class="button !bg-skin-danger text-skin-white"
-					:preserve-state="false"
-					@click="isDeleting = false"
-				>
-					Yes
-				</Link>
-			</div>
-		</ModalContainer>
+					<Link
+						:href="`/author/${selectedAuthor?.id}`"
+						method="delete"
+						as="button"
+						class="button !bg-skin-danger text-skin-white"
+						:preserve-state="false"
+						@click="isDeleting = false"
+					>
+						Yes
+					</Link>
+				</div>
+			</ModalContainer>
 
-		<ModalContainer
-			v-if="isAdmin"
-			modal-id="modal-edit-author"
-			modal-title="Edit author"
-			:show="isEditing"
-			@close="isEditing = false"
-		>
-			<FormAuthor
-				:author="selectedAuthor"
-				http-method="put"
-				:preserve-scroll="false"
-				preserve-state="errors"
-			/>
-		</ModalContainer>
-		<Footer />
-	</div>
+			<ModalContainer
+				v-if="isAdmin"
+				modal-id="modal-edit-author"
+				modal-title="Edit author"
+				:show="isEditing"
+				@close="isEditing = false"
+			>
+				<FormAuthor
+					:author="selectedAuthor"
+					http-method="put"
+					:preserve-scroll="false"
+					preserve-state="errors"
+				/>
+			</ModalContainer>
+		</template>
+	</IndexLayout>
 </template>
