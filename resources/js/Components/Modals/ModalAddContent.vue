@@ -35,7 +35,7 @@ onMounted(() => {
 				http-method="post"
 			/>
 			<FormAuthor
-				:id="`${modalId}-tab-author-content`"
+				:form-id="`${modalId}-tab-author-content`"
 				class="hidden"
 				role="tabpanel"
 				:aria-labelledby="`${modalId}-tab-author`"

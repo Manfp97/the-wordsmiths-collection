@@ -9,6 +9,10 @@ import IconReset from "@icons/reset.svg?component";
 const emit = defineEmits(["success"]);
 
 const props = defineProps({
+	formId: {
+		type: String,
+		required: true,
+	},
 	author: {
 		type: Object,
 		required: false,
@@ -69,11 +73,14 @@ const submitForm = () => {
 </script>
 
 <template>
-	<form @submit.prevent="submitForm">
+	<form
+		:id="formId"
+		@submit.prevent="submitForm"
+	>
 		<div class="grid gap-4 sm:grid-cols-2">
 			<FloatingLabel
 				v-model:value="form.first_name"
-				input-id="author-first-name"
+				:input-id="`${formId}-first-name`"
 				label-text="First name"
 				input-type="text"
 				input-autocomplete="off"
@@ -82,11 +89,10 @@ const submitForm = () => {
 			/>
 			<FloatingLabel
 				v-model:value="form.last_name"
-				input-id="author-last-name"
+				:input-id="`${formId}-last-name`"
 				label-text="Last name"
 				input-type="text"
 				input-autocomplete="off"
-				is-required
 				:error-message="form.errors.last_name"
 			/>
 		</div>

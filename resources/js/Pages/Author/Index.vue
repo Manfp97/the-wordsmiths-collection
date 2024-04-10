@@ -173,6 +173,7 @@ const askToEditAuthor = (author) => {
 				@close="isEditing = false"
 			>
 				<FormAuthor
+					form-id="author-edit"
 					:author="selectedAuthor"
 					http-method="put"
 					:preserve-scroll="false"
