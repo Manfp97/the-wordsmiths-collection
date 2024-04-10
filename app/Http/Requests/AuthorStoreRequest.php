@@ -22,8 +22,9 @@ class AuthorStoreRequest extends BaseFormRequest
 	public function rules()
 	{
 		return [
-			'first_name' => 'required|string|max:128',
-			'last_name' => 'required|string|max:128',
+			'first_name'	=> 'required|string|max:128',
+			'last_name'		=> 'nullable|string|max:128',
+			'description'	=> 'required|string|max:15000',
 		];
 	}
 
@@ -35,8 +36,9 @@ class AuthorStoreRequest extends BaseFormRequest
 	public function filters()
 	{
 		return [
-			'first_name' => 'trim|capitalize|strip_tags',
-			'last_name' => 'trim|capitalize|strip_tags'
+			'first_name'	=> 'trim|capitalize|strip_tags',
+			'last_name'		=> 'trim|capitalize|strip_tags',
+			'description'	=> 'trim|strip_tags'
 		];
 	}
 }

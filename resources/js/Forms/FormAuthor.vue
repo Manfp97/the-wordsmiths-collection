@@ -2,6 +2,7 @@
 import { useForm } from "@inertiajs/vue3";
 import { watch, computed } from "vue";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
+import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
 import IconPlus from "@icons/plus.svg?component";
 import IconEdit from "@icons/edit.svg?component";
 import IconReset from "@icons/reset.svg?component";
@@ -39,15 +40,18 @@ const authorState = computed(() => props.author);
 const form = useForm({
 	first_name: null,
 	last_name: null,
+	description: null,
 });
 
 watch(authorState, (newValue) => {
 	form.first_name = newValue?.first_name;
 	form.last_name = newValue?.last_name;
+	form.description = newValue?.description;
 
 	form.defaults({
 		first_name: newValue?.first_name,
 		last_name: newValue?.last_name,
+		description: newValue?.description,
 	});
 });
 
@@ -94,6 +98,16 @@ const submitForm = () => {
 				input-type="text"
 				input-autocomplete="off"
 				:error-message="form.errors.last_name"
+			/>
+
+			<FloatingTextarea
+				v-model:value="form.description"
+				class="sm:col-span-2"
+				:textarea-id="`${formId}-description`"
+				label-text="Description"
+				textarea-class="min-h-[7rem]"
+				is-required
+				:error-message="form.errors.description"
 			/>
 		</div>
 

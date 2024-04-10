@@ -13,6 +13,7 @@ class CreateAuthorsTable extends Migration
 			$table->string('slug')->unique();
 			$table->string('first_name');
 			$table->string('last_name')->nullable();
+			$table->text('description')->nullable();
 			$table->timestamps();
 		});
 	}
