@@ -14,19 +14,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BookStoreRequest;
 use App\Http\Requests\BookUpdateRequest;
 use App\Http\Resources\BookResource;
-use Illuminate\Support\Facades\Request as FacadesRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class BookController extends Controller
 {
 
-	public function index(HttpRequest $request): Response|ResourceCollection
+	public function index(Request $request): Response|ResourceCollection
 	{
 		$books = Book::latest()->cursorPaginate(10);
 
@@ -40,7 +38,7 @@ class BookController extends Controller
 		]);
 	}
 
-	public function show(HttpRequest $request, string $slug): Response
+	public function show(Request $request, string $slug): Response
 	{
 		$book = Book::where('slug', $slug)
 			->with(['authors', 'categories', 'bookReviews'])
@@ -64,7 +62,7 @@ class BookController extends Controller
 		]);
 	}
 
-	public function read(HttpRequest $request, string $slug): Response
+	public function read(Request $request, string $slug): Response
 	{
 		$book = Book::where('slug', $slug)->firstOrFail();
 		$bookFile = $book->getFirstMedia(MediaCollectionEnum::BOOKS);
@@ -208,11 +206,11 @@ class BookController extends Controller
 	 * This method checks if the user has an active subscription and if they have already submitted a review for the book.
 	 * If the book is premium and the user has a basic subscription plan, they cannot publish a review.
 	 *
-	 * @param HttpRequest $request The HTTP request instance containing the user information.
+	 * @param Request $request The HTTP request instance containing the user information.
 	 * @param Book $book The book for which the review publishing eligibility is being checked.
 	 * @return bool True if the user can publish a review, false otherwise.
 	 */
-	private function canPublishReview(HttpRequest $request, Book $book): bool
+	private function canPublishReview(Request $request, Book $book): bool
 	{
     $user = optional($request->user());
     $subscription = $user->subscription;
