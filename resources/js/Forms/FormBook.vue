@@ -98,13 +98,23 @@ const buttonText = props.httpMethod === "post" ? "Add new book" : "Edit book";
 const submitForm = () => {
 	const url = props.httpMethod === "post" ? "/book" : `/book/${props.book?.id}`;
 
+	/*
+	 * We use the `post` method regardless of the httpMethod passed as a prop to
+	 * handle the modified files (https://inertiajs.com/file-uploads Multipart
+	 * limitations) correctly.
+	 */
 	form
 		.transform((data) => ({
 			...data,
 			authors_id: data.authors_id.map((e) => e.id),
 			categories_id: data.categories_id.map((e) => e.id),
+			// lastModifiedDate is ONLY set when the user manually adds a file
+			// It's not returned by the back-end
+			book_file: data.book_file?.lastModifiedDate ? data.book_file : null,
+			cover_file: data.cover_file?.lastModifiedDate ? data.cover_file : null,
+			_method: props.httpMethod,
 		}))
-		[props.httpMethod](url, {
+		.post(url, {
 			preserveScroll: props.preserveScroll,
 			preserveState: props.preserveState,
 			onSuccess: () => {

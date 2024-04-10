@@ -12,6 +12,7 @@ use App\Http\Resources\BookResource;
 use App\Support\Enums\MediaCollectionEnum;
 use App\Support\Enums\MediaConversionEnum;
 use App\Http\Requests\BookStoreRequest;
+use App\Http\Requests\BookUpdateRequest;
 use Illuminate\Support\Facades\Request as FacadesRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Resources\Json\ResourceCollection;
@@ -114,6 +115,61 @@ class BookController extends Controller
 				'message'	=> 'Book successfully created',
 			]
 		);
+	}
+
+	public function update(BookUpdateRequest $request, int $id)
+	{
+		try {
+			$book = Book::findOrFail($id);
+			$validatedData = $request->validated();
+			$book->update($validatedData);
+
+			$book->authors()->sync($validatedData['authors_id']);
+    	$book->categories()->sync($validatedData['categories_id']);
+
+			$slug = $book->slug;
+
+			if ($bookFile = $validatedData['book_file']) {
+				$book
+					->getFirstMedia(MediaCollectionEnum::BOOKS)
+					->delete();
+
+				$book
+					->addMedia($bookFile)
+					->usingName($slug)
+					->usingFileName("$slug.{$bookFile->extension()}")
+					->toMediaCollection(MediaCollectionEnum::BOOKS);
+			}
+
+			if ($coverFile = $validatedData['cover_file']) {
+				$book
+					->getFirstMedia(MediaCollectionEnum::BOOK_COVERS)
+					->delete();
+
+				$book
+					->addMedia($coverFile)
+					->usingName($slug)
+					->usingFileName("$slug.{$coverFile->extension()}")
+					->toMediaCollection(MediaCollectionEnum::BOOK_COVERS);
+			}
+
+			return redirect("/book/$slug")->with(
+				'alert',
+				[
+					'type'		=> 'success',
+					'message'	=> 'Book successfully edited',
+				]
+			);
+		} catch (\Exception $e) {
+			dd($e);
+			return back()->with(
+				'alert',
+				[
+					'type' => 'danger',
+					'message' => 'You cannot edit this book',
+				]
+			);
+		}
 	}
 
 	public function destroy(int $id): RedirectResponse

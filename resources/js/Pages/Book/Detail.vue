@@ -13,7 +13,10 @@ import {
 import Footer from "@/Components/Common/Footer.vue";
 import ModalContainer from "@/Components/Modals/ModalContainer.vue";
 import FormReview from "@/Forms/FormReview.vue";
+import FormBook from "@/Forms/FormBook.vue";
 import IconBook from "@icons/book.svg?component";
+import IconTrash from "@icons/trash.svg?component";
+import IconEdit from "@icons/edit.svg?component";
 
 const props = defineProps({
 	book: {
@@ -34,24 +37,29 @@ const props = defineProps({
 const canEdit = props.book.reviews.some((review) => review.can_edit);
 const canDelete = props.book.reviews.some((review) => review.can_delete);
 
+const isEditingBook = ref(false);
+const isDeletingBook = ref(false);
+
 const isReviewing = ref(false);
-const isEditing = ref(false);
-const isDeleting = ref(false);
+const isEditingReview = ref(false);
+const isDeletingReview = ref(false);
 
 const selectedReview = ref(null);
 const editReview = (review) => {
 	selectedReview.value = review;
-	isEditing.value = true;
+	isEditingReview.value = true;
 };
 const deleteReview = (review) => {
 	selectedReview.value = review;
-	isDeleting.value = true;
+	isDeletingReview.value = true;
 };
-const closeEdit = () => {
-	isEditing.value = false;
+const closeEditReview = () => {
+	isEditingReview.value = false;
 	selectedReview.value = null;
 };
 
+const user = computed(() => usePage().props.auth.user);
+const isAdmin = user.value?.role_id === 1;
 const subscription = usePage().props.auth.subscription;
 
 const isSubscriptionActive = subscription?.status === "active";
@@ -138,7 +146,21 @@ const swiperBreakpoints = {
 					<!-- Right column -->
 					<div class="md:col-span-4 md:ml-8 lg:col-span-9 lg:ml-14">
 						<section>
-							<h2 class="section-title">{{ book.title }}</h2>
+							<div class="flex items-center space-x-6">
+								<h2 class="section-title">{{ book.title }}</h2>
+								<div class="flex space-x-1.5">
+									<IconTrash
+										v-if="isAdmin"
+										class="w-6 cursor-pointer text-skin-danger md:w-8"
+										@click="isDeletingBook = true"
+									/>
+									<IconEdit
+										v-if="isAdmin"
+										class="w-6 cursor-pointer text-skin-link md:w-8"
+										@click="isEditingBook = true"
+									/>
+								</div>
+							</div>
 
 							<div class="my-2 font-means-web text-2xl sm:my-4">
 								<span
@@ -277,8 +299,8 @@ const swiperBreakpoints = {
 		v-if="canDelete"
 		modal-id="modal-delete-review"
 		modal-title="Delete review"
-		:show="isDeleting"
-		@close="isDeleting = false"
+		:show="isDeletingReview"
+		@close="isDeletingReview = false"
 	>
 		<div class="space-y-2">
 			<p>
@@ -290,7 +312,7 @@ const swiperBreakpoints = {
 		<div class="mt-6 flex justify-end space-x-4">
 			<button
 				class="button !bg-skin-muted text-skin-white"
-				@click="isDeleting = false"
+				@click="isDeletingReview = false"
 			>
 				No
 			</button>
@@ -301,7 +323,7 @@ const swiperBreakpoints = {
 				as="button"
 				class="button !bg-skin-danger text-skin-white"
 				preserve-scroll
-				@click="isDeleting = false"
+				@click="isDeletingReview = false"
 			>
 				Yes
 			</Link>
@@ -312,13 +334,61 @@ const swiperBreakpoints = {
 		v-if="canEdit"
 		modal-id="modal-edit-review"
 		modal-title="Edit review"
-		:show="isEditing"
-		@close="closeEdit"
+		:show="isEditingReview"
+		@close="closeEditReview"
 	>
 		<FormReview
 			:book-id="book.id"
 			:review="selectedReview"
 			http-method="put"
+			preserve-state="errors"
+		/>
+	</ModalContainer>
+
+	<ModalContainer
+		v-if="isAdmin"
+		modal-id="modal-delete-book"
+		modal-title="Delete book"
+		:show="isDeletingBook"
+		@close="isDeletingBook = false"
+	>
+		<div class="space-y-2">
+			<p>
+				Are you sure you want to delete this book? This action cannot be undone.
+			</p>
+		</div>
+
+		<div class="mt-6 flex justify-end space-x-4">
+			<button
+				class="button !bg-skin-muted text-skin-white"
+				@click="isDeletingBook = false"
+			>
+				No
+			</button>
+
+			<Link
+				:href="`/book/${book?.id}`"
+				method="delete"
+				as="button"
+				class="button !bg-skin-danger text-skin-white"
+			>
+				Yes
+			</Link>
+		</div>
+	</ModalContainer>
+
+	<ModalContainer
+		v-if="isAdmin"
+		modal-id="modal-edit-book"
+		modal-title="Edit book"
+		:show="isEditingBook"
+		@close="isEditingBook = false"
+	>
+		<FormBook
+			form-id="form-edit-book"
+			:book="book"
+			http-method="put"
+			preserve-scroll
 			preserve-state="errors"
 		/>
 	</ModalContainer>
