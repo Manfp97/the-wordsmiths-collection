@@ -177,6 +177,7 @@ const askToEditCategory = (category) => {
 				@close="isEditing = false"
 			>
 				<FormCategory
+					form-id="category-edit"
 					:category="selectedCategory"
 					http-method="put"
 					:preserve-scroll="false"

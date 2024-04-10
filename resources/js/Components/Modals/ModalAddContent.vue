@@ -42,7 +42,7 @@ onMounted(() => {
 				http-method="post"
 			/>
 			<FormCategory
-				:id="`${modalId}-tab-category-content`"
+				:form-id="`${modalId}-tab-category-content`"
 				http-method="post"
 				class="hidden"
 				role="tabpanel"
