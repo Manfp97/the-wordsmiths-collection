@@ -10,6 +10,7 @@ import Checkbox from "@/Components/Forms/Checkbox.vue";
 import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
 import IconPlus from "@icons/plus.svg?component";
 import IconEdit from "@icons/edit.svg?component";
+import IconReset from "@icons/reset.svg?component";
 
 const emit = defineEmits(["success"]);
 
@@ -233,7 +234,18 @@ const submitForm = () => {
 			/>
 		</div>
 
-		<div class="mt-6 flex justify-end">
+		<div class="mt-6 flex justify-end space-x-4">
+			<button
+				type="button"
+				class="button bg-skin-muted text-sm font-bold text-skin-white"
+				:class="{ 'opacity-25': form.processing }"
+				:disabled="form.processing"
+				@click="form.reset()"
+			>
+				<IconReset class="mr-1 h-6 w-6" />
+				Reset form
+			</button>
+
 			<button
 				type="submit"
 				class="button text-sm font-bold"
