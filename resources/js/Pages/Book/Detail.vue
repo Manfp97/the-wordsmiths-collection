@@ -108,7 +108,7 @@ const swiperBreakpoints = {
 
 	<div class="page-container">
 		<main class="mx-auto mb-20 mt-10 max-w-7xl sm:mb-32">
-			<div class="mx-4">
+			<div class="mx-6 sm:mx-8 md:mx-10 lg:mx-12">
 				<div class="md:grid md:grid-cols-6 lg:grid-cols-12 max-md:space-y-10">
 					<!-- Left column -->
 					<div class="md:col-span-2 lg:col-span-3">
@@ -146,7 +146,7 @@ const swiperBreakpoints = {
 					<!-- Right column -->
 					<div class="md:col-span-4 md:ml-8 lg:col-span-9 lg:ml-14">
 						<section>
-							<div class="flex items-center space-x-6">
+							<div class="flex items-center space-x-3">
 								<h2 class="section-title">{{ book.title }}</h2>
 								<div class="flex space-x-1.5">
 									<IconTrash
