@@ -6,7 +6,10 @@ const props = defineProps({
 	},
 });
 
-const cover = props.book.cover.replaceAll(">", "class='h-full w-full'>");
+const cover = props.book.responsive_cover.replaceAll(
+	">",
+	"class='h-full w-full'>"
+);
 </script>
 
 <template>

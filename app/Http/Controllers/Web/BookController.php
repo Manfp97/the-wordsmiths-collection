@@ -83,28 +83,28 @@ class BookController extends Controller
 		$validatedData = $request->validated();
 		$book = Book::create($validatedData);
 
-		foreach ($validatedData['authors_id'] as $author_id)
-		{
+		foreach ($validatedData['authors_id'] as $author_id) {
 			$book->authors()->attach($author_id);
 		}
 
-		foreach ($validatedData['categories_id'] as $category_id)
-		{
+		foreach ($validatedData['categories_id'] as $category_id) {
 			$book->categories()->attach($category_id);
 		}
 
+		$fileName = $book->slug;
+		
+		$bookFile = $validatedData['book_file'];
 		$book
-			->addMedia($validatedData['book_file'])
+			->addMedia($bookFile)
+			->usingName($fileName)
+			->usingFileName("$fileName.{$bookFile->extension()}")
 			->toMediaCollection(MediaCollectionEnum::BOOKS);
 
-		$titleSlug = Str::slug($book->title);
-		$ext = $validatedData['cover_image']->extension();
-		$fileName = "$titleSlug.$ext";
-
+		$coverFile = $validatedData['cover_file'];
 		$book
-			->addMedia($validatedData['cover_image'])
-			->usingName($titleSlug)
-			->usingFileName($fileName)
+			->addMedia($coverFile)
+			->usingName($fileName)
+			->usingFileName("$fileName.{$coverFile->extension()}")
 			->toMediaCollection(MediaCollectionEnum::BOOK_COVERS);
 
 		return back()->with(

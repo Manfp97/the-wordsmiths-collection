@@ -59,7 +59,7 @@ const form = useForm({
 	year: props.book?.year,
 	is_premium: Boolean(props.book?.is_premium),
 	book_file: props.book?.book_file,
-	cover_image: props.book?.cover_image,
+	cover_file: props.book?.cover_file,
 });
 
 const authors = ref([]);
@@ -223,14 +223,14 @@ const submitForm = () => {
 				:error-message="form.errors.book_file"
 			/>
 			<DragAndDrop
-				v-model:value="form.cover_image"
+				v-model:value="form.cover_file"
 				:input-id="`${formId}-image-input`"
 				label-text="Cover image"
 				:max-file-bytes="2100000"
 				min-aspect-ratio-str="1/2"
 				max-aspect-ratio-str="2/3"
 				:supported-mime-types="['image/webp', 'image/png', 'image/jpeg']"
-				:error-message="form.errors.cover_image"
+				:error-message="form.errors.cover_file"
 			/>
 		</div>
 

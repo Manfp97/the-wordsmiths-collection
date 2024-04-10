@@ -69,7 +69,10 @@ const readButtonInfo = computed(() => {
 	}
 });
 
-const cover = props.book.cover.replaceAll(">", "class='rounded-r-xl'>");
+const cover = props.book.responsive_cover.replaceAll(
+	">",
+	"class='rounded-r-xl'>"
+);
 
 const swiperBreakpoints = {
 	0: {

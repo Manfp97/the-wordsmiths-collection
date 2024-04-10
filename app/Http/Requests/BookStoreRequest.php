@@ -32,7 +32,7 @@ class BookStoreRequest extends BaseFormRequest
 			'year'						=> 'required|int|digits_between:1,4',
 			'is_premium'			=> 'bool',
 			'book_file' 			=> 'required|mimetypes:application/pdf|max:4096',
-			'cover_image' 		=> 'required|mimetypes:image/jpeg,image/png,image/webp|max:2048',
+			'cover_file' 			=> 'required|mimetypes:image/jpeg,image/png,image/webp|max:2048',
 			'authors_id' 			=> 'required|array|min:1',
 			'authors_id.*' 		=> 'required|int|distinct|exists:authors,id',
 			'categories_id' 	=> 'required|array|min:1',
