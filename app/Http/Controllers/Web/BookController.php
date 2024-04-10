@@ -161,7 +161,6 @@ class BookController extends Controller
 				]
 			);
 		} catch (\Exception $e) {
-			dd($e);
 			return back()->with(
 				'alert',
 				[
