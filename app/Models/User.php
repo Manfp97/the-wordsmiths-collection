@@ -47,16 +47,31 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
 		'password' => 'hashed',
 	];
 
+	/**
+	 * Define a relationship where the User has one Subscription.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
 	public function subscription(): HasOne
 	{
 		return $this->hasOne(Subscription::class);
 	}
 
+	/**
+	 * Define a relationship where the User has one CreditCard.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
 	public function creditCard(): HasOne
 	{
 		return $this->hasOne(CreditCard::class);
 	}
 
+	/**
+	 * Define a relationship where the User has many BookReview.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
 	public function reviews(): HasMany
 	{
 		return $this->hasMany(BookReview::class);

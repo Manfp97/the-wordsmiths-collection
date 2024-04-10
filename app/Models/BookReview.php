@@ -17,11 +17,21 @@ class BookReview extends Model
 		'review_text'
 	];
 
+	/**
+	 * Define a relationship where the BookReview belongs to a Book.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
 	public function book(): BelongsTo
 	{
 		return $this->belongsTo(Book::class);
 	}
 
+	/**
+	 * Define a relationship where the BookReview belongs to a User.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
 	public function user(): BelongsTo
 	{
 		return $this->belongsTo(User::class);

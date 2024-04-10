@@ -54,16 +54,31 @@ class Book extends Model implements HasMedia
 		return 'slug';
 	}
 
+	/**
+	 * Define a many-to-many relationship with the Category model.
+	 * 
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
 	public function authors(): BelongsToMany
 	{
 		return $this->belongsToMany(Author::class);
 	}
 
+	/**
+	 * Define a many-to-many relationship with the Category model.
+	 * 
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
 	public function categories(): BelongsToMany
 	{
 		return $this->belongsToMany(Category::class);
 	}
 
+	/**
+	 * Define a one-to-many relationship with the BookReview model.
+	 * 
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
 	public function bookReviews(): HasMany
 	{
 		return $this->hasMany(BookReview::class);

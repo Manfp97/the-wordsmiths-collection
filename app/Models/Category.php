@@ -39,6 +39,11 @@ class Category extends Model
 		return 'slug';
 	}
 
+	/**
+	 * Define a many-to-many relationship with the Book model.
+	 * 
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
 	public function books(): BelongsToMany
 	{
 		return $this->belongsToMany(Book::class);
