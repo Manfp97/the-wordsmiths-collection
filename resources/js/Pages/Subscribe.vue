@@ -58,27 +58,27 @@ const faqs = [
 	{
 		id: 0,
 		title: "What is The Wordsmith's Collection?",
-		body: "<p>The Wordsmith's Collection is a streaming service that offers a wide variety of literary works.</p><p>You can watch as much as you want, whenever you want, without a single ad – all for one low monthly price. There's always something new to discover, and new books are added every week!</p>",
+		body: "<p>The Wordsmith's Collection is a service that offers a wide and curated variety of literary works.</p><p>You can read as much as you want, whenever you want, without a single ad – all for one low monthly price. There's always something new to discover, and new books are added every week!</p>",
 	},
 	{
 		id: 1,
 		title: "How much does The Wordsmith's Collection cost?",
-		body: "<p>Read The Wordsmith's Collection on your smartphone, tablet, computer, or eBook, all for one fixed monthly fee. Plans range from 4.99€ to 6.99€ a month. No extra costs, no contracts.</p>",
+		body: "<p>Plans range from 4.99€ to 6.99€ a month. No extra costs, no contracts. Read The Wordsmith's Collection on your smartphone, tablet, computer, or eBook, all for one fixed monthly fee. </p>",
 	},
 	{
 		id: 2,
-		title: "What titles can I read?",
-		body: "<p>If you have a subscription, you can read the titles included in it as many times as you like. If you have a <strong>Premium</strong> subscription, you also have access to the books marked <strong>Premium</strong>.</p>",
+		title: "What books can I read?",
+		body: "<p>If you have a Basic subscription, you can read all the Basic as many times as you like. With a <strong>Premium</strong> subscription, you also have access to our curated catalog of <strong>Premium</strong> books.</p>",
 	},
 	{
 		id: 3,
 		title: "Where can I read?",
-		body: "<p>Read anywhere, anytime. Sign in with your The Wordsmith's Collection account to read instantly on the web from your device, including smartphones, tablets, computers, and eBooks.</p>",
+		body: "<p>Read from anywhere. Sign in with your The Wordsmith's Collection account to read instantly on the web from your device, including smartphones, tablets, computers, and eBooks.</p>",
 	},
 	{
 		id: 4,
 		title: "How do I cancel?",
-		body: "<p>The Wordsmith's Collection is flexible. There are no pesky contracts or commitments. You can easily cancel your account online with two clicks in your profile. There are no cancellation fees – start or stop your account at any time.</p>",
+		body: "<p>The Wordsmith's Collection is flexible. There are no onerous contracts or commitments. You can easily cancel your account online with two clicks in your profile. There are no cancellation fees – start or stop your account at any time.</p>",
 	},
 ];
 </script>
