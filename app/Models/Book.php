@@ -84,6 +84,16 @@ class Book extends Model implements HasMedia
 		return $this->hasMany(BookReview::class);
 	}
 
+	/**
+	 * Define a one-to-many relationship with the Bookmark model.
+	 * 
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function bookmarks(): HasMany
+	{
+		return $this->hasMany(Bookmark::class);
+	}
+
 	public function registerMediaCollections(): void
 	{
 		$this
