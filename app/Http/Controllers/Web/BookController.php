@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Bookmark;
 use App\Models\BookReview;
 use App\Models\Category;
 use App\Models\User;
-use App\Http\Resources\BookResource;
+use App\Providers\RouteServiceProvider;
 use App\Support\Enums\MediaCollectionEnum;
 use App\Support\Enums\MediaConversionEnum;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\BookStoreRequest;
 use App\Http\Requests\BookUpdateRequest;
+use App\Http\Resources\BookResource;
 use Illuminate\Support\Facades\Request as FacadesRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Resources\Json\ResourceCollection;
@@ -173,15 +174,32 @@ class BookController extends Controller
 
 	public function destroy(int $id): RedirectResponse
 	{
-		Book::destroy($id);
+		try {
+			$book = Book::findOrFail($id);
+			
+			$book->authors()->detach();
+			$book->categories()->detach();
+			$book->bookReviews()->delete();
+			$book->bookmarks()->delete();
 
-		return back()->with(
-			'alert',
-			[
-				'type'		=> 'success',
-				'message'	=> 'Book successfully deleted',
-			]
-		);
+			$book->delete();
+
+			return redirect(RouteServiceProvider::HOME)->with(
+				'alert',
+				[
+					'type'		=> 'success',
+					'message'	=> 'Book successfully deleted',
+				]
+			);
+		} catch (\Exception $e) {
+			return back()->with(
+				'alert',
+				[
+					'type' => 'danger',
+					'message' => 'You cannot delete this book',
+				]
+			);
+		}
 	}
 
 	/**
