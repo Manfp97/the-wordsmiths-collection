@@ -244,7 +244,7 @@ const checkAspectRatio = (file, minAspectRatio, maxAspectRatio) => {
 				>
 					<img
 						v-if="isImage(selectedFile.type)"
-						:src="filePreview || selectedFile.url"
+						:src="selectedFile.url || filePreview"
 						alt="Preview"
 						class="mb-2 max-h-20 max-w-full"
 					/>
