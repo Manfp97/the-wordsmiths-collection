@@ -89,7 +89,7 @@ const askToEditAuthor = (author) => {
 
 <template>
 	<IndexLayout>
-		<template #main-content>
+		<template #main>
 			<SwiperSection
 				v-for="(author, indexAuthor) in authorsState.data"
 				:key="indexAuthor"

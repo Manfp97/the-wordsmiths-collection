@@ -30,7 +30,7 @@ import Footer from "@/Components/Common/Footer.vue";
 			<main
 				class="space-y-12 py-10 sm:space-y-10 lg:space-y-14 xl:py-12 2xl:py-16"
 			>
-				<slot name="main-content" />
+				<slot name="main" />
 			</main>
 
 			<Footer />

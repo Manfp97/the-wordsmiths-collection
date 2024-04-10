@@ -89,7 +89,7 @@ const askToEditCategory = (category) => {
 
 <template>
 	<IndexLayout>
-		<template #main-content>
+		<template #main>
 			<SwiperSection
 				v-for="(category, indexCategory) in categoriesState.data"
 				:key="indexCategory"

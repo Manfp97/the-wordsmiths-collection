@@ -47,7 +47,7 @@ const { stop } = useIntersectionObserver(
 
 <template>
 	<IndexLayout>
-		<template #main-content>
+		<template #main>
 			<div class="px-4 md:px-6 lg:px-16">
 				<h2 class="h2-title mb-6">{{ booksCount }} books</h2>
 				<!-- same breakpoints as swiperBreakpoints from the Index page -->
