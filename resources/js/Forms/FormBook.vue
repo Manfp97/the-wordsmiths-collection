@@ -247,7 +247,7 @@ const submitForm = () => {
 				label-text="Cover image"
 				:max-file-bytes="2100000"
 				min-aspect-ratio-str="1/2"
-				max-aspect-ratio-str="2/3"
+				max-aspect-ratio-str="7/10"
 				:supported-mime-types="['image/webp', 'image/png', 'image/jpeg']"
 				is-required
 				:error-message="form.errors.cover_file"
