@@ -68,7 +68,7 @@ class CategoryController extends Controller
 	{
 		try {
 			$category = Category::findOrFail($id);
-			$category->fill($request->validated())->save();
+			$category->update($request->validated());
 
 			return back()->with(
 				'alert',

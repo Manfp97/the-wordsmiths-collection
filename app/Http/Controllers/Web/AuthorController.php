@@ -65,7 +65,7 @@ class AuthorController extends Controller
 	{
 		try {
 			$author = Author::findOrFail($id);
-			$author->fill($request->validated())->save();
+			$author->update($request->validated());
 
 			return back()->with(
 				'alert',
