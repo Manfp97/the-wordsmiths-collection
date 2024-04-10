@@ -138,6 +138,7 @@ const submitForm = () => {
 				label-text="Title"
 				input-type="text"
 				input-autocomplete="off"
+				is-required
 				:error-message="form.errors.title"
 			/>
 			<FloatingLabel
@@ -146,6 +147,7 @@ const submitForm = () => {
 				label-text="ISBN"
 				input-type="text"
 				input-autocomplete="off"
+				is-required
 				:error-message="form.errors.isbn"
 			/>
 
@@ -154,6 +156,7 @@ const submitForm = () => {
 				:input-id="`${formId}-author`"
 				label-text="Author"
 				:options="authors"
+				is-required
 				:error-messages="
 					extractKeyValuesByPattern(
 						form.errors,
@@ -169,6 +172,7 @@ const submitForm = () => {
 				:input-id="`${formId}-category`"
 				label-text="Category"
 				:options="categories"
+				is-required
 				:error-messages="
 					extractKeyValuesByPattern(
 						form.errors,
@@ -187,6 +191,7 @@ const submitForm = () => {
 				input-type="text"
 				input-autocomplete="off"
 				input-max-length="50"
+				is-required
 				:error-message="form.errors.language"
 			/>
 			<FloatingLabel
@@ -195,6 +200,7 @@ const submitForm = () => {
 				label-text="Page count"
 				input-type="number"
 				input-autocomplete="off"
+				is-required
 				:error-message="form.errors.page_count"
 				@input="form.page_count = $event.target.value.slice(0, 4)"
 			/>
@@ -205,6 +211,7 @@ const submitForm = () => {
 				label-text="Year"
 				input-type="number"
 				input-autocomplete="off"
+				is-required
 				:error-message="form.errors.year"
 				@input="form.year = $event.target.value.slice(0, 4)"
 			/>
@@ -221,6 +228,7 @@ const submitForm = () => {
 				:textarea-id="`${formId}-description`"
 				label-text="Description"
 				textarea-class="min-h-[7rem]"
+				is-required
 				:error-message="form.errors.description"
 			/>
 
@@ -230,6 +238,7 @@ const submitForm = () => {
 				label-text="Book file"
 				:max-file-bytes="4200000"
 				:supported-mime-types="['application/pdf']"
+				is-required
 				:error-message="form.errors.book_file"
 			/>
 			<DragAndDrop
@@ -240,6 +249,7 @@ const submitForm = () => {
 				min-aspect-ratio-str="1/2"
 				max-aspect-ratio-str="2/3"
 				:supported-mime-types="['image/webp', 'image/png', 'image/jpeg']"
+				is-required
 				:error-message="form.errors.cover_file"
 			/>
 		</div>

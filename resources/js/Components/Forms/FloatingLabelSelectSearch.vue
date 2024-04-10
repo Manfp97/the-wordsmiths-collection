@@ -19,6 +19,11 @@ const props = defineProps({
 		type: Array,
 		required: true,
 	},
+	isRequired: {
+		type: Boolean,
+		required: false,
+		default: false,
+	},
 	// Array of objects with `key`, `value`, and `index` attributes
 	successMessages: {
 		type: Array,
@@ -167,6 +172,12 @@ const handleCheckboxChange = (event) => {
 					class="cursor-pointer select-none text-sm text-skin-text"
 				>
 					{{ labelText }}
+					<span
+						v-if="isRequired"
+						class="text-skin-danger"
+					>
+						*
+					</span>
 				</label>
 
 				<IconTrash

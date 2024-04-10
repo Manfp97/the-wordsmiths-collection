@@ -77,6 +77,7 @@ const submitForm = () => {
 				label-text="First name"
 				input-type="text"
 				input-autocomplete="off"
+				is-required
 				:error-message="form.errors.first_name"
 			/>
 			<FloatingLabel
@@ -85,6 +86,7 @@ const submitForm = () => {
 				label-text="Last name"
 				input-type="text"
 				input-autocomplete="off"
+				is-required
 				:error-message="form.errors.last_name"
 			/>
 		</div>

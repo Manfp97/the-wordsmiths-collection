@@ -54,7 +54,7 @@ const submitForm = () => {
 			label-text="Your email"
 			input-type="email"
 			input-autocomplete="email"
-			input-required
+			is-required
 			:error-message="form.errors.email"
 		/>
 		<FloatingLabel
@@ -63,7 +63,7 @@ const submitForm = () => {
 			label-text="Your password"
 			input-type="password"
 			input-autocomplete="current-password"
-			input-required
+			is-required
 			:error-message="form.errors.password"
 		/>
 

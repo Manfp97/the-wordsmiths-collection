@@ -43,7 +43,7 @@ const submit = () => {
 			label-text="Your email"
 			input-type="email"
 			input-autocomplete="email"
-			input-required
+			is-required
 			:error-message="form.errors.email"
 		/>
 

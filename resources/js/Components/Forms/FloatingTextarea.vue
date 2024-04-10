@@ -86,6 +86,12 @@ const autoGrow = () => {
 			class="pointer-events-none absolute start-0 top-0 h-full truncate border border-transparent p-4 text-sm transition duration-100 ease-in-out peer-focus:-translate-y-1.5 peer-focus:text-xs peer-focus:text-skin-muted peer-disabled:pointer-events-none peer-disabled:opacity-50 peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-skin-muted"
 		>
 			{{ labelText }}
+			<span
+				v-if="isRequired"
+				class="text-skin-danger"
+			>
+				*
+			</span>
 		</label>
 
 		<p

@@ -46,7 +46,7 @@ const form = useForm({
 				input-type="text"
 				input-autocomplete="name"
 				label-text="Username"
-				input-required
+				is-required
 				:error-message="form.errors.username"
 			/>
 
@@ -56,7 +56,7 @@ const form = useForm({
 				input-type="text"
 				input-autocomplete="email"
 				label-text="Email"
-				input-required
+				is-required
 				:error-message="form.errors.email"
 			/>
 

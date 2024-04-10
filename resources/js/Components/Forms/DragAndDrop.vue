@@ -38,6 +38,11 @@ const props = defineProps({
 		required: false,
 		default: null,
 	},
+	isRequired: {
+		type: Boolean,
+		required: false,
+		default: false,
+	},
 	successMessage: {
 		type: String,
 		required: false,
@@ -180,7 +185,15 @@ const checkAspectRatio = (file, minAspectRatio, maxAspectRatio) => {
 				class="mb-2 inline-flex w-full justify-between font-medium"
 				@click.prevent
 			>
-				<span class="text-sm">{{ labelText }}</span>
+				<span class="text-sm">
+					{{ labelText }}
+					<span
+						v-if="isRequired"
+						class="text-skin-danger"
+					>
+						*
+					</span>
+				</span>
 				<button
 					v-if="selectedFile"
 					title="Remove file"
@@ -235,6 +248,7 @@ const checkAspectRatio = (file, minAspectRatio, maxAspectRatio) => {
 						type="file"
 						class="hidden"
 						:accept="supportedMimeTypes.join(',')"
+						:required="isRequired"
 						@change="handleClick"
 					/>
 				</div>
