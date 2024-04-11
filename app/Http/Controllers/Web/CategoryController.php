@@ -17,7 +17,9 @@ use Inertia\Response;
 
 class CategoryController extends Controller
 {
-
+	/**
+	 * Show all categories
+	 */
 	public function index(Request $request): Response|ResourceCollection
 	{
 		$categories = Category::with('books')
@@ -46,9 +48,11 @@ class CategoryController extends Controller
 			'bookCount'	=> $category->books->count(),
 		]);
 	}
-	*/
 
-	public function store(CategoryStoreRequest $request)
+	/**
+	 * Handle request to store category.
+	 */
+	public function store(CategoryStoreRequest $request): RedirectResponse
 	{
 		$validatedData = $request->validated();
     Category::create($validatedData);
@@ -65,13 +69,13 @@ class CategoryController extends Controller
 	/**
 	 * Update the category.
 	 */
-	public function update(CategoryUpdateRequest $request, int $id)
+	public function update(CategoryUpdateRequest $request, int $id): RedirectResponse
 	{
 		try {
 			$category = Category::findOrFail($id);
 			$category->update($request->validated());
 
-			return back()->with(
+			return redirect("/category/$slug")->with(
 				'alert',
 				[
 					'type' => 'success',
@@ -89,6 +93,9 @@ class CategoryController extends Controller
 		}
 	}
 
+	/**
+	 * Delete the category.
+	 */
 	public function destroy(int $id): RedirectResponse
 	{
 		Category::destroy($id);
@@ -101,5 +108,4 @@ class CategoryController extends Controller
 			]
 		);
 	}
-	
 }
