@@ -23,7 +23,6 @@ class AuthorController extends Controller
 	public function index(Request $request): Response|ResourceCollection
 	{
 		$authors = Author::with('books')
-			->whereHas('books')
 			->orderBy('first_name')
 			->cursorPaginate(10);
 
@@ -133,5 +132,4 @@ class AuthorController extends Controller
 			]
 		);
 	}
-	
 }
