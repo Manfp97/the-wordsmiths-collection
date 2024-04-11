@@ -97,7 +97,7 @@ class Book extends Model implements HasMedia
 	public function registerMediaCollections(): void
 	{
 		$this
-			->addMediaCollection(MediaCollectionEnum::BOOKS)
+			->addMediaCollection(MediaCollectionEnum::BOOK_FILES)
 			->acceptsMimeTypes(['application/pdf'])
 			->singleFile();
 

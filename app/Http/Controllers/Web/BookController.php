@@ -65,7 +65,7 @@ class BookController extends Controller
 	public function read(Request $request, string $slug): Response
 	{
 		$book = Book::where('slug', $slug)->firstOrFail();
-		$bookFile = $book->getFirstMedia(MediaCollectionEnum::BOOKS);
+		$bookFile = $book->getFirstMedia(MediaCollectionEnum::BOOK_FILES);
 
 		$bookmark = Bookmark::where('book_id', $book->id)
 			->where('user_id', $request->user()->id)
@@ -98,7 +98,7 @@ class BookController extends Controller
 			->addMedia($bookFile)
 			->usingName($fileName)
 			->usingFileName("$fileName.{$bookFile->extension()}")
-			->toMediaCollection(MediaCollectionEnum::BOOKS);
+			->toMediaCollection(MediaCollectionEnum::BOOK_FILES);
 
 		$coverFile = $validatedData['cover_file'];
 		$book
@@ -130,14 +130,14 @@ class BookController extends Controller
 
 			if ($bookFile = $validatedData['book_file']) {
 				$book
-					->getFirstMedia(MediaCollectionEnum::BOOKS)
+					->getFirstMedia(MediaCollectionEnum::BOOK_FILES)
 					->delete();
 
 				$book
 					->addMedia($bookFile)
 					->usingName($slug)
 					->usingFileName("$slug.{$bookFile->extension()}")
-					->toMediaCollection(MediaCollectionEnum::BOOKS);
+					->toMediaCollection(MediaCollectionEnum::BOOK_FILES);
 			}
 
 			if ($coverFile = $validatedData['cover_file']) {

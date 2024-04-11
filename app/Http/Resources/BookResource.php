@@ -36,7 +36,7 @@ class BookResource extends JsonResource
 			'year'							=> $this->year,
 			'is_premium'				=> $this->is_premium,
 			'responsive_cover'	=> $responsiveCover,
-			'book_file'					=> new FileResource($this->getFirstMedia(MediaCollectionEnum::BOOKS)),
+			'book_file'					=> new FileResource($this->getFirstMedia(MediaCollectionEnum::BOOK_FILES)),
 			'cover_file'				=> new FileResource($cover),
 			'authors'						=> AuthorResource::collection($this->whenLoaded('authors')),
 			'categories'				=> CategoryResource::collection($this->whenLoaded('categories')),
