@@ -222,7 +222,7 @@ const isAdmin = user.value?.role_id === 1;
 							class="block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-skin-transparent md:hover:underline"
 							:class="{ 'active-link': usePage().component === 'Index' }"
 						>
-							Categories
+							Genres
 						</Link>
 					</li>
 					<li>

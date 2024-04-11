@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class Category extends Model
+class Genre extends Model
 {
 	use HasFactory;
 	use Sluggable;

@@ -41,11 +41,11 @@ class AuthorResource extends JsonResource
 		];
 
 		if ($this->relationLoaded('books')) {
-			$categories = $this->books->flatMap(function ($book) {
-				return $book->categories;
+			$genres = $this->books->flatMap(function ($book) {
+				return $book->genres;
 			})->unique('id');
 
-			$data['categories'] = CategoryResource::collection($categories);
+			$data['genres'] = GenreResource::collection($genres);
     }
 
 		return $data;

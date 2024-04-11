@@ -39,7 +39,7 @@ class BookResource extends JsonResource
 			'book_file'					=> new FileResource($this->getFirstMedia(MediaCollectionEnum::BOOK_FILES)),
 			'cover_file'				=> new FileResource($cover),
 			'authors'						=> AuthorResource::collection($this->whenLoaded('authors')),
-			'categories'				=> CategoryResource::collection($this->whenLoaded('categories')),
+			'genres'				=> GenreResource::collection($this->whenLoaded('genres')),
 			'reviews'						=> BookReviewResource::collection($this->whenLoaded('bookReviews')),
 			'created_at'				=> $this->created_at,
 			'updated_at'				=> $this->updated_at,

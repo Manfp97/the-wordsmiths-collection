@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\CategoryResource;
-use App\Models\Category;
+use App\Http\Resources\GenreResource;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CategoryController extends Controller
+class GenreController extends Controller
 {
 	public function getAll(Request $request)
 	{
@@ -16,7 +16,7 @@ class CategoryController extends Controller
 			$orderByColumn = $request->input('order_by');
 			$direction = $request->input('direction', 'asc');
 
-			$categories = Category::query()
+			$genres = Genre::query()
 				->when(
 					!empty($orderByColumn), 
 					function ($query) use ($orderByColumn, $direction) 
@@ -26,7 +26,7 @@ class CategoryController extends Controller
 				)
 				->get();
 
-			return CategoryResource::collection($categories);
+			return GenreResource::collection($genres);
 		
 		} catch (\Exception $e) {
 			$response = ['error' => $e->getMessage(),];

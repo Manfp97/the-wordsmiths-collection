@@ -5,7 +5,7 @@ import ModalContainer from "@/Components/Modals/ModalContainer.vue";
 import Tabs from "@/Components/Common/Tabs.vue";
 import FormBook from "@/Forms/FormBook.vue";
 import FormAuthor from "@/Forms/FormAuthor.vue";
-import FormCategory from "@/Forms/FormCategory.vue";
+import FormGenre from "@/Forms/FormGenre.vue";
 
 const modalId = "modal-add-content";
 
@@ -22,7 +22,7 @@ onMounted(() => {
 	>
 		<Tabs
 			:parent-id="modalId"
-			:tabs-name="['book', 'author', 'category']"
+			:tabs-name="['book', 'author', 'genre']"
 			class="mb-4"
 		/>
 
@@ -41,12 +41,12 @@ onMounted(() => {
 				:aria-labelledby="`${modalId}-tab-author`"
 				http-method="post"
 			/>
-			<FormCategory
-				:form-id="`${modalId}-tab-category-content`"
+			<FormGenre
+				:form-id="`${modalId}-tab-genre-content`"
 				http-method="post"
 				class="hidden"
 				role="tabpanel"
-				:aria-labelledby="`${modalId}-tab-category`"
+				:aria-labelledby="`${modalId}-tab-genre`"
 			/>
 		</div>
 	</ModalContainer>

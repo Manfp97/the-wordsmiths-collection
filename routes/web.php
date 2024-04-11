@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Web\BookController;
 use App\Http\Controllers\Web\BookmarkController;
-use App\Http\Controllers\Web\CategoryController;
+use App\Http\Controllers\Web\GenreController;
 use App\Http\Controllers\Web\AuthorController;
 use App\Http\Controllers\Web\BookReviewController;
 use App\Http\Controllers\Web\SubscriptionPlanController;
@@ -20,11 +20,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [CategoryController::class, 'index']);
-Route::get('/category/{category:slug}', [CategoryController::class, 'show']);
-Route::post('/category', [CategoryController::class, 'store']); // auth => admin
-Route::put('/category/{id}', [CategoryController::class, 'update']);
-Route::delete('/category/{id}', [CategoryController::class, 'destroy']); // auth => admin
+Route::get('/', [GenreController::class, 'index']);
+Route::get('/genre/{genre:slug}', [GenreController::class, 'show']);
+Route::post('/genre', [GenreController::class, 'store']); // auth => admin
+Route::put('/genre/{id}', [GenreController::class, 'update']);
+Route::delete('/genre/{id}', [GenreController::class, 'destroy']); // auth => admin
 
 Route::get('/books', [BookController::class, 'index']);
 Route::get('/book/{book:slug}', [BookController::class, 'show']);

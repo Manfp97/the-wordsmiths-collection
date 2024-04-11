@@ -35,8 +35,8 @@ class BookStoreRequest extends BaseFormRequest
 			'cover_file' 			=> 'required|mimetypes:image/jpeg,image/png,image/webp|max:2048',
 			'authors_id' 			=> 'required|array|min:1',
 			'authors_id.*' 		=> 'required|int|distinct|exists:authors,id',
-			'categories_id' 	=> 'required|array|min:1',
-			'categories_id.*' => 'required|int|distinct|exists:categories,id',
+			'genres_id' 	=> 'required|array|min:1',
+			'genres_id.*' => 'required|int|distinct|exists:genres,id',
 		];
 	}
 

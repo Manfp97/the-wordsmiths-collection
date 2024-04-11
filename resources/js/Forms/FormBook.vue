@@ -48,10 +48,10 @@ const form = useForm({
 			id: author.id,
 			name: `${author.first_name} ${author.last_name}`,
 		})) ?? [],
-	categories_id:
-		props.book?.categories.map((category) => ({
-			id: category.id,
-			name: category.name,
+	genres_id:
+		props.book?.genres.map((genre) => ({
+			id: genre.id,
+			name: genre.name,
 		})) ?? [],
 	description: props.book?.description,
 	language: props.book?.language,
@@ -63,7 +63,7 @@ const form = useForm({
 });
 
 const authors = ref([]);
-const categories = ref([]);
+const genres = ref([]);
 
 const fetchAuthors = async () => {
 	try {
@@ -79,12 +79,12 @@ const fetchAuthors = async () => {
 	}
 };
 
-const fetchCategories = async () => {
+const fetchGenres = async () => {
 	try {
-		const response = await axios.get("/api/categories?order_by=name");
-		categories.value = response.data["data"].map((category) => {
-			const id = category.id;
-			const name = category.name;
+		const response = await axios.get("/api/genres?order_by=name");
+		genres.value = response.data["data"].map((genre) => {
+			const id = genre.id;
+			const name = genre.name;
 
 			return { id, name };
 		});
@@ -107,7 +107,7 @@ const submitForm = () => {
 		.transform((data) => ({
 			...data,
 			authors_id: data.authors_id.map((e) => e.id),
-			categories_id: data.categories_id.map((e) => e.id),
+			genres_id: data.genres_id.map((e) => e.id),
 			// lastModifiedDate is ONLY set when the user manually adds a file
 			// It's not returned by the back-end
 			book_file: data.book_file?.lastModifiedDate ? data.book_file : null,
@@ -168,20 +168,20 @@ const submitForm = () => {
 				@click="fetchAuthors"
 			/>
 			<FloatingLabelSelectSearch
-				v-model:value="form.categories_id"
-				:input-id="`${formId}-category`"
-				label-text="Category"
-				:options="categories"
+				v-model:value="form.genres_id"
+				:input-id="`${formId}-genre`"
+				label-text="Genre"
+				:options="genres"
 				is-required
 				:error-messages="
 					extractKeyValuesByPattern(
 						form.errors,
-						'categories_id',
+						'genres_id',
 						(splitBy = '.'),
 						(atIndex = 1)
 					)
 				"
-				@click="fetchCategories"
+				@click="fetchGenres"
 			/>
 
 			<FloatingLabel

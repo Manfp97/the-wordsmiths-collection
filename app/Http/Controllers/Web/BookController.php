@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Models\Book;
 use App\Models\Bookmark;
 use App\Models\BookReview;
-use App\Models\Category;
+use App\Models\Genre;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use App\Support\Enums\MediaCollectionEnum;
@@ -41,7 +41,7 @@ class BookController extends Controller
 	public function show(Request $request, string $slug): Response
 	{
 		$book = Book::where('slug', $slug)
-			->with(['authors', 'categories', 'bookReviews'])
+			->with(['authors', 'genres', 'bookReviews'])
 			->firstOrFail();
 
 		// first review => the one written by the current user
@@ -50,7 +50,7 @@ class BookController extends Controller
 				return $review->user->is($request->user()) ? -1 : 1;
 			});
 
-		$relatedBooks = Category::find($book->categories->first()->id)
+		$relatedBooks = Genre::find($book->genres->first()->id)
 			->books
 			->where('id', '!=', $book->id)
 			->take(18); // 18 or fewer
@@ -87,8 +87,8 @@ class BookController extends Controller
 			$book->authors()->attach($author_id);
 		}
 
-		foreach ($validatedData['categories_id'] as $category_id) {
-			$book->categories()->attach($category_id);
+		foreach ($validatedData['genres_id'] as $genre_id) {
+			$book->genres()->attach($genre_id);
 		}
 
 		$fileName = $book->slug;
@@ -124,7 +124,7 @@ class BookController extends Controller
 			$book->update($validatedData);
 
 			$book->authors()->sync($validatedData['authors_id']);
-    	$book->categories()->sync($validatedData['categories_id']);
+    	$book->genres()->sync($validatedData['genres_id']);
 
 			$slug = $book->slug;
 
@@ -176,7 +176,7 @@ class BookController extends Controller
 			$book = Book::findOrFail($id);
 			
 			$book->authors()->detach();
-			$book->categories()->detach();
+			$book->genres()->detach();
 			$book->bookReviews()->delete();
 			$book->bookmarks()->delete();
 

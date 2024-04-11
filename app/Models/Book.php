@@ -55,7 +55,7 @@ class Book extends Model implements HasMedia
 	}
 
 	/**
-	 * Define a many-to-many relationship with the Category model.
+	 * Define a many-to-many relationship with the Genre model.
 	 * 
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
@@ -65,13 +65,13 @@ class Book extends Model implements HasMedia
 	}
 
 	/**
-	 * Define a many-to-many relationship with the Category model.
+	 * Define a many-to-many relationship with the Genre model.
 	 * 
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function categories(): BelongsToMany
+	public function genres(): BelongsToMany
 	{
-		return $this->belongsToMany(Category::class);
+		return $this->belongsToMany(Genre::class);
 	}
 
 	/**

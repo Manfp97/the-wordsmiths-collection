@@ -14,7 +14,7 @@ const props = defineProps({
 		type: String,
 		required: true,
 	},
-	category: {
+	genre: {
 		type: Object,
 		required: false,
 		default: null,
@@ -35,14 +35,14 @@ const props = defineProps({
 	},
 });
 
-const categoryState = computed(() => props.category);
+const genreState = computed(() => props.genre);
 
 const form = useForm({
-	name: categoryState.value?.name,
-	description: categoryState.value?.description,
+	name: genreState.value?.name,
+	description: genreState.value?.description,
 });
 
-watch(categoryState, (newValue) => {
+watch(genreState, (newValue) => {
 	form.name = newValue?.name;
 	form.description = newValue?.description;
 
@@ -52,14 +52,11 @@ watch(categoryState, (newValue) => {
 	});
 });
 
-const buttonText =
-	props.httpMethod === "post" ? "Add new category" : "Edit category";
+const buttonText = props.httpMethod === "post" ? "Add new genre" : "Edit genre";
 
 const submitForm = () => {
 	const url =
-		props.httpMethod === "post"
-			? "/category"
-			: `/category/${categoryState.value?.id}`;
+		props.httpMethod === "post" ? "/genre" : `/genre/${genreState.value?.id}`;
 
 	form[props.httpMethod](url, {
 		preserveScroll: props.preserveScroll,

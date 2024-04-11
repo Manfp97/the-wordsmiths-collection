@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class CategoryStoreRequest extends BaseFormRequest
+class GenreUpdateRequest extends BaseFormRequest
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class CategoryStoreRequest extends BaseFormRequest
 	public function rules()
 	{
 		return [
-			'name'				=> 'required|string|max:255|unique:categories,name',
+			'name'				=> "required|string|max:255|unique:genres,name,{$this->id},id",
 			'description'	=> 'required|string|max:15000',
 		];
 	}

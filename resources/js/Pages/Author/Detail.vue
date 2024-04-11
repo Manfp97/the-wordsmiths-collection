@@ -84,12 +84,12 @@ const formattedDeathDate = deathDate.toLocaleDateString();
 							<div class="mt-3 flex items-center space-x-4">
 								<span class="text-skin-muted">Genres</span>
 								<Link
-									v-for="(category, index) in author.categories"
+									v-for="(genre, index) in author.genres"
 									:key="index"
-									:href="`/category/${category.slug}`"
+									:href="`/genre/${genre.slug}`"
 									class="font-bold underline decoration-skin-secondary decoration-[3px] underline-offset-4 hover:decoration-skin-tertiary"
 								>
-									{{ category.name }}
+									{{ genre.name }}
 								</Link>
 							</div>
 

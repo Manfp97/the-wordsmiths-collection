@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\GenreController;
 use App\Http\Controllers\Api\AuthorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
  | axios.get('/api/hello')
 */
 
-Route::get('/categories', [CategoryController::class, 'getAll']);
+Route::get('/genres', [GenreController::class, 'getAll']);
 Route::get('/authors', [AuthorController::class, 'getAll']);
 
 /*
