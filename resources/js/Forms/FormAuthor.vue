@@ -1,6 +1,7 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
 import { watch, computed } from "vue";
+import DragAndDrop from "@/Components/Forms/DragAndDrop.vue";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
 import IconPlus from "@icons/plus.svg?component";
@@ -38,20 +39,23 @@ const props = defineProps({
 const authorState = computed(() => props.author);
 
 const form = useForm({
-	first_name: null,
-	last_name: null,
-	description: null,
+	first_name: props.author?.first_name,
+	last_name: props.author?.last_name,
+	description: props.author?.description,
+	portrait_file: props.author?.portrait_file,
 });
 
 watch(authorState, (newValue) => {
 	form.first_name = newValue?.first_name;
 	form.last_name = newValue?.last_name;
 	form.description = newValue?.description;
+	form.portrait_file = newValue?.portrait_file;
 
 	form.defaults({
 		first_name: newValue?.first_name,
 		last_name: newValue?.last_name,
 		description: newValue?.description,
+		portrait_file: newValue?.portrait_file,
 	});
 });
 
@@ -64,15 +68,25 @@ const submitForm = () => {
 			? "/author"
 			: `/author/${authorState.value?.id}`;
 
-	form[props.httpMethod](url, {
-		preserveScroll: props.preserveScroll,
-		preserveState: props.preserveState,
-		onSuccess: () => {
-			form.reset();
-			form.clearErrors();
-			emit("success");
-		},
-	});
+	form
+		.transform((data) => {
+			return {
+				...data,
+				portrait_file: data.portrait_file?.lastModifiedDate
+					? data.portrait_file
+					: null,
+				_method: props.httpMethod,
+			};
+		})
+		.post(url, {
+			preserveScroll: props.preserveScroll,
+			preserveState: props.preserveState,
+			onSuccess: () => {
+				form.reset();
+				form.clearErrors();
+				emit("success");
+			},
+		});
 };
 </script>
 
@@ -108,6 +122,15 @@ const submitForm = () => {
 				textarea-class="min-h-[7rem]"
 				is-required
 				:error-message="form.errors.description"
+			/>
+
+			<DragAndDrop
+				v-model:value="form.portrait_file"
+				:input-id="`${formId}-portrait-file`"
+				label-text="Author portrait"
+				:max-file-bytes="2100000"
+				:supported-mime-types="['image/webp', 'image/png', 'image/jpeg']"
+				class="sm:col-span-2"
 			/>
 		</div>
 

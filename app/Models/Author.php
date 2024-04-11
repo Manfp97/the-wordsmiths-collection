@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Support\Enums\MediaCollectionEnum;
+use App\Support\Enums\MediaConversionEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Cviebrock\EloquentSluggable\Sluggable;
 
 class Author extends Model implements HasMedia
@@ -56,4 +59,21 @@ class Author extends Model implements HasMedia
 		return $this->belongsToMany(Book::class);
 	}
 	
+	public function registerMediaCollections(): void
+	{
+		$this
+			->addMediaCollection(MediaCollectionEnum::AUTHOR_PORTRAITS)
+			->acceptsMimeTypes(['image/png', 'image/jpeg', 'image/webp'])
+			->singleFile();
+	}
+
+	public function registerMediaConversions(Media $media = null): void
+	{
+		$this
+			->addMediaConversion(MediaConversionEnum::WEBP)
+			->format('webp')
+			->performOnCollections(MediaCollectionEnum::AUTHOR_PORTRAITS)
+			->withResponsiveImages()
+			->nonQueued();
+	}
 }

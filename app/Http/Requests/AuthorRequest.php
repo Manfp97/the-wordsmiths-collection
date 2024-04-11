@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class AuthorStoreRequest extends BaseFormRequest
+class AuthorRequest extends BaseFormRequest
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,9 +22,12 @@ class AuthorStoreRequest extends BaseFormRequest
 	public function rules()
 	{
 		return [
-			'first_name'	=> 'required|string|max:128',
-			'last_name'		=> 'nullable|string|max:128',
-			'description'	=> 'required|string|max:15000',
+			'first_name'		=> 'required|string|max:128',
+			'last_name'			=> 'nullable|string|max:128',
+			'birth_date'		=> 'required|date',
+			'death_date'		=> 'nullable|date|after:birth_date',
+			'description'		=> 'required|string|max:15000',
+			'portrait_file'	=> 'nullable|mimetypes:image/jpeg,image/png,image/webp|max:2048',
 		];
 	}
 

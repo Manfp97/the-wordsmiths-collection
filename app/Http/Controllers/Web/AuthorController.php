@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Controller;
 use App\Models\Author;
+use App\Support\Enums\MediaCollectionEnum;
+use App\Support\Enums\MediaConversionEnum;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\AuthorResource;
-use App\Http\Requests\AuthorStoreRequest;
+use App\Http\Requests\AuthorRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\ResourceCollection;
@@ -42,12 +44,22 @@ class AuthorController extends Controller
 			]
 		);
 	}
-	*/
-
-	public function store(AuthorStoreRequest $request): RedirectResponse
+	
+	/**
+	 * Handle request to store author
+	 */
+	public function store(AuthorRequest $request): RedirectResponse
 	{
 		$validatedData = $request->validated();
-    Author::create($validatedData);
+		$author = Author::create($validatedData);
+
+		$fileName = $author->slug;
+		$portraitFile = $validatedData['portrait_file'];
+		$author
+			->addMedia($portraitFile)
+			->usingName($fileName)
+			->usingFileName("$fileName.{$portraitFile->extension()}")
+			->toMediaCollection(MediaCollectionEnum::AUTHOR_PORTRAITS);
 
 		return back()->with(
 			'alert',
@@ -59,15 +71,30 @@ class AuthorController extends Controller
 	}
 
 	/**
-	 * Update the author.
+	 * Update the author
 	 */
-	public function update(AuthorStoreRequest $request, int $id)
+	public function update(AuthorRequest $request, int $id): RedirectResponse
 	{
 		try {
 			$author = Author::findOrFail($id);
-			$author->update($request->validated());
+			$validatedData = $request->validated();
+			$author->update($validatedData);
 
-			return back()->with(
+			$slug = $author->slug;
+
+			if ($portraitFile = $validatedData['portrait_file']) {
+				if ($media = $author->getFirstMedia(MediaCollectionEnum::AUTHOR_PORTRAITS)) {
+					$media->delete();
+				}
+
+				$author
+					->addMedia($portraitFile)
+					->usingName($slug)
+					->usingFileName("$slug.{$portraitFile->extension()}")
+					->toMediaCollection(MediaCollectionEnum::AUTHOR_PORTRAITS);
+			}
+
+			return redirect("/author/$slug")->with(
 				'alert',
 				[
 					'type' => 'success',
