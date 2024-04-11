@@ -193,6 +193,12 @@ const checkAspectRatio = (file, minAspectRatio, maxAspectRatio) => {
 					>
 						*
 					</span>
+					<span
+						v-else
+						class="text-skin-muted"
+					>
+						(optional)
+					</span>
 				</span>
 				<button
 					v-if="selectedFile"

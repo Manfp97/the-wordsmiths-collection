@@ -96,6 +96,12 @@ defineProps({
 				>
 					*
 				</span>
+				<span
+					v-else
+					class="text-skin-muted"
+				>
+					(optional)
+				</span>
 			</label>
 		</div>
 

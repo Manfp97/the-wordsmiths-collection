@@ -92,6 +92,12 @@ const autoGrow = () => {
 			>
 				*
 			</span>
+			<span
+				v-else
+				class="text-skin-muted"
+			>
+				(optional)
+			</span>
 		</label>
 
 		<p

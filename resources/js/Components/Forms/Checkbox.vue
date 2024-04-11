@@ -38,6 +38,18 @@ defineProps({
 			:class="`ms-2 ${labelClass}`"
 		>
 			<slot />
+			<span
+				v-if="isRequired"
+				class="text-skin-danger"
+			>
+				*
+			</span>
+			<span
+				v-else
+				class="text-skin-muted"
+			>
+				(optional)
+			</span>
 		</label>
 	</div>
 </template>

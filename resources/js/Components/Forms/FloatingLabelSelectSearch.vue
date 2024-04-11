@@ -178,6 +178,12 @@ const handleCheckboxChange = (event) => {
 					>
 						*
 					</span>
+					<span
+						v-else
+						class="text-skin-muted"
+					>
+						(optional)
+					</span>
 				</label>
 
 				<IconTrash
