@@ -40,6 +40,14 @@ class AuthorResource extends JsonResource
 			'updated_at'					=> $this->updated_at,
 		];
 
+		if ($this->relationLoaded('books')) {
+			$categories = $this->books->flatMap(function ($book) {
+				return $book->categories;
+			})->unique('id');
+
+			$data['categories'] = CategoryResource::collection($categories);
+    }
+
 		return $data;
 	}
 }
