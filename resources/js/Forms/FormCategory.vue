@@ -94,7 +94,7 @@ const submitForm = () => {
 				class="sm:col-span-2"
 				:textarea-id="`${formId}-description`"
 				label-text="Description"
-				textarea-class="min-h-[7rem]"
+				textarea-class="min-h-[13rem]"
 				is-required
 				:error-message="form.errors.description"
 			/>
