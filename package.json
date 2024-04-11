@@ -29,6 +29,7 @@
 	"dependencies": {
 		"@inertiajs/vue3": "^1.0.14",
 		"@vitejs/plugin-vue": "^4.6.2",
+		"@vuepic/vue-datepicker": "^8.4.0",
 		"@vueuse/core": "^10.9.0",
 		"flowbite": "^2.2.1",
 		"pdfjs-dist": "^4.0.379",
