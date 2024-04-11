@@ -13,6 +13,8 @@ class CreateAuthorsTable extends Migration
 			$table->string('slug')->unique();
 			$table->string('first_name');
 			$table->string('last_name')->nullable();
+			$table->date('birth_date');
+			$table->date('death_date')->nullable();
 			$table->text('description')->nullable();
 			$table->timestamps();
 		});
@@ -23,5 +25,3 @@ class CreateAuthorsTable extends Migration
 		Schema::dropIfExists('authors');
 	}
 }
-
-

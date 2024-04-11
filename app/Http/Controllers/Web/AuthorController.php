@@ -33,16 +33,20 @@ class AuthorController extends Controller
 			'authors'	=> AuthorResource::collection($authors)
 		]);
 	}
-	/*
-	public function show(int $id): Response
+
+	/**
+	 * Render author data
+	 */
+	public function show(string $slug): Response
 	{
-		return Inertia::render(
-			'Author/Detail',
-			[
-				'author' => Author::findOrFail($id)
-				'image' => $book->getFirstMedia('book-covers')->toHtml()
-			]
-		);
+		$author = Author::where('slug', $slug)
+			->with('books')
+			->firstOrFail();
+
+		return Inertia::render('Author/Detail', [
+			'author'		=> new AuthorResource($author),
+			'bookCount'	=> $author->books->count(),
+		]);
 	}
 	
 	/**

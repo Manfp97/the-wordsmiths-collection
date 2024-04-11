@@ -30,6 +30,8 @@ class AuthorResource extends JsonResource
 			'slug'								=> $this->slug,
 			'first_name'					=> $this->first_name,
 			'last_name'						=> $this->last_name,
+			'birth_date'					=> $this->birth_date,
+			'death_date'					=> $this->death_date,
 			'description'					=> $this->description,
 			'responsive_portrait'	=> $responsivePortrait,
 			'portrait_file'				=> new FileResource($portrait),

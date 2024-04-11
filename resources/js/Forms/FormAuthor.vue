@@ -1,6 +1,7 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
-import { watch, computed } from "vue";
+import { ref, watch, computed } from "vue";
+import Datepicker from "@/Components/Forms/Datepicker.vue";
 import DragAndDrop from "@/Components/Forms/DragAndDrop.vue";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
@@ -36,11 +37,16 @@ const props = defineProps({
 	},
 });
 
+const isDeathDatePickerOpen = ref(false);
+const isBirthDatePickerOpen = ref(false);
+
 const authorState = computed(() => props.author);
 
 const form = useForm({
 	first_name: props.author?.first_name,
 	last_name: props.author?.last_name,
+	birth_date: props.author?.birth_date,
+	death_date: props.author?.death_date,
 	description: props.author?.description,
 	portrait_file: props.author?.portrait_file,
 });
@@ -48,12 +54,16 @@ const form = useForm({
 watch(authorState, (newValue) => {
 	form.first_name = newValue?.first_name;
 	form.last_name = newValue?.last_name;
+	form.birth_date = newValue?.birth_date;
+	form.death_date = newValue?.death_date;
 	form.description = newValue?.description;
 	form.portrait_file = newValue?.portrait_file;
 
 	form.defaults({
 		first_name: newValue?.first_name,
 		last_name: newValue?.last_name,
+		birth_date: newValue?.birth_date,
+		death_date: newValue?.death_date,
 		description: newValue?.description,
 		portrait_file: newValue?.portrait_file,
 	});
@@ -72,6 +82,8 @@ const submitForm = () => {
 		.transform((data) => {
 			return {
 				...data,
+				birth_date: data.birth_date.substring(0, 10), // ISO-8601 to only date
+				death_date: data.death_date.substring(0, 10), // ISO-8601 to only date
 				portrait_file: data.portrait_file?.lastModifiedDate
 					? data.portrait_file
 					: null,
@@ -112,6 +124,36 @@ const submitForm = () => {
 				input-type="text"
 				input-autocomplete="off"
 				:error-message="form.errors.last_name"
+			/>
+
+			<Datepicker
+				v-model:value="form.birth_date"
+				v-model:open="isBirthDatePickerOpen"
+				:input-id="`${formId}-birth-date`"
+				label-text="Birth date"
+				is-required
+				placeholder="Select birth date"
+				:enable-time-picker="false"
+				:year-range="[1, 2024]"
+				:max-date="new Date()"
+				auto-apply
+				utc
+				@open="isBirthDatePickerOpen = true"
+				@closed="isBirthDatePickerOpen = false"
+			/>
+			<Datepicker
+				v-model:value="form.death_date"
+				v-model:open="isDeathDatePickerOpen"
+				:input-id="`${formId}-death-date`"
+				label-text="Death date"
+				placeholder="Select death date"
+				:enable-time-picker="false"
+				:year-range="[1, 2024]"
+				:max-date="new Date()"
+				auto-apply
+				utc
+				@open="isDeathDatePickerOpen = true"
+				@closed="isDeathDatePickerOpen = false"
 			/>
 
 			<FloatingTextarea
