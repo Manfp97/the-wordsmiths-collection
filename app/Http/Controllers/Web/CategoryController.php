@@ -21,7 +21,6 @@ class CategoryController extends Controller
 	public function index(Request $request): Response|ResourceCollection
 	{
 		$categories = Category::with('books')
-			->whereHas('books')
 			->cursorPaginate(10);
 
 		if ($request->wantsJson()) {
