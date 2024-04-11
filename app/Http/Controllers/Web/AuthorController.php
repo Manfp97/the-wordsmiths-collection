@@ -17,7 +17,9 @@ use Inertia\Response;
 
 class AuthorController extends Controller
 {
-
+	/**
+	 * Show all authors
+	 */
 	public function index(Request $request): Response|ResourceCollection
 	{
 		$authors = Author::with('books')
@@ -116,6 +118,9 @@ class AuthorController extends Controller
 		}
 	}
 
+	/**
+	 * Delete the author
+	 */
 	public function destroy(int $id): RedirectResponse
 	{
 		Author::destroy($id);
