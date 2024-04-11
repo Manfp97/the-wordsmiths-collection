@@ -33,16 +33,19 @@ class CategoryController extends Controller
 		]);
 	}
 
-	/*
-	public function show(int $id): Response
+	/**
+	 * Render category data
+	 */
+	public function show(string $slug): Response
 	{
-		return Inertia::render(
-			'Book/Index',
-			[
-				'book' => Book::findOrFail($id)
-				'image' => $book->getFirstMedia('book-covers')->toHtml()
-			]
-		);
+		$category = Category::where('slug', $slug)
+			->with('books')
+			->firstOrFail();
+
+		return Inertia::render('Category/Detail', [
+			'category'	=> new CategoryResource($category),
+			'bookCount'	=> $category->books->count(),
+		]);
 	}
 	*/
 
