@@ -99,8 +99,10 @@ const askToEditCategory = (category) => {
 					<div
 						class="mb-4 flex items-center space-x-6 px-4 md:mb-6 md:px-6 lg:px-16"
 					>
-						<h2 class="h2-title">
-							{{ category.name }}
+						<h2 class="h2-title underline hover:text-skin-link">
+							<Link :href="`/category/${category.slug}`">
+								{{ category.name }}
+							</Link>
 						</h2>
 						<div class="flex space-x-1.5">
 							<!-- Allow deletion of categories without books only -->

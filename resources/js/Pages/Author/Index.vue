@@ -99,8 +99,10 @@ const askToEditAuthor = (author) => {
 					<div
 						class="mb-4 flex items-center space-x-6 px-4 md:mb-6 md:px-6 lg:px-16"
 					>
-						<h2 class="h2-title">
-							{{ author.first_name }} {{ author.last_name }}
+						<h2 class="h2-title underline hover:text-skin-link">
+							<Link :href="`/author/${author.slug}`">
+								{{ author.first_name }} {{ author.last_name }}
+							</Link>
 						</h2>
 						<div class="flex space-x-1.5">
 							<!-- Allow deletion of authors without books only -->
