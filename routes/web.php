@@ -34,6 +34,7 @@ Route::put('/book/{id}', [BookController::class, 'update']);
 Route::delete('/book/{id}', [BookController::class, 'destroy']); // auth => admin
 
 Route::get('/authors', [AuthorController::class, 'index']);
+Route::get('/author/{author:slug}', [AuthorController::class, 'show']);
 Route::post('/author', [AuthorController::class, 'store']); // auth => admin
 Route::put('/author/{id}', [AuthorController::class, 'update']);
 Route::delete('/author/{id}', [AuthorController::class, 'destroy']); // auth => admin
