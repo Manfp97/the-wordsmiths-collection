@@ -234,7 +234,7 @@ const submitForm = () => {
 
 			<DragAndDrop
 				v-model:value="form.book_file"
-				:input-id="`${formId}-file-input`"
+				:input-id="`${formId}-book-file`"
 				label-text="Book file"
 				:max-file-bytes="4200000"
 				:supported-mime-types="['application/pdf']"
@@ -243,7 +243,7 @@ const submitForm = () => {
 			/>
 			<DragAndDrop
 				v-model:value="form.cover_file"
-				:input-id="`${formId}-image-input`"
+				:input-id="`${formId}-cover-file`"
 				label-text="Cover image"
 				:max-file-bytes="2100000"
 				min-aspect-ratio-str="1/2"
