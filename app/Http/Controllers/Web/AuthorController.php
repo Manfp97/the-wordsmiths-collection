@@ -58,13 +58,14 @@ class AuthorController extends Controller
 		$validatedData = $request->validated();
 		$author = Author::create($validatedData);
 
-		$fileName = $author->slug;
-		$portraitFile = $validatedData['portrait_file'];
-		$author
-			->addMedia($portraitFile)
-			->usingName($fileName)
-			->usingFileName("$fileName.{$portraitFile->extension()}")
-			->toMediaCollection(MediaCollectionEnum::AUTHOR_PORTRAITS);
+		if ($portraitFile = $validatedData['portrait_file']) {
+			$fileName = $author->slug;
+			$author
+				->addMedia($portraitFile)
+				->usingName($fileName)
+				->usingFileName("$fileName.{$portraitFile->extension()}")
+				->toMediaCollection(MediaCollectionEnum::AUTHOR_PORTRAITS);
+		}
 
 		return back()->with(
 			'alert',
