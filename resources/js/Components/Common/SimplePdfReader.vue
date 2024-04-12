@@ -6,7 +6,7 @@ import IconXCircleFilled from "@icons/x-circle-filled.svg?component";
 import IconCaretLeftFilled from "@icons/caret-left-filled.svg?component";
 import IconCaretRightFilled from "@icons/caret-right-filled.svg?component";
 
-defineEmits(["close"]);
+const emit = defineEmits(["close"]);
 const page = defineModel("page"); // eslint-disable-line
 
 const props = defineProps({
@@ -206,7 +206,7 @@ const onWheel = (event) => {
 		>
 			<ul class="flex h-full w-full list-none items-center justify-between">
 				<li class="flex grow basis-0 items-center">
-					<button @click="$emit('close')">
+					<button @click="emit('close')">
 						<IconXCircleFilled
 							class="h-6 w-6 fill-skin-white hover:fill-skin-danger sm:h-7 sm:w-7"
 							aria-hidden="true"
