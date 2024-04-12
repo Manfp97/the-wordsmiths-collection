@@ -23,7 +23,7 @@ class BookReviewStoreRequest extends BaseFormRequest
 	{
 		return [
 			'rating' 			=> 'required|int|between:1,5',
-			'review_text' => 'required|string|max:15000',
+			'review_text' => 'nullable|string|max:15000',
 		];
 	}
 
