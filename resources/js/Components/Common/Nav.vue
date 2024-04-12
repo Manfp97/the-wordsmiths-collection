@@ -92,7 +92,7 @@ const isAdmin = user.value?.role_id === 1;
 					data-collapse-toggle="navbar-user"
 					aria-controls="navbar-user"
 					aria-expanded="false"
-					class="me-1 rounded-lg p-2.5 text-sm hover:bg-skin-secondary-offset hover:text-skin-muted focus:text-skin-muted focus:outline-none focus:ring-2 focus:ring-skin-secondary md:hidden"
+					class="me-1 hidden rounded-lg p-2.5 text-sm hover:bg-skin-secondary-offset hover:text-skin-muted focus:text-skin-muted focus:outline-none focus:ring-2 focus:ring-skin-secondary xs:block md:hidden"
 					@click="$searchInput ? $searchInput.focus() : null"
 				>
 					<IconSearch
