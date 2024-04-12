@@ -5,6 +5,7 @@ import AppHead from "@/Components/Common/AppHead.vue";
 import Nav from "@/Components/Common/Nav.vue";
 import Review from "@/Components/Review/Review.vue";
 import BookCard from "@/Components/Book/BookCard.vue";
+import Rating from "@/Components/Common/Rating.vue";
 import SwiperSection from "@/Components/Swiper/SwiperSection.vue";
 import {
 	default as SwiperNavigation,
@@ -211,21 +212,45 @@ const swiperBreakpoints = {
 						<hr class="my-8 border border-skin-border" />
 
 						<section>
-							<h3 class="mb-6 font-means-web text-3xl font-bold">Reviews</h3>
+							<h3 class="mb-6 font-means-web text-3xl font-bold capitalize">
+								Community reviews
+							</h3>
 
-							<div
-								v-if="book.reviews.length"
-								class="space-y-6"
-							>
-								<Review
-									v-for="(review, index) in book.reviews"
-									:key="index"
-									:book-id="book.id"
-									:review="review"
-									@edit="editReview(review)"
-									@delete="deleteReview(review)"
-								/>
+							<div v-if="book.reviews.length">
+								<div class="mb-8 flex items-center space-x-5">
+									<div class="flex items-center space-x-2.5">
+										<Rating
+											:stars="1"
+											:rating="1"
+											icon-class="h-7 w-7"
+											:editable="false"
+										/>
+										<span class="text-2xl"
+											>{{ book.average_rating }} / 5.00</span
+										>
+									</div>
+									<span class="text-sm text-skin-muted"
+										>{{ book.rating_count }} ratings &#183;
+										{{ book.review_count }} reviews</span
+									>
+								</div>
+
+								<p class="mb-3 text-sm text-skin-muted">
+									Displaying {{ book.rating_count }} ratings
+								</p>
+
+								<div class="space-y-6">
+									<Review
+										v-for="(review, index) in book.reviews"
+										:key="index"
+										:book-id="book.id"
+										:review="review"
+										@edit="editReview(review)"
+										@delete="deleteReview(review)"
+									/>
+								</div>
 							</div>
+
 							<div
 								v-else
 								class="space-y-6"
