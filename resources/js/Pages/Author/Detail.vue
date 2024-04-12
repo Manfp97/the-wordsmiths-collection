@@ -27,7 +27,7 @@ const isDeleting = ref(false);
 const user = computed(() => usePage().props.auth.user);
 const isAdmin = user.value?.role_id === 1;
 
-const fullName = `${props.author.first_name} ${props.author.last_name}`;
+const fullName = `${props.author.first_name} ${props.author.last_name ?? ""}`;
 
 const birthDate = new Date(props.author.birth_date);
 const formattedBirthDate = birthDate.toLocaleDateString();
