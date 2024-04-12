@@ -49,7 +49,7 @@ class BookReviewController extends Controller
 				'user_id' 		=> $userId,
 				'book_id' 		=> $book_id,
 				'rating' 			=> $validatedData['rating'],
-				'review_text' => $validatedData['review_text'],
+				'review_text' => $validatedData['review_text'] ?? null,
 			]);
 
 			return back()->with(
