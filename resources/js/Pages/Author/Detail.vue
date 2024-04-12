@@ -53,8 +53,14 @@ const formattedDeathDate = deathDate.toLocaleDateString();
 						<div class="sticky top-24 mx-auto w-full">
 							<!-- eslint-disable vue/no-v-html -->
 							<div
+								v-if="author.responsive_portrait"
 								class="[&>*]:mx-auto"
 								v-html="author.responsive_portrait"
+							/>
+							<img
+								v-else
+								:src="`/images/author/placeholder.png`"
+								:alt="`Placeholder image for ${fullName}`"
 							/>
 							<!-- eslint-enable -->
 						</div>
