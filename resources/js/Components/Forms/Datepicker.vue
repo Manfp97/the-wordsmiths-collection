@@ -17,6 +17,16 @@ defineProps({
 		required: false,
 		default: false,
 	},
+	successMessage: {
+		type: String,
+		required: false,
+		default: null,
+	},
+	errorMessage: {
+		type: String,
+		required: false,
+		default: null,
+	},
 });
 
 const date = defineModel("value"); // eslint-disable-line
@@ -59,5 +69,21 @@ const ariaLabels = ref({ menu: "Some custom menu label" });
 			:aria-labels="ariaLabels"
 			:required="isRequired"
 		/>
+
+		<p
+			v-if="successMessage"
+			:id="`${inputId}-success`"
+			class="mt-2 text-xs text-skin-success"
+		>
+			{{ successMessage }}
+		</p>
+
+		<p
+			v-if="errorMessage"
+			:id="`${inputId}-error`"
+			class="mt-2 text-xs text-skin-danger"
+		>
+			{{ errorMessage }}
+		</p>
 	</div>
 </template>

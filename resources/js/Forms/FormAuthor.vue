@@ -132,6 +132,7 @@ const submitForm = () => {
 				:input-id="`${formId}-birth-date`"
 				label-text="Birth date"
 				is-required
+				:error-message="form.errors.birth_date"
 				placeholder="Select birth date"
 				:enable-time-picker="false"
 				:year-range="[1, 2024]"
@@ -146,6 +147,7 @@ const submitForm = () => {
 				v-model:open="isDeathDatePickerOpen"
 				:input-id="`${formId}-death-date`"
 				label-text="Death date"
+				:error-message="form.errors.death_date"
 				placeholder="Select death date"
 				:enable-time-picker="false"
 				:year-range="[1, 2024]"
