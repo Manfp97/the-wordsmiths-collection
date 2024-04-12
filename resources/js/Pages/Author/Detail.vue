@@ -32,8 +32,10 @@ const fullName = `${props.author.first_name} ${props.author.last_name}`;
 const birthDate = new Date(props.author.birth_date);
 const formattedBirthDate = birthDate.toLocaleDateString();
 
-const deathDate = new Date(props.author.death_date);
-const formattedDeathDate = deathDate.toLocaleDateString();
+const deathDate = props.author.death_date
+	? new Date(props.author.death_date)
+	: null;
+const formattedDeathDate = deathDate ? deathDate.toLocaleDateString() : "-";
 </script>
 
 <template>

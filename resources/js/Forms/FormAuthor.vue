@@ -83,7 +83,7 @@ const submitForm = () => {
 			return {
 				...data,
 				birth_date: data.birth_date.substring(0, 10), // ISO-8601 to only date
-				death_date: data.death_date.substring(0, 10), // ISO-8601 to only date
+				death_date: data.death_date?.substring(0, 10) ?? null, // ISO-8601 to only date
 				portrait_file: data.portrait_file?.lastModifiedDate
 					? data.portrait_file
 					: null,
