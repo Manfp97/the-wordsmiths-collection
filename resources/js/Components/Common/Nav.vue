@@ -3,6 +3,7 @@ import { ref, onMounted, computed } from "vue";
 import { initFlowbite } from "flowbite";
 import { usePage } from "@inertiajs/vue3";
 import Logo from "@/Components/Common/Logo.vue";
+import InputWithIcon from "@/Components/Forms/InputWithIcon.vue";
 import ModalAddContent from "@/Components/Modals/ModalAddContent.vue";
 import IconSearch from "@icons/search.svg?component";
 import IconMenu from "@icons/menu.svg?component";
@@ -25,7 +26,7 @@ defineProps({
 	},
 });
 
-const $searchInput = ref(null);
+const search = ref(null);
 const isAddingContent = ref(false);
 
 const user = computed(() => usePage().props.auth.user);
@@ -104,25 +105,20 @@ const isAdmin = user.value?.role_id === 1;
 				</button>
 
 				<!-- Search input -->
-				<div class="relative hidden md:!mr-4 md:block">
-					<div
-						class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
-					>
-						<IconSearch
-							class="h-4 w-4 text-skin-muted"
-							aria-hidden="true"
-							fill="none"
-						/>
-						<span class="sr-only">Search icon</span>
-					</div>
-					<input
-						id="search-navbar"
-						type="text"
-						class="block w-full rounded-lg border border-skin-border p-2 ps-10 text-sm text-skin-text focus:border-skin-secondary focus:ring-skin-secondary"
-						autocomplete="off"
-						placeholder="Search..."
+				<InputWithIcon
+					v-model:value="search"
+					input-type="text"
+					input-autocomplete="off"
+					input-placeholder="Search..."
+					icon-aria-label="Search"
+					class="hidden md:!mr-4 md:block"
+				>
+					<IconSearch
+						class="h-4 w-4 text-skin-muted"
+						aria-hidden="true"
+						fill="none"
 					/>
-				</div>
+				</InputWithIcon>
 
 				<!-- User dropdown menu -->
 				<div
@@ -150,15 +146,23 @@ const isAdmin = user.value?.role_id === 1;
 								Profile
 							</Link>
 						</li>
-						<li>
+						<li v-if="isAdmin">
 							<button
-								v-if="isAdmin"
 								class="block w-full px-4 py-2 text-left text-sm text-skin-text hover:bg-skin-secondary-offset"
 								type="button"
 								@click="isAddingContent = true"
 							>
 								Add content
 							</button>
+						</li>
+						<li v-if="isAdmin">
+							<Link
+								href="/users"
+								as="button"
+								class="block w-full px-4 py-2 text-left text-sm text-skin-text hover:bg-skin-secondary-offset"
+							>
+								Users
+							</Link>
 						</li>
 						<li>
 							<Link
@@ -194,25 +198,21 @@ const isAdmin = user.value?.role_id === 1;
 				id="navbar-user"
 				class="z-50 hidden w-full flex-grow items-center justify-between md:z-0 md:order-1 md:flex md:w-auto"
 			>
-				<div class="relative mt-3 md:hidden">
-					<div
-						class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
-					>
-						<IconSearch
-							class="h-4 w-4 text-skin-muted"
-							aria-hidden="true"
-							fill="none"
-						/>
-					</div>
-					<input
-						id="search-navbar-hamburger"
-						ref="$searchInput"
-						type="text"
-						class="block w-full rounded-lg border border-skin-border p-2 ps-10 text-sm text-skin-text focus:border-skin-secondary focus:ring-skin-secondary"
-						autocomplete="off"
-						placeholder="Search..."
+				<InputWithIcon
+					v-model:value="search"
+					input-type="text"
+					input-autocomplete="off"
+					input-placeholder="Search..."
+					icon-aria-label="Search"
+					class="mt-3 md:hidden"
+				>
+					<IconSearch
+						class="h-4 w-4 text-skin-muted"
+						aria-hidden="true"
+						fill="none"
 					/>
-				</div>
+				</InputWithIcon>
+
 				<ul
 					class="mt-4 flex flex-col rounded-lg border border-skin-border p-4 font-medium rtl:space-x-reverse md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0 max-md:bg-skin-primary max-md:text-skin-text"
 				>
