@@ -26,7 +26,7 @@ defineProps({
 });
 
 const $searchInput = ref(null);
-const addingContent = ref(false);
+const isAddingContent = ref(false);
 
 const user = computed(() => usePage().props.auth.user);
 const isAdmin = user.value?.role_id === 1;
@@ -155,7 +155,7 @@ const isAdmin = user.value?.role_id === 1;
 								v-if="isAdmin"
 								class="block w-full px-4 py-2 text-left text-sm text-skin-text hover:bg-skin-secondary-offset"
 								type="button"
-								@click="addingContent = true"
+								@click="isAddingContent = true"
 							>
 								Add content
 							</button>
@@ -250,8 +250,8 @@ const isAdmin = user.value?.role_id === 1;
 
 	<ModalAddContent
 		v-if="isAdmin"
-		:show="addingContent"
-		@close="addingContent = false"
+		:show="isAddingContent"
+		@close="isAddingContent = false"
 	/>
 </template>
 
