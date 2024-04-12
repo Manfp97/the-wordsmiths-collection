@@ -76,13 +76,4 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
 	{
 		return $this->hasMany(BookReview::class);
 	}
-
-	public function registerMediaCollections(): void
-	{
-		$this
-			->addMediaCollection('avatars')
-			->acceptsMimeTypes(['image/png', 'image/jpeg', 'image/webp'])
-			->singleFile()
-			->withResponsiveImages();
-	}
 }
