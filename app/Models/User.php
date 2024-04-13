@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
@@ -75,5 +76,15 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
 	public function reviews(): HasMany
 	{
 		return $this->hasMany(BookReview::class);
+	}
+
+	/**
+	 * Define a relationship where the User belongs to a Role.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function role(): BelongsTo
+	{
+		return $this->belongsTo(Role::class);
 	}
 }
