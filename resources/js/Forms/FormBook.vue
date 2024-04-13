@@ -57,7 +57,7 @@ const form = useForm({
 	language: props.book?.language,
 	page_count: props.book?.page_count,
 	year: props.book?.year,
-	is_premium: Boolean(props.book?.is_premium),
+	is_premium: props.book?.is_premium,
 	book_file: props.book?.book_file,
 	cover_file: props.book?.cover_file,
 });

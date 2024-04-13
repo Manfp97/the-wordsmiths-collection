@@ -34,7 +34,7 @@ class BookResource extends JsonResource
 			'page_count'				=> $this->page_count,
 			'language'					=> $this->language,
 			'year'							=> $this->year,
-			'is_premium'				=> $this->is_premium,
+			'is_premium'				=> (bool) $this->is_premium,
 			'average_rating'		=> number_format($this->bookReviews()->average('rating'), 2),
 			'rating_count'			=> $this->bookReviews()->count(),
 			'review_count'			=> $this->bookReviews()->whereNotNull('review_text')->count(),
