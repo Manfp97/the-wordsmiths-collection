@@ -70,7 +70,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
 	/**
 	 * Define a relationship where the User has many BookReview.
 	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 	public function reviews(): HasMany
 	{
