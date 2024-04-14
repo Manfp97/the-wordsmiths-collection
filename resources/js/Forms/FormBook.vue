@@ -6,6 +6,7 @@ import axios from "axios";
 import DragAndDrop from "@/Components/Forms/DragAndDrop.vue";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import FloatingLabelMultiSelect from "@/Components/Forms/FloatingLabelMultiSelect.vue";
+import FloatingLabelSelect from "@/Components/Forms/FloatingLabelSelect.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
 import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
 import IconPlus from "@icons/plus.svg?component";
@@ -184,13 +185,14 @@ const submitForm = () => {
 				@click="fetchGenres"
 			/>
 
-			<FloatingLabel
+			<FloatingLabelSelect
 				v-model:value="form.language"
-				:input-id="`${formId}-language`"
+				:select-id="`${formId}-language`"
 				label-text="Language"
-				input-type="text"
-				input-autocomplete="off"
-				input-max-length="50"
+				:options="[
+					{ id: 'English', name: 'English' },
+					{ id: 'Español', name: 'Español' },
+				]"
 				is-required
 				:error-message="form.errors.language"
 			/>
