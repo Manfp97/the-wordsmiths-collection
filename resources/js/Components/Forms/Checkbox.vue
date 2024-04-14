@@ -30,7 +30,8 @@ defineProps({
 			:id="inputId"
 			v-model="value"
 			type="checkbox"
-			:class="`rounded border-skin-border bg-skin-primary-offset text-skin-secondary focus:ring-2 focus:ring-skin-secondary ${inputSize}`"
+			class="rounded border-skin-border bg-skin-primary-offset text-skin-secondary focus:ring-2 focus:ring-skin-secondary"
+			:class="inputSize"
 			:required="isRequired"
 		/>
 		<label
