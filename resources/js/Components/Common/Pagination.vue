@@ -33,11 +33,12 @@ const prevNext = (label) => {
 				:href="link.url"
 				:aria-label="linkLabel(link.label)"
 				:aria-current="link.active"
+				class="hover:border-b-2 hover:border-skin-secondary"
 				:class="{
-					'font-bold': link.active,
+					'border-b-2 border-skin-secondary font-bold': link.active,
 					'pr-4': index === 0,
 					'pl-4': index === links.length - 1,
-					'px-1': index > 0 && index < links.length - 1,
+					'mx-0.5 px-1': index > 0 && index < links.length - 1,
 				}"
 				preserve-scroll
 				v-html="link.label"
