@@ -5,7 +5,7 @@ import { extractKeyValuesByPattern } from "@/Helpers/arrayHelper.js";
 import axios from "axios";
 import DragAndDrop from "@/Components/Forms/DragAndDrop.vue";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
-import FloatingLabelSelectSearch from "@/Components/Forms/FloatingLabelSelectSearch.vue";
+import FloatingLabelMultiSelect from "@/Components/Forms/FloatingLabelMultiSelect.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
 import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
 import IconPlus from "@icons/plus.svg?component";
@@ -151,7 +151,7 @@ const submitForm = () => {
 				:error-message="form.errors.isbn"
 			/>
 
-			<FloatingLabelSelectSearch
+			<FloatingLabelMultiSelect
 				v-model:value="form.authors_id"
 				:input-id="`${formId}-author`"
 				label-text="Author"
@@ -167,7 +167,7 @@ const submitForm = () => {
 				"
 				@click="fetchAuthors"
 			/>
-			<FloatingLabelSelectSearch
+			<FloatingLabelMultiSelect
 				v-model:value="form.genres_id"
 				:input-id="`${formId}-genre`"
 				label-text="Genre"
