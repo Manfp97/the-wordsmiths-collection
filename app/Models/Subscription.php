@@ -27,4 +27,14 @@ class Subscription extends Model
 	{
 		return $this->belongsTo(User::class);
 	}
+
+	/**
+	 * Define a relationship where the Subscription belongs to a SubscriptionPlan.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function subscriptionPlan(): BelongsTo
+	{
+		return $this->belongsTo(SubscriptionPlan::class);
+	}
 }
