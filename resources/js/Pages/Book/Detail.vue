@@ -85,10 +85,14 @@ const cover = props.book.responsive_cover.replaceAll(
 
 const swiperBreakpoints = {
 	0: {
-		slidesPerView: 3,
+		slidesPerView: 2,
 		spaceBetween: 12,
 	},
 	640: {
+		slidesPerView: 3,
+		spaceBetween: 12,
+	},
+	768: {
 		slidesPerView: 4,
 		spaceBetween: 18,
 	},
