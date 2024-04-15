@@ -75,7 +75,7 @@ class GenreController extends Controller
 			$genre = Genre::findOrFail($id);
 			$genre->update($request->validated());
 
-			return redirect("/genre/$slug")->with(
+			return redirect("/genre/{$genre->slug}")->with(
 				'alert',
 				[
 					'type' => 'success',
