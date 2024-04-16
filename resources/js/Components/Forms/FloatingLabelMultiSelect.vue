@@ -1,4 +1,6 @@
 <script setup>
+// Taken and modified from: https://flowbite.com/docs/components/dropdowns/#dropdown-with-search
+
 import { ref, computed, onMounted, onUnmounted, watch } from "vue";
 import IconSearch from "@icons/search.svg?component";
 import IconTrash from "@icons/trash.svg?component";
