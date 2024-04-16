@@ -7,6 +7,7 @@ use App\Http\Controllers\Web\AuthorController;
 use App\Http\Controllers\Web\BookReviewController;
 use App\Http\Controllers\Web\SubscriptionPlanController;
 use App\Http\Controllers\Web\ProfileController;
+use App\Http\Controllers\Web\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
