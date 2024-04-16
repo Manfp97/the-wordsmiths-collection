@@ -215,15 +215,17 @@ const checkAspectRatio = (file, minAspectRatio, maxAspectRatio) => {
 				</button>
 			</label>
 			<div
-				class="flex min-h-[9.25rem] w-full flex-col items-center justify-center rounded-lg border-2 border-skin-border bg-skin-white"
+				class="flex min-h-[9.25rem] w-full flex-col items-center justify-center rounded-lg border-2 border-skin-border bg-skin-white focus-visible:border-skin-secondary focus-visible:outline-none"
 				:class="{
 					'border-dashed hover:bg-skin-secondary-offset': !selectedFile,
 					'': selectedFile,
 					'bg-skin-secondary-offset': isDragOver && !selectedFile,
 				}"
+				tabindex="0"
 				@dragover.prevent="isDragOver = true"
 				@dragleave.prevent="isDragOver = false"
 				@drop.prevent="handleDrop"
+				@keydown.enter.prevent="if (!selectedFile) openFileInput($fileInput);"
 			>
 				<div
 					v-if="!selectedFile"
