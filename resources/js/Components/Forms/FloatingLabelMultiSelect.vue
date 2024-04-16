@@ -48,9 +48,7 @@ const searchText = ref("");
 let observer = null;
 
 onMounted(() => {
-	selectedOptions.value.forEach((option) => {
-		createElement(`${props.inputId}-${option.id}`, option.name);
-	});
+	loadSelectedElements();
 
 	observer = new MutationObserver(() => {
 		isDropdownVisible.value =
@@ -67,6 +65,9 @@ watch(
 	(newValue) => {
 		if (newValue.length === 0) {
 			deselectAllCheckboxes();
+		} else {
+			$selectedItemsList.value.innerHTML = "";
+			loadSelectedElements();
 		}
 	}
 );
@@ -100,6 +101,12 @@ const filteredOptions = computed(() => {
 		option.name.toLowerCase().includes(searchLowerCase)
 	);
 });
+
+const loadSelectedElements = () => {
+	selectedOptions.value.forEach((option) => {
+		createElement(`${props.inputId}-${option.id}`, option.name);
+	});
+};
 
 const createElement = (elementId, textContent) => {
 	const $newLiElement = document.createElement("li");
