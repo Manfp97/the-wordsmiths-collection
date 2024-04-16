@@ -152,7 +152,12 @@ const handleCheckboxChange = (event) => {
 </script>
 
 <template>
-	<div class="relative">
+	<div
+		class="relative rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-secondary"
+		tabindex="0"
+		@keydown.enter.prevent="$dropdownSearchButton.click()"
+		@keydown.esc.stop="$dropdownSearchButton.click()"
+	>
 		<div
 			:id="`${inputId}-dropdown-search-button`"
 			ref="$dropdownSearchButton"
