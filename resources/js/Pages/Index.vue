@@ -164,6 +164,7 @@ const askToEditGenre = (genre) => {
 						as="button"
 						class="button !bg-skin-danger text-skin-white"
 						:preserve-state="false"
+						preserve-scroll
 						@click="isDeleting = false"
 					>
 						Yes
