@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted } from "vue";
+import { usePage } from "@inertiajs/vue3";
 import { initFlowbite } from "flowbite";
 import ModalContainer from "@/Components/Modals/ModalContainer.vue";
 import Tabs from "@/Components/Common/Tabs.vue";
@@ -33,6 +34,7 @@ onMounted(() => {
 				role="tabpanel"
 				:aria-labelledby="`${modalId}-tab-book`"
 				http-method="post"
+				:preserve-state="usePage().component !== 'Book/Index'"
 			/>
 			<FormAuthor
 				:form-id="`${modalId}-tab-author-content`"
@@ -40,6 +42,7 @@ onMounted(() => {
 				role="tabpanel"
 				:aria-labelledby="`${modalId}-tab-author`"
 				http-method="post"
+				:preserve-state="usePage().component !== 'Author/Index'"
 			/>
 			<FormGenre
 				:form-id="`${modalId}-tab-genre-content`"
@@ -47,6 +50,7 @@ onMounted(() => {
 				class="hidden"
 				role="tabpanel"
 				:aria-labelledby="`${modalId}-tab-genre`"
+				:preserve-state="usePage().component !== 'Index'"
 			/>
 		</div>
 	</ModalContainer>
