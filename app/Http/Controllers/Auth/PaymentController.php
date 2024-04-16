@@ -30,14 +30,8 @@ class PaymentController extends Controller
 	public function store(PaymentStoreRequest $request): RedirectResponse
 	{
 		$validatedData = $request->validated();
-		CreditCard::create([
-			'user_id'						=> $request->user()->id,
-			'cardholder_name'		=> $validatedData['cardholder_name'],
-			'card_number'				=> $validatedData['card_number'],
-			'expiration_month'	=> $validatedData['expiration_month'],
-			'expiration_year'		=> $validatedData['expiration_year'],
-			'cvc'								=> $validatedData['cvc'],
-		]);
+		$validatedData['user_id'] = $request->user()->id;
+		CreditCard::create($validatedData);
 
 		$subscriptionPlan = SubscriptionPlan::find(
 			$request->session()->get('selected_subscription_plan_id')
