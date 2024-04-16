@@ -22,26 +22,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [GenreController::class, 'index']);
 Route::get('/genre/{genre:slug}', [GenreController::class, 'show']);
-Route::post('/genre', [GenreController::class, 'store']); // auth => admin
-Route::put('/genre/{id}', [GenreController::class, 'update']);
-Route::delete('/genre/{id}', [GenreController::class, 'destroy']); // auth => admin
 
 Route::get('/books', [BookController::class, 'index']);
 Route::get('/book/{book:slug}', [BookController::class, 'show']);
 Route::get('/book/{book:slug}/read', [BookController::class, 'read']);
-Route::post('/book', [BookController::class, 'store']); // auth => admin
-Route::put('/book/{id}', [BookController::class, 'update']);
-Route::delete('/book/{id}', [BookController::class, 'destroy']); // auth => admin
 
 Route::get('/authors', [AuthorController::class, 'index']);
 Route::get('/author/{author:slug}', [AuthorController::class, 'show']);
-Route::post('/author', [AuthorController::class, 'store']); // auth => admin
-Route::put('/author/{id}', [AuthorController::class, 'update']);
-Route::delete('/author/{id}', [AuthorController::class, 'destroy']); // auth => admin
-
-Route::get('/users', [UserController::class, 'index']);
-Route::put('/user/{id}', [UserController::class, 'update']);
-Route::delete('/user/{id}', [UserController::class, 'destroy']);
 
 Route::inertia('/subscribe', 'Subscribe');
 
@@ -57,6 +44,24 @@ Route::middleware('auth')->group(function () {
 	Route::delete('/review/{id}', [BookReviewController::class, 'destroy'])->name('review.destroy');
 
 	Route::post('/bookmark', [BookmarkController::class, 'upsert'])->name('bookmark.upsert');
+});
+
+Route::middleware('admin')->group(function () {
+	Route::post('/genre', [GenreController::class, 'store']);
+	Route::put('/genre/{id}', [GenreController::class, 'update']);
+	Route::delete('/genre/{id}', [GenreController::class, 'destroy']);
+
+	Route::post('/book', [BookController::class, 'store']);
+	Route::put('/book/{id}', [BookController::class, 'update']);
+	Route::delete('/book/{id}', [BookController::class, 'destroy']);
+
+	Route::post('/author', [AuthorController::class, 'store']);
+	Route::put('/author/{id}', [AuthorController::class, 'update']);
+	Route::delete('/author/{id}', [AuthorController::class, 'destroy']);
+
+	Route::get('/users', [UserController::class, 'index']);
+	Route::put('/user/{id}', [UserController::class, 'update']);
+	Route::delete('/user/{id}', [UserController::class, 'destroy']);
 });
 
 require __DIR__.'/auth.php';
