@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from "vue";
+import { getFormattedDate } from "@/Helpers/stringHelper.js";
 import IconTrash from "@icons/trash.svg?component";
 import IconEdit from "@icons/edit.svg?component";
 
@@ -12,19 +13,12 @@ const props = defineProps({
 	},
 });
 
-const status = computed(() => props.user.subscription.status);
+const status = computed(() => props.user.subscription?.status);
 
-const options = {
-	day: "numeric",
-	month: "numeric",
-	year: "numeric",
-};
-
-const startDate = new Date(props.user.subscription.start_date);
-const formattedStartDate = startDate.toLocaleString("default", options);
-
-const endDate = new Date(props.user.subscription.end_date);
-const formattedEndDate = endDate.toLocaleString("default", options);
+const formattedStartDate = getFormattedDate(
+	props.user.subscription?.start_date
+);
+const formattedEndDate = getFormattedDate(props.user.subscription?.end_date);
 </script>
 
 <template>
@@ -39,7 +33,7 @@ const formattedEndDate = endDate.toLocaleString("default", options);
 		</td>
 
 		<td class="td-common text-sm">
-			{{ user.subscription.plan.name }}
+			{{ user.subscription?.plan.name ?? "-" }}
 		</td>
 
 		<td class="td-common text-sm">
