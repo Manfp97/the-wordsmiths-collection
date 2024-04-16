@@ -26,7 +26,6 @@ Route::get('/genre/{genre:slug}', [GenreController::class, 'show']);
 
 Route::get('/books', [BookController::class, 'index']);
 Route::get('/book/{book:slug}', [BookController::class, 'show']);
-Route::get('/book/{book:slug}/read', [BookController::class, 'read']);
 
 Route::get('/authors', [AuthorController::class, 'index']);
 Route::get('/author/{author:slug}', [AuthorController::class, 'show']);
@@ -39,6 +38,10 @@ Route::middleware('auth')->group(function () {
 	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 	Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware('subscribed')->group(function () {
+	Route::get('/book/{book:slug}/read', [BookController::class, 'read']);
 
 	Route::post('/review/{book_id}', [BookReviewController::class, 'store'])->name('review.store');
 	Route::put('/review/{id}', [BookReviewController::class, 'update'])->name('review.update');
