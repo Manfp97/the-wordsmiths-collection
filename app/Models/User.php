@@ -74,7 +74,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
-	public function reviews(): HasMany
+	public function bookReviews(): HasMany
 	{
 		return $this->hasMany(BookReview::class);
 	}
@@ -87,5 +87,15 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
 	public function role(): BelongsTo
 	{
 		return $this->belongsTo(Role::class);
+	}
+
+	/**
+	 * Define a relationship where the User has many Bookmark.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function bookmarks(): HasMany
+	{
+		return $this->hasMany(Bookmark::class);
 	}
 }
