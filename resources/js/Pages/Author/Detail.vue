@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { usePage } from "@inertiajs/vue3";
+import { getFormattedDate } from "@/Helpers/stringHelper.js";
 import AppHead from "@/Components/Common/AppHead.vue";
 import Nav from "@/Components/Common/Nav.vue";
 import BookCard from "@/Components/Book/BookCard.vue";
@@ -29,13 +30,8 @@ const isAdmin = user.value?.role_id === 1;
 
 const fullName = `${props.author.first_name} ${props.author.last_name ?? ""}`;
 
-const birthDate = new Date(props.author.birth_date);
-const formattedBirthDate = birthDate.toLocaleDateString();
-
-const deathDate = props.author.death_date
-	? new Date(props.author.death_date)
-	: null;
-const formattedDeathDate = deathDate ? deathDate.toLocaleDateString() : "-";
+const formattedBirthDate = getFormattedDate(props.author.birth_date);
+const formattedDeathDate = getFormattedDate(props.author.death_date);
 </script>
 
 <template>
