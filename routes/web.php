@@ -39,6 +39,10 @@ Route::post('/author', [AuthorController::class, 'store']); // auth => admin
 Route::put('/author/{id}', [AuthorController::class, 'update']);
 Route::delete('/author/{id}', [AuthorController::class, 'destroy']); // auth => admin
 
+Route::get('/users', [UserController::class, 'index']);
+Route::put('/user/{id}', [UserController::class, 'update']);
+Route::delete('/user/{id}', [UserController::class, 'destroy']);
+
 Route::inertia('/subscribe', 'Subscribe');
 
 Route::post('/subscription-plan/{id}', [SubscriptionPlanController::class, 'select']);
