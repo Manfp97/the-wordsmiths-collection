@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Web;
 
 use App\Models\Author;
 use App\Support\Enums\MediaCollectionEnum;
-use App\Support\Enums\MediaConversionEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AuthorResource;
 use App\Http\Requests\AuthorRequest;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Request;
