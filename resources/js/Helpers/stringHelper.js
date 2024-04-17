@@ -9,6 +9,6 @@ export const getFormattedDate = (
 	options = { day: "numeric", month: "numeric", year: "numeric" }
 ) => {
 	const date = stringIso8601 ? new Date(stringIso8601) : null;
-	const formattedDate = date.toLocaleString("default", options) ?? "-";
+	const formattedDate = date?.toLocaleString("default", options) ?? "-";
 	return formattedDate;
 };
