@@ -13,7 +13,7 @@ const props = defineProps({
 	},
 });
 
-const status = computed(() => props.user.subscription?.status);
+const status = computed(() => props.user.subscription?.status ?? null);
 
 const formattedStartDate = getFormattedDate(
 	props.user.subscription?.start_date
@@ -50,9 +50,10 @@ const formattedEndDate = getFormattedDate(props.user.subscription?.end_date);
 				:class="{
 					'bg-skin-success-light': status === 'active',
 					'bg-skin-danger-light': status === 'canceled' || status === 'expired',
+					'bg-skin-warning-light': !status,
 				}"
 			>
-				{{ status }}
+				{{ status ?? "Not verified" }}
 			</span>
 		</td>
 
