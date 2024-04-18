@@ -99,7 +99,7 @@ const askToEditAuthor = (author) => {
 					<div
 						class="mb-4 flex items-center space-x-6 px-4 md:mb-6 md:px-6 lg:px-16"
 					>
-						<h2 class="h2-title underline hover:text-skin-link">
+						<h2 class="index-title font-bold underline hover:text-skin-link">
 							<Link :href="`/author/${author.slug}`">
 								{{ author.first_name }} {{ author.last_name }}
 							</Link>
