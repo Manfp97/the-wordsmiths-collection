@@ -77,6 +77,8 @@ defineProps({
 				}"
 				:autocomplete="inputAutocomplete"
 				:placeholder="inputPlaceholder"
+				:required="isRequired"
+				:disabled="isDisabled"
 			/>
 		</div>
 
