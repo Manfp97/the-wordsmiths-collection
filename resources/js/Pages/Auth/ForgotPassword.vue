@@ -2,7 +2,7 @@
 import AppHead from "@/Components/Common/AppHead.vue";
 import Logo from "@/Components/Common/Logo.vue";
 import Footer from "@/Components/Common/Footer.vue";
-import FormForgotPassword from "@/Forms/FormForgotPassword.vue";
+import FormPasswordForgot from "@/Forms/FormPasswordForgot.vue";
 
 defineProps({
 	status: {
@@ -51,7 +51,7 @@ defineProps({
 					choose a new one.
 				</div>
 
-				<FormForgotPassword :can-reset-password="canResetPassword" />
+				<FormPasswordForgot :can-reset-password="canResetPassword" />
 			</section>
 		</div>
 
