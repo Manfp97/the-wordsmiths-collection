@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import { initFlowbite } from "flowbite";
-import { usePage } from "@inertiajs/vue3";
+import { usePage, router } from "@inertiajs/vue3";
 import Logo from "@/Components/Common/Logo.vue";
 import InputWithIcon from "@/Components/Forms/InputWithIcon.vue";
 import ModalAddContent from "@/Components/Modals/ModalAddContent.vue";
@@ -13,7 +13,7 @@ onMounted(() => {
 	initFlowbite();
 });
 
-defineProps({
+const props = defineProps({
 	navClass: {
 		type: String,
 		required: false,
@@ -24,9 +24,38 @@ defineProps({
 		required: false,
 		default: false,
 	},
+	query: {
+		type: String,
+		required: false,
+		default: null,
+	},
 });
 
-const search = ref(null);
+const $hamburgerButton = ref(null);
+
+const search = ref(props.query);
+const performSearch = () => {
+	router.get(
+		"/search",
+		{ ...(search.value !== "" ? { query: search.value } : null) },
+		{
+			preserveState: true,
+			replace: true, // avoids adding new entries into the browser history for each search we make
+		}
+	);
+};
+
+const hideHamburgerMenu = () => {
+	if ($hamburgerButton.value) {
+		$hamburgerButton.value.click();
+	}
+};
+
+const performSearchFromHamburgerMenu = () => {
+	performSearch();
+	hideHamburgerMenu();
+};
+
 const isAddingContent = ref(false);
 
 const user = computed(() => usePage().props.auth.user);
@@ -112,6 +141,7 @@ const isAdmin = user.value?.role_id === 1;
 					input-placeholder="Search..."
 					icon-aria-label="Search"
 					class="hidden md:!mr-4 md:block"
+					@enter="performSearch"
 				>
 					<IconSearch
 						class="h-4 w-4 text-skin-muted"
@@ -179,6 +209,7 @@ const isAdmin = user.value?.role_id === 1;
 
 				<!-- Hamburger menu -->
 				<button
+					ref="$hamburgerButton"
 					data-collapse-toggle="navbar-user"
 					type="button"
 					class="inline-flex h-10 w-10 flex-grow items-center justify-center rounded-lg p-2 text-sm hover:bg-skin-secondary-offset hover:text-skin-muted focus:text-skin-muted focus:outline-none focus:ring-2 focus:ring-skin-secondary md:hidden"
@@ -205,6 +236,7 @@ const isAdmin = user.value?.role_id === 1;
 					input-placeholder="Search..."
 					icon-aria-label="Search"
 					class="mt-3 md:hidden"
+					@enter="performSearchFromHamburgerMenu"
 				>
 					<IconSearch
 						class="h-4 w-4 text-skin-muted"
