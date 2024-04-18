@@ -8,6 +8,7 @@ use App\Http\Controllers\Web\BookReviewController;
 use App\Http\Controllers\Web\SubscriptionPlanController;
 use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\UserController;
+use App\Http\Controllers\Web\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,8 @@ Route::get('/book/{book:slug}', [BookController::class, 'show']);
 
 Route::get('/authors', [AuthorController::class, 'index']);
 Route::get('/author/{author:slug}', [AuthorController::class, 'show']);
+
+Route::get('/search', [SearchController::class, 'index']);
 
 Route::inertia('/subscribe', 'Subscribe');
 
