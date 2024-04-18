@@ -5,9 +5,13 @@ import Footer from "@/Components/Common/Footer.vue";
 </script>
 
 <template>
-	<AppHead />
+	<slot name="appHead">
+		<AppHead />
+	</slot>
 
-	<Nav />
+	<slot name="nav">
+		<Nav />
+	</slot>
 
 	<div class="page-container">
 		<div
@@ -48,7 +52,7 @@ import Footer from "@/Components/Common/Footer.vue";
 		url(/images/index/hero.jpg);
 }
 
-:deep(.h2-title) {
-	@apply text-xl font-bold md:text-2xl 2xl:text-3xl;
+:deep(.index-title) {
+	@apply text-xl md:text-2xl 2xl:text-3xl;
 }
 </style>
