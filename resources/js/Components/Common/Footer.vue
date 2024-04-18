@@ -47,7 +47,15 @@ const socials = [
 				</a>
 			</div>
 			<p className="mt-5 font-bold">The Wordsmith's Collection &copy; 2024</p>
-			<p>No tracking or ads.</p>
+			<p>
+				<span>No tracking or ads</span> |
+				<Link
+					href="/terms-and-conditions"
+					class="underline hover:text-skin-link"
+				>
+					Terms and Conditions
+				</Link>
+			</p>
 		</footer>
 	</div>
 </template>

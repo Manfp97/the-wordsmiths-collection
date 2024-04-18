@@ -89,7 +89,7 @@ const submitForm = () => {
 			I agree to the
 			<Link
 				class="text-skin-link underline hover:text-skin-text"
-				href="/terms"
+				href="/terms-and-conditions"
 			>
 				Terms and Conditions
 			</Link>

@@ -34,6 +34,7 @@ Route::get('/author/{author:slug}', [AuthorController::class, 'show']);
 Route::get('/search', [SearchController::class, 'index']);
 
 Route::inertia('/subscribe', 'Subscribe');
+Route::inertia('/terms-and-conditions', 'TermsAndConditions');
 
 Route::post('/subscription-plan/{id}', [SubscriptionPlanController::class, 'select']);
 
