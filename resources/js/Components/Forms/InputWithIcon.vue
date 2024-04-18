@@ -1,4 +1,5 @@
 <script setup>
+const emit = defineEmits(["enter"]);
 const value = defineModel("value"); // eslint-disable-line
 
 defineProps({
@@ -79,6 +80,7 @@ defineProps({
 				:placeholder="inputPlaceholder"
 				:required="isRequired"
 				:disabled="isDisabled"
+				@keydown.enter.prevent="emit('enter')"
 			/>
 		</div>
 
