@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\PaymentStoreRequest;
+use App\Http\Requests\Auth\PaymentRequest;
 use App\Models\CreditCard;
 use App\Models\Subscription;
 use App\Models\SubscriptionPlan;
@@ -27,7 +27,7 @@ class PaymentController extends Controller
 	 *
 	 * @throws \Illuminate\Validation\ValidationException
 	 */
-	public function store(PaymentStoreRequest $request): RedirectResponse
+	public function store(PaymentRequest $request): RedirectResponse
 	{
 		$validatedData = $request->validated();
 		$validatedData['user_id'] = $request->user()->id;

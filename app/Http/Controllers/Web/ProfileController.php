@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Web;
 use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Resources\CreditCardResource;
+use App\Http\Resources\SubscriptionResource;
+use App\Http\Resources\SubscriptionPlanResource;
+use App\Models\Subscription;
 use App\Models\SubscriptionPlan;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
@@ -22,31 +26,29 @@ class ProfileController extends Controller
 	public function edit(Request $request): Response
 	{
 		$user = $request->user();
-		if ($user->creditCard) {
-			$user->creditCard->card_number = substr($user->creditCard->card_number, -4);
+
+		$creditCardResource = null;
+		if ($creditCard = $user->creditCard) {
+			$creditCardResource = new CreditCardResource($creditCard);
 		}
 
-		$subscriptionPlanId = $user->subscription->subscription_plan_id;
-		$subscriptionPlan = SubscriptionPlan::find($subscriptionPlanId);
-		
+		$subscription = $user->subscription()->with('subscriptionPlan')->first();
+		$subscriptionResource = null;
+		if ($subscription) {
+			$subscriptionResource = new SubscriptionResource($subscription);
+		}
+
+		$subscriptionPlanId = optional($subscription)->subscription_plan_id;
 		$otherSubscriptionPlanId = $subscriptionPlanId == 1 ? 2 : 1;
 		$otherSubscriptionPlan = SubscriptionPlan::find($otherSubscriptionPlanId);
+		$otherSubscriptionPlanResource = new SubscriptionPlanResource($otherSubscriptionPlan);
 
 		return Inertia::render('Profile/Edit', [
-			'mustVerifyEmail'	=> $user instanceof MustVerifyEmail,
-			'status'					=> session('status'),
-			'creditCard'			=> $user->creditCard,
-			'subscription'		=> $user->subscription 
-				? [
-					'name'			=> $subscriptionPlan->name,
-					'price'			=> $subscriptionPlan->price,
-					'currency'	=> $subscriptionPlan->currency,
-					'startDate'	=> $user->subscription->start_date,
-					'endDate'		=> $user->subscription->end_date,
-					'status'		=> $user->subscription->status
-				] 
-				: null,
-			'otherSubscriptionPlan' => $otherSubscriptionPlan
+			'mustVerifyEmail'				=> $user instanceof MustVerifyEmail,
+			'status'								=> session('status'),
+			'creditCard'						=> $creditCardResource,
+			'subscription'					=> $subscriptionResource,
+			'otherSubscriptionPlan'	=> $otherSubscriptionPlanResource
 		]);
 	}
 

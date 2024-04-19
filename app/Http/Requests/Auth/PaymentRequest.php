@@ -8,7 +8,7 @@ use LVR\CreditCard\CardNumber;
 use LVR\CreditCard\CardExpirationYear;
 use LVR\CreditCard\CardExpirationMonth;
 
-class PaymentStoreRequest extends BaseFormRequest
+class PaymentRequest extends BaseFormRequest
 {
 	/**
 	 * Determine if the user is authorized to make this request.

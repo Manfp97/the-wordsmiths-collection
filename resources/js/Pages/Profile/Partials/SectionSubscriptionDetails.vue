@@ -23,10 +23,10 @@ const isSubscriptionActive = computed(
 	() => props.subscription.status === "active"
 );
 
-const startDate = new Date(props.subscription.startDate);
+const startDate = new Date(props.subscription.start_date);
 const formattedStartDate = startDate.toLocaleDateString();
 
-const endDate = new Date(props.subscription.endDate);
+const endDate = new Date(props.subscription.end_date);
 const formattedEndDate = endDate.toLocaleDateString();
 </script>
 
@@ -37,7 +37,7 @@ const formattedEndDate = endDate.toLocaleDateString();
 		</header>
 
 		<div>
-			<h3 class="text-lg">{{ subscription.name }} subscription plan</h3>
+			<h3 class="text-lg">{{ subscription.plan.name }} subscription plan</h3>
 			<p>
 				<span class="font-bold">Status</span>:
 				<span class="capitalize">{{ subscription.status }}</span>
@@ -91,7 +91,7 @@ const formattedEndDate = endDate.toLocaleDateString();
 		>
 			<div class="space-y-2">
 				<p>
-					Your subscription will be cancelled on {{ formattedEndDate }}. Until
+					Your subscription will be canceled on {{ formattedEndDate }}. Until
 					then, you can keep enjoying The Wordsmith's Collection.
 				</p>
 				<p>
@@ -133,15 +133,16 @@ const formattedEndDate = endDate.toLocaleDateString();
 				<div class="rounded-t-md border-b border-skin-border bg-skin-white p-3">
 					<p class="mb-2 text-sm font-bold uppercase">Current plan</p>
 					<p>
-						{{ subscription.name }}: {{ subscription.price }}
-						{{ subscription.currency }}/month
+						{{ subscription.plan.name }}: {{ subscription.plan.price }}
+						{{ subscription.plan.currency }}/month
 					</p>
 				</div>
 
 				<div class="rounded-b-md bg-skin-white p-3">
 					<p class="mb-2 text-sm font-bold uppercase">New plan</p>
 					<p>
-						{{ otherSubscriptionPlan.name }}: {{ otherSubscriptionPlan.price }}
+						{{ otherSubscriptionPlan.name }}:
+						{{ otherSubscriptionPlan.price }}
 						{{ otherSubscriptionPlan.currency }}/month
 					</p>
 				</div>
