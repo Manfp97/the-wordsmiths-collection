@@ -6,6 +6,7 @@ import SectionUpdatePassword from "./Partials/SectionUpdatePassword.vue";
 import SectionUpdateProfileInformation from "./Partials/SectionUpdateProfileInformation.vue";
 import SectionSubscriptionDetails from "./Partials/SectionSubscriptionDetails.vue";
 import SectionCreditCardDetails from "./Partials/SectionCreditCardDetails.vue";
+import SectionGoToPayment from "./Partials/SectionGoToPayment.vue";
 import Footer from "@/Components/Common/Footer.vue";
 
 defineProps({
@@ -77,6 +78,14 @@ defineProps({
 					>
 						<SectionCreditCardDetails :credit-card="creditCard" />
 					</div>
+
+					<div
+						v-if="!creditCard && !subscription"
+						class="section-container"
+					>
+						<SectionGoToPayment />
+					</div>
+
 					<div class="section-container">
 						<SectionDeleteUser />
 					</div>
