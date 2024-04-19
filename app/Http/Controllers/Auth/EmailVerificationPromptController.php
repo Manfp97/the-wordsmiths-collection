@@ -16,8 +16,14 @@ class EmailVerificationPromptController extends Controller
 	 */
 	public function __invoke(Request $request): RedirectResponse|Response
 	{
-		return $request->user()->hasVerifiedEmail()
-			? redirect()->intended(RouteServiceProvider::HOME) // TODO: check if has credit card configured
-			: Inertia::render('Auth/VerifyEmail', ['status' => session('status')]);
+		$user = $request->user();
+
+		if ($user->hasVerifiedEmail()) {
+			return redirect()->route('payment');
+		} else if ($user->creditCard) {
+			return redirect()->intended(RouteServiceProvider::HOME);
+		}
+
+		return Inertia::render('Auth/VerifyEmail', ['status' => session('status')]);
 	}
 }
