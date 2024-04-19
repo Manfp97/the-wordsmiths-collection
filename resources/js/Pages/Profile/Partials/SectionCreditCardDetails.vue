@@ -41,12 +41,17 @@ const isModifying = ref(false);
 		</button>
 
 		<ModalContainer
-			modal-id="modal-delete-account"
+			modal-id="modal-modify-payment-method"
 			modal-title="Modify credit card details"
 			:show="isModifying"
 			@close="isModifying = false"
 		>
-			<FormPayment />
+			<FormPayment
+				:credit-card="creditCard"
+				http-method="put"
+				preserve-scroll
+				@success="isModifying = false"
+			/>
 		</ModalContainer>
 	</section>
 </template>

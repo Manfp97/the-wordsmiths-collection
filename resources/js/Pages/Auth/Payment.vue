@@ -22,7 +22,10 @@ defineProps({
 		:subscription-plan="selectedSubscriptionPlan"
 		:current-step="3"
 	>
-		<FormPayment>
+		<FormPayment
+			form-id="form-registration-payment-method"
+			http-method="post"
+		>
 			<template #subscriptionPlan>
 				<div
 					class="flex items-center justify-between rounded-lg bg-skin-white bg-opacity-60 px-4 py-3"

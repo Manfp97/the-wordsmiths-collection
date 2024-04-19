@@ -2,10 +2,24 @@
 import { useForm } from "@inertiajs/vue3";
 import IconRightArrow from "@icons/right-arrow.svg?component";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
+import IconEdit from "@icons/edit.svg?component";
 
 const emit = defineEmits(["success"]);
 
 const props = defineProps({
+	formId: {
+		type: String,
+		required: true,
+	},
+	creditCard: {
+		type: Object,
+		required: false,
+		default: null,
+	},
+	httpMethod: {
+		type: String,
+		required: true,
+	},
 	preserveScroll: {
 		type: Boolean,
 		required: false,
@@ -19,25 +33,36 @@ const props = defineProps({
 });
 
 const form = useForm({
-	cardholder_name: null,
+	cardholder_name: props.creditCard?.cardholder_name,
 	card_number: null,
-	expiration_month: null,
-	expiration_year: null,
+	expiration_month: props.creditCard?.expiration_month,
+	expiration_year: props.creditCard?.expiration_year,
 	cvc: null,
 });
 
-const submitForm = () => {
-	form.expiration_year = `20${form.expiration_year}`;
+const buttonText = props.httpMethod === "post" ? "Pay" : "Update details";
 
-	form.post("/payment", {
-		preserveScroll: props.preserveScroll,
-		preserveState: props.preserveState,
-		onSuccess: () => {
-			form.reset();
-			form.clearErrors();
-			emit("success");
-		},
-	});
+const submitForm = () => {
+	const url =
+		props.httpMethod === "post"
+			? "/payment"
+			: `/payment/${props.creditCard?.id}`;
+
+	form
+		.transform((data) => ({
+			...data,
+			expiration_year: `20${form.expiration_year}`,
+			_method: props.httpMethod,
+		}))
+		[props.httpMethod](url, {
+			preserveScroll: props.preserveScroll,
+			preserveState: props.preserveState,
+			onSuccess: () => {
+				form.reset();
+				form.clearErrors();
+				emit("success");
+			},
+		});
 };
 </script>
 
@@ -52,6 +77,7 @@ const submitForm = () => {
 			label-text="Name on card"
 			input-type="text"
 			input-autocomplete="cc-name"
+			is-required
 			:error-message="form.errors.cardholder_name"
 		/>
 
@@ -79,6 +105,7 @@ const submitForm = () => {
 				input-mode="numeric"
 				:input-max-length="24"
 				:error-message="form.errors.card_number"
+				is-required
 				@input="form.card_number = $event.target.value.slice(0, 24)"
 			/>
 		</div>
@@ -100,6 +127,7 @@ const submitForm = () => {
 						placeholder="MM"
 						class="w-9 rounded-lg border-none p-0 focus:ring-0"
 						autocomplete="cc-exp-month"
+						required
 						@input="form.expiration_month = $event.target.value.slice(0, 2)"
 					/>
 					/
@@ -113,6 +141,7 @@ const submitForm = () => {
 						placeholder="YY"
 						class="w-9 rounded-lg border-none p-0 focus:ring-0"
 						autocomplete="cc-exp-year"
+						required
 						@input="form.expiration_year = $event.target.value.slice(0, 2)"
 					/>
 				</div>
@@ -135,6 +164,7 @@ const submitForm = () => {
 					input-autocomplete="cc-csc"
 					input-mode="numeric"
 					:input-max-length="3"
+					is-required
 					:error-message="form.errors.cvc"
 					@input="form.cvc = $event.target.value.slice(0, 3)"
 				/>
@@ -152,19 +182,26 @@ const submitForm = () => {
 
 		<slot name="subscriptionPlan" />
 
-		<button
-			type="submit"
-			class="button"
-			:class="{ 'opacity-25': form.processing }"
-			:disabled="form.processing"
-		>
-			Pay
-			<IconRightArrow
-				class="ml-4 h-4 w-4"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-			/>
-		</button>
+		<div class="flex justify-end space-x-4">
+			<button
+				type="submit"
+				class="button"
+				:class="{ 'opacity-25': form.processing }"
+				:disabled="form.processing"
+			>
+				<IconEdit
+					v-if="httpMethod === 'put'"
+					class="mr-1 h-6 w-6"
+				/>
+				{{ buttonText }}
+				<IconRightArrow
+					v-if="httpMethod === 'post'"
+					class="ml-4 h-4 w-4"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+				/>
+			</button>
+		</div>
 	</form>
 </template>
