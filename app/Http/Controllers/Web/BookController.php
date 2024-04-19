@@ -47,10 +47,17 @@ class BookController extends Controller
 				return $review->user->is($request->user()) ? -1 : 1;
 			});
 
-		$relatedBooks = Genre::find($book->genres->first()->id)
-			->books
-			->where('id', '!=', $book->id)
-			->take(18); // 18 or fewer
+		$relatedBooks = Book::where(function ($query) use ($book) {
+				$query->whereHas('authors', function ($queryAuthor) use ($book) {
+					$queryAuthor->whereIn('id', $book->authors->pluck('id'));
+				})
+					->orWhereHas('genres', function ($queryGenre) use ($book) {
+						$queryGenre->whereIn('id', $book->genres->pluck('id'));
+					});
+			})
+			->where( 'id', '!=', $book->id)
+			->take(18) // 18 or fewer
+			->get();
 
 		return Inertia::render('Book/Detail', [
 			'book'							=> new BookResource($book),
