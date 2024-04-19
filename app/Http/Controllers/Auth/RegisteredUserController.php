@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,9 +19,19 @@ class RegisteredUserController extends Controller
 	/**
 	 * Display the registration view.
 	 */
-	public function create(): Response
+	public function create(Request $request): Response|RedirectResponse
 	{
-		return Inertia::render('Auth/Register');
+		$user = $request->user();
+
+		if (!$user) {
+			return Inertia::render('Auth/Register');
+		} else if (!$user->hasVerifiedEmail()) {
+			return redirect()->route('verification.notice');
+		} else if (!$user->creditCard) {
+			return redirect()->route('payment');
+		}
+
+		return redirect()->intended(RouteServiceProvider::HOME);
 	}
 
 	/**
