@@ -18,9 +18,9 @@ class VerifyEmailController extends Controller
 		if ($request->user()->hasVerifiedEmail()) {
 			if (!$request->user()->creditCard()) {
 				return redirect()->route('payment');
-			} else {
-				return redirect()->intended(RouteServiceProvider::HOME);
 			}
+			
+			return redirect()->intended(RouteServiceProvider::HOME);
 		}
 
 		if ($request->user()->markEmailAsVerified()) {
