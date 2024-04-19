@@ -45,4 +45,31 @@ class PaymentController extends Controller
 
 		return redirect()->route("confirmation");
 	}
+
+	/**
+	 * Handle an incoming update payment request.
+	 */
+	public function update(PaymentRequest $request, int $id): RedirectResponse
+	{
+		try {
+			$creditCard = CreditCard::findOrFail($id);
+			$creditCard->update($request->validated());
+
+			return back()->with(
+				'alert',
+				[
+					'type' => 'success',
+					'message' => 'Payment method successfully edited',
+				]
+			);
+		} catch (\Exception $e) {
+			return back()->with(
+				'alert',
+				[
+					'type' => 'danger',
+					'message' => 'You cannot edit this payment method',
+				]
+			);
+		}
+	}
 }

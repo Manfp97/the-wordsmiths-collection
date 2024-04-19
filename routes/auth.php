@@ -43,14 +43,14 @@ Route::middleware('auth')->group(function () {
 	Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
 	Route::get('payment', [PaymentController::class, 'show'])->name('payment');
-	//Route::patch('payment', [PaymentController::class, 'update'])->name('payment.update');
-	Route::post('payment', [PaymentController::class, 'store']);
+	Route::post('payment', [PaymentController::class, 'store'])->name('payment.store');
+	Route::put('payment/{id}', [PaymentController::class, 'update'])->name('payment.update');
 	
 	Route::inertia('confirmation', 'Auth/Confirmation')->name('confirmation');
 
 	Route::post('subscription/reactivate', [SubscriptionController::class, 'reactivate'])->name('subscription.reactivate');
-	Route::patch('subscription/update/{id}', [SubscriptionController::class, 'update'])->name('subscription.update');
 	Route::post('subscription/cancel', [SubscriptionController::class, 'cancel'])->name('subscription.cancel');
+	Route::patch('subscription/update/{id}', [SubscriptionController::class, 'update'])->name('subscription.update');
 
 	Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
