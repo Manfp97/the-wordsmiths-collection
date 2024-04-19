@@ -1,6 +1,6 @@
 <script setup>
 // https://preline.co/docs/textarea.html#floating-label
-import { ref, watch, nextTick } from "vue";
+import { ref, watch, nextTick, onMounted } from "vue";
 
 const value = defineModel("value"); // eslint-disable-line
 
@@ -39,6 +39,10 @@ defineProps({
 		required: false,
 		default: null,
 	},
+});
+
+onMounted(() => {
+	autoGrow();
 });
 
 const $textarea = ref(null);
