@@ -8,7 +8,6 @@ use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Resources\CreditCardResource;
 use App\Http\Resources\SubscriptionResource;
 use App\Http\Resources\SubscriptionPlanResource;
-use App\Models\Subscription;
 use App\Models\SubscriptionPlan;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
