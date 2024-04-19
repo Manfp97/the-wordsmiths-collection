@@ -16,7 +16,7 @@ class VerifyEmailController extends Controller
 	public function __invoke(EmailVerificationRequest $request): RedirectResponse
 	{
 		if ($request->user()->hasVerifiedEmail()) {
-			if (!$request->user()->creditCard()) {
+			if (!$request->user()->creditCard) {
 				return redirect()->route('payment');
 			}
 			
