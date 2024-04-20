@@ -34,23 +34,18 @@ const planPremiumFeatures = commonPlanFeatures.concat([
 const serviceFeatures = [
 	{
 		title: "Extensive curated library",
-		body: "<p>Access to a vast and curated library of the most important literary works in history. <a href='/' class='underline hover:bg-skin-secondary-offset bg-skin-secondary'>Browse the library now</a>.</p>",
-		imagePath: "/images/subscribe/feature-4.webp",
+		body: "<p>Access to a vast and curated library of the most important literary works in history. It is constantly updated with new additions and timeless classics to keep the content fresh and engaging.</p> <p><a href='/' class='underline hover:bg-skin-secondary-offset bg-skin-secondary'>Browse the library now</a>.</p>",
+		imagePath: "/images/subscribe/feature-1.webp",
 	},
 	{
 		title: "Explore community reviews",
 		body: "<p>Users can rate and provide feedback on books, helping others make informed decisions about their reading choices.</p>",
-		imagePath: "/images/subscribe/feature-4.webp",
-	},
-	{
-		title: "Regular content updates",
-		body: "<p>The library is constantly updated with new additions and timeless classics to keep the content fresh and engaging.</p>",
-		imagePath: "/images/subscribe/feature-4.webp",
+		imagePath: "/images/subscribe/feature-2.webp",
 	},
 	{
 		title: "Read anywhere",
 		body: "<p>Read unlimited books on your phone, tablet, computer, and eBook.</p>",
-		imagePath: "/images/subscribe/feature-4.webp",
+		imagePath: "/images/subscribe/feature-3.png",
 	},
 ];
 
