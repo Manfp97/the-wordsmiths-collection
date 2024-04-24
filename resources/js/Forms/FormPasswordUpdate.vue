@@ -38,7 +38,7 @@ const updatePassword = () => {
 			input-id="current_password"
 			input-type="password"
 			input-autocomplete="current-password"
-			label-text="Current password"
+			is-required
 			:error-message="form.errors.current_password"
 		/>
 
@@ -48,7 +48,7 @@ const updatePassword = () => {
 			input-id="new_password"
 			input-type="password"
 			input-autocomplete="new-password"
-			label-text="New password"
+			is-required
 			:error-message="form.errors.password"
 		/>
 
@@ -57,7 +57,7 @@ const updatePassword = () => {
 			input-id="password_confirmation"
 			input-type="password"
 			input-autocomplete="new-password"
-			label-text="Confirm password"
+			is-required
 			:error-message="form.errors.password_confirmation"
 		/>
 
