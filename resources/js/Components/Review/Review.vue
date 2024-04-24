@@ -1,4 +1,5 @@
 <script setup>
+import { getFormattedDate } from "@/Helpers/stringHelper.js";
 import Rating from "@/Components/Common/Rating.vue";
 import IconUserCircle from "@icons/user-circle.svg?component";
 import IconTrash from "@icons/trash.svg?component";
@@ -17,8 +18,7 @@ const props = defineProps({
 	},
 });
 
-const date = new Date(props.review.created_at);
-const formattedDate = date.toLocaleString("default", {
+const formattedDate = getFormattedDate(props.review.created_at, {
 	day: "numeric",
 	month: "long",
 	year: "numeric",
