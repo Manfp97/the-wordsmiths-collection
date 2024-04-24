@@ -1,10 +1,14 @@
 <script setup>
-defineProps({
+const props = defineProps({
 	author: {
 		type: Object,
 		required: true,
 	},
 });
+
+const image = props.author.responsive_portrait
+	? props.author.responsive_portrait
+	: `<img src="/images/author/placeholder.png" alt="Placeholder image for ${props.author.first_name} ${props.author.last_name}" />`;
 </script>
 
 <template>
@@ -13,7 +17,7 @@ defineProps({
 		<Link
 			:href="`/author/${author.slug}`"
 			class="block h-full overflow-hidden rounded hover:ring-4 hover:ring-skin-card active:ring-skin-secondary"
-			v-html="author.responsive_portrait"
+			v-html="image"
 		/>
 		<!--eslint-enable-->
 		<p class="font-bold">{{ author.first_name }} {{ author.last_name }}</p>
