@@ -32,6 +32,11 @@ const fullName = `${props.author.first_name} ${props.author.last_name ?? ""}`;
 
 const formattedBirthDate = getFormattedDate(props.author.birth_date);
 const formattedDeathDate = getFormattedDate(props.author.death_date);
+
+const responsivePortrait = props.author.responsive_portrait.replaceAll(
+	">",
+	"class='rounded'>"
+);
 </script>
 
 <template>
@@ -53,12 +58,13 @@ const formattedDeathDate = getFormattedDate(props.author.death_date);
 							<div
 								v-if="author.responsive_portrait"
 								class="[&>*]:mx-auto"
-								v-html="author.responsive_portrait"
+								v-html="responsivePortrait"
 							/>
 							<img
 								v-else
 								:src="`/images/author/placeholder.png`"
 								:alt="`Placeholder image for ${fullName}`"
+								class="rounded"
 							/>
 							<!-- eslint-enable -->
 						</div>
