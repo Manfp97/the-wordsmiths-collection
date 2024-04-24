@@ -33,7 +33,7 @@ const fullName = `${props.author.first_name} ${props.author.last_name ?? ""}`;
 const formattedBirthDate = getFormattedDate(props.author.birth_date);
 const formattedDeathDate = getFormattedDate(props.author.death_date);
 
-const responsivePortrait = props.author.responsive_portrait.replaceAll(
+const responsivePortrait = props.author.responsive_portrait?.replaceAll(
 	">",
 	"class='rounded'>"
 );
