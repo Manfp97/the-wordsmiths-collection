@@ -262,7 +262,7 @@ const swiperBreakpoints = {
 								No one has reviewed this book yet.
 							</div>
 
-							<div class="mt-8 flex items-center justify-center">
+							<div class="mt-8">
 								<button
 									v-if="canPublishReview"
 									class="button px-10 font-bold"
