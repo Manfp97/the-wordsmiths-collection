@@ -12,28 +12,58 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/public/favicon.svg" alt="Logo" width="156" height="156">
+    <img 
+			src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/public/favicon.svg" 
+			alt="Logo" 
+			width="156" 
+			height="156"
+		>
     <h1 align="center">The Wordsmith's Collection</h1>
     <p align="center">A website featuring a curated selection of the most important literary works in history.</p>
     <p>
       <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/stargazers">
-        <img alt="GitHub Contributors" src="https://img.shields.io/github/stars/HenestrosaDev/the-wordsmiths-collection" />
+        <img 
+					alt="GitHub Contributors" 
+					src="https://img.shields.io/github/stars/HenestrosaDev/the-wordsmiths-collection" 
+				>
       </a>
       <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/graphs/contributors">
-        <img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/HenestrosaDev/the-wordsmiths-collection" />
+        <img 
+					alt="GitHub Contributors" 
+					src="https://img.shields.io/github/contributors/HenestrosaDev/the-wordsmiths-collection" 
+				>
       </a>
       <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/issues">
-        <img alt="Issues" src="https://img.shields.io/github/issues/HenestrosaDev/the-wordsmiths-collection" />
+        <img 
+					alt="Issues" 
+					src="https://img.shields.io/github/issues/HenestrosaDev/the-wordsmiths-collection" 
+				>
       </a>
       <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/pulls">
-        <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/HenestrosaDev/the-wordsmiths-collection" />
+        <img 
+					alt="GitHub pull requests" 
+					src="https://img.shields.io/github/issues-pr/HenestrosaDev/the-wordsmiths-collection" 
+				>
       </a>
       <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/LICENSE">
-        <img alt="GitHub pull requests" src="https://img.shields.io/github/license/HenestrosaDev/the-wordsmiths-collection" />
+        <img 
+					alt="GitHub pull requests" 
+					src="https://img.shields.io/github/license/HenestrosaDev/the-wordsmiths-collection" 
+				>
       </a>
     </p>
   <p>
-    <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/issues/new/choose">Report Issue</a> · <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/issues/new/choose">Request Feature</a> · <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/discussions">Ask Question</a>
+    <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/issues/new/choose">
+			Report Issue
+		</a> 
+		· 
+		<a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/issues/new/choose">
+			Request Feature
+		</a> 
+		· 
+		<a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/discussions">
+			Ask Question
+		</a>
   </p>
   <p>
     🇬🇧 English | <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/README.md/">🇪🇸 Español</a>
@@ -62,7 +92,7 @@
 
 ## About the Project
 
-**The Wordsmith's Collection** consists of a website with a subscription model (SaaS) that allows users to access a curated library of the most important literary works in history. They will be able to read the books on the site, as well as search and filter by category and author. Each book and author will have a description to get more insight into their bibliography and synopsis, respectively.
+**The Wordsmith's Collection** consists of a website with a subscription model (SaaS) that allows users to access a curated library of the most important literary works in history. They will be able to read the books on the site, as well as search and filter by genre and author. Each book, genre and author will have a description to get more insight into their bibliography and synopsis, respectively.
 
 In order to access the service, users must register and enter a credit card for payment. Note that no payments are actually made, as the site only verifies that the credit card is valid. To actually use this feature, you should implement a payment gateway provider such as Redsys or Stripe.
 
@@ -77,165 +107,6 @@ The website has three types of users:
 - **Subscriber**: Registered user who pays a monthly/annual fee to read books. Can be **Basic** or **Premium**.
 - **Administrator**: An existing user who, in addition to performing the same operations as a subscriber, can add, edit, and delete books at will.
 
-<!-- PROJECT STRUCTURE -->
-
-### Project Structure
-
-<details>
-  <summary>ASCII folder structure</summary>
-
-```
-│   .editorconfig
-│   .env.example
-│   .gitattributes
-│   .gitignore
-│   artisan
-│   composer.json
-│   composer.lock
-│   LICENSE
-│   package-lock.json
-│   package.json
-│   phpunit.xml
-│   README.md
-│   tailwind.config.js
-│   vite.config.js
-│
-├───app
-│   ├───Console
-│   │       Kernel.php
-│   │
-│   ├───Exceptions
-│   │       Handler.php
-│   │
-│   ├───Http
-│   │   │   Kernel.php
-│   │   │
-│   │   ├───Controllers
-│   │   │       Controller.php
-│   │   │
-│   │   └───Middleware
-│   │           Authenticate.php
-│   │           EncryptCookies.php
-│   │           PreventRequestsDuringMaintenance.php
-│   │           RedirectlfAuthenticated.php
-│   │           TrimStrings.php
-│   │           TrustHosts.php
-│   │           TrustProxies.php
-│   │           ValidateSignature.php
-│   │           VerifyCsrfToken.php
-│   │
-│   ├───Models
-│   │       User.php
-│   │
-│   └───Providers
-│           AppServiceProvider.php
-│           AuthServiceProvider.php
-│           BroadcastServiceProvider.php
-│           EventServiceProvider.php
-│           RouteServiceProvider.php
-│
-├───bootstrap
-│   │   app.php
-│   │
-│   └───cache
-│           .gitignore
-│
-├───config
-│       app.php
-│       auth.php
-│       broadcasting.php
-│       cache.php
-│       cors.php
-│       database.php
-│       filesystems.php
-│       hashing.php
-│       logging.php
-│       mail.php
-│       queue.php
-│       sanctum.php
-│       services.php
-│       sessions.php
-│       view.php
-│
-├───databases
-│   │   .gitignore
-│   │
-│   ├───factories
-│   │       UserFactory.php
-│   │
-│   ├───migrations
-│   │       2014_10_12_000000_create_users_table.php
-│   │       2014_10_12_100000_create_password_reset_tokens_table.php
-│   │       2019_08_19_000000_create_failed_jobs_table.php
-│   │       2019_12_14_000001_create_personal_access_tokens_table.php
-│   │
-│   └───seeders
-│           DatabaseSeeder.php
-│
-├───public
-│       .htaccess
-│       favicon.svg
-│       index.php
-│       robots.php
-│
-├───resources
-│   ├───css
-│   │       app.css
-│   │
-│   ├───js
-│   │       app.css
-│   │       bootstrap.css
-│   │
-│   └───views
-│           welcome.blade.php
-│
-├───routes
-│       api.php
-│       channels.php
-│       console.php
-│       web.php
-│
-├───storage
-│   ├───app
-│   │   │   .gitignore
-│   │   │
-│   │   └───public
-│   │           .gitignore
-│   │
-│   ├───framework
-│   │   │   .gitignore
-│   │   │
-│   │   ├───cache
-│   │   │   │   .gitignore
-│   │   │   │
-|   │   │   └───data
-|   │   │           .gitignore
-│   │   │
-│   │   ├───sessions
-|   │   │       .gitignore
-│   │   │
-│   │   ├───testing
-|   │   │       .gitignore
-│   │   │
-│   │   └───views
-│   │           .gitignore
-│   │
-│   └───logs
-│           welcome.blade.php
-│
-└───tests
-    │   CreatesApplication.php
-    │   TestCase.php
-    │
-    ├───Feature
-    │       ExampleTest.php
-    │
-    └───Unit
-            ExampleTest.php
-```
-
-</details>
-
 <!-- BUILT WITH -->
 
 ### Built With
@@ -244,8 +115,15 @@ The website has three types of users:
 - [TailwindCSS](https://tailwindcss.com/docs/guides/laravel): CSS framework.
 - [Vue.js 3](https://vuejs.org/): JavaScript framework.
 - [Inertia.js](https://inertiajs.com/): Enables the creation of fully client-side rendered, single-page applications without the complexity of modern SPAs.
-- [Wikipedia API](https://en.wikipedia.org/api/rest_v1/#): Used to retrieve descriptions of authors and books.
-- [Flowbite](https://flowbite.com): Open-source UI component library built on top of Tailwind CSS.
+- [Flowbite](https://flowbite.com): Open-source UI component library built on top of Tailwind CSS. Used for Nav dropdowns and tabs.
+- [Spatie/laravel-medialibrary](https://spatie.be/docs/laravel-medialibrary/v11/introduction): Associates files with Eloquent models.
+- [uuid](https://www.npmjs.com/package/uuid): JavaScript package to generate unique UUIDs for the alerts.
+- [cviebrock/eloquent-sluggable](https://github.com/cviebrock/eloquent-sluggable): Creates unique slugs for Eloquent models in Laravel.
+- [jpkleemans/vite-svg-loader](https://github.com/jpkleemans/vite-svg-loader): Vite plugin to load SVG files as Vue components.
+- [laravel-validation-rules/credit-card](https://github.com/laravel-validation-rules/credit-card): Credit card validation package for Laravel.
+- [@vueuse/core](https://github.com/vueuse/vueuse): Collection of essential Vue Composition Utilities. Used for infinite scrolling with `useIntersectionObserver` and `useDebounceFn`.
+- [@vuepic/vue-datepicker](https://vue3datepicker.com/): Datepicker component for Vue 3.
+- [xiCO2k/laravel-vue-i18n](https://github.com/xiCO2k/laravel-vue-i18n): Internationalization for Vue and Laravel.
 
 <!-- ENTITY RELATIONSHIP MODEL -->
 
@@ -267,6 +145,7 @@ The website has three types of users:
     >
   </picture>
 </div>
+
 <!-- RELATIONAL MODEL -->
 
 ### Relational Model
@@ -366,21 +245,21 @@ You can enable hot refresh with Vite by running the command `npm run dev`. Note 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- USAGE -->
+<!-- NOTES -->
 
-## Usage
+## Notes
 
-[Credit card generator](https://www.creditcardvalidator.org/generator)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+- Use a [credit card generator](https://www.creditcardvalidator.org/generator) to fake a payment.
 
 <!-- ROADMAP -->
 
+<!--
 ## Roadmap
 
 - [ ] To do
 
 You can propose a new feature creating an [issue](https://github.com/HenestrosaDev/the-wordsmiths-collection/new/choose).
+-->
 
 <!-- AUTHORS -->
 
