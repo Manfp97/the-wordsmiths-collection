@@ -32,6 +32,7 @@
 		"@vuepic/vue-datepicker": "^8.4.0",
 		"@vueuse/core": "^10.9.0",
 		"flowbite": "^2.2.1",
+		"laravel-vue-i18n": "^2.7.6",
 		"pdfjs-dist": "^4.0.379",
 		"swiper": "^11.0.5",
 		"uuid": "^9.0.1",
