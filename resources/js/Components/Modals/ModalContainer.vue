@@ -1,6 +1,7 @@
 <script setup>
-import IconX from "@icons/x.svg?component";
 import { computed, onMounted, onUnmounted, watch } from "vue";
+import { trans } from "laravel-vue-i18n";
+import IconX from "@icons/x.svg?component";
 
 const props = defineProps({
 	modalId: {
@@ -142,7 +143,7 @@ const maxWidthClass = computed(() => {
 									class="h-5 w-5"
 									fill="currentColor"
 								/>
-								<span class="sr-only">Close modal</span>
+								<span class="sr-only">{{ trans("common.action.close") }}</span>
 							</button>
 						</div>
 

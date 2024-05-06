@@ -1,5 +1,6 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
+import { trans } from "laravel-vue-i18n";
 import IconRightArrow from "@icons/right-arrow.svg?component";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import IconEdit from "@icons/edit.svg?component";
@@ -40,7 +41,10 @@ const form = useForm({
 	cvc: null,
 });
 
-const buttonText = props.httpMethod === "post" ? "Pay" : "Update details";
+const buttonText =
+	props.httpMethod === "post"
+		? trans("form.payment.pay")
+		: trans("form.payment.update_details");
 
 const submitForm = () => {
 	const url =
@@ -74,7 +78,7 @@ const submitForm = () => {
 		<FloatingLabel
 			v-model:value="form.cardholder_name"
 			input-id="cardholder-name"
-			label-text="Name on card"
+			:label-text="trans('payment.cardholder_name')"
 			input-type="text"
 			input-autocomplete="cc-name"
 			is-required
@@ -84,7 +88,7 @@ const submitForm = () => {
 		<div>
 			<span
 				class="mb-2 flex flex-row space-x-2"
-				aria-label="We accept Visa, Mastercard and American Express."
+				:aria-label="trans('form.payment.accepted_payment_methods')"
 			>
 				<img
 					v-for="(paymentMethod, index) in ['VISA', 'MASTERCARD', 'AMEX']"
@@ -99,7 +103,7 @@ const submitForm = () => {
 			<FloatingLabel
 				v-model:value="form.card_number"
 				input-id="card-number"
-				label-text="Card number"
+				:label-text="trans('payment.card_number')"
 				input-type="number"
 				input-autocomplete="cc-number"
 				input-mode="numeric"
@@ -116,7 +120,9 @@ const submitForm = () => {
 			<div
 				class="flex flex-col rounded-lg border border-skin-border bg-skin-white px-4 py-1 sm:w-2/5"
 			>
-				<label class="mt-1 text-xs text-skin-muted">Expiration date</label>
+				<label class="mt-1 text-xs text-skin-muted">
+					{{ trans("payment.expiration_date") }}
+				</label>
 				<div class="flex w-full justify-start space-x-2">
 					<input
 						id="expiryMonth"
@@ -150,7 +156,7 @@ const submitForm = () => {
 					v-if="form.errors.expiration_month || form.errors.expiration_year"
 					class="mt-2 text-sm text-skin-danger"
 				>
-					The expiry date is invalid
+					{{ trans("payment.expiration_date.invalid") }}
 				</p>
 			</div>
 
@@ -175,7 +181,7 @@ const submitForm = () => {
 				/>
 
 				<p class="text-sm text-skin-muted">
-					Last 3 digits on the back of the card
+					{{ trans("payment.cvc.explanation") }}
 				</p>
 			</div>
 		</div>

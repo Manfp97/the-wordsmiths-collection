@@ -1,6 +1,7 @@
 <script setup>
 // https://preline.co/docs/textarea.html#floating-label
 import { ref, watch, nextTick, onMounted } from "vue";
+import { trans } from "laravel-vue-i18n";
 
 const value = defineModel("value"); // eslint-disable-line
 
@@ -100,7 +101,7 @@ const autoGrow = () => {
 				v-else
 				class="text-skin-muted"
 			>
-				(optional)
+				{{ trans("components.forms.optional") }}
 			</span>
 		</label>
 

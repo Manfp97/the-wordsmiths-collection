@@ -1,4 +1,7 @@
 <script setup>
+import LocaleSwitcher from "@/Components/Common/LocaleSwitcher.vue";
+import { trans } from "laravel-vue-i18n";
+
 const socials = [
 	{
 		title: "GitHub profile",
@@ -48,14 +51,15 @@ const socials = [
 			</div>
 			<p className="mt-5 font-bold">The Wordsmith's Collection &copy; 2024</p>
 			<p>
-				<span>No tracking or ads</span> |
+				<span>{{ trans("component.footer.no_tracking_or_ads") }}</span> |
 				<Link
 					href="/terms-and-conditions"
 					class="underline hover:text-skin-link"
 				>
-					Terms and Conditions
+					{{ trans("common.noun.terms_and_conditions") }}
 				</Link>
 			</p>
+			<LocaleSwitcher />
 		</footer>
 	</div>
 </template>

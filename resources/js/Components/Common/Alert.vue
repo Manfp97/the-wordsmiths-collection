@@ -1,6 +1,7 @@
 <script setup>
 import { computed, watch } from "vue";
 import { usePage } from "@inertiajs/vue3";
+import { trans } from "laravel-vue-i18n";
 import useAlerts from "@/Composables/useAlerts";
 import IconX from "@icons/x.svg?component";
 import IconCheckCircleFilled from "@icons/check-circle-filled.svg?component";
@@ -47,16 +48,14 @@ watch(receivedAlert, (newVal) => {
 							aria-hidden="true"
 							fill="currentColor"
 						/>
-
 						<IconXCircleFilled
-							v-if="alert.type === 'danger'"
+							v-else-if="alert.type === 'danger'"
 							class="h-8 w-8 text-skin-danger"
 							aria-hidden="true"
 							fill="currentColor"
 						/>
-
 						<IconAlertCircleFilled
-							v-if="alert.type === 'warning'"
+							v-else-if="alert.type === 'warning'"
 							class="h-8 w-8 text-skin-warning"
 							aria-hidden="true"
 							fill="currentColor"
@@ -74,10 +73,9 @@ watch(receivedAlert, (newVal) => {
 							'hover:bg-skin-danger': alert.type === 'danger',
 						}"
 						:data-dismiss-target="`toast-${alert.type}-${index}`"
-						aria-label="Close"
+						:aria-label="trans('common.action.close')"
 						@click="removeAlert(alert.id, (isImmediate = true))"
 					>
-						<span class="sr-only">Close</span>
 						<IconX
 							class="h-6 w-6"
 							aria-hidden="true"

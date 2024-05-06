@@ -1,5 +1,6 @@
 <script setup>
-import IndexLayout from "@/Layouts/IndexLayout.vue";
+import { trans } from "laravel-vue-i18n";
+import BaseLayout from "@/Layouts/BaseLayout.vue";
 import AppHead from "@/Components/Common/AppHead.vue";
 import Nav from "@/Components/Common/Nav.vue";
 import AuthorCard from "@/Components/Author/AuthorCard.vue";
@@ -22,9 +23,9 @@ defineProps({
 </script>
 
 <template>
-	<IndexLayout>
+	<BaseLayout>
 		<template #appHead>
-			<AppHead title="Search" />
+			<AppHead :title="trans('common.action.search')" />
 		</template>
 
 		<template #nav>
@@ -34,7 +35,7 @@ defineProps({
 		<template #main>
 			<div class="space-y-9 px-4 md:px-6 lg:px-16">
 				<h2 class="index-title border-b border-skin-muted pb-4 font-bold">
-					Search results for "{{ query }}"
+					{{ trans("page.search.index.title", { query: query }) }}
 				</h2>
 
 				<details
@@ -42,7 +43,9 @@ defineProps({
 					class="space-y-3"
 					open
 				>
-					<summary class="index-title cursor-pointer">Authors</summary>
+					<summary class="index-title cursor-pointer">
+						{{ trans("authors") }}
+					</summary>
 					<div
 						class="mb-12 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 lg:gap-4 2xl:grid-cols-8"
 					>
@@ -59,7 +62,9 @@ defineProps({
 					class="space-y-3"
 					open
 				>
-					<summary class="index-title cursor-pointer">Books</summary>
+					<summary class="index-title cursor-pointer">
+						{{ trans("books") }}
+					</summary>
 					<div
 						class="mb-12 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 lg:gap-4 2xl:grid-cols-8"
 					>
@@ -72,5 +77,5 @@ defineProps({
 				</details>
 			</div>
 		</template>
-	</IndexLayout>
+	</BaseLayout>
 </template>

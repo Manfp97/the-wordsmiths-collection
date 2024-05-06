@@ -1,6 +1,7 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
 import { watch, computed } from "vue";
+import { trans } from "laravel-vue-i18n";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import FloatingTextarea from "@/Components/Forms/FloatingTextarea.vue";
 import IconPlus from "@icons/plus.svg?component";
@@ -52,7 +53,10 @@ watch(genreState, (newValue) => {
 	});
 });
 
-const buttonText = props.httpMethod === "post" ? "Add new genre" : "Edit genre";
+const buttonActionText =
+	props.httpMethod === "post"
+		? trans("common.action.add_new")
+		: trans("common.action.edit");
 
 const submitForm = () => {
 	const url =
@@ -79,7 +83,7 @@ const submitForm = () => {
 			<FloatingLabel
 				v-model:value="form.name"
 				:input-id="`${formId}-name`"
-				label-text="Name"
+				:label-text="trans('genre.name')"
 				input-type="text"
 				input-autocomplete="off"
 				is-required
@@ -90,7 +94,7 @@ const submitForm = () => {
 				v-model:value="form.description"
 				class="sm:col-span-2"
 				:textarea-id="`${formId}-description`"
-				label-text="Description"
+				:label-text="trans('common.noun.description')"
 				textarea-class="min-h-[13rem]"
 				is-required
 				:error-message="form.errors.description"
@@ -106,7 +110,7 @@ const submitForm = () => {
 				@click="form.reset()"
 			>
 				<IconReset class="mr-1 h-6 w-6" />
-				Reset form
+				{{ trans("common.action.reset") }}
 			</button>
 
 			<button
@@ -124,7 +128,7 @@ const submitForm = () => {
 					v-else-if="httpMethod === 'put'"
 					class="mr-1 h-6 w-6"
 				/>
-				{{ buttonText }}
+				{{ buttonActionText }} {{ trans("genre").toLowerCase() }}
 			</button>
 		</div>
 	</form>

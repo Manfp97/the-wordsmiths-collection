@@ -1,4 +1,6 @@
 <script setup>
+import { trans } from "laravel-vue-i18n";
+import BaseLayout from "@/Layouts/BaseLayout.vue";
 import AppHead from "@/Components/Common/AppHead.vue";
 import Nav from "@/Components/Common/Nav.vue";
 import Footer from "@/Components/Common/Footer.vue";
@@ -9,36 +11,38 @@ import Footer from "@/Components/Common/Footer.vue";
 		<AppHead />
 	</slot>
 
-	<slot name="nav">
-		<Nav />
-	</slot>
+	<BaseLayout>
+		<slot name="nav">
+			<Nav />
+		</slot>
 
-	<div class="page-container">
-		<div
-			class="hero relative h-[25vh] min-h-[10rem] w-full bg-cover bg-center pb-3 text-skin-primary md:min-h-[14rem]"
-		>
+		<div class="page-container">
 			<div
-				id="hero-content"
-				class="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 px-4 text-center"
+				class="hero relative h-[25vh] min-h-[10rem] w-full bg-cover bg-center pb-3 text-skin-primary md:min-h-[14rem]"
 			>
-				<h1
-					class="font-means-web text-4xl font-bold !leading-[1.175] sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl"
+				<div
+					id="hero-content"
+					class="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 px-4 text-center"
 				>
-					What are you going to read today?
-				</h1>
+					<h1
+						class="font-means-web text-4xl font-bold !leading-[1.175] sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl"
+					>
+						{{ trans("layout.index.title") }}
+					</h1>
+				</div>
 			</div>
+
+			<main
+				class="space-y-12 py-10 sm:space-y-10 lg:space-y-14 xl:py-12 2xl:py-16"
+			>
+				<slot name="main" />
+			</main>
+
+			<Footer />
 		</div>
 
-		<main
-			class="space-y-12 py-10 sm:space-y-10 lg:space-y-14 xl:py-12 2xl:py-16"
-		>
-			<slot name="main" />
-		</main>
-
-		<Footer />
-	</div>
-
-	<slot name="modals" />
+		<slot name="modals" />
+	</BaseLayout>
 </template>
 
 <style scoped>

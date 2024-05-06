@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import { getFormattedDate } from "@/Helpers/stringHelper.js";
+import { trans } from "laravel-vue-i18n";
 import IconTrash from "@icons/trash.svg?component";
 import IconEdit from "@icons/edit.svg?component";
 
@@ -53,7 +54,7 @@ const formattedEndDate = getFormattedDate(props.user.subscription?.end_date);
 					'bg-skin-warning-light': !status,
 				}"
 			>
-				{{ status ?? "Not verified" }}
+				{{ status ?? trans("user.status.not_verified") }}
 			</span>
 		</td>
 
@@ -67,7 +68,7 @@ const formattedEndDate = getFormattedDate(props.user.subscription?.end_date);
 				@click="emit('delete')"
 			>
 				<IconTrash class="mr-1 w-5" />
-				Delete
+				{{ trans("common.action.delete") }}
 			</button>
 
 			<button
@@ -75,7 +76,7 @@ const formattedEndDate = getFormattedDate(props.user.subscription?.end_date);
 				@click="emit('edit')"
 			>
 				<IconEdit class="mr-1 w-5" />
-				Edit
+				{{ trans("common.action.edit") }}
 			</button>
 		</td>
 	</tr>

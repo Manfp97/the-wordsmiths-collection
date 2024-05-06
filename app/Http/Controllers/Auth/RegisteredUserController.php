@@ -28,7 +28,7 @@ class RegisteredUserController extends Controller
 		} else if (!$user->hasVerifiedEmail()) {
 			return redirect()->route('verification.notice');
 		} else if (!$user->creditCard) {
-			return redirect()->route('payment');
+			return redirect()->route('payment.show');
 		}
 
 		return redirect()->intended(RouteServiceProvider::HOME);

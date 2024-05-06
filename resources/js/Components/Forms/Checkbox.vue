@@ -36,7 +36,8 @@ defineProps({
 		/>
 		<label
 			:for="inputId"
-			:class="`ms-2 ${labelClass}`"
+			class="ms-2"
+			:class="labelClass"
 		>
 			<slot />
 			<span

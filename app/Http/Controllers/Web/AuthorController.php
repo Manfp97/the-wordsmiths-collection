@@ -98,7 +98,7 @@ class AuthorController extends Controller
 					->toMediaCollection(MediaCollectionEnum::AUTHOR_PORTRAITS);
 			}
 
-			return redirect("/author/$slug")->with(
+			return redirect()->route('author.show', [$author])->with(
 				'alert',
 				[
 					'type' => 'success',
@@ -123,7 +123,7 @@ class AuthorController extends Controller
 	{
 		Author::destroy($id);
 
-		return back()->with(
+		return redirect()->route('author.index')->with(
 			'alert',
 			[
 				'type'		=> 'success', // 'warning', 'danger'

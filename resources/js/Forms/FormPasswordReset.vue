@@ -1,5 +1,6 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
+import { trans } from "laravel-vue-i18n";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 
 const props = defineProps({
@@ -40,7 +41,7 @@ const submitForm = () => {
 		<FloatingLabel
 			v-model:value="form.email"
 			:input-id="`${formId}-email`"
-			label-text="Email"
+			:label-text="trans('common.noun.email')"
 			input-type="email"
 			input-autocomplete="username"
 			is-required
@@ -50,7 +51,7 @@ const submitForm = () => {
 		<FloatingLabel
 			v-model:value="form.password"
 			:input-id="`${formId}-password`"
-			label-text="Password"
+			:label-text="trans('common.noun.password')"
 			input-type="password"
 			input-autocomplete="new-password"
 			is-required
@@ -60,7 +61,7 @@ const submitForm = () => {
 		<FloatingLabel
 			v-model:value="form.password_confirmation"
 			:input-id="`${formId}-password-confirmation`"
-			label-text="Password confirmation"
+			:label-text="trans('common.noun.password_confirmation')"
 			input-type="password"
 			input-autocomplete="new-password"
 			is-required
@@ -74,7 +75,8 @@ const submitForm = () => {
 				:class="{ 'opacity-25': form.processing }"
 				:disabled="form.processing"
 			>
-				Reset password
+				{{ trans("common.action.reset") }}
+				{{ trans("common.noun.password").toLowerCase() }}
 			</button>
 		</div>
 	</form>

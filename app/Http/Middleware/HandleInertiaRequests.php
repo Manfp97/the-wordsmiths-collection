@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use App\Models\SubscriptionPlan;
+use Illuminate\Support\Facades\App;
 
 class HandleInertiaRequests extends Middleware
 {

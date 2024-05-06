@@ -1,6 +1,7 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
 import { ref, watch, computed } from "vue";
+import { trans } from "laravel-vue-i18n";
 import Datepicker from "@/Components/Forms/Datepicker.vue";
 import DragAndDrop from "@/Components/Forms/DragAndDrop.vue";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
@@ -69,8 +70,10 @@ watch(authorState, (newValue) => {
 	});
 });
 
-const buttonText =
-	props.httpMethod === "post" ? "Add new author" : "Edit author";
+const buttonActionText =
+	props.httpMethod === "post"
+		? trans("common.action.add_new")
+		: trans("common.action.edit");
 
 const submitForm = () => {
 	const url =
@@ -111,7 +114,7 @@ const submitForm = () => {
 			<FloatingLabel
 				v-model:value="form.first_name"
 				:input-id="`${formId}-first-name`"
-				label-text="First name"
+				:label-text="trans('author.first_name')"
 				input-type="text"
 				input-autocomplete="off"
 				is-required
@@ -120,7 +123,7 @@ const submitForm = () => {
 			<FloatingLabel
 				v-model:value="form.last_name"
 				:input-id="`${formId}-last-name`"
-				label-text="Last name"
+				:label-text="trans('author.last_name')"
 				input-type="text"
 				input-autocomplete="off"
 				:error-message="form.errors.last_name"
@@ -130,10 +133,10 @@ const submitForm = () => {
 				v-model:value="form.birth_date"
 				v-model:open="isBirthDatePickerOpen"
 				:input-id="`${formId}-birth-date`"
-				label-text="Birth date"
+				:label-text="trans('author.birth_date')"
 				is-required
 				:error-message="form.errors.birth_date"
-				placeholder="Select birth date"
+				:placeholder="trans('author.birth_date.placeholder')"
 				:enable-time-picker="false"
 				:year-range="[1, 2024]"
 				:max-date="new Date()"
@@ -146,9 +149,9 @@ const submitForm = () => {
 				v-model:value="form.death_date"
 				v-model:open="isDeathDatePickerOpen"
 				:input-id="`${formId}-death-date`"
-				label-text="Death date"
+				:label-text="trans('author.death_date')"
 				:error-message="form.errors.death_date"
-				placeholder="Select death date"
+				:placeholder="trans('author.death_date.placeholder')"
 				:enable-time-picker="false"
 				:year-range="[1, 2024]"
 				:max-date="new Date()"
@@ -162,7 +165,7 @@ const submitForm = () => {
 				v-model:value="form.description"
 				class="sm:col-span-2"
 				:textarea-id="`${formId}-description`"
-				label-text="Description"
+				:label-text="trans('common.noun.description')"
 				textarea-class="min-h-[7rem]"
 				is-required
 				:error-message="form.errors.description"
@@ -171,7 +174,7 @@ const submitForm = () => {
 			<DragAndDrop
 				v-model:value="form.portrait_file"
 				:input-id="`${formId}-portrait-file`"
-				label-text="Author portrait"
+				:label-text="trans('author.author_portrait')"
 				:max-file-bytes="2100000"
 				:supported-mime-types="['image/webp', 'image/png', 'image/jpeg']"
 				class="sm:col-span-2"
@@ -187,7 +190,7 @@ const submitForm = () => {
 				@click="form.reset()"
 			>
 				<IconReset class="mr-1 h-6 w-6" />
-				Reset form
+				{{ trans("reset") }}
 			</button>
 
 			<button
@@ -205,7 +208,7 @@ const submitForm = () => {
 					v-else-if="httpMethod === 'put'"
 					class="mr-1 h-6 w-6"
 				/>
-				{{ buttonText }}
+				{{ buttonActionText }} {{ trans("author").toLowerCase() }}
 			</button>
 		</div>
 	</form>

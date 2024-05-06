@@ -1,5 +1,6 @@
 <script setup>
 import { Head, usePage } from "@inertiajs/vue3";
+import { trans } from "laravel-vue-i18n";
 
 const props = defineProps({
 	title: {
@@ -10,8 +11,7 @@ const props = defineProps({
 	description: {
 		type: String,
 		required: false,
-		default:
-			"Start reading a curated library of the most relevant literary works on The Wordsmith's Collection.",
+		default: () => trans("common.page.description"),
 	},
 });
 

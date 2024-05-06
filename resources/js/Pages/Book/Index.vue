@@ -1,7 +1,8 @@
 <script setup>
-import axios from "axios";
 import { ref } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
+import { transChoice } from "laravel-vue-i18n";
+import axios from "axios";
 import IndexLayout from "@/Layouts/IndexLayout.vue";
 import BookCard from "@/Components/Book/BookCard.vue";
 
@@ -49,7 +50,9 @@ const { stop } = useIntersectionObserver(
 	<IndexLayout>
 		<template #main>
 			<div class="px-4 md:px-6 lg:px-16">
-				<h2 class="index-title mb-6 font-bold">{{ booksCount }} books</h2>
+				<h2 class="index-title mb-6 font-bold">
+					{{ transChoice("book.count", booksCount) }}
+				</h2>
 				<!-- same breakpoints as swiperBreakpoints from the Index page -->
 				<div
 					class="mb-12 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 lg:gap-4 2xl:grid-cols-8"

@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { useForm } from "@inertiajs/vue3";
 import { extractKeyValuesByPattern } from "@/Helpers/arrayHelper.js";
+import { trans } from "laravel-vue-i18n";
 import axios from "axios";
 import DragAndDrop from "@/Components/Forms/DragAndDrop.vue";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
@@ -94,7 +95,10 @@ const fetchGenres = async () => {
 	}
 };
 
-const buttonText = props.httpMethod === "post" ? "Add new book" : "Edit book";
+const buttonActionText =
+	props.httpMethod === "post"
+		? trans("common.action.add_new")
+		: trans("common.action.edit");
 
 const submitForm = () => {
 	const url = props.httpMethod === "post" ? "/book" : `/book/${props.book?.id}`;
@@ -136,7 +140,7 @@ const submitForm = () => {
 			<FloatingLabel
 				v-model:value="form.title"
 				:input-id="`${formId}-title`"
-				label-text="Title"
+				:label-text="trans('book.title')"
 				input-type="text"
 				input-autocomplete="off"
 				is-required
@@ -155,7 +159,7 @@ const submitForm = () => {
 			<FloatingLabelMultiSelect
 				v-model:value="form.authors_id"
 				:input-id="`${formId}-author`"
-				label-text="Author"
+				:label-text="trans('author')"
 				:options="authors"
 				is-required
 				:error-messages="
@@ -171,7 +175,7 @@ const submitForm = () => {
 			<FloatingLabelMultiSelect
 				v-model:value="form.genres_id"
 				:input-id="`${formId}-genre`"
-				label-text="Genre"
+				:label-text="trans('genre')"
 				:options="genres"
 				is-required
 				:error-messages="
@@ -188,7 +192,7 @@ const submitForm = () => {
 			<FloatingLabelSelect
 				v-model:value="form.language"
 				:select-id="`${formId}-language`"
-				label-text="Language"
+				:label-text="trans('common.noun.language')"
 				:options="[
 					{ id: 'English', name: 'English' },
 					{ id: 'Español', name: 'Español' },
@@ -199,7 +203,7 @@ const submitForm = () => {
 			<FloatingLabel
 				v-model:value="form.page_count"
 				:input-id="`${formId}-page-count`"
-				label-text="Page count"
+				:label-text="trans('book.page_count')"
 				input-type="number"
 				input-autocomplete="off"
 				is-required
@@ -210,7 +214,7 @@ const submitForm = () => {
 			<FloatingLabel
 				v-model:value="form.year"
 				:input-id="`${formId}-year`"
-				label-text="Year"
+				:label-text="trans('book.publishing_year')"
 				input-type="number"
 				input-autocomplete="off"
 				is-required
@@ -221,14 +225,14 @@ const submitForm = () => {
 				v-model:value="form.is_premium"
 				:input-id="`${formId}-is-premium`"
 			>
-				Is it for premium subscriptions?
+				{{ trans("book.is_premium") }}
 			</Checkbox>
 
 			<FloatingTextarea
 				v-model:value="form.description"
 				class="sm:col-span-2"
 				:textarea-id="`${formId}-description`"
-				label-text="Description"
+				:label-text="trans('common.noun.description')"
 				textarea-class="min-h-[7rem]"
 				is-required
 				:error-message="form.errors.description"
@@ -237,7 +241,7 @@ const submitForm = () => {
 			<DragAndDrop
 				v-model:value="form.book_file"
 				:input-id="`${formId}-book-file`"
-				label-text="Book file"
+				:label-text="trans('book.book_file')"
 				:max-file-bytes="4200000"
 				:supported-mime-types="['application/pdf']"
 				is-required
@@ -246,7 +250,7 @@ const submitForm = () => {
 			<DragAndDrop
 				v-model:value="form.cover_file"
 				:input-id="`${formId}-cover-file`"
-				label-text="Cover image"
+				:label-text="trans('book.cover_image')"
 				:max-file-bytes="2100000"
 				min-aspect-ratio-str="1/2"
 				max-aspect-ratio-str="7/10"
@@ -265,7 +269,7 @@ const submitForm = () => {
 				@click="form.reset()"
 			>
 				<IconReset class="mr-1 h-6 w-6" />
-				Reset form
+				{{ trans("common.action.reset") }}
 			</button>
 
 			<button
@@ -283,7 +287,7 @@ const submitForm = () => {
 					v-else-if="httpMethod === 'put'"
 					class="mr-1 h-6 w-6"
 				/>
-				{{ buttonText }}
+				{{ buttonActionText }} {{ trans("book").toLowerCase() }}
 			</button>
 		</div>
 	</form>

@@ -1,4 +1,6 @@
 <script setup>
+import { trans } from "laravel-vue-i18n";
+import BaseLayout from "@/Layouts/BaseLayout.vue";
 import AppHead from "@/Components/Common/AppHead.vue";
 import Nav from "@/Components/Common/Nav.vue";
 import SubscribeFeature from "@/Components/Subscribe/SubscribeFeature.vue";
@@ -9,42 +11,42 @@ import Footer from "@/Components/Common/Footer.vue";
 const commonPlanFeatures = [
 	{
 		isCheck: true,
-		text: "Write reviews",
+		text: trans("page.subscribe.common_plan_feature_1"),
 	},
 	{
 		isCheck: true,
-		text: "Read <span class='font-bold'>Basic</span> books",
+		text: trans("page.subscribe.common_plan_feature_2"),
 	},
 ];
 
 const planBasicFeatures = commonPlanFeatures.concat([
 	{
 		isCheck: false,
-		text: "Read <span class='font-bold'>Premium</span> books",
+		text: trans("page.subscribe.premium_plan_feature_1"),
 	},
 ]);
 
 const planPremiumFeatures = commonPlanFeatures.concat([
 	{
 		isCheck: true,
-		text: "Read <span class='font-bold'>Premium</span> books",
+		text: trans("page.subscribe.premium_plan_feature_1"),
 	},
 ]);
 
 const serviceFeatures = [
 	{
-		title: "Extensive curated library",
-		body: "<p>Access to a vast and curated library of the most important literary works in history. It is constantly updated with new additions and timeless classics to keep the content fresh and engaging.</p> <p><a href='/' class='underline hover:bg-skin-secondary-offset bg-skin-secondary'>Browse the library now</a>.</p>",
+		title: trans("page.subscribe.service_feature_1.title"),
+		body: trans("page.subscribe.service_feature_1.body"),
 		imagePath: "/images/subscribe/feature-1.webp",
 	},
 	{
-		title: "Explore community reviews",
-		body: "<p>Users can rate and provide feedback on books, helping others make informed decisions about their reading choices.</p>",
-		imagePath: "/images/subscribe/feature-2.webp",
+		title: trans("page.subscribe.service_feature_2.title"),
+		body: trans("page.subscribe.service_feature_2.body"),
+		imagePath: trans("page.subscribe.service_feature_2.image"),
 	},
 	{
-		title: "Read anywhere",
-		body: "<p>Read unlimited books on your phone, tablet, computer, and eBook.</p>",
+		title: trans("page.subscribe.service_feature_3.title"),
+		body: trans("page.subscribe.service_feature_3.body"),
 		imagePath: "/images/subscribe/feature-3.png",
 	},
 ];
@@ -52,165 +54,166 @@ const serviceFeatures = [
 const faqs = [
 	{
 		id: 0,
-		title: "What is The Wordsmith's Collection?",
-		body: "<p>The Wordsmith's Collection is a service that offers a wide and curated variety of literary works.</p><p>You can read as much as you want, whenever you want, without a single ad – all for one low monthly price. There's always something new to discover, and new books are added every week!</p>",
+		title: trans("faq.1.title"),
+		body: trans("faq.1.body"),
 	},
 	{
 		id: 1,
-		title: "How much does The Wordsmith's Collection cost?",
-		body: "<p>Plans range from 4.99€ to 6.99€ a month. No extra costs, no contracts. Read The Wordsmith's Collection on your smartphone, tablet, computer, or eBook, all for one fixed monthly fee. </p>",
+		title: trans("faq.2.title"),
+		body: trans("faq.2.body"),
 	},
 	{
 		id: 2,
-		title: "What books can I read?",
-		body: "<p>If you have a Basic subscription, you can read all the Basic as many times as you like. With a <strong>Premium</strong> subscription, you also have access to our curated catalog of <strong>Premium</strong> books.</p>",
+		title: trans("faq.3.title"),
+		body: trans("faq.3.body"),
 	},
 	{
 		id: 3,
-		title: "Where can I read?",
-		body: "<p>Read from anywhere. Sign in with your The Wordsmith's Collection account to read instantly on the web from your device, including smartphones, tablets, computers, and eBooks.</p>",
+		title: trans("faq.4.title"),
+		body: trans("faq.4.body"),
 	},
 	{
 		id: 4,
-		title: "How do I cancel?",
-		body: "<p>The Wordsmith's Collection is flexible. There are no onerous contracts or commitments. You can easily cancel your account online with two clicks in your profile. There are no cancellation fees – start or stop your account at any time.</p>",
+		title: trans("faq.5.title"),
+		body: trans("faq.5.title"),
 	},
 ];
 </script>
 
 <template>
 	<AppHead
-		title="Subscribe"
-		description="Subscribe to The Wordsmith's Collection to read books directly on your computer, phone, tablet, eBook, and more."
+		:title="trans('page.subscribe.title')"
+		:description="trans('page.subscribe.description')"
 	/>
 
-	<Nav />
+	<BaseLayout>
+		<Nav />
 
-	<div class="min-h-screen">
-		<section class="hero bg-cover bg-center pb-16 pt-32">
-			<div class="px-8 text-center">
-				<header class="text-skin-primary">
-					<h1
-						class="font-means-web text-4xl font-bold !leading-[1.175] sm:text-6xl 2xl:text-7xl"
+		<div class="min-h-screen">
+			<section class="hero bg-cover bg-center pb-16 pt-32">
+				<div class="px-8 text-center">
+					<header class="text-skin-primary">
+						<!-- eslint-disable vue/no-v-html -->
+						<h1
+							class="font-means-web text-4xl font-bold !leading-[1.175] sm:text-6xl 2xl:text-7xl"
+							v-html="trans('page.subscribe.header')"
+						/>
+						<h3 class="my-2 text-lg sm:my-5 sm:text-2xl">
+							{{ trans("page.subscribe.subheader") }}
+						</h3>
+					</header>
+
+					<div
+						class="mx-auto my-10 max-w-5xl text-skin-text sm:grid sm:grid-cols-2 sm:gap-6 md:gap-10 lg:gap-16 max-sm:space-y-10"
 					>
-						Choose the plan that best suits
-						<span class="text-skin-secondary">your needs</span>
-					</h1>
-					<h3 class="my-2 text-lg sm:my-5 sm:text-2xl">
-						Explore, read, and relive literary classics anywhere at any time.
-					</h3>
-				</header>
-
-				<div
-					class="mx-auto my-10 max-w-5xl text-skin-text sm:grid sm:grid-cols-2 sm:gap-6 md:gap-10 lg:gap-16 max-sm:space-y-10"
-				>
-					<PricingCard
-						title="Basic"
-						description="Unlock a world of knowledge with our Basic plan, which gives you access to a vast library of essential literary works."
-						price-int-part="4"
-						price-decimal-part="99"
-						currency="€"
-						:features="planBasicFeatures"
-						:should-highlight="false"
-						class="w-full"
-					>
-						<template #button>
-							<Link
-								href="/subscription-plan/2"
-								method="post"
-								as="button"
-								class="button py-2.5 font-bold capitalize"
-							>
-								Continue
-							</Link>
-						</template>
-					</PricingCard>
-
-					<PricingCard
-						title="Premium"
-						description="Exclusive access to a curated collection of Premium books that offer unparalleled depth of knowledge and entertainment."
-						price-int-part="6"
-						price-decimal-part="99"
-						currency="€"
-						:features="planPremiumFeatures"
-						should-highlight
-						class="w-full"
-					>
-						<template #button>
-							<Link
-								href="/subscription-plan/1"
-								method="post"
-								as="button"
-								class="button py-2.5 font-bold capitalize"
-							>
-								Continue
-							</Link>
-						</template>
-					</PricingCard>
-				</div>
-
-				<p class="text-sm text-skin-primary md:text-base">Cancel anytime</p>
-			</div>
-		</section>
-
-		<main>
-			<div class="container my-2 sm:my-10 md:mb-20 md:mt-8 lg:my-16 xl:my-24">
-				<div class="mx-4">
-					<SubscribeFeature
-						v-for="serviceFeature in serviceFeatures"
-						:key="serviceFeature"
-						:title="serviceFeature.title"
-						:body="serviceFeature.body"
-						:image-path="serviceFeature.imagePath"
-						class="py-8 sm:py-12 md:py-16"
-					/>
-				</div>
-			</div>
-
-			<section
-				class="discover__section grid h-[36rem] place-items-center sm:h-[40rem]"
-			>
-				<div
-					class="mx-8 grid h-[21.125rem] place-items-center rounded-lg bg-skin-tertiary px-8 text-center lg:w-[48rem]"
-				>
-					<div class="lg:max-w-lg">
-						<p
-							class="font-means-web text-3xl leading-tight text-skin-primary sm:text-4xl"
+						<PricingCard
+							:title="trans('pricing_card.basic.title')"
+							:description="trans('pricing_card.basic.description')"
+							price-int-part="4"
+							price-decimal-part="99"
+							currency="€"
+							:features="planBasicFeatures"
+							:should-highlight="false"
+							class="w-full"
 						>
-							Discover now the book that will change your life for only
-							<strong>4,99€</strong>
-						</p>
-						<a
-							href="#"
-							class="button button-subscribe mt-6"
+							<template #button>
+								<Link
+									href="/subscription-plan/2"
+									method="post"
+									as="button"
+									class="button py-2.5 font-bold capitalize"
+								>
+									{{ trans("common.action.continue") }}
+								</Link>
+							</template>
+						</PricingCard>
+
+						<PricingCard
+							:title="trans('pricing_card.premium.title')"
+							:description="trans('pricing_card.premium.description')"
+							price-int-part="6"
+							price-decimal-part="99"
+							currency="€"
+							:features="planPremiumFeatures"
+							should-highlight
+							class="w-full"
 						>
-							Subscribe Now
-						</a>
+							<template #button>
+								<Link
+									href="/subscription-plan/1"
+									method="post"
+									as="button"
+									class="button py-2.5 font-bold capitalize"
+								>
+									{{ trans("common.action.continue") }}
+								</Link>
+							</template>
+						</PricingCard>
 					</div>
+
+					<p class="text-sm text-skin-primary md:text-base">
+						{{ trans("page.subscribe.cancel_anytime") }}
+					</p>
 				</div>
 			</section>
 
-			<div class="container mb-16 mt-3 lg:mb-20">
-				<div class="mx-8">
-					<SubscribeFaqs :faqs="faqs" />
-					<section class="mx-auto mt-5 max-w-3xl text-center">
-						<h3 class="section-title !leading-[1.175]">
-							Ready to read?<br />
-							Start your membership now
-						</h3>
-						<a
-							href="#"
-							class="button button-subscribe mt-6"
-						>
-							Subscribe Now
-						</a>
-					</section>
+			<main>
+				<div class="container my-2 sm:my-10 md:mb-20 md:mt-8 lg:my-16 xl:my-24">
+					<div class="mx-4">
+						<SubscribeFeature
+							v-for="serviceFeature in serviceFeatures"
+							:key="serviceFeature"
+							:title="serviceFeature.title"
+							:body="serviceFeature.body"
+							:image-path="serviceFeature.imagePath"
+							class="py-8 sm:py-12 md:py-16"
+						/>
+					</div>
 				</div>
-			</div>
-		</main>
 
-		<Footer />
-	</div>
+				<section
+					class="discover__section grid h-[36rem] place-items-center sm:h-[40rem]"
+				>
+					<div
+						class="mx-8 grid h-[21.125rem] place-items-center rounded-lg bg-skin-tertiary px-8 text-center lg:w-[48rem]"
+					>
+						<div class="lg:max-w-lg">
+							<p
+								class="font-means-web text-3xl leading-tight text-skin-primary sm:text-4xl"
+								v-html="trans('page.subscribe.discover_now')"
+							/>
+							<a
+								href="#"
+								class="button button-subscribe mt-6"
+							>
+								{{ trans("page.subscribe.subscribe_now") }}
+							</a>
+						</div>
+					</div>
+				</section>
+
+				<div class="container mb-16 mt-3 lg:mb-20">
+					<div class="mx-8">
+						<SubscribeFaqs :faqs="faqs" />
+						<section class="mx-auto mt-5 max-w-3xl text-center">
+							<h3
+								class="section-title !leading-[1.175]"
+								v-html="trans('page.subscribe.start_now')"
+							/>
+							<a
+								href="#"
+								class="button button-subscribe mt-6"
+							>
+								{{ trans("page.subscribe.subscribe_now") }}
+							</a>
+						</section>
+					</div>
+				</div>
+			</main>
+
+			<Footer />
+		</div>
+	</BaseLayout>
 </template>
 
 <style scoped>

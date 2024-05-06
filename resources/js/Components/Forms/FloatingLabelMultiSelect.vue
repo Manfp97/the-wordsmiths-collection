@@ -1,7 +1,7 @@
 <script setup>
 // Taken and modified from: https://flowbite.com/docs/components/dropdowns/#dropdown-with-search
-
 import { ref, computed, onMounted, onUnmounted, watch } from "vue";
+import { trans } from "laravel-vue-i18n";
 import IconSearch from "@icons/search.svg?component";
 import IconTrash from "@icons/trash.svg?component";
 
@@ -196,7 +196,7 @@ const handleCheckboxChange = (event) => {
 						v-else
 						class="text-skin-muted"
 					>
-						(optional)
+						{{ trans("components.forms.optional") }}
 					</span>
 				</label>
 
@@ -263,7 +263,9 @@ const handleCheckboxChange = (event) => {
 						v-model="searchText"
 						type="text"
 						class="block w-full rounded-lg border border-skin-border bg-skin-primary-offset p-2 ps-10 text-sm focus:border-skin-secondary focus:ring-skin-secondary"
-						:placeholder="`Search ${labelText.toLowerCase()}...`"
+						:placeholder="`${trans(
+							'common.action.search'
+						)} ${labelText.toLowerCase()}...`"
 					/>
 				</div>
 			</div>

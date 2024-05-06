@@ -1,8 +1,9 @@
 <script setup>
-import axios from "axios";
-import { usePage } from "@inertiajs/vue3";
 import { ref, computed } from "vue";
+import { usePage } from "@inertiajs/vue3";
+import { trans } from "laravel-vue-i18n";
 import { useIntersectionObserver } from "@vueuse/core";
+import axios from "axios";
 import IndexLayout from "@/Layouts/IndexLayout.vue";
 import SwiperSection from "@/Components/Swiper/SwiperSection.vue";
 import BookCard from "@/Components/Book/BookCard.vue";
@@ -139,15 +140,12 @@ const askToEditGenre = (genre) => {
 			<ModalContainer
 				v-if="isAdmin"
 				modal-id="modal-delete-genre"
-				modal-title="Delete genre"
+				:modal-title="trans('modal.genre.delete.title')"
 				:show="isDeleting"
 				@close="isDeleting = false"
 			>
 				<div class="space-y-2">
-					<p>
-						Are you sure you want to delete the {{ selectedGenre?.name }}
-						genre? This action cannot be undone.
-					</p>
+					<p>{{ trans("modal.genre.delete.message") }}</p>
 				</div>
 
 				<div class="mt-6 flex justify-end space-x-4">
@@ -155,7 +153,7 @@ const askToEditGenre = (genre) => {
 						class="button !bg-skin-muted text-skin-white"
 						@click="isDeleting = false"
 					>
-						No
+						{{ trans("modal.option.no") }}
 					</button>
 
 					<Link
@@ -167,7 +165,7 @@ const askToEditGenre = (genre) => {
 						preserve-scroll
 						@click="isDeleting = false"
 					>
-						Yes
+						{{ trans("modal.option.yes") }}
 					</Link>
 				</div>
 			</ModalContainer>
@@ -175,7 +173,7 @@ const askToEditGenre = (genre) => {
 			<ModalContainer
 				v-if="isAdmin"
 				modal-id="modal-edit-genre"
-				modal-title="Edit genre"
+				:modal-title="trans('modal.genre.edit.title')"
 				:show="isEditing"
 				@close="isEditing = false"
 			>

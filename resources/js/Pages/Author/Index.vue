@@ -1,8 +1,9 @@
 <script setup>
-import axios from "axios";
-import { usePage } from "@inertiajs/vue3";
 import { ref, computed } from "vue";
+import { usePage } from "@inertiajs/vue3";
+import { trans } from "laravel-vue-i18n";
 import { useIntersectionObserver } from "@vueuse/core";
+import axios from "axios";
 import IndexLayout from "@//Layouts/IndexLayout.vue";
 import SwiperSection from "@/Components/Swiper/SwiperSection.vue";
 import BookCard from "@/Components/Book/BookCard.vue";
@@ -134,16 +135,12 @@ const askToEditAuthor = (author) => {
 			<ModalContainer
 				v-if="isAdmin"
 				modal-id="modal-delete-author"
-				modal-title="Delete author"
+				:modal-title="trans('modal.author.delete.title')"
 				:show="isDeleting"
 				@close="isDeleting = false"
 			>
 				<div class="space-y-2">
-					<p>
-						Are you sure you want to delete the author
-						{{ selectedAuthor?.first_name }} {{ selectedAuthor?.last_name }}?
-						This action cannot be undone.
-					</p>
+					<p>{{ trans("modal.author.delete.message") }}</p>
 				</div>
 
 				<div class="mt-6 flex justify-end space-x-4">
@@ -151,7 +148,7 @@ const askToEditAuthor = (author) => {
 						class="button !bg-skin-muted text-skin-white"
 						@click="isDeleting = false"
 					>
-						No
+						{{ trans("modal.option.no") }}
 					</button>
 
 					<Link
@@ -163,7 +160,7 @@ const askToEditAuthor = (author) => {
 						preserve-scroll
 						@click="isDeleting = false"
 					>
-						Yes
+						{{ trans("modal.option.yes") }}
 					</Link>
 				</div>
 			</ModalContainer>
@@ -171,7 +168,7 @@ const askToEditAuthor = (author) => {
 			<ModalContainer
 				v-if="isAdmin"
 				modal-id="modal-edit-author"
-				modal-title="Edit author"
+				:modal-title="trans('modal.author.edit.title')"
 				:show="isEditing"
 				@close="isEditing = false"
 			>

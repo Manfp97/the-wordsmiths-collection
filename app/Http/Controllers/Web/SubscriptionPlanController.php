@@ -26,6 +26,6 @@ class SubscriptionPlanController extends Controller
 
 		$request->session()->put('selected_subscription_plan_id', $id);
 
-		return redirect()->route("register");
+		return redirect()->route("register.create");
 	}
 }

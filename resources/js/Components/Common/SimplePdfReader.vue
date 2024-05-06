@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, ref } from "vue";
+import { trans } from "laravel-vue-i18n";
 import * as pdfjsLib from "pdfjs-dist/build/pdf";
 import * as pdfjsWorker from "pdfjs-dist/build/pdf.worker.mjs";
 import IconXCircleFilled from "@icons/x-circle-filled.svg?component";
@@ -192,7 +193,7 @@ const onWheel = (event) => {
 				ref="$canvas"
 				class="m-auto"
 			>
-				Your browser does not support the HTML canvas tag
+				{{ trans("pdf_reader.unsupported_canvas") }}
 			</canvas>
 			<div
 				ref="$textLayerDiv"
@@ -212,7 +213,7 @@ const onWheel = (event) => {
 							aria-hidden="true"
 						/>
 					</button>
-					<span class="sr-only">Close reader</span>
+					<span class="sr-only">{{ trans("common.action.search") }}</span>
 				</li>
 
 				<li class="flex items-center justify-center space-x-2">
@@ -224,7 +225,7 @@ const onWheel = (event) => {
 							class="icon-caret-size"
 							aria-hidden="true"
 						/>
-						<span class="sr-only">Previous page</span>
+						<span class="sr-only">{{ trans("pdf_reader.previous_page") }}</span>
 					</button>
 
 					<div>
@@ -247,7 +248,7 @@ const onWheel = (event) => {
 							class="icon-caret-size"
 							aria-hidden="true"
 						/>
-						<span class="sr-only">Next page</span>
+						<span class="sr-only">{{ trans("pdf_reader.next_page") }}</span>
 					</button>
 				</li>
 

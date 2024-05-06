@@ -1,5 +1,6 @@
 <script setup>
 // https://preline.co/docs/input.html#floating-label
+import { trans } from "laravel-vue-i18n";
 
 const value = defineModel("value"); // eslint-disable-line
 
@@ -11,6 +12,11 @@ defineProps({
 	labelText: {
 		type: String,
 		required: true,
+	},
+	labelClass: {
+		type: String,
+		required: false,
+		default: "capitalize",
 	},
 	inputType: {
 		type: String,
@@ -100,7 +106,7 @@ defineProps({
 					v-else
 					class="text-skin-muted"
 				>
-					(optional)
+					{{ trans("components.forms.optional") }}
 				</span>
 			</label>
 		</div>

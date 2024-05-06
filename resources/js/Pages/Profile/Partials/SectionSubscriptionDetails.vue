@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
+import { trans } from "laravel-vue-i18n";
 import ModalContainer from "@/Components/Modals/ModalContainer.vue";
 
 const props = defineProps({
@@ -23,6 +24,9 @@ const isSubscriptionActive = computed(
 	() => props.subscription.status === "active"
 );
 
+const fromBasicToPremium = computed(() => props.otherSubscriptionPlan.id == 1);
+const fromPremiumToBasic = computed(() => props.otherSubscriptionPlan.id == 2);
+
 const startDate = new Date(props.subscription.start_date);
 const formattedStartDate = startDate.toLocaleDateString();
 
@@ -33,23 +37,40 @@ const formattedEndDate = endDate.toLocaleDateString();
 <template>
 	<section class="space-y-6">
 		<header>
-			<h2 class="font-means-web text-2xl font-bold">Subscription details</h2>
+			<h2 class="font-means-web text-2xl font-bold">
+				{{ trans("page.profile.subscription_details.title") }}
+			</h2>
 		</header>
 
 		<div>
-			<h3 class="text-lg">{{ subscription.plan.name }} subscription plan</h3>
+			<h3 class="text-lg">
+				{{
+					trans("page.profile.subscription_details.current_plan", {
+						plan: subscription.plan.name,
+					})
+				}}
+			</h3>
 			<p>
-				<span class="font-bold">Status</span>:
+				<span class="font-bold">{{ trans("user.status") }}:</span>{{}}
 				<span class="capitalize">{{ subscription.status }}</span>
 			</p>
 			<p>
-				<span class="font-bold">Active since</span>: {{ formattedStartDate }}
+				<span class="font-bold">
+					{{ trans("page.profile.subscription_details.active_since") }}:
+				</span>
+				{{ formattedStartDate }}
 			</p>
 			<p v-if="isSubscriptionCanceled">
-				<span class="font-bold">Active until</span>: {{ formattedEndDate }}
+				<span class="font-bold">
+					{{ trans("page.profile.subscription_details.active_until") }}:
+				</span>
+				{{ formattedEndDate }}
 			</p>
 			<p v-if="isSubscriptionActive">
-				<span class="font-bold">Next payment date</span>: {{ formattedEndDate }}
+				<span class="font-bold">
+					{{ trans("page.profile.subscription_details.next_payment_date") }}:
+				</span>
+				{{ formattedEndDate }}
 			</p>
 		</div>
 
@@ -59,7 +80,7 @@ const formattedEndDate = endDate.toLocaleDateString();
 				class="button"
 				@click="isChangePlanModalOpen = true"
 			>
-				Change subscription plan
+				{{ trans("page.profile.subscription_details.change_plan") }}
 			</button>
 
 			<Link
@@ -70,7 +91,7 @@ const formattedEndDate = endDate.toLocaleDateString();
 				class="button !bg-skin-success text-skin-white"
 				preserve-scroll
 			>
-				Reactivate subscription
+				{{ trans("page.profile.subscription_details.reactivate_subscription") }}
 			</Link>
 
 			<button
@@ -78,27 +99,25 @@ const formattedEndDate = endDate.toLocaleDateString();
 				class="button !bg-skin-danger text-skin-white"
 				@click="isCancelSubscriptionModalOpen = true"
 			>
-				Cancel subscription
+				{{ trans("page.profile.subscription_details.cancel_subscription") }}
 			</button>
 		</div>
 
 		<ModalContainer
 			v-if="isSubscriptionActive"
 			modal-id="modal-cancel-subscription"
-			modal-title="Cancel subscription"
+			:modal-title="trans('modal.subscription.cancel.title')"
 			:show="isCancelSubscriptionModalOpen"
 			@close="isCancelSubscriptionModalOpen = false"
 		>
 			<div class="space-y-2">
 				<p>
-					Your subscription will be canceled on {{ formattedEndDate }}. Until
-					then, you can keep enjoying The Wordsmith's Collection.
+					{{
+						trans("modal.subscription.cancel.p1", { date: formattedEndDate })
+					}}
 				</p>
-				<p>
-					You can reactivate your The Wordsmith's Collection account at any time
-					to keep reading.
-				</p>
-				<p>Do you want to cancel your subscription?</p>
+				<p>{{ trans("modal.subscription.cancel.p2") }}</p>
+				<p>{{ trans("modal.subscription.cancel.p3") }}</p>
 			</div>
 
 			<div class="mt-6 flex justify-end space-x-4">
@@ -106,7 +125,7 @@ const formattedEndDate = endDate.toLocaleDateString();
 					class="button !bg-skin-muted text-skin-white"
 					@click="isCancelSubscriptionModalOpen = false"
 				>
-					No
+					{{ trans("modal.option.no") }}
 				</button>
 
 				<Link
@@ -117,53 +136,63 @@ const formattedEndDate = endDate.toLocaleDateString();
 					preserve-scroll
 					@click="isCancelSubscriptionModalOpen = false"
 				>
-					Yes
+					{{ trans("modal.option.yes") }}
 				</Link>
 			</div>
 		</ModalContainer>
 
 		<ModalContainer
 			v-if="isSubscriptionActive"
-			modal-id="modal-cancel-subscription"
-			modal-title="Change subscription plan"
+			modal-id="modal-change-subscription"
+			:modal-title="trans('modal.subscription.change.title')"
 			:show="isChangePlanModalOpen"
 			@close="isChangePlanModalOpen = false"
 		>
 			<div>
 				<div class="rounded-t-md border-b border-skin-border bg-skin-white p-3">
-					<p class="mb-2 text-sm font-bold uppercase">Current plan</p>
+					<p class="mb-2 text-sm font-bold uppercase">
+						{{ trans("modal.subscription.change.current_plan") }}
+					</p>
 					<p>
 						{{ subscription.plan.name }}: {{ subscription.plan.price }}
-						{{ subscription.plan.currency }}/month
+						{{ subscription.plan.currency }}
+						{{ trans("modal.subscription.change.month") }}
 					</p>
 				</div>
 
 				<div class="rounded-b-md bg-skin-white p-3">
-					<p class="mb-2 text-sm font-bold uppercase">New plan</p>
+					<p class="mb-2 text-sm font-bold uppercase">
+						{{ trans("modal.subscription.change.new_plan") }}
+					</p>
 					<p>
 						{{ otherSubscriptionPlan.name }}:
 						{{ otherSubscriptionPlan.price }}
-						{{ otherSubscriptionPlan.currency }}/month
+						{{ otherSubscriptionPlan.currency }}
+						{{ trans("modal.subscription.change.month") }}
 					</p>
 				</div>
 
 				<div class="mt-4 space-y-2">
 					<p>
-						Your new plan starts now. You'll pay
-						{{ otherSubscriptionPlan.price }}
-						{{ otherSubscriptionPlan.currency }} starting
-						{{ formattedEndDate }}.
+						{{
+							trans("modal.subscription.change.your_new_plan_starts_now", {
+								price: otherSubscriptionPlan.price,
+								currency: otherSubscriptionPlan.currency,
+								date: formattedEndDate,
+							})
+						}}
 					</p>
 
-					<p>
-						You agree that your
-						<strong>
-							The Wordsmith's Collection membership will continue and that we
-							will change the updated monthly fee until you cancel. You may
-							cancel at any time to avoid future changes. To cancel, close this
-							modal and click on "Cancel subscription" on this page.
-						</strong>
+					<p v-if="fromBasicToPremium">
+						{{ trans("modal.subscription.change.from_basic_to_premium") }}
 					</p>
+					<p v-if="fromPremiumToBasic">
+						{{ trans("modal.subscription.change.from_premium_to_basic") }}
+					</p>
+
+					<!-- eslint-disable vue/no-v-html  -->
+					<p v-html="trans('modal.subscription.change.agreement')" />
+					<!-- eslint-enable -->
 				</div>
 			</div>
 
@@ -172,7 +201,7 @@ const formattedEndDate = endDate.toLocaleDateString();
 					class="button !bg-skin-muted text-skin-white"
 					@click="isChangePlanModalOpen = false"
 				>
-					Cancel
+					{{ trans("common.action.cancel") }}
 				</button>
 
 				<Link
@@ -183,7 +212,7 @@ const formattedEndDate = endDate.toLocaleDateString();
 					preserve-scroll
 					@click="isChangePlanModalOpen = false"
 				>
-					Confirm change
+					{{ trans("common.action.confirm") }}
 				</Link>
 			</div>
 		</ModalContainer>

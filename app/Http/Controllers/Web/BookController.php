@@ -156,7 +156,7 @@ class BookController extends Controller
 					->toMediaCollection(MediaCollectionEnum::BOOK_COVERS);
 			}
 
-			return redirect("/book/$slug")->with(
+			return redirect()->route('book.show', [$book])->with(
 				'alert',
 				[
 					'type'		=> 'success',

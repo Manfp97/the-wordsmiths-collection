@@ -2,6 +2,7 @@
 import { ref, onMounted, computed } from "vue";
 import { initFlowbite } from "flowbite";
 import { usePage, router } from "@inertiajs/vue3";
+import { trans } from "laravel-vue-i18n";
 import Logo from "@/Components/Common/Logo.vue";
 import InputWithIcon from "@/Components/Forms/InputWithIcon.vue";
 import ModalAddContent from "@/Components/Modals/ModalAddContent.vue";
@@ -90,7 +91,9 @@ const isAdmin = user.value?.role_id === 1;
 					data-dropdown-toggle="user-dropdown"
 					data-dropdown-placement="bottom"
 				>
-					<span class="sr-only">Open user menu</span>
+					<span class="sr-only">{{
+						trans("component.nav.open_user_menu")
+					}}</span>
 					<IconUserCircle
 						class="h-10 w-10 rounded-full"
 						fill="none"
@@ -106,13 +109,13 @@ const isAdmin = user.value?.role_id === 1;
 						href="/subscribe"
 						class="flex min-w-[2rem] items-center justify-center rounded-lg bg-skin-secondary px-3 text-sm font-bold uppercase text-skin-text hover:bg-skin-secondary-offset"
 					>
-						Subscribe
+						{{ trans("common.action.subscribe") }}
 					</Link>
 					<Link
 						href="/login"
 						class="flex min-w-[2rem] items-center justify-center rounded-lg border-2 border-skin-white px-3 text-sm font-bold uppercase text-skin-white hover:border-skin-border"
 					>
-						Log in
+						{{ trans("common.action.log_in") }}
 					</Link>
 				</div>
 
@@ -130,7 +133,7 @@ const isAdmin = user.value?.role_id === 1;
 						aria-hidden="true"
 						fill="none"
 					/>
-					<span class="sr-only">Search</span>
+					<span class="sr-only">{{ trans("common.action.search") }}</span>
 				</button>
 
 				<!-- Search input -->
@@ -138,8 +141,8 @@ const isAdmin = user.value?.role_id === 1;
 					v-model:value="search"
 					input-type="text"
 					input-autocomplete="off"
-					input-placeholder="Search..."
-					icon-aria-label="Search"
+					:input-placeholder="`${trans('common.action.search')}...`"
+					:icon-aria-label="trans('common.action.search')"
 					class="hidden md:!mr-4 md:block"
 					@enter="performSearch"
 				>
@@ -173,7 +176,7 @@ const isAdmin = user.value?.role_id === 1;
 								href="/profile"
 								class="block px-4 py-2 text-sm text-skin-text hover:bg-skin-secondary-offset"
 							>
-								Profile
+								{{ trans("common.noun.profile") }}
 							</Link>
 						</li>
 						<li v-if="isAdmin">
@@ -182,7 +185,7 @@ const isAdmin = user.value?.role_id === 1;
 								type="button"
 								@click="isAddingContent = true"
 							>
-								Add content
+								{{ trans("component.nav.add_content") }}
 							</button>
 						</li>
 						<li v-if="isAdmin">
@@ -191,7 +194,7 @@ const isAdmin = user.value?.role_id === 1;
 								as="button"
 								class="block w-full px-4 py-2 text-left text-sm text-skin-text hover:bg-skin-secondary-offset"
 							>
-								Users
+								{{ trans("users") }}
 							</Link>
 						</li>
 						<li>
@@ -201,7 +204,7 @@ const isAdmin = user.value?.role_id === 1;
 								as="button"
 								class="block w-full px-4 py-2 text-left text-sm text-skin-danger hover:bg-skin-secondary-offset"
 							>
-								Log out
+								{{ trans("common.action.log_out") }}
 							</Link>
 						</li>
 					</ul>
@@ -216,7 +219,9 @@ const isAdmin = user.value?.role_id === 1;
 					aria-controls="navbar-user"
 					aria-expanded="false"
 				>
-					<span class="sr-only">Open main menu</span>
+					<span class="sr-only">{{
+						trans("component.nav.open_main_menu")
+					}}</span>
 					<IconMenu
 						class="h-5 w-5"
 						aria-hidden="true"
@@ -233,8 +238,8 @@ const isAdmin = user.value?.role_id === 1;
 					v-model:value="search"
 					input-type="text"
 					input-autocomplete="off"
-					input-placeholder="Search..."
-					icon-aria-label="Search"
+					:input-placeholder="`${trans('common.action.search')}...`"
+					:icon-aria-label="trans('common.action.search')"
 					class="mt-3 md:hidden"
 					@enter="performSearchFromHamburgerMenu"
 				>
@@ -254,7 +259,7 @@ const isAdmin = user.value?.role_id === 1;
 							class="block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-skin-transparent md:hover:underline"
 							:class="{ 'active-link': usePage().component === 'Index' }"
 						>
-							Genres
+							{{ trans("genres") }}
 						</Link>
 					</li>
 					<li>
@@ -263,7 +268,7 @@ const isAdmin = user.value?.role_id === 1;
 							class="block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-skin-transparent md:hover:underline"
 							:class="{ 'active-link': usePage().component === 'Book/Index' }"
 						>
-							Books
+							{{ trans("books") }}
 						</Link>
 					</li>
 					<li>
@@ -272,7 +277,7 @@ const isAdmin = user.value?.role_id === 1;
 							class="block rounded px-3 py-2 hover:bg-skin-secondary-offset md:p-0 md:hover:bg-skin-transparent md:hover:underline"
 							:class="{ 'active-link': usePage().component === 'Author/Index' }"
 						>
-							Authors
+							{{ trans("authors") }}
 						</Link>
 					</li>
 				</ul>

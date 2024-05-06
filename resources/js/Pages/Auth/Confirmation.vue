@@ -1,4 +1,5 @@
 <script setup>
+import { trans } from "laravel-vue-i18n";
 import AppHead from "@/Components/Common/AppHead.vue";
 import RegisterLayout from "@/Layouts/RegisterLayout.vue";
 import IconCheckCircleFilled from "@icons/check-circle-filled.svg?component";
@@ -13,12 +14,12 @@ defineProps({
 
 <template>
 	<AppHead
-		title="Confirmation"
-		description="Congratulations! Your The Wordsmith's Collection account has been successfully created. Start reading now!"
+		:title="trans('page.auth.confirmation.title')"
+		:description="trans('page.auth.confirmation.description')"
 	/>
 
 	<RegisterLayout
-		header-title="Registration completed"
+		:header-title="trans('page.auth.confirmation.header_title')"
 		:subscription-plan="selectedSubscriptionPlan"
 		:should-show-change-plan="false"
 		:current-step="4"
@@ -26,16 +27,14 @@ defineProps({
 		<div class="mb-6 w-full text-center">
 			<IconCheckCircleFilled class="mx-auto mb-4 h-12 w-12" />
 
-			<p>
-				Your The Wordsmith's Collection account has been successfully created.
-			</p>
-			<p>Start reading now!</p>
+			<p>{{ trans("page.auth.confirmation.message") }}</p>
+			<p>{{ trans("page.auth.confirmation.start_reading_now") }}</p>
 		</div>
 		<Link
 			href="/"
 			class="button"
 		>
-			Go to Home
+			{{ trans("page.auth.confirmation.go_to_home") }}
 		</Link>
 	</RegisterLayout>
 </template>

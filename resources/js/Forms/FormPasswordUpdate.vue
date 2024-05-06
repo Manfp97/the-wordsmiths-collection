@@ -1,6 +1,7 @@
 <script setup>
-import { useForm } from "@inertiajs/vue3";
 import { ref } from "vue";
+import { useForm } from "@inertiajs/vue3";
+import { trans } from "laravel-vue-i18n";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 
 const passwordInput = ref(null);
@@ -38,6 +39,7 @@ const updatePassword = () => {
 			input-id="current_password"
 			input-type="password"
 			input-autocomplete="current-password"
+			:label-text="trans('form.password_update.current_password')"
 			is-required
 			:error-message="form.errors.current_password"
 		/>
@@ -48,6 +50,7 @@ const updatePassword = () => {
 			input-id="new_password"
 			input-type="password"
 			input-autocomplete="new-password"
+			:label-text="trans('form.password_update.new_password')"
 			is-required
 			:error-message="form.errors.password"
 		/>
@@ -57,6 +60,7 @@ const updatePassword = () => {
 			input-id="password_confirmation"
 			input-type="password"
 			input-autocomplete="new-password"
+			:label-text="trans('common.noun.password_confirmation')"
 			is-required
 			:error-message="form.errors.password_confirmation"
 		/>
@@ -66,7 +70,7 @@ const updatePassword = () => {
 				class="button"
 				:disabled="form.processing"
 			>
-				Save
+				{{ trans("common.action.save") }}
 			</button>
 
 			<Transition
@@ -79,7 +83,7 @@ const updatePassword = () => {
 					v-if="form.recentlySuccessful"
 					class="text-sm text-skin-muted"
 				>
-					Saved.
+					{{ trans("common.action.saved") }}.
 				</p>
 			</Transition>
 		</div>

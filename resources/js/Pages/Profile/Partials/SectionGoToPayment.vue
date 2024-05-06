@@ -1,14 +1,16 @@
+<script setup>
+import { trans } from "laravel-vue-i18n";
+</script>
+
 <template>
 	<section>
 		<header>
 			<h2 class="pb-3 font-means-web text-2xl font-bold">
-				Start your membership
+				{{ trans("page.profile.go_to_payment.title") }}
 			</h2>
 
 			<p class="mt-1 text-sm text-skin-muted">
-				To enjoy the services of The Wordsmith's Collection, you will need to
-				select a subscription plan and enter a payment method to begin your
-				membership.
+				{{ trans("page.profile.go_to_payment.message") }}
 			</p>
 		</header>
 
@@ -17,7 +19,7 @@
 				href="/subscribe"
 				class="button"
 			>
-				Select subscription plan
+				{{ trans("page.profile.go_to_payment.button") }}
 			</Link>
 		</div>
 	</section>

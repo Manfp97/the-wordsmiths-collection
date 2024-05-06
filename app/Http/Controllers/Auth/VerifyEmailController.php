@@ -17,7 +17,7 @@ class VerifyEmailController extends Controller
 	{
 		if ($request->user()->hasVerifiedEmail()) {
 			if (!$request->user()->creditCard) {
-				return redirect()->route('payment');
+				return redirect()->route('payment.show');
 			}
 			
 			return redirect()->intended(RouteServiceProvider::HOME);
@@ -27,7 +27,7 @@ class VerifyEmailController extends Controller
 			event(new Verified($request->user()));
 		}
 		
-		return redirect()->route('payment')->with(
+		return redirect()->route('payment.show')->with(
 			'alert',
 			[
 				'type'		=> 'success',

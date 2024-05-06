@@ -1,5 +1,6 @@
 <script setup>
 import { useForm, usePage } from "@inertiajs/vue3";
+import { trans } from "laravel-vue-i18n";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 
 defineProps({
@@ -30,7 +31,7 @@ const form = useForm({
 			input-id="username"
 			input-type="text"
 			input-autocomplete="name"
-			label-text="Username"
+			:label-text="trans('common.noun.username')"
 			is-required
 			:error-message="form.errors.username"
 		/>
@@ -40,21 +41,21 @@ const form = useForm({
 			input-id="email"
 			input-type="text"
 			input-autocomplete="email"
-			label-text="Email"
+			:label-text="trans('common.noun.email')"
 			is-required
 			:error-message="form.errors.email"
 		/>
 
 		<div v-if="mustVerifyEmail && user.email_verified_at === null">
-			<p class="mt-2 text-sm text-gray-800">
-				Your email address is unverified.
+			<p class="mt-2 text-sm text-skin-muted">
+				{{ trans("form.profile_information_update.unverified_email") }}
 				<Link
 					href="/email/verification-notification"
 					method="post"
 					as="button"
 					class="rounded-md text-sm text-skin-muted underline hover:text-skin-text focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
 				>
-					Click here to re-send the verification email.
+					{{ trans("form.profile_information_update.re_send_email") }}
 				</Link>
 			</p>
 
@@ -62,7 +63,7 @@ const form = useForm({
 				v-show="status === 'verification-link-sent'"
 				class="mt-2 text-sm font-medium text-skin-success"
 			>
-				A new verification link has been sent to your email address.
+				{{ trans("form.profile_information_update.new_email_sent") }}
 			</div>
 		</div>
 
@@ -71,7 +72,7 @@ const form = useForm({
 				class="button"
 				:disabled="form.processing"
 			>
-				Save
+				{{ trans("common.action.save") }}
 			</button>
 
 			<Transition
@@ -84,7 +85,7 @@ const form = useForm({
 					v-if="form.recentlySuccessful"
 					class="text-sm text-skin-muted"
 				>
-					Saved.
+					{{ trans("common.action.saved") }}.
 				</p>
 			</Transition>
 		</div>

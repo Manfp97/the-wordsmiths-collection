@@ -1,4 +1,6 @@
 <script setup>
+import { trans } from "laravel-vue-i18n";
+
 const selectedOptionId = defineModel("value"); // eslint-disable-line
 
 defineProps({
@@ -88,7 +90,7 @@ defineProps({
 					v-else
 					class="text-skin-muted"
 				>
-					(optional)
+					{{ trans("components.forms.optional") }}
 				</span>
 			</label>
 		</div>

@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import { trans } from "laravel-vue-i18n";
 import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 
@@ -40,22 +41,20 @@ const ariaLabels = ref({ menu: "Some custom menu label" });
 	<div class="space-y-1">
 		<label
 			:for="inputId"
-			class="font-medium"
+			class="text-sm font-medium"
 		>
-			<span class="text-sm">
-				{{ labelText }}
-				<span
-					v-if="isRequired"
-					class="text-skin-danger"
-				>
-					*
-				</span>
-				<span
-					v-else
-					class="text-skin-muted"
-				>
-					(optional)
-				</span>
+			{{ labelText }}
+			<span
+				v-if="isRequired"
+				class="text-skin-danger"
+			>
+				*
+			</span>
+			<span
+				v-else
+				class="text-skin-muted"
+			>
+				{{ trans("components.forms.optional") }}
 			</span>
 		</label>
 

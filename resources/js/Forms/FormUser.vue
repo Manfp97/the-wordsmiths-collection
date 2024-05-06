@@ -1,6 +1,7 @@
 <script setup>
-import { useForm } from "@inertiajs/vue3";
 import { ref, watch, computed } from "vue";
+import { useForm } from "@inertiajs/vue3";
+import { trans } from "laravel-vue-i18n";
 import Datepicker from "@/Components/Forms/Datepicker.vue";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import FloatingLabelSelect from "@/Components/Forms/FloatingLabelSelect.vue";
@@ -74,7 +75,10 @@ watch(userState, (newValue) => {
 	});
 });
 
-const buttonText = props.httpMethod === "post" ? "Add new user" : "Edit user";
+const buttonActionText =
+	props.httpMethod === "post"
+		? trans("common.action.add_new")
+		: trans("common.action.edit");
 
 const submitForm = () => {
 	const url = props.httpMethod === "post" ? "/user" : `/user/${props.user?.id}`;
@@ -106,7 +110,7 @@ const submitForm = () => {
 			<FloatingLabel
 				v-model:value="form.username"
 				:input-id="`${formId}-username`"
-				label-text="Username"
+				:label-text="trans('common.noun.username')"
 				input-type="text"
 				input-autocomplete="off"
 				is-required
@@ -115,7 +119,7 @@ const submitForm = () => {
 			<FloatingLabel
 				v-model:value="form.email"
 				:input-id="`${formId}-email`"
-				label-text="Email"
+				:label-text="trans('common.noun.email')"
 				input-type="text"
 				input-autocomplete="off"
 				is-required
@@ -125,7 +129,7 @@ const submitForm = () => {
 			<FloatingLabel
 				v-model:value="form.password"
 				input-id="password"
-				label-text="Password"
+				:label-text="trans('common.noun.password')"
 				input-type="password"
 				input-autocomplete="new-password"
 				:error-message="form.errors.password"
@@ -133,10 +137,10 @@ const submitForm = () => {
 			<FloatingLabelSelect
 				v-model:value="form.role_id"
 				:select-id="`${formId}-role`"
-				label-text="Role"
+				:label-text="trans('user.role')"
 				:options="[
-					{ id: '1', name: 'Admin' },
-					{ id: '2', name: 'User' },
+					{ id: '1', name: trans('user.role.admin') },
+					{ id: '2', name: trans('user.role.user') },
 				]"
 				is-required
 			/>
@@ -144,7 +148,7 @@ const submitForm = () => {
 			<FloatingLabelSelect
 				v-model:value="form.subscription_plan_id"
 				:select-id="`${formId}-subscription-type`"
-				label-text="Subscription type"
+				:label-text="trans('subscription.type')"
 				:options="[
 					{ id: '1', name: 'Premium' },
 					{ id: '2', name: 'Basic' },
@@ -154,10 +158,10 @@ const submitForm = () => {
 			<FloatingLabelSelect
 				v-model:value="form.status"
 				:select-id="`${formId}-status`"
-				label-text="Status"
+				:label-text="trans('user.status')"
 				:options="[
-					{ id: 'active', name: 'Active' },
-					{ id: 'canceled', name: 'Canceled' },
+					{ id: 'active', name: trans('user.status.active') },
+					{ id: 'canceled', name: trans('user.status.canceled') },
 				]"
 				is-required
 			/>
@@ -166,10 +170,10 @@ const submitForm = () => {
 				v-model:value="form.start_date"
 				v-model:open="isStartDatePickerOpen"
 				:input-id="`${formId}-start-date`"
-				label-text="Subscription start date"
+				:label-text="trans('subscription.start_date')"
 				is-required
 				:error-message="form.errors.start_date"
-				placeholder="Select subscription start date"
+				:placeholder="trans('subscription.start_date.placeholder')"
 				:enable-time-picker="false"
 				disabled
 				utc
@@ -180,9 +184,9 @@ const submitForm = () => {
 				v-model:value="form.end_date"
 				v-model:open="isEndDatePickerOpen"
 				:input-id="`${formId}-end-date`"
-				label-text="Subscription end date"
+				:label-text="trans('subscription.end_date')"
 				:error-message="form.errors.end_date"
-				placeholder="Select subscription end date"
+				:placeholder="trans('subscription.end_date.placeholder')"
 				:enable-time-picker="false"
 				:min-date="new Date()"
 				:teleport="true"
@@ -202,7 +206,7 @@ const submitForm = () => {
 				@click="form.reset()"
 			>
 				<IconReset class="mr-1 h-6 w-6" />
-				Reset form
+				{{ trans("common.action.reset") }}
 			</button>
 
 			<button
@@ -220,7 +224,7 @@ const submitForm = () => {
 					v-else-if="httpMethod === 'put'"
 					class="mr-1 h-6 w-6"
 				/>
-				{{ buttonText }}
+				{{ buttonActionText }} {{ trans("user").toLowerCase() }}
 			</button>
 		</div>
 	</form>

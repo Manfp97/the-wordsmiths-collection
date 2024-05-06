@@ -1,5 +1,6 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
+import { trans } from "laravel-vue-i18n";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
 
@@ -51,7 +52,7 @@ const submitForm = () => {
 		<FloatingLabel
 			v-model:value="form.email"
 			input-id="email"
-			label-text="Your email"
+			:label-text="trans('common.noun.email')"
 			input-type="email"
 			input-autocomplete="email"
 			is-required
@@ -60,7 +61,7 @@ const submitForm = () => {
 		<FloatingLabel
 			v-model:value="form.password"
 			input-id="password"
-			label-text="Your password"
+			:label-text="trans('common.noun.password')"
 			input-type="password"
 			input-autocomplete="current-password"
 			is-required
@@ -72,7 +73,7 @@ const submitForm = () => {
 				v-model:value="form.remember"
 				input-id="remember"
 			>
-				Remember me
+				{{ trans("form.log_in.remember_me") }}
 			</Checkbox>
 
 			<Link
@@ -80,7 +81,7 @@ const submitForm = () => {
 				href="/forgot-password"
 				class="ms-auto text-sm text-skin-link underline hover:text-skin-text"
 			>
-				Forgot password?
+				{{ trans("form.log_in.forgot_password") }}
 			</Link>
 		</div>
 
@@ -90,17 +91,18 @@ const submitForm = () => {
 			:class="{ 'opacity-25': form.processing }"
 			:disabled="form.processing"
 		>
-			Log in to your account
+			{{ trans("common.action.log_in") }}
 		</button>
 
 		<div class="text-center text-sm font-medium text-skin-muted">
-			Not registered?
+			{{ trans("form.log_in.not_registered") }}
 			<Link
 				href="/subscribe"
 				class="text-skin-link underline hover:text-skin-text"
-				>Select a subscription plan</Link
 			>
-			to create your account
+				{{ trans("form.log_in.select_subscription_plan") }}
+			</Link>
+			{{ trans("form.log_in.to_create_your_account") }}
 		</div>
 	</form>
 </template>

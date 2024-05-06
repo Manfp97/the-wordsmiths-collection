@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import { trans } from "laravel-vue-i18n";
 import ModalContainer from "@/Components/Modals/ModalContainer.vue";
 import FormPayment from "@/Forms/FormPayment.vue";
 
@@ -16,19 +17,25 @@ const isModifying = ref(false);
 <template>
 	<section class="space-y-6">
 		<header>
-			<h2 class="font-means-web text-2xl font-bold">Credit card details</h2>
+			<h2 class="font-means-web text-2xl font-bold">
+				{{ trans("page.profile.credit_card.details") }}
+			</h2>
 		</header>
 
 		<div>
 			<h3 class="text-lg">
-				Credit card ending in {{ creditCard.card_number }}
+				{{
+					trans("page.profile.credit_card.ending", {
+						ending: creditCard.card_number,
+					})
+				}}
 			</h3>
 			<p>
-				<span class="font-bold">Cardholder name</span>:
+				<span class="font-bold">{{ trans("payment.cardholder_name") }}:</span>
 				{{ creditCard.cardholder_name }}
 			</p>
 			<p>
-				<span class="font-bold">Expiration date</span>:
+				<span class="font-bold">{{ trans("payment.expiration_date") }}:</span>
 				{{ creditCard.expiration_month }}/{{ creditCard.expiration_year }}
 			</p>
 		</div>
@@ -37,16 +44,17 @@ const isModifying = ref(false);
 			class="button"
 			@click="isModifying = true"
 		>
-			Modify
+			{{ trans("common.action.edit") }}
 		</button>
 
 		<ModalContainer
 			modal-id="modal-modify-payment-method"
-			modal-title="Modify credit card details"
+			:modal-title="trans('modal.payment.edit.title')"
 			:show="isModifying"
 			@close="isModifying = false"
 		>
 			<FormPayment
+				form-id="form-modify-payment-method"
 				:credit-card="creditCard"
 				http-method="put"
 				preserve-scroll

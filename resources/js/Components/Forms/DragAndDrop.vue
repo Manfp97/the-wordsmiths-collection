@@ -5,6 +5,7 @@ import {
 	formatBytes,
 	getFileExtensionFromMimeType,
 } from "@/Helpers/fileHelper.js";
+import { trans } from "laravel-vue-i18n";
 import useAlerts from "@/Composables/useAlerts.js";
 import IconX from "@icons/x.svg?component";
 import IconCloudUpload from "@icons/cloud-upload.svg?component";
@@ -113,21 +114,24 @@ const getErrorMessage = (errorType) => {
 	case ErrorType.INVALID_FILE_TYPE:
 		return {
 			type: "danger",
-			message: `File type for ${props.fieldName.toLowerCase()} not supported`,
+			message: trans("component.drag_and_drop.error.invalid_file_type"),
 		};
 
 	case ErrorType.INVALID_FILE_SIZE:
 		return {
 			type: "danger",
-			message: `The file cannot be larger than ${formatBytes(
-				props.maxFileBytes
-			)}`,
+			message: trans("component.drag_and_drop.error.invalid_file_size", {
+				size: formatBytes(props.maxFileBytes),
+			}),
 		};
 
 	case ErrorType.INVALID_ASPECT_RATIO:
 		return {
 			type: "danger",
-			message: `The image must have an aspect ratio between ${props.minAspectRatioStr} and ${props.maxAspectRatioStr}`,
+			message: trans("component.drag_and_drop.error.invalid_aspect_ratio", {
+				min: props.minAspectRatioStr,
+				max: props.maxAspectRatioStr,
+			}),
 		};
 	}
 };
@@ -159,8 +163,6 @@ const checkAspectRatio = (file, minAspectRatio, maxAspectRatio) => {
 
 			img.onload = function () {
 				const aspectRatio = img.width / img.height;
-				console.log(aspectRatio);
-				console.log(maxAspectRatio);
 
 				resolve(aspectRatio >= minAspectRatio && aspectRatio <= maxAspectRatio);
 			};
@@ -197,13 +199,13 @@ const checkAspectRatio = (file, minAspectRatio, maxAspectRatio) => {
 						v-else
 						class="text-skin-muted"
 					>
-						(optional)
+						{{ trans("components.forms.optional") }}
 					</span>
 				</span>
 				<button
 					v-if="selectedFile"
-					title="Remove file"
-					aria-title="Remove file"
+					:title="trans('component.drag_and_drop.remove_file')"
+					:aria-title="trans('component.drag_and_drop.remove_file')"
 					class="text-skin-muted"
 					@click="removeFile"
 				>
@@ -237,9 +239,14 @@ const checkAspectRatio = (file, minAspectRatio, maxAspectRatio) => {
 						aria-hidden="true"
 						fill="none"
 					/>
-					<p class="mb-2 text-sm text-skin-muted">
-						<strong>Click to upload</strong> or <strong>drag and drop</strong>
-					</p>
+
+					<!-- eslint-disable vue/no-v-html -->
+					<p
+						class="mb-2 text-sm text-skin-muted"
+						v-html="trans('component.drag_and_drop.message')"
+					/>
+					<!-- eslint-enable -->
+
 					<p class="text-xs text-skin-muted">
 						{{ extensions }} (max. {{ formatBytes(maxFileBytes) }})
 					</p>
@@ -247,7 +254,8 @@ const checkAspectRatio = (file, minAspectRatio, maxAspectRatio) => {
 						v-if="minAspectRatioStr && maxAspectRatioStr"
 						class="text-xs text-skin-muted"
 					>
-						Aspect ratio: min. {{ minAspectRatioStr }}, max.
+						{{ trans("component.drag_and_drop.aspect_ratio") }}: min.
+						{{ minAspectRatioStr }}, max.
 						{{ maxAspectRatioStr }}
 					</p>
 					<input

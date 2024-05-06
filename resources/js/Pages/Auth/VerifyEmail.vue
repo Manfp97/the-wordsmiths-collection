@@ -1,6 +1,7 @@
 <script setup>
-import { useForm, usePage } from "@inertiajs/vue3";
 import { computed } from "vue";
+import { useForm, usePage } from "@inertiajs/vue3";
+import { trans } from "laravel-vue-i18n";
 import RegisterLayout from "@/Layouts/RegisterLayout.vue";
 import AppHead from "@/Components/Common/AppHead.vue";
 
@@ -19,7 +20,7 @@ const props = defineProps({
 const form = useForm({});
 
 const submit = () => {
-	form.post("/email/verification-notification"); //route("verification.send"));
+	form.post("/email/verification-notification");
 };
 
 const verificationLinkSent = computed(
@@ -29,27 +30,30 @@ const verificationLinkSent = computed(
 
 <template>
 	<AppHead
-		title="Payment"
-		description="Verify your The Wordsmith's Collection account to start reading a vast library of the greatest works of literature."
+		:title="trans('page.auth.verify_email.title')"
+		:description="trans('page.auth.verify_email.description')"
 	/>
 
 	<RegisterLayout
-		header-title="Verify your email address"
+		:header-title="trans('page.auth.verify_email.header_title')"
 		:subscription-plan="selectedSubscriptionPlan"
 		:current-step="2"
 	>
-		<p>
-			Thanks for signing up! Before getting started, could you verify your email
-			address (<strong>{{ usePage().props.auth.user.email }}</strong
-			>) by clicking on the link we just emailed to you? If you didn't receive
-			the email, we will gladly send you another.
-		</p>
+		<!-- eslint-disable vue/no-v-html -->
+		<p
+			v-html="
+				trans('page.auth.verify_email.message', {
+					email: usePage().props.auth.user.email,
+				})
+			"
+		/>
+		<!-- eslint-enable -->
 
 		<div
 			v-if="verificationLinkSent"
 			class="mt-4 font-medium text-skin-success"
 		>
-			A new verification link has been sent to the email address.
+			{{ trans("page.auth.verify_email.link_sent") }}
 		</div>
 
 		<form @submit.prevent="submit">
@@ -59,17 +63,16 @@ const verificationLinkSent = computed(
 					:class="{ 'opacity-25': form.processing }"
 					:disabled="form.processing"
 				>
-					Resend verification email
+					{{ trans("page.auth.verify_email.button") }}
 				</button>
 
-				<!-- :href="route('logout')" -->
 				<Link
 					href="/logout"
 					method="post"
 					as="button"
 					class="text-skin-danger underline hover:text-skin-danger-light"
 				>
-					Log Out
+					{{ trans("common.action.log_out") }}
 				</Link>
 			</div>
 		</form>

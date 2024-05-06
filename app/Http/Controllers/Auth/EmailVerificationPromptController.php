@@ -19,7 +19,7 @@ class EmailVerificationPromptController extends Controller
 		$user = $request->user();
 
 		if ($user->hasVerifiedEmail()) {
-			return redirect()->route('payment');
+			return redirect()->route('payment.show');
 		} else if ($user->creditCard) {
 			return redirect()->intended(RouteServiceProvider::HOME);
 		}

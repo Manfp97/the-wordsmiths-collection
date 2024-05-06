@@ -10,15 +10,13 @@ use Illuminate\Http\Request;
 
 class BookmarkController extends Controller
 {
-
 	public function upsert(Request $request): RedirectResponse
 	{
 		$userId = $request->input('user_id');
 		$bookId = $request->input('book_id');
 		$pageNumber = $request->input('page_number');
 
-		$bookSlug = Book::findOrFail($bookId)->slug;
-		$route = '/book/'.$bookSlug;
+		$book = Book::findOrFail($bookId)->slug;
 
 		if ($request->user()->id === $userId) {
 			Bookmark::updateOrCreate(
@@ -32,10 +30,10 @@ class BookmarkController extends Controller
 				]
 			);
 
-			return redirect($route);
+			return redirect()->route('book.show', [$book]);
 		}
 
-		return redirect($route)->with(
+		return redirect()->route('book.show', [$book])->with(
 			'alert',
 			[
 				'type'		=> 'danger',

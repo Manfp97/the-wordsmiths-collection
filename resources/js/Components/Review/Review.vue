@@ -1,4 +1,5 @@
 <script setup>
+import { trans } from "laravel-vue-i18n";
 import { getFormattedDate } from "@/Helpers/stringHelper.js";
 import Rating from "@/Components/Common/Rating.vue";
 import IconUserCircle from "@icons/user-circle.svg?component";
@@ -52,8 +53,7 @@ const formattedDate = getFormattedDate(props.review.created_at, {
 
 		<footer class="mb-3 text-sm text-skin-muted">
 			<p>
-				Reviewed on
-				<time :datetime="props.review.created_at">{{ formattedDate }}</time>
+				{{ trans("component.review.reviewed_on", { date: formattedDate }) }}
 			</p>
 		</footer>
 
@@ -71,7 +71,7 @@ const formattedDate = getFormattedDate(props.review.created_at, {
 				@click="emit('delete')"
 			>
 				<IconTrash class="mr-1 w-4" />
-				Delete
+				{{ trans("common.action.delete") }}
 			</button>
 
 			<button
@@ -80,7 +80,7 @@ const formattedDate = getFormattedDate(props.review.created_at, {
 				@click="emit('edit')"
 			>
 				<IconEdit class="mr-1 w-4" />
-				Edit
+				{{ trans("common.action.edit") }}
 			</button>
 		</div>
 	</article>

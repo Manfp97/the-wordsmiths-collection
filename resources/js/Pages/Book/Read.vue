@@ -31,13 +31,10 @@ onBeforeUnmount(() => {
 
 const postBookmark = () => {
 	if (props.bookmarkPage !== page.value) {
-		router.visit("/bookmark", {
-			method: "post",
-			data: {
-				user_id: usePage().props.auth.user.id,
-				book_id: props.book.id,
-				page_number: page.value,
-			},
+		router.post("/bookmark", {
+			user_id: usePage().props.auth.user.id,
+			book_id: props.book.id,
+			page_number: page.value,
 		});
 	} else {
 		router.visit(`/book/${props.book.slug}`);

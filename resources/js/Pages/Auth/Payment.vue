@@ -1,4 +1,5 @@
 <script setup>
+import { trans } from "laravel-vue-i18n";
 import RegisterLayout from "@/Layouts/RegisterLayout.vue";
 import AppHead from "@/Components/Common/AppHead.vue";
 import FormPayment from "@/Forms/FormPayment.vue";
@@ -13,12 +14,12 @@ defineProps({
 
 <template>
 	<AppHead
-		title="Payment"
-		description="Complete the payment to The Wordsmith's Collection to start reading a vast library of the greatest works of literature."
+		:title="trans('page.auth.payment.title')"
+		:description="trans('page.auth.payment.description')"
 	/>
 
 	<RegisterLayout
-		header-title="Secure payment info"
+		:header-title="trans('page.auth.payment.header_title')"
 		:subscription-plan="selectedSubscriptionPlan"
 		:current-step="3"
 	>
@@ -45,19 +46,17 @@ defineProps({
 						class="font-bold text-skin-link"
 						href="/subscribe"
 					>
-						Change
+						{{ trans("common.action.change") }}
 					</Link>
 				</div>
 
 				<p class="mx-auto max-w-xl text-sm text-skin-muted">
-					By clicking the "Start paid membership" button below, you agree to our
-					Terms of Use and that you are over 18 and acknowledge the Privacy
-					Statement. The Wordsmith's Collection will automatically continue your
-					membership and charge the membership fee (currently
-					{{ selectedSubscriptionPlan.price }}
-					{{ selectedSubscriptionPlan.currency }}
-					/month) to your payment method until you cancel. You may cancel at any
-					time to avoid future charges.
+					{{
+						trans("page.auth.payment.message", {
+							price: selectedSubscriptionPlan.price,
+							currency: selectedSubscriptionPlan.currency,
+						})
+					}}
 				</p>
 			</template>
 		</FormPayment>

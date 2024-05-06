@@ -1,4 +1,5 @@
 <script setup>
+import { trans } from "laravel-vue-i18n";
 import AppHead from "@/Components/Common/AppHead.vue";
 import RegisterLayout from "@/Layouts/RegisterLayout.vue";
 import FormRegister from "@/Forms/FormRegister.vue";
@@ -13,12 +14,12 @@ defineProps({
 
 <template>
 	<AppHead
-		title="Account"
-		description="Create your account to continue with the registration process for The Wordsmith's Collection."
+		:title="trans('page.auth.register.title')"
+		:description="trans('page.auth.register.description')"
 	/>
 
 	<RegisterLayout
-		header-title="Account details"
+		:header-title="trans('page.auth.register.header_title')"
 		:subscription-plan="selectedSubscriptionPlan"
 		:current-step="1"
 	>

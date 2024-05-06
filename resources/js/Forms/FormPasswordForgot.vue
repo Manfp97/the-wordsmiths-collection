@@ -1,5 +1,6 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
+import { trans } from "laravel-vue-i18n";
 import FloatingLabel from "@/Components/Forms/FloatingLabel.vue";
 
 const emit = defineEmits(["success"]);
@@ -28,7 +29,7 @@ const submit = () => {
 		onSuccess: () => {
 			emit("success");
 		},
-	}); // route(password.email)
+	});
 };
 </script>
 
@@ -40,7 +41,7 @@ const submit = () => {
 		<FloatingLabel
 			v-model:value="form.email"
 			input-id="email"
-			label-text="Your email"
+			:label-text="trans('common.noun.email')"
 			input-type="email"
 			input-autocomplete="email"
 			is-required
@@ -53,7 +54,7 @@ const submit = () => {
 			:class="{ 'opacity-25': form.processing }"
 			:disabled="form.processing"
 		>
-			Send email
+			{{ trans("form.password_forgot.send_email") }}
 		</button>
 	</form>
 </template>

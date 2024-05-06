@@ -13,19 +13,19 @@ use App\Http\Controllers\Auth\PaymentController;
 use App\Http\Controllers\Auth\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
+Route::get('register', [RegisteredUserController::class, 'create'])->name('register.create');
 
 Route::middleware('guest')->group(function () {
-	Route::post('register', [RegisteredUserController::class, 'store']);
+	Route::post('register', [RegisteredUserController::class, 'store'])->name('register.store');
 
-	Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
-	Route::post('login', [AuthenticatedSessionController::class, 'store']);
+	Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login.create');
+	Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('login.store');
 
-	Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
-	Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
+	Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('forgot-password.request');
+	Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('forgot-password.email');
 
-	Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
-	Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.store');
+	Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])->name('reset-password.create');
+	Route::post('reset-password', [NewPasswordController::class, 'store'])->name('reset-password.store');
 });
 
 Route::middleware('auth')->group(function () {
@@ -38,12 +38,12 @@ Route::middleware('auth')->group(function () {
 		->middleware('throttle:6,1')
 		->name('verification.send');
 
-	Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])->name('password.confirm');
-	Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
+	Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])->name('confirm-password.show');
+	Route::post('confirm-password', [ConfirmablePasswordController::class, 'store'])->name('confirm-password.store');
 
 	Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
-	Route::get('payment', [PaymentController::class, 'show'])->name('payment');
+	Route::get('payment', [PaymentController::class, 'show'])->name('payment.show');
 	Route::post('payment', [PaymentController::class, 'store'])->name('payment.store');
 	Route::put('payment/{id}', [PaymentController::class, 'update'])->name('payment.update');
 	
