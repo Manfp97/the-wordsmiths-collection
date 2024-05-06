@@ -90,7 +90,7 @@
 
 ## About the Project
 
-![Hero](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/public/images/subscribe/feature-3.png)
+![Hero](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/main-mockup.jpg)
 
 **The Wordsmith's Collection** consists of a website with a subscription model (SaaS) that allows users to access a curated library of the most important literary works in history. They will be able to read the books on the site, as well as search and filter by genre and author. Each book, genre and author will have a description to get more insight into their bibliography and synopsis, respectively.
 
