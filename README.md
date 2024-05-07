@@ -13,57 +13,57 @@
 <br />
 <div align="center">
     <img 
-			src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/public/favicon.svg" 
-			alt="Logo" 
-			width="156" 
-			height="156"
-		>
+      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/public/favicon.svg" 
+      alt="Logo" 
+      width="156" 
+      height="156"
+    >
     <h1 align="center">The Wordsmith's Collection</h1>
     <p align="center">A website featuring a curated selection of the most important literary works in history.</p>
     <p>
       <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/stargazers">
         <img 
-					alt="GitHub Contributors" 
-					src="https://img.shields.io/github/stars/HenestrosaDev/the-wordsmiths-collection" 
-				>
+          alt="GitHub Contributors" 
+          src="https://img.shields.io/github/stars/HenestrosaDev/the-wordsmiths-collection" 
+        >
       </a>
       <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/graphs/contributors">
         <img 
-					alt="GitHub Contributors" 
-					src="https://img.shields.io/github/contributors/HenestrosaDev/the-wordsmiths-collection" 
-				>
+          alt="GitHub Contributors" 
+          src="https://img.shields.io/github/contributors/HenestrosaDev/the-wordsmiths-collection" 
+        >
       </a>
       <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/issues">
         <img 
-					alt="Issues" 
-					src="https://img.shields.io/github/issues/HenestrosaDev/the-wordsmiths-collection" 
-				>
+          alt="Issues" 
+          src="https://img.shields.io/github/issues/HenestrosaDev/the-wordsmiths-collection" 
+        >
       </a>
       <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/pulls">
         <img 
-					alt="GitHub pull requests" 
-					src="https://img.shields.io/github/issues-pr/HenestrosaDev/the-wordsmiths-collection" 
-				>
+          alt="GitHub pull requests" 
+          src="https://img.shields.io/github/issues-pr/HenestrosaDev/the-wordsmiths-collection" 
+        >
       </a>
       <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/LICENSE">
         <img 
-					alt="GitHub pull requests" 
-					src="https://img.shields.io/github/license/HenestrosaDev/the-wordsmiths-collection" 
-				>
+          alt="GitHub pull requests" 
+          src="https://img.shields.io/github/license/HenestrosaDev/the-wordsmiths-collection" 
+        >
       </a>
     </p>
   <p>
     <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/issues/new/choose">
-			Report Issue
-		</a> 
-		· 
-		<a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/issues/new/choose">
-			Request Feature
-		</a> 
-		· 
-		<a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/discussions">
-			Ask Question
-		</a>
+      Report Issue
+    </a> 
+    · 
+    <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/issues/new/choose">
+      Request Feature
+    </a> 
+    · 
+    <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/discussions">
+      Ask Question
+    </a>
   </p>
   <p>
     🇬🇧 English | <a href="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/es/README.md/">🇪🇸 Español</a>
@@ -93,16 +93,39 @@
 ![Hero](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/main-mockup.jpg)
 
 <details>
-	<summary align="center">More screenshots</summary>
+  <summary align="center">More screenshots</summary>
 
 ![Author detail](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/author-detail.png)
+<p align="center">Author detail</p>
+<br>
+
 ![Book detail](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/book-detail.png)
+<p align="center">Book detail</p>
+<br>
+
 ![Book read](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/book-read.png)
+<p align="center">Book read</p>
+<br>
+
 ![Genre detail](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/genre-detail.png)
+<p align="center">Genre detail</p>
+<br>
+
 ![Main](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/main.png)
+<p align="center">Main</p>
+<br>
+
 ![Modal add content](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/modal-add-content.png)
+<p align="center">Modal add content</p>
+<br>
+
 ![Profile edit](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/profile-edit.png)
+<p align="center">Profile edit</p>
+<br>
+
 ![Users index](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/users-index.png)
+<p align="center">Users index</p>
+<br>
 </details>
 
 **The Wordsmith's Collection** consists of a website with a subscription model (SaaS) that allows users to access a curated library of the most important literary works in history. They will be able to read the books on the site, as well as search and filter by genre and author. Each book, genre and author will have a description to get more insight into their bibliography and synopsis, respectively.
