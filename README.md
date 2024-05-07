@@ -92,40 +92,64 @@
 
 ![Hero](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/main-mockup.jpg)
 
-<details>
+<details open>
   <summary align="center">More screenshots</summary>
 
-![Author detail](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/author-detail.png)
-<p align="center">Author detail</p>
-<br>
+  <p align="center">
+    <img 
+      width="49%" 
+      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/author-detail.png" 
+      alt="Author detail"
+    >
+    &nbsp;
+    <img 
+      width="49%" 
+      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/book-detail.png" 
+      alt="Book detail"
+    >
+  </p> 
 
-![Book detail](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/book-detail.png)
-<p align="center">Book detail</p>
-<br>
+  <p align="center">
+    <img 
+      width="49%" 
+      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/book-read.png" 
+      alt="Book reader"
+    >
+    &nbsp;
+    <img 
+      width="49%" 
+      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/genre-detail.png" 
+      alt="Genre detail"
+    >
+  </p> 
 
-![Book read](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/book-read.png)
-<p align="center">Book read</p>
-<br>
+  <p align="center">
+    <img 
+      width="49%" 
+      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/main.png" 
+      alt="Main"
+    >
+    &nbsp;
+    <img 
+      width="49%" 
+      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/modal-add-content.png" 
+      alt="Modal add content"
+    >
+  </p> 
 
-![Genre detail](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/genre-detail.png)
-<p align="center">Genre detail</p>
-<br>
-
-![Main](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/main.png)
-<p align="center">Main</p>
-<br>
-
-![Modal add content](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/modal-add-content.png)
-<p align="center">Modal add content</p>
-<br>
-
-![Profile edit](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/profile-edit.png)
-<p align="center">Profile edit</p>
-<br>
-
-![Users index](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/users-index.png)
-<p align="center">Users index</p>
-<br>
+  <p align="center">
+    <img 
+      width="49%" 
+      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/profile-edit.png" 
+      alt="Profile edit"
+    >
+    &nbsp;
+    <img 
+      width="49%" 
+      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/users-index.png" 
+      alt="Users index"
+    >
+  </p>
 </details>
 
 **The Wordsmith's Collection** consists of a website with a subscription model (SaaS) that allows users to access a curated library of the most important literary works in history. They will be able to read the books on the site, as well as search and filter by genre and author. Each book, genre and author will have a description to get more insight into their bibliography and synopsis, respectively.
