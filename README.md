@@ -98,8 +98,8 @@
   <p align="center">
     <img 
       width="49%" 
-      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/author-detail.png" 
-      alt="Author detail"
+      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/genre-detail.png" 
+      alt="Genre detail"
     >
     &nbsp;
     <img 
@@ -118,30 +118,16 @@
     &nbsp;
     <img 
       width="49%" 
-      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/genre-detail.png" 
-      alt="Genre detail"
+      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/author-detail.png" 
+      alt="Author detail"
     >
   </p> 
 
   <p align="center">
-    <img 
-      width="49%" 
-      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/main.png" 
-      alt="Main"
-    >
-    &nbsp;
     <img 
       width="49%" 
       src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/modal-add-content.png" 
       alt="Modal add content"
-    >
-  </p> 
-
-  <p align="center">
-    <img 
-      width="49%" 
-      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/profile-edit.png" 
-      alt="Profile edit"
     >
     &nbsp;
     <img 
@@ -150,6 +136,15 @@
       alt="Users index"
     >
   </p>
+
+  <p align="center">
+    <img 
+      width="49%" 
+      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/profile-edit.png" 
+      alt="Profile edit"
+    >
+  </p> 
+  <br>
 </details>
 
 **The Wordsmith's Collection** consists of a website with a subscription model (SaaS) that allows users to access a curated library of the most important literary works in history. They will be able to read the books on the site, as well as search and filter by genre and author. Each book, genre and author will have a description to get more insight into their bibliography and synopsis, respectively.
