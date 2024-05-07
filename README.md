@@ -70,6 +70,8 @@
   </p>
 </div>
 
+![Hero](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/main-mockup.jpg)
+
 <!-- TABLE OF CONTENTS -->
 
 ## Table of Contents
@@ -90,10 +92,23 @@
 
 ## About the Project
 
-![Hero](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/main-mockup.jpg)
+**The Wordsmith's Collection** consists of a website with a subscription model (SaaS) that allows users to access a curated library of the most important literary works in history. They will be able to read the books on the site, as well as search and filter by genre and author. Each book, genre and author will have a description to get more insight into their bibliography and synopsis, respectively.
+
+In order to access the service, users must register and enter a credit card for payment. Note that no payments are actually made, as the site only verifies that the credit card is valid. To actually use this feature, you should implement a payment gateway provider such as Redsys or Stripe.
+
+There are two types of subscription:
+
+- **Basic**: The subscriber can read all books except those marked **PREMIUM**.
+- **Premium**: The subscriber can read the entire available library, including **PREMIUM** books.
+
+The website has three types of users:
+
+- **Visitor**: A user who visits the site. Cannot read books, but can see the available library and reviews.
+- **Subscriber**: Registered user who pays a monthly/annual fee to read books. Can be **Basic** or **Premium**.
+- **Administrator**: An existing user who, in addition to performing the same operations as a subscriber, can add, edit, and delete books at will.
 
 <details open>
-  <summary align="center">More screenshots</summary>
+  <summary>Screenshots</summary>
 
   <p align="center">
     <img 
@@ -146,21 +161,6 @@
   </p> 
   <br>
 </details>
-
-**The Wordsmith's Collection** consists of a website with a subscription model (SaaS) that allows users to access a curated library of the most important literary works in history. They will be able to read the books on the site, as well as search and filter by genre and author. Each book, genre and author will have a description to get more insight into their bibliography and synopsis, respectively.
-
-In order to access the service, users must register and enter a credit card for payment. Note that no payments are actually made, as the site only verifies that the credit card is valid. To actually use this feature, you should implement a payment gateway provider such as Redsys or Stripe.
-
-There are two types of subscription:
-
-- **Basic**: The subscriber can read all books except those marked **PREMIUM**.
-- **Premium**: The subscriber can read the entire available library, including **PREMIUM** books.
-
-The website has three types of users:
-
-- **Visitor**: A user who visits the site. Cannot read books, but can see the available library and reviews.
-- **Subscriber**: Registered user who pays a monthly/annual fee to read books. Can be **Basic** or **Premium**.
-- **Administrator**: An existing user who, in addition to performing the same operations as a subscriber, can add, edit, and delete books at will.
 
 <!-- BUILT WITH -->
 
