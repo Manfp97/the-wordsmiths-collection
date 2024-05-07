@@ -92,6 +92,19 @@
 
 ![Hero](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/main-mockup.jpg)
 
+<details>
+	<summary align="center">More screenshots</summary>
+
+![Author detail](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/author-detail.png)
+![Book detail](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/book-detail.png)
+![Book read](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/book-read.png)
+![Genre detail](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/genre-detail.png)
+![Main](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/main.png)
+![Modal add content](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/modal-add-content.png)
+![Profile edit](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/profile-edit.png)
+![Users index](https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/users-index.png)
+</details>
+
 **The Wordsmith's Collection** consists of a website with a subscription model (SaaS) that allows users to access a curated library of the most important literary works in history. They will be able to read the books on the site, as well as search and filter by genre and author. Each book, genre and author will have a description to get more insight into their bibliography and synopsis, respectively.
 
 In order to access the service, users must register and enter a credit card for payment. Note that no payments are actually made, as the site only verifies that the credit card is valid. To actually use this feature, you should implement a payment gateway provider such as Redsys or Stripe.
