@@ -77,7 +77,7 @@
 ## Table of Contents
 
 - [About the Project](#about-the-project)
-  - [Entity Relationship Model](#entity-relationship-model)
+  - [Entity-Relationship Model](#entity-relationship-model)
   - [Relational Model](#relational-model)
   - [Use Cases](#use-cases)
   - [Built With](#built-with)
@@ -170,6 +170,7 @@ The website has three types of users:
 - [TailwindCSS](https://tailwindcss.com/docs/guides/laravel): CSS framework.
 - [Vue.js 3](https://vuejs.org/): JavaScript framework.
 - [Inertia.js](https://inertiajs.com/): Enables the creation of fully client-side rendered, single-page applications without the complexity of modern SPAs.
+- [drawio.com](drawio.com): Tool used to create the diagrams.
 - [Flowbite](https://flowbite.com): Open-source UI component library built on top of Tailwind CSS. Used for Nav dropdowns and tabs.
 - [Spatie/laravel-medialibrary](https://spatie.be/docs/laravel-medialibrary/v11/introduction): Associates files with Eloquent models.
 - [uuid](https://www.npmjs.com/package/uuid): JavaScript package to generate unique UUIDs for the alerts.
@@ -180,9 +181,9 @@ The website has three types of users:
 - [@vuepic/vue-datepicker](https://vue3datepicker.com/): Datepicker component for Vue 3.
 - [xiCO2k/laravel-vue-i18n](https://github.com/xiCO2k/laravel-vue-i18n): Internationalization for Vue and Laravel.
 
-<!-- ENTITY RELATIONSHIP MODEL -->
+<!-- ENTITY-RELATIONSHIP MODEL -->
 
-### Entity Relationship Model
+### Entity-Relationship Model
 
 <div align="center">
   <picture>
