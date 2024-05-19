@@ -107,7 +107,7 @@ const submitForm = () => {
 				input-type="number"
 				input-autocomplete="cc-number"
 				input-mode="numeric"
-				:input-max-length="24"
+				input-max-length="24"
 				:error-message="form.errors.card_number"
 				is-required
 				@input="form.card_number = $event.target.value.slice(0, 24)"
@@ -169,7 +169,7 @@ const submitForm = () => {
 					input-type="text"
 					input-autocomplete="cc-csc"
 					input-mode="numeric"
-					:input-max-length="3"
+					input-max-length="3"
 					is-required
 					:error-message="form.errors.cvc"
 					@input="form.cvc = $event.target.value.slice(0, 3)"
