@@ -1,6 +1,6 @@
 <script setup>
 import { trans } from "laravel-vue-i18n";
-import BaseLayout from "@/Layouts/BaseLayout.vue";
+import IndexLayout from "@/Layouts/IndexLayout.vue";
 import AppHead from "@/Components/Common/AppHead.vue";
 import Nav from "@/Components/Common/Nav.vue";
 import AuthorCard from "@/Components/Author/AuthorCard.vue";
@@ -23,7 +23,7 @@ defineProps({
 </script>
 
 <template>
-	<BaseLayout>
+	<IndexLayout>
 		<template #appHead>
 			<AppHead :title="trans('common.action.search')" />
 		</template>
@@ -77,5 +77,5 @@ defineProps({
 				</details>
 			</div>
 		</template>
-	</BaseLayout>
+	</IndexLayout>
 </template>
