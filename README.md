@@ -112,15 +112,25 @@ The website has three types of users:
 
   <p align="center">
     <img 
+      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/landing.png" 
+      alt="Landing page"
+      title="Landing page"
+    >
+  </p> 
+  
+  <p align="center">
+    <img 
       width="49%" 
       src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/genre-detail.png" 
       alt="Genre detail"
+      title="Genre detail"
     >
     &nbsp;
     <img 
       width="49%" 
       src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/book-detail.png" 
       alt="Book detail"
+      title="Book detail"
     >
   </p> 
 
@@ -129,12 +139,14 @@ The website has three types of users:
       width="49%" 
       src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/book-read.png" 
       alt="Book reader"
+      title="Book reader"
     >
     &nbsp;
     <img 
       width="49%" 
       src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/author-detail.png" 
       alt="Author detail"
+      title="Author detail"
     >
   </p> 
 
@@ -143,12 +155,14 @@ The website has three types of users:
       width="49%" 
       src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/modal-add-content.png" 
       alt="Modal add content"
+      title="Modal add content"
     >
     &nbsp;
     <img 
       width="49%" 
       src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/users-index.png" 
       alt="Users index"
+      title="Users index"
     >
   </p>
 
@@ -157,6 +171,7 @@ The website has three types of users:
       width="49%" 
       src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/profile-edit.png" 
       alt="Profile edit"
+      title="Profile edit"
     >
   </p> 
   <br>
