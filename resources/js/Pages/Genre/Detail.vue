@@ -7,8 +7,8 @@ import AppHead from "@/Components/Common/AppHead.vue";
 import Nav from "@/Components/Common/Nav.vue";
 import BookCard from "@/Components/Book/BookCard.vue";
 import Footer from "@/Components/Common/Footer.vue";
-import ModalContainer from "@/Components/Modals/ModalContainer.vue";
-import FormGenre from "@/Forms/FormGenre.vue";
+import ModalGenreEdit from "@/Components/Modals/ModalGenreEdit.vue";
+import ModalGenreDelete from "@/Components/Modals/ModalGenreDelete.vue";
 import IconTrash from "@icons/trash.svg?component";
 import IconEdit from "@icons/edit.svg?component";
 
@@ -82,25 +82,11 @@ const isAdmin = user.value?.role_id === 1;
 			<Footer />
 		</div>
 
-		<ModalContainer
+		<ModalGenreDelete
 			v-if="isAdmin"
-			modal-id="modal-delete-genre"
-			:modal-title="trans('modal.genre.delete.title')"
-			:show="isDeleting"
-			@close="isDeleting = false"
+			v-model:value="isDeleting"
 		>
-			<p class="space-y-2">
-				{{ trans("modal.genre.delete.message") }}
-			</p>
-
-			<div class="mt-6 flex justify-end space-x-4">
-				<button
-					class="button !bg-skin-muted text-skin-white"
-					@click="isDeleting = false"
-				>
-					{{ trans("modal.option.no") }}
-				</button>
-
+			<template #yesButton>
 				<Link
 					:href="`/genre/${genre?.id}`"
 					method="delete"
@@ -109,23 +95,14 @@ const isAdmin = user.value?.role_id === 1;
 				>
 					{{ trans("modal.option.yes") }}
 				</Link>
-			</div>
-		</ModalContainer>
+			</template>
+		</ModalGenreDelete>
 
-		<ModalContainer
+		<ModalGenreEdit
 			v-if="isAdmin"
-			modal-id="modal-edit-genre"
-			:modal-title="trans('modal.genre.edit.title')"
-			:show="isEditing"
-			@close="isEditing = false"
-		>
-			<FormGenre
-				form-id="form-edit-genre"
-				:genre="genre"
-				http-method="put"
-				preserve-scroll
-				preserve-state="errors"
-			/>
-		</ModalContainer>
+			v-model:value="isEditing"
+			preserve-scroll
+			:genre="genre"
+		/>
 	</BaseLayout>
 </template>

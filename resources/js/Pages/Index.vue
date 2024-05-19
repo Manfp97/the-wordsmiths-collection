@@ -7,8 +7,8 @@ import axios from "axios";
 import IndexLayout from "@/Layouts/IndexLayout.vue";
 import SwiperSection from "@/Components/Swiper/SwiperSection.vue";
 import BookCard from "@/Components/Book/BookCard.vue";
-import ModalContainer from "@/Components/Modals/ModalContainer.vue";
-import FormGenre from "@/Forms/FormGenre.vue";
+import ModalGenreEdit from "@/Components/Modals/ModalGenreEdit.vue";
+import ModalGenreDelete from "@/Components/Modals/ModalGenreDelete.vue";
 import IconTrash from "@icons/trash.svg?component";
 import IconEdit from "@icons/edit.svg?component";
 
@@ -137,25 +137,11 @@ const askToEditGenre = (genre) => {
 		</template>
 
 		<template #modals>
-			<ModalContainer
+			<ModalGenreDelete
 				v-if="isAdmin"
-				modal-id="modal-delete-genre"
-				:modal-title="trans('modal.genre.delete.title')"
-				:show="isDeleting"
-				@close="isDeleting = false"
+				v-model:value="isDeleting"
 			>
-				<div class="space-y-2">
-					<p>{{ trans("modal.genre.delete.message") }}</p>
-				</div>
-
-				<div class="mt-6 flex justify-end space-x-4">
-					<button
-						class="button !bg-skin-muted text-skin-white"
-						@click="isDeleting = false"
-					>
-						{{ trans("modal.option.no") }}
-					</button>
-
+				<template #yesButton>
 					<Link
 						:href="`/genre/${selectedGenre?.id}`"
 						method="delete"
@@ -167,24 +153,15 @@ const askToEditGenre = (genre) => {
 					>
 						{{ trans("modal.option.yes") }}
 					</Link>
-				</div>
-			</ModalContainer>
+				</template>
+			</ModalGenreDelete>
 
-			<ModalContainer
+			<ModalGenreEdit
 				v-if="isAdmin"
-				modal-id="modal-edit-genre"
-				:modal-title="trans('modal.genre.edit.title')"
-				:show="isEditing"
-				@close="isEditing = false"
-			>
-				<FormGenre
-					form-id="genre-edit"
-					:genre="selectedGenre"
-					http-method="put"
-					:preserve-scroll="false"
-					preserve-state="errors"
-				/>
-			</ModalContainer>
+				v-model:value="isEditing"
+				:preserve-scroll="false"
+				:genre="selectedGenre"
+			/>
 		</template>
 	</IndexLayout>
 </template>
