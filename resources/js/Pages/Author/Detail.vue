@@ -8,8 +8,8 @@ import AppHead from "@/Components/Common/AppHead.vue";
 import Nav from "@/Components/Common/Nav.vue";
 import BookCard from "@/Components/Book/BookCard.vue";
 import Footer from "@/Components/Common/Footer.vue";
-import ModalContainer from "@/Components/Modals/ModalContainer.vue";
-import FormAuthor from "@/Forms/FormAuthor.vue";
+import ModalAuthorDelete from "@/Components/Modals/ModalAuthorDelete.vue";
+import ModalAuthorEdit from "@/Components/Modals/ModalAuthorEdit.vue";
 import IconTrash from "@icons/trash.svg?component";
 import IconEdit from "@icons/edit.svg?component";
 
@@ -148,27 +148,11 @@ const responsivePortrait = props.author.responsive_portrait?.replaceAll(
 			<Footer />
 		</div>
 
-		<ModalContainer
+		<ModalAuthorDelete
 			v-if="isAdmin"
-			modal-id="modal-delete-author"
-			:modal-title="trans('modal.author.delete.title')"
-			:show="isDeleting"
-			@close="isDeleting = false"
+			v-model:value="isDeleting"
 		>
-			<div class="space-y-2">
-				<p>
-					{{ trans("modal.author.delete.message") }}
-				</p>
-			</div>
-
-			<div class="mt-6 flex justify-end space-x-4">
-				<button
-					class="button !bg-skin-muted text-skin-white"
-					@click="isDeleting = false"
-				>
-					{{ trans("modal.option.no") }}
-				</button>
-
+			<template #yesButton>
 				<Link
 					:href="`/author/${author?.id}`"
 					method="delete"
@@ -177,23 +161,14 @@ const responsivePortrait = props.author.responsive_portrait?.replaceAll(
 				>
 					{{ trans("modal.option.yes") }}
 				</Link>
-			</div>
-		</ModalContainer>
+			</template>
+		</ModalAuthorDelete>
 
-		<ModalContainer
+		<ModalAuthorEdit
 			v-if="isAdmin"
-			modal-id="modal-edit-author"
-			:modal-title="trans('modal.author.edit.title')"
-			:show="isEditing"
-			@close="isEditing = false"
-		>
-			<FormAuthor
-				form-id="form-edit-author"
-				:author="author"
-				http-method="put"
-				preserve-scroll
-				preserve-state="errors"
-			/>
-		</ModalContainer>
+			v-model:value="isEditing"
+			:preserve-scroll="true"
+			:author="author"
+		/>
 	</BaseLayout>
 </template>

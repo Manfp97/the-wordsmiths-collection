@@ -7,8 +7,8 @@ import axios from "axios";
 import IndexLayout from "@//Layouts/IndexLayout.vue";
 import SwiperSection from "@/Components/Swiper/SwiperSection.vue";
 import BookCard from "@/Components/Book/BookCard.vue";
-import ModalContainer from "@/Components/Modals/ModalContainer.vue";
-import FormAuthor from "@/Forms/FormAuthor.vue";
+import ModalAuthorDelete from "@/Components/Modals/ModalAuthorDelete.vue";
+import ModalAuthorEdit from "@/Components/Modals/ModalAuthorEdit.vue";
 import IconTrash from "@icons/trash.svg?component";
 import IconEdit from "@icons/edit.svg?component";
 
@@ -132,25 +132,11 @@ const askToEditAuthor = (author) => {
 		</template>
 
 		<template #modals>
-			<ModalContainer
+			<ModalAuthorDelete
 				v-if="isAdmin"
-				modal-id="modal-delete-author"
-				:modal-title="trans('modal.author.delete.title')"
-				:show="isDeleting"
-				@close="isDeleting = false"
+				v-model:value="isDeleting"
 			>
-				<div class="space-y-2">
-					<p>{{ trans("modal.author.delete.message") }}</p>
-				</div>
-
-				<div class="mt-6 flex justify-end space-x-4">
-					<button
-						class="button !bg-skin-muted text-skin-white"
-						@click="isDeleting = false"
-					>
-						{{ trans("modal.option.no") }}
-					</button>
-
+				<template #yesButton>
 					<Link
 						:href="`/author/${selectedAuthor?.id}`"
 						method="delete"
@@ -162,24 +148,15 @@ const askToEditAuthor = (author) => {
 					>
 						{{ trans("modal.option.yes") }}
 					</Link>
-				</div>
-			</ModalContainer>
+				</template>
+			</ModalAuthorDelete>
 
-			<ModalContainer
+			<ModalAuthorEdit
 				v-if="isAdmin"
-				modal-id="modal-edit-author"
-				:modal-title="trans('modal.author.edit.title')"
-				:show="isEditing"
-				@close="isEditing = false"
-			>
-				<FormAuthor
-					form-id="author-edit"
-					:author="selectedAuthor"
-					http-method="put"
-					:preserve-scroll="false"
-					preserve-state="errors"
-				/>
-			</ModalContainer>
+				v-model:value="isEditing"
+				:preserve-scroll="false"
+				:author="selectedAuthor"
+			/>
 		</template>
 	</IndexLayout>
 </template>
