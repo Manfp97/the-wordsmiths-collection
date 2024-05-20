@@ -59,7 +59,7 @@ class GenreController extends Controller
 			'alert',
 			[
 				'type'		=> 'success', // 'warning', 'danger'
-				'message'	=> 'Genre successfully created',
+				'message'	=> __('alerts.genre_store_success'),
 			]
 		);
 	}
@@ -77,7 +77,7 @@ class GenreController extends Controller
 				'alert',
 				[
 					'type' => 'success',
-					'message' => 'Genre successfully edited',
+					'message' => __('alerts.genre_update_success'),
 				]
 			);
 		} catch (\Exception $e) {
@@ -85,7 +85,7 @@ class GenreController extends Controller
 				'alert',
 				[
 					'type' => 'danger',
-					'message' => 'You cannot edit this genre',
+					'message' => __('alerts.genre_update_danger'),
 				]
 			);
 		}
@@ -102,7 +102,7 @@ class GenreController extends Controller
 			'alert',
 			[
 				'type'		=> 'success', // 'warning', 'danger'
-				'message'	=> 'Genre successfully deleted',
+				'message'	=> __('alerts.genre_destroy_success'),
 			]
 		);
 	}

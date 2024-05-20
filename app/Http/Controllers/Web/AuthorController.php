@@ -69,7 +69,7 @@ class AuthorController extends Controller
 			'alert',
 			[
 				'type'		=> 'success', // 'warning', 'danger'
-				'message'	=> 'Author successfully created',
+				'message'	=> __('alerts.author_store_success'),
 			]
 		);
 	}
@@ -102,7 +102,7 @@ class AuthorController extends Controller
 				'alert',
 				[
 					'type' => 'success',
-					'message' => 'Author successfully edited',
+					'message' => __('alerts.author_update_success'),
 				]
 			);
 		} catch (\Exception $e) {
@@ -110,7 +110,7 @@ class AuthorController extends Controller
 				'alert',
 				[
 					'type' => 'danger',
-					'message' => 'You cannot edit this author',
+					'message' => __('alerts.author_update_danger'),
 				]
 			);
 		}
@@ -127,7 +127,7 @@ class AuthorController extends Controller
 			'alert',
 			[
 				'type'		=> 'success', // 'warning', 'danger'
-				'message'	=> 'Author successfully deleted',
+				'message'	=> __('alerts.author_destroy_success'),
 			]
 		);
 	}

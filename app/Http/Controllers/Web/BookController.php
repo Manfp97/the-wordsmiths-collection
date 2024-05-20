@@ -115,7 +115,7 @@ class BookController extends Controller
 			'alert',
 			[
 				'type'		=> 'success',
-				'message'	=> 'Book successfully created',
+				'message'	=> __('alerts.book_store_success'),
 			]
 		);
 	}
@@ -160,7 +160,7 @@ class BookController extends Controller
 				'alert',
 				[
 					'type'		=> 'success',
-					'message'	=> 'Book successfully edited',
+					'message'	=> __('alerts.book_update_success'),
 				]
 			);
 		} catch (\Exception $e) {
@@ -168,7 +168,7 @@ class BookController extends Controller
 				'alert',
 				[
 					'type' => 'danger',
-					'message' => 'You cannot edit this book',
+					'message' => __('alerts.book_update_danger'),
 				]
 			);
 		}
@@ -190,7 +190,7 @@ class BookController extends Controller
 				'alert',
 				[
 					'type'		=> 'success',
-					'message'	=> 'Book successfully deleted',
+					'message'	=> __('alerts.book_destroy_success'),
 				]
 			);
 		} catch (\Exception $e) {
@@ -198,7 +198,7 @@ class BookController extends Controller
 				'alert',
 				[
 					'type' => 'danger',
-					'message' => 'You cannot delete this book',
+					'message' => __('alerts.book_destroy_danger'),
 				]
 			);
 		}

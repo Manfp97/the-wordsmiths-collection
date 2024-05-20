@@ -36,7 +36,7 @@ class BookReviewController extends Controller
 				'alert',
 				[
 					'type' => 'danger',
-					'message' => 'You cannot post more than one review per book.',
+					'message' => __('alerts.book_review_store_danger'),
 				]
 			);
 		} else {
@@ -51,7 +51,7 @@ class BookReviewController extends Controller
 				'alert',
 				[
 					'type' => 'success',
-					'message' => 'Review successfully posted',
+					'message' => __('alerts.book_review_store_success'),
 				]
 			);
 		}
@@ -71,7 +71,7 @@ class BookReviewController extends Controller
 				'alert',
 				[
 					'type' => 'success',
-					'message' => 'Review successfully edited',
+					'message' => __('alerts.book_review_update_success'),
 				]
 			);
 		}
@@ -80,7 +80,7 @@ class BookReviewController extends Controller
 			'alert',
 			[
 				'type' => 'danger',
-				'message' => 'You cannot edit this review',
+				'message' => __('alerts.book_review_update_danger'),
 			]
 		);
 	}
@@ -104,7 +104,7 @@ class BookReviewController extends Controller
 					'alert',
 					[
 						'type' => 'success',
-						'message' => 'Review successfully deleted',
+						'message' => __('alerts.book_review_destroy_success'),
 					]
 				);
 			}
@@ -114,7 +114,7 @@ class BookReviewController extends Controller
 			'alert',
 			[
 				'type' => 'danger',
-				'message' => 'You cannot delete this review',
+				'message' => __('alerts.book_review_destroy_danger'),
 			]
 		);
 	}

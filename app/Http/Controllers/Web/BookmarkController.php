@@ -37,7 +37,7 @@ class BookmarkController extends Controller
 			'alert',
 			[
 				'type'		=> 'danger',
-				'message'	=> 'Could not save bookmark',
+				'message'	=> __('bookmark_upsert_danger'),
 			]
 		); 
 	}

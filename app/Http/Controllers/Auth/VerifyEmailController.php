@@ -31,7 +31,7 @@ class VerifyEmailController extends Controller
 			'alert',
 			[
 				'type'		=> 'success',
-				'message'	=> 'Email successfully verified',
+				'message'	=> __('alerts.verify_email_success'),
 			]
 		); 
 	}

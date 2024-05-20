@@ -64,16 +64,16 @@ class PaymentController extends Controller
 			return back()->with(
 				'alert',
 				[
-					'type' => 'success',
-					'message' => 'Payment method successfully edited',
+					'type'		=> 'success',
+					'message'	=> __('alerts.payment_edit_success'),
 				]
 			);
 		} catch (\Exception $e) {
 			return back()->with(
 				'alert',
 				[
-					'type' => 'danger',
-					'message' => 'You cannot edit this payment method',
+					'type'		=> 'danger',
+					'message'	=> __('alerts.payment_edit_danger'),
 				]
 			);
 		}

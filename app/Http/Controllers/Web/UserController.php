@@ -80,7 +80,7 @@ class UserController extends Controller
 				'alert',
 				[
 					'type' => 'success',
-					'message' => 'User successfully edited',
+					'message' => __('alerts.user_update_success'),
 				]
 			);
 		} catch (\Exception $e) {
@@ -89,7 +89,7 @@ class UserController extends Controller
 				'alert',
 				[
 					'type' => 'danger',
-					'message' => 'You cannot edit this user',
+					'message' => __('alerts.user_update_danger'),
 				]
 			);
 		}
@@ -115,7 +115,7 @@ class UserController extends Controller
 				'alert',
 				[
 					'type'		=> 'success',
-					'message'	=> 'User successfully deleted',
+					'message'	=> __('alerts.user_destroy_success'),
 				]
 			);
 		} catch (\Exception $e) {
@@ -123,7 +123,7 @@ class UserController extends Controller
 				'alert',
 				[
 					'type' => 'danger',
-					'message' => 'You cannot delete this user',
+					'message' => __('alerts.user_destroy_success'),
 				]
 			);
 		}

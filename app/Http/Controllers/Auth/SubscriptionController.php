@@ -28,7 +28,7 @@ class SubscriptionController extends Controller
 			'alert',
 			[
 				'type'		=> 'success',
-				'message'	=> 'Subscription successfully reactivated. We\'re glad to have you back :)',
+				'message'	=> __('alerts.subscription_reactivate_success'),
 			]
 		);
 	}
@@ -49,7 +49,7 @@ class SubscriptionController extends Controller
 				'alert',
 				[
 					'type'		=> 'danger',
-					'message'	=> "Your subscription plan could not be changed. Please try again.",
+					'message'	=> __('alerts.subscription_update_danger'),
 				]
 			);
 		}
@@ -59,7 +59,9 @@ class SubscriptionController extends Controller
 			'alert',
 			[
 				'type'		=> 'success',
-				'message'	=> "Subscription successfully changed to {$newSubscriptionPlan->name}.",
+				'message'	=> __('alerts.subscription_update_success' , [
+					'name' => $newSubscriptionPlan->name
+				]),
 			]
 		);
 	}
@@ -77,7 +79,8 @@ class SubscriptionController extends Controller
 			'alert',
 			[
 				'type'		=> 'success',
-				'message'	=> 'Subscription successfully canceled. We\'re sorry to see you go :(',
+				'message'	=> __(
+					'alerts.subscription_cancel_success'),
 			]
 		);
 	}
