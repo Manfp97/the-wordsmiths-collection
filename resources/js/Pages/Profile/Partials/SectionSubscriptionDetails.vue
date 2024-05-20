@@ -53,9 +53,10 @@ const dailyPriceOtherPlan =
 // For example, if 10 days of Basic plan is 0,49€ and 10 days of Premium plan is 1,00€, then the client will be charged 1,00 - 0,49 = 0,51€.
 const proratedPriceCurrentPlan = dailyPriceCurrentPlan * daysUntilNextPayment;
 const proratedPriceOtherPlan = dailyPriceOtherPlan * daysUntilNextPayment;
-const proratedFinalPrice = Math.abs(
-	proratedPriceCurrentPlan - proratedPriceOtherPlan
-);
+const proratedFinalPrice =
+	Math.round(
+		Math.abs(proratedPriceCurrentPlan - proratedPriceOtherPlan) * 100
+	) / 100;
 </script>
 
 <template>
