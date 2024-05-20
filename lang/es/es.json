@@ -117,7 +117,7 @@
 	"modal.subscription.cancel.title": "Cancelar suscripción",
 	"modal.subscription.change.agreement": "Aceptas que tu <strong>suscripción a The Wordsmith's Collection continúe y que modifiquemos la cuota mensual hasta que la canceles. Si quieres cancelar la suscripción, cierra este modal y haz clic en el botón 'Cancelar suscripción' de esta misma página.",
 	"modal.subscription.change.current_plan": "Plan actual",
-	"modal.subscription.change.from_basic_to_premium": "El cambio a un plan de mayor precio se hace efectivo inmediatamente para que puedas disfrutar de todas las funciones añadidas. Al hacer clic en \"Confirmar\", se te cobrará :remainderPrice:remainderCurrency por el resto del periodo actual. Al final de tu ciclo de facturación, tu suscripción se renovará automáticamente al precio completo del plan Premium de :premiumPrice:premiumCurrency.",
+	"modal.subscription.change.from_basic_to_premium": "El cambio a un plan de mayor precio se hace efectivo inmediatamente para que puedas disfrutar de todas las funciones añadidas. Al hacer clic en \"Confirmar\", se te cobrará :remainderPrice:remainderCurrency por el resto del periodo actual (:days días). Al final de tu ciclo de facturación, tu suscripción se renovará automáticamente al precio completo del plan Premium de :premiumPrice:premiumCurrency.",
 	"modal.subscription.change.from_premium_to_basic": "El cambio a un plan de menor precio se hace efectivo en la siguiente fecha de facturación. Puedes seguir utilizando las funciones del plan más caro hasta el siguiente pago.",
 	"modal.subscription.change.month": "/mes",
 	"modal.subscription.change.new_plan": "Nuevo plan",

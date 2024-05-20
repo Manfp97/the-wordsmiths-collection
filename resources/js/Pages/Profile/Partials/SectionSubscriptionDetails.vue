@@ -213,6 +213,7 @@ const proratedFinalPrice =
 							trans("modal.subscription.change.from_basic_to_premium", {
 								remainderPrice: proratedFinalPrice,
 								remainderCurrency: subscription.plan.currency,
+								days: daysUntilNextPayment,
 								premiumPrice: otherSubscriptionPlan.price,
 								premiumCurrency: otherSubscriptionPlan.currency,
 							})
