@@ -32,6 +32,30 @@ const formattedStartDate = startDate.toLocaleDateString();
 
 const endDate = new Date(props.subscription.end_date);
 const formattedEndDate = endDate.toLocaleDateString();
+
+const MILLS_IN_ONE_DAY = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
+const daysUntilNextPayment = Math.round(
+	Math.abs((Date.now() - endDate) / MILLS_IN_ONE_DAY)
+);
+const dailyPriceCurrentPlan =
+	Math.round(
+		(props.subscription.plan.price / props.subscription.plan.duration_days) *
+			100
+	) / 100;
+const dailyPriceOtherPlan =
+	Math.round(
+		(props.otherSubscriptionPlan.price /
+			props.otherSubscriptionPlan.duration_days) *
+			100
+	) / 100;
+
+// Replace the price of the remaining number of days in the Basic plan with its equivalent in the Premium plan.
+// For example, if 10 days of Basic plan is 0,49€ and 10 days of Premium plan is 1,00€, then the client will be charged 1,00 - 0,49 = 0,51€.
+const proratedPriceCurrentPlan = dailyPriceCurrentPlan * daysUntilNextPayment;
+const proratedPriceOtherPlan = dailyPriceOtherPlan * daysUntilNextPayment;
+const proratedFinalPrice = Math.abs(
+	proratedPriceCurrentPlan - proratedPriceOtherPlan
+);
 </script>
 
 <template>
@@ -184,7 +208,14 @@ const formattedEndDate = endDate.toLocaleDateString();
 					</p>
 
 					<p v-if="fromBasicToPremium">
-						{{ trans("modal.subscription.change.from_basic_to_premium") }}
+						{{
+							trans("modal.subscription.change.from_basic_to_premium", {
+								remainderPrice: proratedFinalPrice,
+								remainderCurrency: subscription.plan.currency,
+								premiumPrice: otherSubscriptionPlan.price,
+								premiumCurrency: otherSubscriptionPlan.currency,
+							})
+						}}
 					</p>
 					<p v-if="fromPremiumToBasic">
 						{{ trans("modal.subscription.change.from_premium_to_basic") }}
