@@ -68,14 +68,14 @@ const askToEditUser = (user) => {
 };
 
 const tableColumns = [
-	"ID",
-	"User",
-	"Subscription plan",
-	"Start date",
-	"End date",
-	"Status",
-	"Role",
-	"Actions",
+	trans("ID"),
+	trans("user"),
+	trans("Subscription plan"),
+	trans("subscription.start_date"),
+	trans("subscription.end_date"),
+	trans("user.status"),
+	trans("user.role"),
+	trans("common.action.actions"),
 ];
 </script>
 
