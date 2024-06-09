@@ -86,6 +86,8 @@
 	"genre.count": "Genre|Genres",
 	"genre.name": "Name",
 	"genres": "Genres",
+	"language.english": "English",
+	"language.spanish": "Spanish",
 	"layout.index.title": "What are you going to read today?",
 	"layout.register.change_plan": "Change plan",
 	"layout.register.selected_plan": "Your selected plan",

@@ -9,6 +9,7 @@ use App\Http\Controllers\Web\SubscriptionPlanController;
 use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\UserController;
 use App\Http\Controllers\Web\SearchController;
+use App\Http\Controllers\Web\LocaleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,8 @@ Route::inertia('/subscribe', 'Subscribe')->name('subscribe');
 Route::inertia('/terms-and-conditions', 'TermsAndConditions')->name('terms-and-conditions');
 
 Route::post('/subscription-plan/{id}', [SubscriptionPlanController::class, 'select']);
+
+Route::patch('/locale/{locale}', [LocaleController::class, 'update'])->name('locale.update');
 
 Route::middleware('auth')->group(function () {
 	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
