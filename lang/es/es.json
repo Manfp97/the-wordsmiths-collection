@@ -132,7 +132,7 @@
 	"page.auth.confirmation.description": "¡Enhorabuena! Tu cuenta de The Wordsmith's Collection ha sido creada correctamente. ¡Empieza a leer ahora!",
 	"page.auth.confirmation.go_to_home": "Ir a Inicio",
 	"page.auth.confirmation.header_title": "Registro completado",
-	"page.auth.confirmation.message": "Su cuenta de The Wordsmith's Collection ha sido creada correctamente.",
+	"page.auth.confirmation.message": "Tu cuenta de The Wordsmith's Collection ha sido creada correctamente.",
 	"page.auth.confirmation.start_reading_now": "¡Empieza a leer ya!",
 	"page.auth.confirmation.title": "Confirmación",
 	"page.auth.forgot_password.description": "Recupera la contraseña de tu cuenta de The Wordsmith's Collection",
