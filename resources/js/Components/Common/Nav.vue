@@ -65,7 +65,7 @@ const isAdmin = user.value?.role_id === 1;
 
 <template>
 	<nav
-		class="fixed top-0 z-40 w-full bg-skin-tertiary text-skin-white lg:px-12"
+		class="fixed top-0 z-40 w-full bg-skin-tertiary text-skin-white xl:px-12"
 		:class="{ [navClass]: !!navClass }"
 	>
 		<div
@@ -103,7 +103,7 @@ const isAdmin = user.value?.role_id === 1;
 				<!-- Unregistered options -->
 				<div
 					v-else
-					class="flex h-9 space-x-2"
+					class="hidden h-9 space-x-2 lg:flex"
 				>
 					<Link
 						href="/subscribe"
@@ -125,7 +125,7 @@ const isAdmin = user.value?.role_id === 1;
 					data-collapse-toggle="navbar-user"
 					aria-controls="navbar-user"
 					aria-expanded="false"
-					class="me-1 hidden rounded-lg p-2.5 text-sm hover:bg-skin-secondary-offset hover:text-skin-muted focus:text-skin-muted focus:outline-none focus:ring-2 focus:ring-skin-secondary xs:block md:hidden"
+					class="me-1 block rounded-lg p-2.5 text-sm hover:bg-skin-secondary-offset hover:text-skin-muted focus:text-skin-muted focus:outline-none focus:ring-2 focus:ring-skin-secondary lg:hidden"
 					@click="$searchInput ? $searchInput.focus() : null"
 				>
 					<IconSearch
@@ -143,7 +143,7 @@ const isAdmin = user.value?.role_id === 1;
 					input-autocomplete="off"
 					:input-placeholder="`${trans('common.action.search')}...`"
 					:icon-aria-label="trans('common.action.search')"
-					class="hidden md:!mr-4 md:block"
+					class="hidden md:!mr-4 lg:block"
 					@enter="performSearch"
 				>
 					<IconSearch
@@ -215,7 +215,7 @@ const isAdmin = user.value?.role_id === 1;
 					ref="$hamburgerButton"
 					data-collapse-toggle="navbar-user"
 					type="button"
-					class="inline-flex h-10 w-10 flex-grow items-center justify-center rounded-lg p-2 text-sm hover:bg-skin-secondary-offset hover:text-skin-muted focus:text-skin-muted focus:outline-none focus:ring-2 focus:ring-skin-secondary md:hidden"
+					class="inline-flex h-10 w-10 flex-grow items-center justify-center rounded-lg p-2 text-sm hover:bg-skin-secondary-offset hover:text-skin-muted focus:text-skin-muted focus:outline-none focus:ring-2 focus:ring-skin-secondary lg:hidden"
 					aria-controls="navbar-user"
 					aria-expanded="false"
 				>
@@ -279,6 +279,24 @@ const isAdmin = user.value?.role_id === 1;
 						>
 							{{ trans("authors") }}
 						</Link>
+					</li>
+					<li class="mt-2">
+						<div
+							class="grid grid-cols-2 gap-x-3 text-center font-bold sm:hidden"
+						>
+							<Link
+								href="/subscribe"
+								class="block rounded border-2 border-skin-secondary bg-skin-secondary bg-opacity-60 px-3 py-2 hover:bg-opacity-100 md:p-0 md:hover:underline"
+							>
+								{{ trans("common.action.subscribe") }}
+							</Link>
+							<Link
+								href="/login"
+								class="block rounded border-2 border-skin-tertiary bg-skin-tertiary bg-opacity-60 px-3 py-2 text-skin-white hover:bg-opacity-100 md:p-0 md:hover:underline"
+							>
+								{{ trans("common.action.log_in") }}
+							</Link>
+						</div>
 					</li>
 				</ul>
 			</div>
