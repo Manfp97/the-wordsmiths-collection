@@ -280,7 +280,10 @@ const isAdmin = user.value?.role_id === 1;
 							{{ trans("authors") }}
 						</Link>
 					</li>
-					<li class="mt-2">
+					<li
+						v-if="!user"
+						class="mt-2"
+					>
 						<div
 							class="grid grid-cols-2 gap-x-3 text-center font-bold sm:hidden"
 						>
