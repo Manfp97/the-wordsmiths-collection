@@ -236,6 +236,7 @@
 	"user.status": "Estado",
 	"user.status.active": "Activo",
 	"user.status.canceled": "Cancelado",
+	"user.status.expired": "Suscripción expirada",
 	"user.status.not_verified": "No verificado",
 	"users": "Usuarios"
 }

@@ -74,7 +74,9 @@ const proratedFinalPrice = Math.round(
 			</h3>
 			<p>
 				<span class="font-bold">{{ trans("user.status") }}:</span>{{}}
-				<span class="capitalize">{{ subscription.status }}</span>
+				<span class="capitalize">{{
+					trans(`user.status.${subscription.status}`)
+				}}</span>
 			</p>
 			<p>
 				<span class="font-bold">
