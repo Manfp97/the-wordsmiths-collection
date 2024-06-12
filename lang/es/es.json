@@ -228,6 +228,7 @@
 	"subscription.start_date": "Inicio de la suscripción",
 	"subscription.start_date.placeholder": "Selecciona la fecha de inicio",
 	"subscription.type": "Tipo de suscripción",
+	"terms_and_conditions.url_path": "/terminos-y-condiciones",
 	"user": "Usuario",
 	"user.role": "Rol",
 	"user.role.admin": "Admin",

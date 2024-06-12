@@ -53,7 +53,7 @@ const socials = [
 			<p>
 				<span>{{ trans("component.footer.no_tracking_or_ads") }}</span> |
 				<Link
-					href="/terms-and-conditions"
+					:href="trans('terms_and_conditions.url_path')"
 					class="underline hover:text-skin-link"
 				>
 					{{ trans("common.noun.terms_and_conditions") }}

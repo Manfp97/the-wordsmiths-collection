@@ -24,7 +24,7 @@ import Footer from "@/Components/Common/Footer.vue";
 					<p>
 						These terms and conditions outline the rules and regulations for the
 						use of The Wordsmith's Collection's Website, located at
-						wordsmiths-collection.com.
+						the-wordsmiths-collection.fly.dev.
 					</p>
 
 					<p>
