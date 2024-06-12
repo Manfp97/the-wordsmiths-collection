@@ -27,18 +27,18 @@ class SearchController extends Controller
 		// Search only if the query is not empty
 		if (!empty($query)) {
 			// Search for authors
-			$authors = Author::where('first_name', 'like', "%$query%")
-				->orWhere('last_name', 'like', "%$query%")
+			$authors = Author::whereRaw('LOWER(first_name) LIKE ?', ["%$query%"])
+				->orWhereRaw('LOWER(last_name) LIKE ?', ["%$query%"])
 				->get();
 
 			// Search for books
-			$books = Book::where('title', 'like', "%$query%")
+			$books = Book::whereRaw('LOWER(title) LIKE ?', ["%$query%"])
 				->orWhereHas('authors', function ($queryAuthor) use ($query) {
-					$queryAuthor->where('first_name', 'like', "%$query%")
-						->orWhere('last_name', 'like', "%$query%");
+					$queryAuthor->whereRaw('LOWER(first_name) LIKE ?', ["%$query%"])
+						->orWhereRaw('LOWER(last_name) LIKE ?', ["%$query%"]);
 				})
 				->orWhereHas('genres', function ($queryGenre) use ($query) {
-					$queryGenre->where('name', 'like', "%$query%");
+					$queryGenre->whereRaw('LOWER(name) LIKE ?', ["%$query%"]);
 				})
 				->get();
 		}
