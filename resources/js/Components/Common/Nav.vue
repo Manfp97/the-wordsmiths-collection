@@ -96,6 +96,7 @@ const isAdmin = user.value?.role_id === 1;
 					}}</span>
 					<IconUserCircle
 						class="h-10 w-10 rounded-full"
+						:class="{ 'text-skin-secondary': user.role_id === 1 }"
 						fill="none"
 					/>
 				</button>
