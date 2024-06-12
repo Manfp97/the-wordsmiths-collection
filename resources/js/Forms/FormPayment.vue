@@ -118,7 +118,7 @@ const submitForm = () => {
 			class="sm:flex sm:flex-row sm:items-center sm:justify-between sm:gap-6 max-sm:space-y-6"
 		>
 			<div
-				class="flex flex-col rounded-lg border border-skin-border bg-skin-white px-4 py-1 sm:w-2/5"
+				class="flex flex-col rounded-lg border border-skin-border bg-skin-white px-4 py-1"
 			>
 				<label class="mt-1 text-xs text-skin-muted">
 					{{ trans("payment.expiration_date") }}
@@ -160,7 +160,7 @@ const submitForm = () => {
 				</p>
 			</div>
 
-			<div class="flex flex-row items-center space-x-2 sm:w-3/5">
+			<div class="flex flex-row items-center space-x-2">
 				<FloatingLabel
 					v-model:value="form.cvc"
 					class="w-16"

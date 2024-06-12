@@ -14,20 +14,20 @@ console_command = 'php /var/www/html/artisan tinker'
 
 [env]
   APP_ENV = 'production'
-	APP_URL = 'https://the-wordsmiths-collection.fly.dev'
-	DB_CONNECTION = "pgsql"
+  APP_URL = 'https://the-wordsmiths-collection.fly.dev'
+  DB_CONNECTION = "pgsql"
   LOG_CHANNEL = 'stderr'
   LOG_LEVEL = 'info'
   LOG_STDERR_FORMATTER = 'Monolog\Formatter\JsonFormatter'
   SESSION_DRIVER = 'cookie'
   SESSION_SECURE_COOKIE = 'true'
-	MAIL_MAILER = 'smtp'
-	MAIL_HOST = 'smtp.gmail.com'
-	MAIL_PORT = '587'
-	MAIL_USERNAME = 'salgodelalimoparezcodeniro@gmail.com'
-	MAIL_ENCRYPTION = 'tls'
-	MAIL_FROM_ADDRESS = 'salgodelalimoparezcodeniro@gmail.com'
-	MAIL_FROM_NAME = "The Wordsmith's Collection"
+  MAIL_MAILER = 'smtp'
+  MAIL_HOST = 'smtp.gmail.com'
+  MAIL_PORT = '587'
+  MAIL_USERNAME = 'salgodelalimoparezcodeniro@gmail.com'
+  MAIL_ENCRYPTION = 'tls'
+  MAIL_FROM_ADDRESS = 'salgodelalimoparezcodeniro@gmail.com'
+  MAIL_FROM_NAME = "The Wordsmith's Collection"
 
 [http_service]
   internal_port = 8080

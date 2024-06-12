@@ -33,30 +33,27 @@ const formattedStartDate = startDate.toLocaleDateString();
 const endDate = new Date(props.subscription.end_date);
 const formattedEndDate = endDate.toLocaleDateString();
 
+// PRORATED FINAL PRICE CALCULATION
+
 const MILLS_IN_ONE_DAY = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
 const daysUntilNextPayment = Math.round(
 	Math.abs((Date.now() - endDate) / MILLS_IN_ONE_DAY)
 );
+
 const dailyPriceCurrentPlan =
-	Math.round(
-		(props.subscription.plan.price / props.subscription.plan.duration_days) *
-			100
-	) / 100;
+	props.subscription.plan.price / props.subscription.plan.duration_days;
 const dailyPriceOtherPlan =
-	Math.round(
-		(props.otherSubscriptionPlan.price /
-			props.otherSubscriptionPlan.duration_days) *
-			100
-	) / 100;
+	props.otherSubscriptionPlan.price / props.otherSubscriptionPlan.duration_days;
 
 // Replace the price of the remaining number of days in the Basic plan with its equivalent in the Premium plan.
 // For example, if 10 days of Basic plan is 0,49€ and 10 days of Premium plan is 1,00€, then the client will be charged 1,00 - 0,49 = 0,51€.
 const proratedPriceCurrentPlan = dailyPriceCurrentPlan * daysUntilNextPayment;
 const proratedPriceOtherPlan = dailyPriceOtherPlan * daysUntilNextPayment;
-const proratedFinalPrice =
-	Math.round(
-		Math.abs(proratedPriceCurrentPlan - proratedPriceOtherPlan) * 100
-	) / 100;
+
+// Round to two decimals and display two decimals even if the result has only one.
+const proratedFinalPrice = Math.round(
+	Math.abs((proratedPriceCurrentPlan - proratedPriceOtherPlan) * 100) / 100
+).toFixed(2);
 </script>
 
 <template>
@@ -77,7 +74,9 @@ const proratedFinalPrice =
 			</h3>
 			<p>
 				<span class="font-bold">{{ trans("user.status") }}:</span>{{}}
-				<span class="capitalize">{{ subscription.status }}</span>
+				<span class="capitalize">{{
+					trans(`user.status.${subscription.status}`)
+				}}</span>
 			</p>
 			<p>
 				<span class="font-bold">

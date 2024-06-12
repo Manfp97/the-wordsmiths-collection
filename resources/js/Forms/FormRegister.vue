@@ -90,7 +90,7 @@ const submitForm = () => {
 			{{ trans("form.register.i_agree_to_the") }}
 			<Link
 				class="text-skin-link underline hover:text-skin-text"
-				href="/terms-and-conditions"
+				:href="trans('terms_and_conditions.url_path')"
 			>
 				{{ trans("common.noun.terms_and_conditions") }}
 			</Link>

@@ -4,6 +4,7 @@ import { ref, computed, onMounted, onUnmounted, watch } from "vue";
 import { trans } from "laravel-vue-i18n";
 import IconSearch from "@icons/search.svg?component";
 import IconTrash from "@icons/trash.svg?component";
+import IconChevronDown from "@icons/chevron-down.svg?component";
 
 const selectedOptions = defineModel("value"); // eslint-disable-line
 
@@ -163,7 +164,7 @@ const handleCheckboxChange = (event) => {
 			ref="$dropdownSearchButton"
 			:data-dropdown-toggle="`${inputId}-dropdown-search`"
 			data-dropdown-placement="bottom"
-			class="z-0 flex min-h-[3.25rem] w-full cursor-pointer flex-col rounded-lg border border-skin-border bg-skin-white px-4 shadow-sm focus:ring-2"
+			class="z-0 flex h-full min-h-[3.25rem] w-full cursor-pointer flex-col rounded-lg border border-skin-border bg-skin-white px-4 shadow-sm focus:ring-2"
 			:class="{
 				'outline-none ring-2': isDropdownVisible,
 				'border-skin-secondary ring-skin-secondary':
@@ -175,7 +176,7 @@ const handleCheckboxChange = (event) => {
 			}"
 		>
 			<div
-				class="absolute flex w-full justify-between pr-8"
+				class="absolute flex w-full justify-between pr-6"
 				:class="{
 					'top-4': !areAnyItemsSelected,
 					'top-3': areAnyItemsSelected,
@@ -204,6 +205,10 @@ const handleCheckboxChange = (event) => {
 					v-if="areAnyItemsSelected"
 					class="w-5 stroke-skin-danger"
 					@click="onTrashClick"
+				/>
+				<IconChevronDown
+					v-else
+					class="w-5 text-skin-muted"
 				/>
 			</div>
 

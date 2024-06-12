@@ -228,6 +228,7 @@
 	"subscription.start_date": "Subscription start date",
 	"subscription.start_date.placeholder": "Select start date",
 	"subscription.type": "Subscription type",
+	"terms_and_conditions.url_path": "/terms-and-conditions",
 	"user": "User",
 	"user.role": "Role",
 	"user.role.admin": "Admin",
@@ -235,6 +236,7 @@
 	"user.status": "Status",
 	"user.status.active": "Active",
 	"user.status.canceled": "Canceled",
+	"user.status.expired": "Expired subscription",
 	"user.status.not_verified": "Not verified",
 	"users": "Users"
 }

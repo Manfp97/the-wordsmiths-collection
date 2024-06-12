@@ -1,4 +1,5 @@
 <script setup>
+import { trans } from "laravel-vue-i18n";
 import PricingCardListItem from "@/Components/Pricing/PricingCardListItem.vue";
 
 defineProps({
@@ -64,7 +65,9 @@ defineProps({
 						<span class="price">{{ priceIntPart }}</span>
 						<sup class="-top-6 text-lg">{{ priceDecimalPart }}</sup>
 					</span>
-					<span class="text-skin-muted">/month</span>
+					<span class="text-skin-muted">{{
+						trans("modal.subscription.change.month")
+					}}</span>
 				</div>
 				<!-- List -->
 				<ul
