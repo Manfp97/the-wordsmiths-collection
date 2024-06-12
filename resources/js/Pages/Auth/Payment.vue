@@ -35,7 +35,9 @@ defineProps({
 						<p class="font-bold">
 							{{ selectedSubscriptionPlan.price }}
 							{{ selectedSubscriptionPlan.currency }}
-							<span class="text-xs">/month</span>
+							<span class="text-xs">{{
+								trans("modal.subscription.change.month")
+							}}</span>
 						</p>
 						<p class="text-skin-muted">
 							{{ selectedSubscriptionPlan.name }}
