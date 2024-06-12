@@ -28,6 +28,7 @@ class UserController extends Controller
 					->where('username', 'like', "%$search%")
 					->orWhere('email', 'like', "%$search%");
 			})
+			->orderBy('id')
 			->paginate($usersPerPage) 
 			->withQueryString()
 			->through(fn ($user) => new UserResource($user->load(['subscription' => ['subscriptionPlan'], 'role'])));
