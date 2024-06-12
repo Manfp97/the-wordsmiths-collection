@@ -3,7 +3,17 @@ on:
   pull_request:
   push:
     branches:
-      - main    # change to main if needed
+      - main
+    paths:
+      - 'app/**'
+      - 'bootstrap/**'
+      - 'config/**'
+      - 'database/**'
+      - 'database/**'
+      - 'lang/**'
+      - 'public/**'
+      - 'resources/**'
+      - 'tests/**'
 jobs:
   deploy:
     name: Deploy app
