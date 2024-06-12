@@ -195,6 +195,7 @@ The website has three types of users:
 - [@vueuse/core](https://github.com/vueuse/vueuse): Collection of essential Vue Composition Utilities. Used for infinite scrolling with `useIntersectionObserver` and `useDebounceFn`.
 - [@vuepic/vue-datepicker](https://vue3datepicker.com/): Datepicker component for Vue 3.
 - [xiCO2k/laravel-vue-i18n](https://github.com/xiCO2k/laravel-vue-i18n): Internationalization for Vue and Laravel.
+- [Terms and Conditions generator](https://www.termsandconditionsgenerator.com): Self-explained
 
 <!-- ENTITY-RELATIONSHIP MODEL -->
 
