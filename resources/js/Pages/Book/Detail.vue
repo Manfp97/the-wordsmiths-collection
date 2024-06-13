@@ -37,8 +37,12 @@ const props = defineProps({
 	},
 });
 
-const canEdit = props.book.reviews.some((review) => review.can_edit);
-const canDelete = props.book.reviews.some((review) => review.can_delete);
+const canEdit = computed(() =>
+	props.book.reviews.some((review) => review.can_edit)
+);
+const canDelete = computed(() =>
+	props.book.reviews.some((review) => review.can_delete)
+);
 
 const isEditingBook = ref(false);
 const isDeletingBook = ref(false);
