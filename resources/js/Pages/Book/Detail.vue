@@ -129,7 +129,7 @@ const swiperBreakpoints = {
 							<div class="sticky top-24">
 								<!-- eslint-disable vue/no-v-html -->
 								<div
-									class="mx-auto w-[70%]"
+									class="m-auto flex w-[70%] justify-center"
 									v-html="cover"
 								/>
 								<!-- eslint-enable -->
