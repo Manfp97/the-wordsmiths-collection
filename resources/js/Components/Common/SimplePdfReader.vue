@@ -45,6 +45,9 @@ const isPageInputFocus = ref(false);
 const isZoomInputFocus = ref(false);
 const zoomValue = ref(props.defaultZoom);
 
+let initialPinchDistance = null;
+let lastPinchScale = 1;
+
 onMounted(() => {
 	configurePdfjsWorker();
 	loadPdf();
@@ -184,6 +187,43 @@ const onWheel = (event) => {
 		$zoomInput.value.value = newZoom;
 	}
 };
+
+// Pinch-to-Zoom Handlers
+
+const onTouchStart = (event) => {
+	if (event.touches.length === 2) {
+		initialPinchDistance = getDistance(event.touches[0], event.touches[1]);
+		lastPinchScale = currentPdf.zoom;
+	}
+};
+
+const onTouchMove = (event) => {
+	if (event.touches.length === 2 && initialPinchDistance) {
+		const newDistance = getDistance(event.touches[0], event.touches[1]);
+		const scaleFactor = newDistance / initialPinchDistance;
+		const newZoom = Math.round(lastPinchScale * scaleFactor * 100);
+
+		const minZoom = parseInt($zoomInput.value.min);
+		const maxZoom = parseInt($zoomInput.value.max);
+
+		if (newZoom >= minZoom && newZoom <= maxZoom) {
+			changeZoom(newZoom);
+			$zoomInput.value.value = newZoom;
+		}
+	}
+};
+
+const onTouchEnd = (event) => {
+	if (event.touches.length < 2) {
+		initialPinchDistance = null;
+	}
+};
+
+const getDistance = (touch1, touch2) => {
+	const dx = touch2.clientX - touch1.clientX;
+	const dy = touch2.clientY - touch1.clientY;
+	return Math.sqrt(dx * dy + dy * dy);
+};
 </script>
 
 <template>
@@ -200,6 +240,9 @@ const onWheel = (event) => {
 					ref="$textLayerDiv"
 					class="text-layer"
 					@wheel="shouldZoomOnWheel && onWheel($event)"
+					@touchstart="onTouchStart"
+					@touchmove="onTouchMove"
+					@touchend="onTouchEnd"
 				/>
 			</div>
 		</main>
