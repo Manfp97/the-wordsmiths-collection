@@ -183,8 +183,10 @@ const onWheel = (event) => {
 	const maxZoom = parseInt($zoomInput.value.max);
 
 	if (newZoom >= minZoom && newZoom <= maxZoom) {
-		changeZoom(newZoom);
-		$zoomInput.value.value = newZoom;
+		requestAnimationFrame(() => {
+			changeZoom(newZoom);
+			$zoomInput.value.value = newZoom;
+		});
 	}
 };
 
@@ -201,14 +203,21 @@ const onTouchMove = (event) => {
 	if (event.touches.length === 2 && initialPinchDistance) {
 		const newDistance = getDistance(event.touches[0], event.touches[1]);
 		const scaleFactor = newDistance / initialPinchDistance;
-		const newZoom = Math.round(lastPinchScale * scaleFactor * 100);
+
+		// Make the zoom pinch smoother
+		const dampingFactor = 0.2;
+		const adjustedScaleFactor = 1 + dampingFactor * (scaleFactor - 1);
+
+		const newZoom = Math.round(lastPinchScale * adjustedScaleFactor * 100);
 
 		const minZoom = parseInt($zoomInput.value.min);
 		const maxZoom = parseInt($zoomInput.value.max);
 
 		if (newZoom >= minZoom && newZoom <= maxZoom) {
-			changeZoom(newZoom);
-			$zoomInput.value.value = newZoom;
+			requestAnimationFrame(() => {
+				changeZoom(newZoom);
+				$zoomInput.value.value = newZoom;
+			});
 		}
 	}
 };
