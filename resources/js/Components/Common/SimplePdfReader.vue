@@ -105,8 +105,8 @@ const renderTextLayer = (textContent, viewport) => {
 	// Get canvas offset
 	const rect = $canvas.value.getBoundingClientRect();
 	const canvasOffset = {
-		top: rect.top + window.scrollY,
-		left: rect.left + window.scrollX,
+		top: rect.top + window.scrollY - 20,
+		left: rect.left + window.scrollX - 20,
 	};
 
 	// Clear HTML for text layer
@@ -188,22 +188,24 @@ const onWheel = (event) => {
 
 <template>
 	<div class="h-screen w-full bg-[#222]">
-		<main class="w-full overflow-auto bg-[#222] p-5 pb-20">
-			<canvas
-				ref="$canvas"
-				class="m-auto"
-			>
-				{{ trans("pdf_reader.unsupported_canvas") }}
-			</canvas>
-			<div
-				ref="$textLayerDiv"
-				class="text-layer"
-				@wheel="shouldZoomOnWheel && onWheel($event)"
-			/>
+		<main class="w-full bg-[#222] p-5 pb-20">
+			<div class="relative w-full overflow-x-auto overflow-y-hidden bg-[#222]">
+				<canvas
+					ref="$canvas"
+					class="m-auto"
+				>
+					{{ trans("pdf_reader.unsupported_canvas") }}
+				</canvas>
+				<div
+					ref="$textLayerDiv"
+					class="text-layer"
+					@wheel="shouldZoomOnWheel && onWheel($event)"
+				/>
+			</div>
 		</main>
 
 		<footer
-			class="fixed bottom-0 left-0 right-0 z-50 h-16 w-full bg-[#2d2d2d] px-4 text-skin-white sm:px-8"
+			class="fixed bottom-0 left-0 right-0 z-50 h-16 w-screen bg-[#2d2d2d] px-4 text-skin-white sm:px-8"
 		>
 			<ul class="flex h-full w-full list-none items-center justify-between">
 				<li class="flex grow basis-0 items-center">
