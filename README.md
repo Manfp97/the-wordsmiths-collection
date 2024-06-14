@@ -92,6 +92,9 @@
 
 ## About the Project
 
+[![Presentation video](/docs/common/youtube-thumbnail.png)](https://youtu.be/nN5XyJb1UYE)
+>Video in Spanish with English subtitles explaining the main features of the website.
+
 **The Wordsmith's Collection** consists of a website with a subscription model (SaaS) that allows users to access a curated library of the most important literary works in history. They will be able to read the books on the site, as well as search and filter by genre and author. Each book, genre and author will have a description to get more insight into their bibliography and synopsis, respectively.
 
 In order to access the service, users must register and enter a credit card for payment. Note that no payments are actually made, as the site only verifies that the credit card is valid. To actually use this feature, you should implement a payment gateway provider such as Redsys or Stripe.
@@ -107,7 +110,7 @@ The website has three types of users:
 - **Subscriber**: Registered user who pays a monthly/annual fee to read books. Can be **Basic** or **Premium**.
 - **Administrator**: An existing user who, in addition to performing the same operations as a subscriber, can add, edit, and delete books at will.
 
-<details open>
+<details>
   <summary>Screenshots</summary>
 
   <p align="center">
@@ -137,9 +140,9 @@ The website has three types of users:
   <p align="center">
     <img 
       width="49%" 
-      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/book-read.png" 
-      alt="Book reader"
-      title="Book reader"
+      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/profile-edit.png" 
+      alt="Profile edit"
+      title="Profile edit"
     >
     &nbsp;
     <img 
@@ -167,11 +170,11 @@ The website has three types of users:
   </p>
 
   <p align="center">
-    <img 
+		<img 
       width="49%" 
-      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/profile-edit.png" 
-      alt="Profile edit"
-      title="Profile edit"
+      src="https://github.com/HenestrosaDev/the-wordsmiths-collection/blob/main/docs/en/screenshots/book-read.png" 
+      alt="Book reader"
+      title="Book reader"
     >
   </p> 
   <br>
@@ -185,8 +188,9 @@ The website has three types of users:
 - [TailwindCSS](https://tailwindcss.com/docs/guides/laravel): CSS framework.
 - [Vue.js 3](https://vuejs.org/): JavaScript framework.
 - [Inertia.js](https://inertiajs.com/): Enables the creation of fully client-side rendered, single-page applications without the complexity of modern SPAs.
-- [drawio.com](drawio.com): Tool used to create the diagrams.
+- [drawio.com](https://drawio.com): Tool used to create the diagrams.
 - [Flowbite](https://flowbite.com): Open-source UI component library built on top of Tailwind CSS. Used for Nav dropdowns and tabs.
+- [PDF.js](https://mozilla.github.io/pdf.js/): Library for rendering PDFs.
 - [Spatie/laravel-medialibrary](https://spatie.be/docs/laravel-medialibrary/v11/introduction): Associates files with Eloquent models.
 - [uuid](https://www.npmjs.com/package/uuid): JavaScript package to generate unique UUIDs for the alerts.
 - [cviebrock/eloquent-sluggable](https://github.com/cviebrock/eloquent-sluggable): Creates unique slugs for Eloquent models in Laravel.
